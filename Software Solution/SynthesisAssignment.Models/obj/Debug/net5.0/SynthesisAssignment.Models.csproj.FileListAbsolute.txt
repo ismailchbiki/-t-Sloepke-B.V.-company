@@ -1,0 +1,11 @@
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\bin\Debug\net5.0\SynthesisAssignment.Models.deps.json
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\bin\Debug\net5.0\SynthesisAssignment.Models.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\bin\Debug\net5.0\ref\SynthesisAssignment.Models.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\bin\Debug\net5.0\SynthesisAssignment.Models.pdb
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\obj\Debug\net5.0\SynthesisAssignment.Models.GeneratedMSBuildEditorConfig.editorconfig
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\obj\Debug\net5.0\SynthesisAssignment.Models.AssemblyInfoInputs.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\obj\Debug\net5.0\SynthesisAssignment.Models.AssemblyInfo.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\obj\Debug\net5.0\SynthesisAssignment.Models.csproj.CoreCompileInputs.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\obj\Debug\net5.0\SynthesisAssignment.Models.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\obj\Debug\net5.0\ref\SynthesisAssignment.Models.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\obj\Debug\net5.0\SynthesisAssignment.Models.pdb

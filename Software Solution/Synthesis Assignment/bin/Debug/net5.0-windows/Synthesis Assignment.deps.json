@@ -1,0 +1,47 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Synthesis Assignment/1.0.0": {
+        "dependencies": {
+          "SynthesisAssignment.Models": "1.0.0",
+          "SynthesisAssignment.Services": "1.0.0"
+        },
+        "runtime": {
+          "Synthesis Assignment.dll": {}
+        }
+      },
+      "SynthesisAssignment.Models/1.0.0": {
+        "runtime": {
+          "SynthesisAssignment.Models.dll": {}
+        }
+      },
+      "SynthesisAssignment.Services/1.0.0": {
+        "runtime": {
+          "SynthesisAssignment.Services.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Synthesis Assignment/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SynthesisAssignment.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SynthesisAssignment.Services/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

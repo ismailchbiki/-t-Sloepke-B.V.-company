@@ -1,0 +1,112 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0-windows7.0": {
+      "SynthesisAssignment.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/SynthesisAssignment.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SynthesisAssignment.Models.dll": {}
+        }
+      },
+      "SynthesisAssignment.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/SynthesisAssignment.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SynthesisAssignment.Services.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SynthesisAssignment.Models/1.0.0": {
+      "type": "project",
+      "path": "../SynthesisAssignment.Models/SynthesisAssignment.Models.csproj",
+      "msbuildProject": "../SynthesisAssignment.Models/SynthesisAssignment.Models.csproj"
+    },
+    "SynthesisAssignment.Services/1.0.0": {
+      "type": "project",
+      "path": "../SynthesisAssignment.Services/SynthesisAssignment.Services.csproj",
+      "msbuildProject": "../SynthesisAssignment.Services/SynthesisAssignment.Services.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0-windows7.0": [
+      "SynthesisAssignment.Models >= 1.0.0",
+      "SynthesisAssignment.Services >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Ismail\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\Synthesis Assignment\\Synthesis Assignment.csproj",
+      "projectName": "Synthesis Assignment",
+      "projectPath": "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\Synthesis Assignment\\Synthesis Assignment.csproj",
+      "packagesPath": "C:\\Users\\Ismail\\.nuget\\packages\\",
+      "outputPath": "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\Synthesis Assignment\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Ismail\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0-windows7.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0-windows7.0": {
+          "targetAlias": "net5.0-windows",
+          "projectReferences": {
+            "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.Models\\SynthesisAssignment.Models.csproj": {
+              "projectPath": "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.Models\\SynthesisAssignment.Models.csproj"
+            },
+            "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.Services\\SynthesisAssignment.Services.csproj": {
+              "projectPath": "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.Services\\SynthesisAssignment.Services.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0-windows7.0": {
+        "targetAlias": "net5.0-windows",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
