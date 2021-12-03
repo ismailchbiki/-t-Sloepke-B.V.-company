@@ -10,7 +10,6 @@
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\SynthesisAssignment.Models.pdb
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\SynthesisAssignment.Services.pdb
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis Assignment.csproj.AssemblyReference.cache
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.Form1.resources
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis Assignment.csproj.GenerateResource.cache
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis Assignment.GeneratedMSBuildEditorConfig.editorconfig
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis Assignment.AssemblyInfoInputs.cache
@@ -21,3 +20,6 @@
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\ref\Synthesis Assignment.dll
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis Assignment.pdb
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis Assignment.genruntimeconfig.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormDashboard.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormInventoryManagement.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormLogin.resources

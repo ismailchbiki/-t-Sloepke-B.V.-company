@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {}
+    "net5.0": {
+      "SynthesisAssignment.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/SynthesisAssignment.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SynthesisAssignment.Models.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "SynthesisAssignment.Models/1.0.0": {
+      "type": "project",
+      "path": "../SynthesisAssignment.Models/SynthesisAssignment.Models.csproj",
+      "msbuildProject": "../SynthesisAssignment.Models/SynthesisAssignment.Models.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0": []
+    "net5.0": [
+      "SynthesisAssignment.Models >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Ismail\\.nuget\\packages\\": {}
@@ -33,7 +52,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.Models\\SynthesisAssignment.Models.csproj": {
+              "projectPath": "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.Models\\SynthesisAssignment.Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

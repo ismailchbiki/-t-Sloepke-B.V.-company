@@ -145,7 +145,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.Models\\SynthesisAssignment.Models.csproj": {
+                "projectPath": "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.Models\\SynthesisAssignment.Models.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

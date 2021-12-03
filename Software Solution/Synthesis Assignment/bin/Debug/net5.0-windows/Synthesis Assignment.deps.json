@@ -21,6 +21,9 @@
         }
       },
       "SynthesisAssignment.Services/1.0.0": {
+        "dependencies": {
+          "SynthesisAssignment.Models": "1.0.0"
+        },
         "runtime": {
           "SynthesisAssignment.Services.dll": {}
         }

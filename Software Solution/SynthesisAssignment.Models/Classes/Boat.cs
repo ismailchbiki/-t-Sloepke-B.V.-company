@@ -10,23 +10,31 @@ namespace SynthesisAssignment.Services
     public class Boat : Inventory
     {
 
+        //fields
         private BOATTYPE type;
 
+        //constructors
         public Boat()
         {
 
         }
-
-        public Boat(BOATTYPE boat, double cost, double deposit, int qnty, string remamrk)
-            : base(cost, deposit, qnty, remamrk)
+        public Boat(int id, BOATTYPE boat, double cost, double deposit, int qnty, string remamrk)
+            : base(id, cost, deposit, qnty, remamrk)
         {
             this.type = boat;
         }
 
-        public string BoatType
+        //properties
+        public BOATTYPE BoatType
         {
-            get { return this.type.ToString(); }
-            set { type = (BOATTYPE)Enum.Parse(typeof(BOATTYPE), value); }
+            get { return this.type; }
+            set { type = value; }
         }
+
+        //public string BoatType
+        //{
+        //    get { return this.type.ToString(); }
+        //    set { type = (BOATTYPE)Enum.Parse(typeof(BOATTYPE), value); }
+        //}
     }
 }
