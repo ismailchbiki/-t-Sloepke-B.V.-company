@@ -1,7 +1,7 @@
 ﻿
 namespace Synthesis_Assignment
 {
-    partial class FormInventoryManagement
+    partial class FormInventory
     {
         /// <summary>
         /// Required designer variable.

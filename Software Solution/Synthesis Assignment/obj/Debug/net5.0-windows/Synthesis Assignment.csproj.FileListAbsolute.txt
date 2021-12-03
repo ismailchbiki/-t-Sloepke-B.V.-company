@@ -21,5 +21,6 @@
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis Assignment.pdb
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis Assignment.genruntimeconfig.cache
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormDashboard.resources
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormInventoryManagement.resources
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormLogin.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.Properties.Resources.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormInventory.resources

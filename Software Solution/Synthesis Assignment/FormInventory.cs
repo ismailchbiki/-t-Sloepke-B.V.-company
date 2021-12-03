@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Synthesis_Assignment
 {
-    public partial class FormInventoryManagement : Form
+    public partial class FormInventory : Form
     {
 
         Inventory inventory;
@@ -32,7 +32,7 @@ namespace Synthesis_Assignment
         ITEMTYPE item = ITEMTYPE.LifeJacket;
 
 
-        public FormInventoryManagement()
+        public FormInventory()
         {
             InitializeComponent();
 

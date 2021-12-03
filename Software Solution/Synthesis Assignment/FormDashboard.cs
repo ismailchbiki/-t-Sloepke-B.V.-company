@@ -16,5 +16,29 @@ namespace Synthesis_Assignment
         {
             InitializeComponent();
         }
+
+
+        private void FormDashboard_Load(object sender, EventArgs e)
+        {
+            CenterToScreen();
+        }
+
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            FormLogin login = new FormLogin();
+
+            login.Show();
+            this.Hide();
+        }
+
+        private void buttonInventory_Click(object sender, EventArgs e)
+        {
+            FormInventory inventory = new FormInventory();
+
+            inventory.Show();
+            this.Hide();
+        }
+
+        
     }
 }
