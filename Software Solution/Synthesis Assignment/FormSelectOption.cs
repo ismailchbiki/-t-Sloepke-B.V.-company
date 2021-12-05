@@ -45,5 +45,13 @@ namespace Synthesis_Assignment
             boats.Show();
             this.Hide();
         }
+
+        private void buttonItems_Click(object sender, EventArgs e)
+        {
+            FormItems items = new FormItems();
+
+            items.Show();
+            this.Hide();
+        }
     }
 }

@@ -47,8 +47,8 @@ namespace Synthesis_Assignment
             this.textBoxQuantity = new System.Windows.Forms.TextBox();
             this.textBoxRemark = new System.Windows.Forms.TextBox();
             this.buttonAddBoat = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelEuroSymbole = new System.Windows.Forms.Label();
+            this.labelEuroSymbole2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,7 +132,7 @@ namespace Synthesis_Assignment
             this.labelDeposit.AutoSize = true;
             this.labelDeposit.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelDeposit.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.labelDeposit.Location = new System.Drawing.Point(760, 278);
+            this.labelDeposit.Location = new System.Drawing.Point(790, 279);
             this.labelDeposit.Name = "labelDeposit";
             this.labelDeposit.Size = new System.Drawing.Size(161, 90);
             this.labelDeposit.TabIndex = 15;
@@ -143,7 +143,7 @@ namespace Synthesis_Assignment
             this.labelQuantity.AutoSize = true;
             this.labelQuantity.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelQuantity.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.labelQuantity.Location = new System.Drawing.Point(758, 428);
+            this.labelQuantity.Location = new System.Drawing.Point(788, 429);
             this.labelQuantity.Name = "labelQuantity";
             this.labelQuantity.Size = new System.Drawing.Size(163, 90);
             this.labelQuantity.TabIndex = 16;
@@ -154,7 +154,7 @@ namespace Synthesis_Assignment
             this.labelRemark.AutoSize = true;
             this.labelRemark.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelRemark.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.labelRemark.Location = new System.Drawing.Point(758, 604);
+            this.labelRemark.Location = new System.Drawing.Point(788, 605);
             this.labelRemark.Name = "labelRemark";
             this.labelRemark.Size = new System.Drawing.Size(148, 45);
             this.labelRemark.TabIndex = 17;
@@ -194,21 +194,21 @@ namespace Synthesis_Assignment
             // 
             // textBoxDeposit
             // 
-            this.textBoxDeposit.Location = new System.Drawing.Point(964, 286);
+            this.textBoxDeposit.Location = new System.Drawing.Point(994, 287);
             this.textBoxDeposit.Name = "textBoxDeposit";
             this.textBoxDeposit.Size = new System.Drawing.Size(356, 39);
             this.textBoxDeposit.TabIndex = 22;
             // 
             // textBoxQuantity
             // 
-            this.textBoxQuantity.Location = new System.Drawing.Point(964, 436);
+            this.textBoxQuantity.Location = new System.Drawing.Point(994, 437);
             this.textBoxQuantity.Name = "textBoxQuantity";
             this.textBoxQuantity.Size = new System.Drawing.Size(356, 39);
             this.textBoxQuantity.TabIndex = 23;
             // 
             // textBoxRemark
             // 
-            this.textBoxRemark.Location = new System.Drawing.Point(964, 611);
+            this.textBoxRemark.Location = new System.Drawing.Point(994, 612);
             this.textBoxRemark.Multiline = true;
             this.textBoxRemark.Name = "textBoxRemark";
             this.textBoxRemark.Size = new System.Drawing.Size(356, 83);
@@ -225,27 +225,27 @@ namespace Synthesis_Assignment
             this.buttonAddBoat.UseVisualStyleBackColor = false;
             this.buttonAddBoat.Click += new System.EventHandler(this.buttonAddBoat_Click);
             // 
-            // label1
+            // labelEuroSymbole
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.label1.Location = new System.Drawing.Point(702, 605);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 45);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "€";
+            this.labelEuroSymbole.AutoSize = true;
+            this.labelEuroSymbole.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelEuroSymbole.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.labelEuroSymbole.Location = new System.Drawing.Point(702, 605);
+            this.labelEuroSymbole.Name = "labelEuroSymbole";
+            this.labelEuroSymbole.Size = new System.Drawing.Size(37, 45);
+            this.labelEuroSymbole.TabIndex = 26;
+            this.labelEuroSymbole.Text = "€";
             // 
-            // label2
+            // labelEuroSymbole2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.label2.Location = new System.Drawing.Point(1326, 278);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 45);
-            this.label2.TabIndex = 27;
-            this.label2.Text = "€";
+            this.labelEuroSymbole2.AutoSize = true;
+            this.labelEuroSymbole2.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelEuroSymbole2.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.labelEuroSymbole2.Location = new System.Drawing.Point(1356, 279);
+            this.labelEuroSymbole2.Name = "labelEuroSymbole2";
+            this.labelEuroSymbole2.Size = new System.Drawing.Size(37, 45);
+            this.labelEuroSymbole2.TabIndex = 27;
+            this.labelEuroSymbole2.Text = "€";
             // 
             // FormBoats
             // 
@@ -253,8 +253,8 @@ namespace Synthesis_Assignment
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1504, 900);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelEuroSymbole2);
+            this.Controls.Add(this.labelEuroSymbole);
             this.Controls.Add(this.buttonAddBoat);
             this.Controls.Add(this.textBoxRemark);
             this.Controls.Add(this.textBoxQuantity);
@@ -302,7 +302,7 @@ namespace Synthesis_Assignment
         private System.Windows.Forms.TextBox textBoxQuantity;
         private System.Windows.Forms.TextBox textBoxRemark;
         private System.Windows.Forms.Button buttonAddBoat;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelEuroSymbole;
+        private System.Windows.Forms.Label labelEuroSymbole2;
     }
 }

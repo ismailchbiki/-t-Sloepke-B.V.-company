@@ -10,11 +10,15 @@ namespace SynthesisAssignment.Services
     public interface IDALInventory
     {
 
-        //Boats
-        bool AddGear(Boat gear);
+        //Inventory
+        bool AddBoat(Boat gear);
+        bool AddItem(Item gear);
         //bool UpdateBoat(Boat gear);
         //bool DeleteBoat(int id);
         //Boat GetBoatByID(int id);
+        IEnumerable<Inventory> GetAllBoats();
+        IEnumerable<Inventory> GetAllItems();
         IEnumerable<Inventory> GetAllGear();
+
     }
 }

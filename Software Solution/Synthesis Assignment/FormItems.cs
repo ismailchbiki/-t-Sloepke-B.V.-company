@@ -1,6 +1,5 @@
 ﻿using SynthesisAssignment.Models;
 using SynthesisAssignment.Models.Classes;
-using SynthesisAssignment.Models.Enums;
 using SynthesisAssignment.Services;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Synthesis_Assignment
 {
-    public partial class FormBoats : Form
+    public partial class FormItems : Form
     {
 
         Inventory gear;
@@ -22,7 +21,7 @@ namespace Synthesis_Assignment
         Validation validate;
         GuidingMessages message;
 
-        public FormBoats()
+        public FormItems()
         {
             InitializeComponent();
 
@@ -30,18 +29,15 @@ namespace Synthesis_Assignment
             gearManager = new InventoryAdministration();
             validate = new Validation();
             message = new GuidingMessages();
-
         }
 
-        private void FormAddBoat_Load(object sender, EventArgs e)
+        private void FormItems_Load(object sender, EventArgs e)
         {
             CenterToScreen();
 
             //populating the comboBoxes with enums
-            comboBoxBoatType.DataSource = Enum.GetValues(typeof(BOATTYPE));
-            comboBoxCapacity.DataSource = Enum.GetValues(typeof(CAPACITY));
+            comboBoxItem.DataSource = Enum.GetValues(typeof(ITEMTYPE));
         }
-        
 
         //logout
         private void buttonLogout_Click(object sender, EventArgs e)
@@ -52,8 +48,7 @@ namespace Synthesis_Assignment
             this.Hide();
         }
 
-
-        //go back
+        //back
         private void buttonBack_Click(object sender, EventArgs e)
         {
             FormSelectOption selectOption = new FormSelectOption();
@@ -62,15 +57,12 @@ namespace Synthesis_Assignment
             this.Hide();
         }
 
-
-        //add new boat
-        private void buttonAddBoat_Click(object sender, EventArgs e)
+        private void buttonAddItem_Click(object sender, EventArgs e)
         {
             try
             {
                 //check if all fields are filled
-                if (string.IsNullOrEmpty(textBoxCost.Text) || string.IsNullOrEmpty(textBoxDeposit.Text) ||
-                    string.IsNullOrEmpty(textBoxQuantity.Text) || string.IsNullOrEmpty(textBoxRemark.Text))
+                if (string.IsNullOrEmpty(textBoxCost.Text)  || string.IsNullOrEmpty(textBoxQuantity.Text))
                 {
                     MessageBox.Show(message.EmptyFieldsError());
                 }
@@ -78,17 +70,16 @@ namespace Synthesis_Assignment
                 else if (validate.ContainLetters(textBoxCost.Text) || validate.ContainLetters(textBoxDeposit.Text)
                     || validate.ContainLetters(textBoxQuantity.Text))
                 {
-                    MessageBox.Show(message.GearFieldsError()) ;
+                    MessageBox.Show(message.GearFieldsError());
                 }
 
                 else
                 {
 
-                    gear = new Boat((BOATTYPE)comboBoxBoatType.SelectedItem,
-                        (CAPACITY)comboBoxCapacity.SelectedItem, Convert.ToDouble(textBoxCost.Text),
+                    gear = new Item((ITEMTYPE)comboBoxItem.SelectedItem, Convert.ToDouble(textBoxCost.Text),
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
-                    
-                    if (!gearManager.AddBoat((Boat)gear))
+
+                    if (!gearManager.AddItem((Item)gear))
                     {
                         MessageBox.Show(message.UnsuccessfulSave());
                     }

@@ -97,6 +97,7 @@ namespace Synthesis_Assignment
             this.buttonItems.TabIndex = 1;
             this.buttonItems.Text = "ITEM";
             this.buttonItems.UseVisualStyleBackColor = false;
+            this.buttonItems.Click += new System.EventHandler(this.buttonItems_Click);
             // 
             // pictureBoxLogo
             // 

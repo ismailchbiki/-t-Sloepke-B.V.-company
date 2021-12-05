@@ -37,3 +37,4 @@
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\MySqlConnector.dll
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\SynthesisAssignment.MyClasses.dll
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\SynthesisAssignment.MyClasses.pdb
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormItems.resources

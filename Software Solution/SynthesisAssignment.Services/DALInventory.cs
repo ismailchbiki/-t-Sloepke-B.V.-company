@@ -15,7 +15,7 @@ namespace SynthesisAssignment.Services
         List<Inventory> inventory = new List<Inventory>();
         ConnectionString SQLConnection = new ConnectionString();
 
-        public bool AddGear(Boat boat)
+        public bool AddBoat(Boat boat)
         {
 
             try
@@ -23,7 +23,7 @@ namespace SynthesisAssignment.Services
                 //connection string
                 MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
 
-                string sqlQuery = "insert into syn_boat (boat_type, capacity, cost, deposit, quantity, remark) VALUES (@boat_type, @capacity, @cost, @deposit, @quantity, @remark) ";
+                string sqlQuery = "insert into syn_boat (boat_type, boat_capacity, boat_cost, boat_deposit, boat_quantity, boat_remark) VALUES (@boat_type, @capacity, @cost, @deposit, @quantity, @remark) ";
                 MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
 
                 cmd.Parameters.AddWithValue("@boat_type", boat.BoatType.ToString());
@@ -33,6 +33,59 @@ namespace SynthesisAssignment.Services
                 cmd.Parameters.AddWithValue("@quantity", boat.Quantity);
                 cmd.Parameters.AddWithValue("@remark", boat.Remark);
                 
+
+                //Open the connection
+                con.Open();
+
+                //Execute the command
+                cmd.ExecuteNonQuery();
+
+                //Close the connection
+                con.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+                //return false;
+            }
+        }
+
+
+        public bool AddItem(Item item)
+        {
+            try
+            {
+                //connection string
+                MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
+
+                string sqlQuery = "insert into syn_item (item_type, item_cost, item_deposit, item_quantity, item_remark) VALUES (@item_type, @cost, @deposit, @quantity, @remark) ";
+                MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
+
+                cmd.Parameters.AddWithValue("@item_type", item.ItemType.ToString());
+                cmd.Parameters.AddWithValue("@cost", item.Cost);
+
+                if (!string.IsNullOrEmpty(item.Deposit.ToString()))
+                {
+                    cmd.Parameters.AddWithValue("@deposit", item.Deposit);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@deposit", 0);
+                }
+                
+                cmd.Parameters.AddWithValue("@quantity", item.Quantity);
+
+                //if remark is null
+                if (!string.IsNullOrEmpty(item.Remark))
+                {
+                    cmd.Parameters.AddWithValue("@remark", item.Remark);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@remark", "");
+                }
 
                 //Open the connection
                 con.Open();
@@ -161,5 +214,6 @@ namespace SynthesisAssignment.Services
                 //return inventory;
             }
         }
+
     }
 }

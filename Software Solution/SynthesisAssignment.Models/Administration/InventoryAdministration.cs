@@ -16,7 +16,7 @@ namespace SynthesisAssignment.Models
         DALInventory dalGear = new DALInventory();
 
         //methods
-        public bool AddGear(Boat gear)
+        public bool AddBoat(Boat gear)
         {
 
             List<Boat> boats = AllGear().OfType<Boat>().ToList();
@@ -24,7 +24,7 @@ namespace SynthesisAssignment.Models
             //if the list is empty
             if (boats.Count == 0)
             {
-                dalGear.AddGear(gear);
+                dalGear.AddBoat(gear);
                 return true;
             }
 
@@ -42,10 +42,43 @@ namespace SynthesisAssignment.Models
                     }
                 }
 
-                dalGear.AddGear(gear);
+                dalGear.AddBoat(gear);
                 return true;
             }
         }
+
+
+        public bool AddItem(Item item)
+        {
+
+            List<Item> items = AllGear().OfType<Item>().ToList();
+
+            //if the list is empty
+            if (items.Count == 0)
+            {
+                dalGear.AddItem(item);
+                return true;
+            }
+
+            else
+            {
+
+                for (int i = 0; i < items.Count; i++)
+                {
+                    Item itm = new Item();
+                    itm.ItemType = items[i].ItemType;
+
+                    if (itm.ItemType == item.ItemType)
+                    {
+                        return false;
+                    }
+                }
+
+                dalGear.AddItem(item);
+                return true;
+            }
+        }
+
 
         //all gear
         public List<Inventory> AllGear()
@@ -54,14 +87,14 @@ namespace SynthesisAssignment.Models
         }
 
 
-        public Inventory GetGearByID(int id)
-        {
-            foreach (Inventory gear in AllGear())
-            {
-                if (id == gear.ID)
-                { return gear; }
-            }
-            return null;
-        }
+        //public Inventory GetGearByID(int id)
+        //{
+        //    foreach (Inventory gear in AllGear())
+        //    {
+        //        if (id == gear.ID)
+        //        { return gear; }
+        //    }
+        //    return null;
+        //}
     }
 }
