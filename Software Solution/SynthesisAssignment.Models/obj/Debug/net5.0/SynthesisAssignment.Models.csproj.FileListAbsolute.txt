@@ -10,3 +10,8 @@
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\obj\Debug\net5.0\ref\SynthesisAssignment.Models.dll
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\obj\Debug\net5.0\SynthesisAssignment.Models.pdb
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\obj\Debug\net5.0\SynthesisAssignment.Models.csproj.AssemblyReference.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\bin\Debug\net5.0\SynthesisAssignment.MyClasses.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\bin\Debug\net5.0\SynthesisAssignment.Services.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\bin\Debug\net5.0\SynthesisAssignment.MyClasses.pdb
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\bin\Debug\net5.0\SynthesisAssignment.Services.pdb
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.Models\obj\Debug\net5.0\SynthesisAssignment.Models.csproj.CopyComplete

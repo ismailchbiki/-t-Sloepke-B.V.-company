@@ -1,4 +1,5 @@
 ﻿using SynthesisAssignment.Models;
+using SynthesisAssignment.Models.Enums;
 using SynthesisAssignment.Services;
 using System;
 using System.Collections.Generic;
@@ -15,73 +16,56 @@ namespace Synthesis_Assignment
     public partial class FormInventory : Form
     {
 
-        Inventory inventory;
         InventoryAdministration manageGear;
-
-        Boat item1;
-        Item item2;
-
-        //dummy data for testing
-        int id = 1;
-        double cost = 10;
-        double deposit = 100;
-        int qnty = 500;
-        string remark = "inventory gear";
-
-        BOATTYPE boat = BOATTYPE.Canoe;
-        ITEMTYPE item = ITEMTYPE.LifeJacket;
-
 
         public FormInventory()
         {
             InitializeComponent();
 
-            inventory = new Inventory();
             manageGear = new InventoryAdministration();
-
-            item1 = new Boat()
-            {
-                ID = 101,
-                BoatType = BOATTYPE.Sailboat_Valk,
-                Cost = 1000,
-                Deposit = 2000,
-                Quantity = 20,
-                Remark = "boat description here"
-            };
-
-            item2 = new Item()
-            {
-                ID = 102,
-                ItemType = ITEMTYPE.Waterproof_Container,
-                Cost = 100,
-                Deposit = 200,
-                Quantity = 70,
-                Remark = "Waterproof Container description here"
-            };
-
-            manageGear.GearList().Add(item1);
-            manageGear.GearList().Add(item2);
-
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void FormInventory_Load(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
+            CenterToScreen();
 
-            List<Boat> boats = manageGear.GearList().OfType<Boat>().ToList();
-            List<Item> items = manageGear.GearList().OfType<Item>().ToList();
+            dataGridViewBoats.Columns.Clear();
 
-            foreach (var item in boats)
-            {
-                listBox1.Items.Add(item.BoatType);
-            }
+            //List<Boat> boats = manageGear.AllBoats().OfType<Boat>().ToList();
+            //List<Item> items = manageGear.AllBoats().OfType<Item>().ToList();
 
-            foreach (var item in items)
-            {
-                listBox1.Items.Add(item.ItemType);
-            }
 
+            dataGridViewBoats.DataSource = manageGear.AllBoats().Select(o => new { ID = o.ID, Boat_Type = o.BoatType, Capacity = o.Capacity, Costs = o.Cost, Deposit = o.Deposit, Quantity = o.Quantity, Remark = o.Remark }).ToList();
+            //dataGridViewItems.DataSource = items.Select(o => new { ID = o.ID, Item = o.ItemType, Costs = o.Cost, Deposit = o.Deposit, Quantity = o.Quantity, Remark = o.Remark }).ToList();
+        }
+
+
+        //back to previous form
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            FormDashboard dashboard = new FormDashboard();
+
+            dashboard.Show();
+            this.Hide();
+        }
+
+
+        //logout 
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            FormLogin login = new FormLogin();
+
+            login.Show();
+            this.Hide();
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            FormSelectOption selectOpt = new FormSelectOption();
+
+            selectOpt.Show();
+            this.Hide();
         }
     }
 }

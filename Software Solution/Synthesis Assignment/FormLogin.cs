@@ -16,12 +16,14 @@ namespace Synthesis_Assignment
     public partial class FormLogin : Form
     {
         Validation validate;
+        GuidingMessages message;
 
         public FormLogin()
         {
             InitializeComponent();
 
             validate = new Validation();
+            message = new GuidingMessages();
         }
 
         private void FormLogin_Load(object sender, EventArgs e)
@@ -29,6 +31,8 @@ namespace Synthesis_Assignment
             CenterToScreen();
         }
 
+
+        //show and hide password
         private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxShowPassword.Checked)
@@ -41,6 +45,8 @@ namespace Synthesis_Assignment
             }
         }
 
+
+        //login
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             string username = "Ismail";
@@ -48,14 +54,14 @@ namespace Synthesis_Assignment
 
             if (string.IsNullOrEmpty(textBoxUsername.Text) || string.IsNullOrEmpty(textBoxPassword.Text))
             {
-                MessageBox.Show("Username and password are required fields");
+                MessageBox.Show(message.EmptyCredentialsFieldsError());
             }
             else
             {
                 //method here to validate username fields (not a number)
                 if (validate.ContainNumbers(textBoxUsername.Text))
                 {
-                    MessageBox.Show("Username cannot contain numbers");
+                    MessageBox.Show(message.NumbersNotAllowedError());
                 }
 
                 else if (textBoxUsername.Text == username && textBoxPassword.Text == password)
@@ -67,7 +73,7 @@ namespace Synthesis_Assignment
                 }
                 else
                 {
-                    MessageBox.Show("Incorrect username or password");
+                    MessageBox.Show(message.InvalidCredentialsError());
                 }
             }
         }

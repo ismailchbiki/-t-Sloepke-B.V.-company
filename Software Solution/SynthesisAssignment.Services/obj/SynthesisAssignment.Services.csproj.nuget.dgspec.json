@@ -4,14 +4,14 @@
     "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.Services\\SynthesisAssignment.Services.csproj": {}
   },
   "projects": {
-    "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.Models\\SynthesisAssignment.Models.csproj": {
+    "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.MyClasses\\SynthesisAssignment.MyClasses.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.Models\\SynthesisAssignment.Models.csproj",
-        "projectName": "SynthesisAssignment.Models",
-        "projectPath": "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.Models\\SynthesisAssignment.Models.csproj",
+        "projectUniqueName": "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.MyClasses\\SynthesisAssignment.MyClasses.csproj",
+        "projectName": "SynthesisAssignment.MyClasses",
+        "projectPath": "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.MyClasses\\SynthesisAssignment.MyClasses.csproj",
         "packagesPath": "C:\\Users\\Ismail\\.nuget\\packages\\",
-        "outputPath": "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.Models\\obj\\",
+        "outputPath": "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.MyClasses\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ismail\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -82,8 +82,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.Models\\SynthesisAssignment.Models.csproj": {
-                "projectPath": "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.Models\\SynthesisAssignment.Models.csproj"
+              "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.MyClasses\\SynthesisAssignment.MyClasses.csproj": {
+                "projectPath": "\\\\Mac\\Home\\Desktop\\Git\\Synthesis Assignment\\Software Solution\\SynthesisAssignment.MyClasses\\SynthesisAssignment.MyClasses.csproj"
               }
             }
           }
@@ -97,6 +97,16 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.27, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

@@ -38,7 +38,5 @@ namespace Synthesis_Assignment
             inventory.Show();
             this.Hide();
         }
-
-        
     }
 }

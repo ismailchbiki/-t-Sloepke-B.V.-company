@@ -1,11 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\SynthesisAssignment.Models\SynthesisAssignment.Models.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="MySql.Data" Version="8.0.27" />
+		<PackageReference Include="MySqlConnector" Version="2.1.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\SynthesisAssignment.MyClasses\SynthesisAssignment.MyClasses.csproj" />
+	</ItemGroup>
 
 </Project>
