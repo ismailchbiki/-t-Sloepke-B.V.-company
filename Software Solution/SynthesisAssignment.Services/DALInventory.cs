@@ -15,6 +15,8 @@ namespace SynthesisAssignment.Services
         List<Inventory> inventory = new List<Inventory>();
         ConnectionString SQLConnection = new ConnectionString();
 
+
+        //add new boat
         public bool AddBoat(Boat boat)
         {
 
@@ -52,7 +54,7 @@ namespace SynthesisAssignment.Services
             }
         }
 
-
+        //add new item
         public bool AddItem(Item item)
         {
             try
@@ -100,12 +102,11 @@ namespace SynthesisAssignment.Services
             }
             catch (Exception)
             {
-
-                return false;
+                throw;
             }
         }
 
-
+        //list of boats
         public IEnumerable<Inventory> GetAllBoats()
         {
 
@@ -151,7 +152,7 @@ namespace SynthesisAssignment.Services
             }
         }
 
-
+        //list of items
         public IEnumerable<Inventory> GetAllItems()
         {
 
@@ -197,7 +198,7 @@ namespace SynthesisAssignment.Services
             }
         }
 
-
+        //list of all gear
         public IEnumerable<Inventory> GetAllGear()
         {
 
