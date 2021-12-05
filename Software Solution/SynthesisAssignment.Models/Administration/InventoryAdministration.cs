@@ -16,51 +16,52 @@ namespace SynthesisAssignment.Models
         DALInventory dalGear = new DALInventory();
 
         //methods
-        public bool AddBoat(Boat gear)
+        public bool AddGear(Boat gear)
         {
 
+            List<Boat> boats = AllGear().OfType<Boat>().ToList();
+
             //if the list is empty
-            if (AllBoats().Count == 0)
+            if (boats.Count == 0)
             {
-                dalGear.AddBoat(gear);
+                dalGear.AddGear(gear);
                 return true;
             }
 
             else
             {
 
-                for (int i = 0; i < AllBoats().Count; i++)
+                for (int i = 0; i < boats.Count; i++)
                 {
                     Boat b = new Boat();
+                    b.BoatType = boats[i].BoatType;
 
-                    b.BoatType = AllBoats()[i].BoatType;
                     if (b.BoatType == gear.BoatType)
                     {
                         return false;
                     }
                 }
 
-                dalGear.AddBoat(gear);
+                dalGear.AddGear(gear);
                 return true;
             }
         }
 
-
-
-        public Inventory GetInventory(int id)
+        //all gear
+        public List<Inventory> AllGear()
         {
-            foreach (Inventory gear in AllBoats())
+            return dalGear.GetAllGear().ToList();
+        }
+
+
+        public Inventory GetGearByID(int id)
+        {
+            foreach (Inventory gear in AllGear())
             {
                 if (id == gear.ID)
                 { return gear; }
             }
             return null;
-        }
-
-        public List<Boat> AllBoats()
-        {
-
-            return dalGear.GetAllBoats().ToList();
         }
     }
 }

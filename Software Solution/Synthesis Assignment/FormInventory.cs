@@ -32,12 +32,28 @@ namespace Synthesis_Assignment
 
             dataGridViewBoats.Columns.Clear();
 
-            //List<Boat> boats = manageGear.AllBoats().OfType<Boat>().ToList();
-            //List<Item> items = manageGear.AllBoats().OfType<Item>().ToList();
+            List<Inventory> gear = manageGear.AllGear();
 
+            //table of boats
+            dataGridViewBoats.DataSource = gear.OfType<Boat>().Select(o => new {
+                ID = o.ID,
+                Boat_Type = o.BoatType,
+                Capacity = o.Capacity,
+                Costs = o.Cost,
+                Deposit = o.Deposit,
+                Quantity = o.Quantity,
+                Remark = o.Remark
+            }).ToList();
 
-            dataGridViewBoats.DataSource = manageGear.AllBoats().Select(o => new { ID = o.ID, Boat_Type = o.BoatType, Capacity = o.Capacity, Costs = o.Cost, Deposit = o.Deposit, Quantity = o.Quantity, Remark = o.Remark }).ToList();
-            //dataGridViewItems.DataSource = items.Select(o => new { ID = o.ID, Item = o.ItemType, Costs = o.Cost, Deposit = o.Deposit, Quantity = o.Quantity, Remark = o.Remark }).ToList();
+            //table of items
+            dataGridViewItems.DataSource = gear.OfType<Item>().Select(o => new {
+                ID = o.ID,
+                Item = o.ItemType,
+                Costs = o.Cost,
+                Deposit = o.Deposit,
+                Quantity = o.Quantity,
+                Remark = o.Remark
+            }).ToList();
         }
 
 

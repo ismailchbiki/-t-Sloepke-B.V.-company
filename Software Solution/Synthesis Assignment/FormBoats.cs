@@ -18,7 +18,7 @@ namespace Synthesis_Assignment
     {
 
         Inventory gear;
-        InventoryAdministration managerBoats;
+        InventoryAdministration boatManager;
         Validation validate;
         GuidingMessages message;
 
@@ -27,7 +27,7 @@ namespace Synthesis_Assignment
             InitializeComponent();
 
             gear = new Inventory();
-            managerBoats = new InventoryAdministration();
+            boatManager = new InventoryAdministration();
             validate = new Validation();
             message = new GuidingMessages();
 
@@ -83,11 +83,12 @@ namespace Synthesis_Assignment
 
                 else
                 {
+
                     gear = new Boat((BOATTYPE)comboBoxBoatType.SelectedItem,
                         (CAPACITY)comboBoxCapacity.SelectedItem, Convert.ToDouble(textBoxCost.Text),
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
                     
-                    if (!managerBoats.AddBoat((Boat)gear))
+                    if (!boatManager.AddGear((Boat)gear))
                     {
                         MessageBox.Show(message.UnsuccessfulSave());
                     }

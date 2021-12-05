@@ -11,11 +11,10 @@ namespace SynthesisAssignment.Services
     {
 
         //Boats
-        bool AddBoat(Boat gear);
-        bool UpdateBoat(Boat gear);
-        bool DeleteBoat(int id);
-        Boat GetBoatByID(int id);
-        //Boat GetBoatByType(string t);
-        IEnumerable<Boat> GetAllBoats();
+        bool AddGear(Boat gear);
+        //bool UpdateBoat(Boat gear);
+        //bool DeleteBoat(int id);
+        //Boat GetBoatByID(int id);
+        IEnumerable<Inventory> GetAllGear();
     }
 }

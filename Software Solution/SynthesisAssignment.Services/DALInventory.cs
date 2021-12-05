@@ -12,10 +12,10 @@ namespace SynthesisAssignment.Services
 {
     public class DALInventory : IDALInventory
     {
-
+        List<Inventory> inventory = new List<Inventory>();
         ConnectionString SQLConnection = new ConnectionString();
 
-        public bool AddBoat(Boat boat)
+        public bool AddGear(Boat boat)
         {
 
             try
@@ -53,37 +53,18 @@ namespace SynthesisAssignment.Services
         }
 
 
-        public bool UpdateBoat(Boat boat)
+        public IEnumerable<Inventory> GetAllBoats()
         {
-            throw new NotImplementedException();
-        }
-
-
-        public bool DeleteBoat(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public Boat GetBoatByID(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public IEnumerable<Boat> GetAllBoats()
-        {
-
-            List<Boat> boats = new List<Boat>();
 
             try
             {
+                List<Boat> boats = new List<Boat>();
                 Boat boat = new Boat();
 
                 MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
 
                 //Query to execute
-                string query = "SELECT * from syn_boat order by ID ASC;";
+                string query = "SELECT * from syn_boat order by boat_ID ASC;";
 
                 MySqlCommand cmd = new MySqlCommand(query, con);
 
@@ -93,24 +74,91 @@ namespace SynthesisAssignment.Services
 
                 while (dr.Read())
                 {
+                    //all boats
                     boat = new Boat();
-                    boat.ID = Convert.ToInt32(dr["ID"]);
+                    boat.ID = Convert.ToInt32(dr["boat_ID"]);
                     boat.BoatType = dr["boat_type"].ToString();
-                    boat.Capacity = dr["capacity"].ToString();
-                    boat.Cost = Convert.ToDouble(dr["cost"]);
-                    boat.Deposit = Convert.ToDouble(dr["deposit"]);
-                    boat.Quantity = Convert.ToInt32(dr["quantity"]);
-                    boat.Remark = dr["remark"].ToString();
+                    boat.Capacity = dr["boat_capacity"].ToString();
+                    boat.Cost = Convert.ToDouble(dr["boat_cost"]);
+                    boat.Deposit = Convert.ToDouble(dr["boat_deposit"]);
+                    boat.Quantity = Convert.ToInt32(dr["boat_quantity"]);
+                    boat.Remark = dr["boat_remark"].ToString();
 
                     boats.Add(boat);
                 }
+
                 con.Close();
 
                 return boats;
             }
             catch (Exception)
             {
-                return boats;
+                throw;
+                //return inventory;
+            }
+        }
+
+
+        public IEnumerable<Inventory> GetAllItems()
+        {
+
+            try
+            {
+                List<Item> items = new List<Item>();
+                Item item = new Item();
+
+                MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
+
+                //Query to execute
+                string query = "SELECT * from syn_item order by item_ID ASC;";
+
+                MySqlCommand cmd = new MySqlCommand(query, con);
+
+                con.Open();
+
+                MySqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+
+                    //all items
+                    item = new Item();
+                    item.ID = Convert.ToInt32(dr["item_ID"]);
+                    item.ItemType = dr["item_type"].ToString();
+                    item.Cost = Convert.ToDouble(dr["item_cost"]);
+                    item.Deposit = Convert.ToDouble(dr["item_deposit"]);
+                    item.Quantity = Convert.ToInt32(dr["item_quantity"]);
+                    item.Remark = dr["item_remark"].ToString();
+
+                    items.Add(item);
+
+                }
+
+                con.Close();
+                return items;
+            }
+            catch (Exception)
+            {
+                throw;
+                //return inventory;
+            }
+        }
+
+
+        public IEnumerable<Inventory> GetAllGear()
+        {
+
+            inventory.AddRange(GetAllBoats());
+            inventory.AddRange(GetAllItems());
+            try
+            {
+
+                return inventory;
+            }
+            catch (Exception)
+            {
+                throw;
+                //return inventory;
             }
         }
     }

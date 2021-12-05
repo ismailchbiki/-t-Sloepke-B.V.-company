@@ -20,6 +20,7 @@ namespace SynthesisAssignment.Services
         {
 
         }
+
         public Boat(BOATTYPE boat, CAPACITY capacity,
             double cost, double deposit, int qnty, string remamrk)
             : base(cost, deposit, qnty, remamrk)
