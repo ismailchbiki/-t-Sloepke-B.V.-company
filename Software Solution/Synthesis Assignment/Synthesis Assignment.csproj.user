@@ -4,6 +4,9 @@
     <Compile Update="FormBoats.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormConfirmDeletion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormDashboard.cs">
       <SubType>Form</SubType>
     </Compile>

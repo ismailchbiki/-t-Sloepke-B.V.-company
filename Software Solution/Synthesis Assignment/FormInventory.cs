@@ -16,12 +16,19 @@ namespace Synthesis_Assignment
     public partial class FormInventory : Form
     {
 
+        //get id of selected row
+        public static int BoatID = 0;
+        public static int ItemID = 0;
+
+        Inventory gear;
+
         InventoryAdministration manageGear;
 
         public FormInventory()
         {
             InitializeComponent();
 
+            gear = new Inventory();
             manageGear = new InventoryAdministration();
         }
 
@@ -36,6 +43,7 @@ namespace Synthesis_Assignment
 
             //table of boats
             dataGridViewBoats.DataSource = gear.OfType<Boat>().Select(o => new {
+                ID = o.ID,
                 Boat_Type = o.BoatType,
                 Capacity = o.Capacity,
                 Costs = o.Cost,
@@ -46,6 +54,7 @@ namespace Synthesis_Assignment
 
             //table of items
             dataGridViewItems.DataSource = gear.OfType<Item>().Select(o => new {
+                ID = o.ID,
                 Item = o.ItemType,
                 Costs = o.Cost,
                 Deposit = o.Deposit,
@@ -80,6 +89,58 @@ namespace Synthesis_Assignment
 
             selectOpt.Show();
             this.Hide();
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+
+            //forwarding user depends on the selected row from which table
+            if (tabControlAdministration.SelectedTab == tabPageBoats)
+            {
+
+                BoatID = (int)dataGridViewBoats.SelectedRows[0].Cells["ID"].Value;
+                FormBoats boats = new FormBoats();
+
+                boats.Show();
+                this.Hide();
+            }
+            else if (tabControlAdministration.SelectedTab == tabPageItems)
+            {
+
+                ItemID = (int)dataGridViewItems.SelectedRows[0].Cells["ID"].Value;
+                FormItems items = new FormItems();
+
+                items.Show();
+                this.Hide();
+            }
+        }
+
+        //delete selected row
+        private void buttonDeleteSelectedRow_Click(object sender, EventArgs e)
+        {
+            //forwarding user depends on the selected row from which table
+            if (tabControlAdministration.SelectedTab == tabPageBoats)
+            {
+
+                BoatID = (int)dataGridViewBoats.SelectedRows[0].Cells["ID"].Value;
+
+                gear = new Boat(BoatID);
+                FormConfirmDeletion boats = new FormConfirmDeletion(gear);
+
+                boats.Show();
+                this.Hide();
+            }
+            else if (tabControlAdministration.SelectedTab == tabPageItems)
+            {
+
+                ItemID = (int)dataGridViewItems.SelectedRows[0].Cells["ID"].Value;
+
+                gear = new Item(ItemID);
+                FormConfirmDeletion items = new FormConfirmDeletion(gear);
+
+                items.Show();
+                this.Hide();
+            }
         }
     }
 }

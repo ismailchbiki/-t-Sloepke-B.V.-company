@@ -54,6 +54,44 @@ namespace SynthesisAssignment.Services
             }
         }
 
+        //update boat
+        public bool UpdateBoat(int id, Boat boat)
+        {
+            try
+            {
+                //connection string
+                MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
+
+                string sqlQuery = "update syn_boat set boat_type=@boat_type, boat_capacity=@boat_capacity, boat_cost=@boat_cost, boat_deposit=@boat_deposit, boat_quantity=@boat_quantity, boat_remark=@boat_remark where boat_ID=@boat_ID";
+                MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
+
+                cmd.Parameters.AddWithValue("@boat_ID", id);
+                cmd.Parameters.AddWithValue("@boat_type", boat.BoatType.ToString());
+                cmd.Parameters.AddWithValue("@boat_capacity", boat.Capacity.ToString());
+                cmd.Parameters.AddWithValue("@boat_cost", boat.Cost);
+                cmd.Parameters.AddWithValue("@boat_deposit", boat.Deposit);
+                cmd.Parameters.AddWithValue("@boat_quantity", boat.Quantity);
+                cmd.Parameters.AddWithValue("@boat_remark", boat.Remark);
+
+
+                //Open the connection
+                con.Open();
+
+                //Execute the command
+                cmd.ExecuteNonQuery();
+
+                //Close the connection
+                con.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+                //return false;
+            }
+        }
+
         //add new item
         public bool AddItem(Item item)
         {
@@ -76,7 +114,7 @@ namespace SynthesisAssignment.Services
                 {
                     cmd.Parameters.AddWithValue("@deposit", 0);
                 }
-                
+
                 cmd.Parameters.AddWithValue("@quantity", item.Quantity);
 
                 //if remark is null
@@ -103,6 +141,83 @@ namespace SynthesisAssignment.Services
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        //update item
+        public bool UpdateItem(int id, Item item)
+        {
+            try
+            {
+                //connection string
+                MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
+
+                string sqlQuery = "update syn_item set item_type=@item_type, item_cost=@item_cost, item_deposit=@item_deposit, item_quantity=@item_quantity, item_remark=@item_remark where item_ID=@item_ID";
+                MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
+
+                cmd.Parameters.AddWithValue("@item_ID", id);
+                cmd.Parameters.AddWithValue("@item_type", item.ItemType.ToString());
+                cmd.Parameters.AddWithValue("@item_cost", item.Cost);
+                cmd.Parameters.AddWithValue("@item_deposit", item.Deposit);
+                cmd.Parameters.AddWithValue("@item_quantity", item.Quantity);
+                cmd.Parameters.AddWithValue("@item_remark", item.Remark);
+
+
+                //Open the connection
+                con.Open();
+
+                //Execute the command
+                cmd.ExecuteNonQuery();
+
+                //Close the connection
+                con.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+                //return false;
+            }
+        }
+
+        //delete gear
+        public bool DeleteGear(Inventory gear)
+        {
+            try
+            {
+                //connection string
+                MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
+
+                string sqlQuery = null;
+                if (gear.GetType() == typeof(Boat))
+                {
+                    sqlQuery = "DELETE FROM `syn_boat` WHERE boat_ID=@ID";
+                } 
+                else if (gear.GetType() == typeof(Item))
+                {
+                    sqlQuery = "DELETE FROM `syn_item` WHERE item_ID=@ID";
+                }
+
+                MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
+
+                cmd.Parameters.AddWithValue("@ID", gear.ID);
+
+                //Open the connection
+                con.Open();
+
+                //Execute the command
+                cmd.ExecuteNonQuery();
+
+                //Close the connection
+                con.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+                //return false;
             }
         }
 
@@ -215,6 +330,5 @@ namespace SynthesisAssignment.Services
                 //return inventory;
             }
         }
-
     }
 }

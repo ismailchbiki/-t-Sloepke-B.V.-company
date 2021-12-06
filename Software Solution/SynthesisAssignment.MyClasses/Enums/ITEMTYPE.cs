@@ -12,7 +12,7 @@ namespace SynthesisAssignment.Models
         Waterproof_Container,
         Cool_Box,
         Navigation_Device,
-        Spare_Peddle,
+        Spare_Paddle,
         Tent,
         Electric_Furnace
     }

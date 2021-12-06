@@ -39,6 +39,7 @@ namespace Synthesis_Assignment
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
+            this.buttonDeleteSelectedRow = new System.Windows.Forms.Button();
             this.tabControlAdministration.SuspendLayout();
             this.tabPageBoats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBoats)).BeginInit();
@@ -158,8 +159,21 @@ namespace Synthesis_Assignment
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(360, 66);
             this.buttonUpdate.TabIndex = 8;
-            this.buttonUpdate.Text = "Update Selection";
+            this.buttonUpdate.Text = "Update Selected Row";
             this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
+            // buttonDeleteSelectedRow
+            // 
+            this.buttonDeleteSelectedRow.BackColor = System.Drawing.Color.Red;
+            this.buttonDeleteSelectedRow.Font = new System.Drawing.Font("Segoe UI Emoji", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonDeleteSelectedRow.Location = new System.Drawing.Point(1680, 1163);
+            this.buttonDeleteSelectedRow.Name = "buttonDeleteSelectedRow";
+            this.buttonDeleteSelectedRow.Size = new System.Drawing.Size(360, 66);
+            this.buttonDeleteSelectedRow.TabIndex = 9;
+            this.buttonDeleteSelectedRow.Text = "Delete Selected Row";
+            this.buttonDeleteSelectedRow.UseVisualStyleBackColor = false;
+            this.buttonDeleteSelectedRow.Click += new System.EventHandler(this.buttonDeleteSelectedRow_Click);
             // 
             // FormInventory
             // 
@@ -167,6 +181,7 @@ namespace Synthesis_Assignment
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(2070, 1260);
+            this.Controls.Add(this.buttonDeleteSelectedRow);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonBack);
@@ -198,5 +213,6 @@ namespace Synthesis_Assignment
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Button buttonDeleteSelectedRow;
     }
 }

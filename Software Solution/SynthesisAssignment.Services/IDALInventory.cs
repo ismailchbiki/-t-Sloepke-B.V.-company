@@ -13,9 +13,9 @@ namespace SynthesisAssignment.Services
         //Inventory
         bool AddBoat(Boat gear);
         bool AddItem(Item gear);
-        //bool UpdateBoat(Boat gear);
-        //bool DeleteBoat(int id);
-        //Boat GetBoatByID(int id);
+        bool UpdateBoat(int id, Boat gear);
+        bool UpdateItem(int id, Item gear);
+        bool DeleteGear(Inventory gear);
         IEnumerable<Inventory> GetAllBoats();
         IEnumerable<Inventory> GetAllItems();
         IEnumerable<Inventory> GetAllGear();

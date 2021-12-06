@@ -19,6 +19,11 @@ namespace SynthesisAssignment.Services
 
         }
 
+        public Item(int id) : base(id)
+        {
+            
+        }
+
         public Item(ITEMTYPE item, double cost, double deposit, int qnty, string remamrk)
             : base(cost, deposit, qnty, remamrk)
         {

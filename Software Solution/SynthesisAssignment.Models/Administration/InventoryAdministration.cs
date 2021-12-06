@@ -12,10 +12,13 @@ namespace SynthesisAssignment.Models
     public class InventoryAdministration
     {
 
+        static Boat boat = new Boat();
+        static Item item = new Item();
+
         //DAL
         DALInventory dalGear = new DALInventory();
 
-        //methods
+        //add new boat
         public bool AddBoat(Boat gear)
         {
 
@@ -47,7 +50,29 @@ namespace SynthesisAssignment.Models
             }
         }
 
+        //update boat
+        public bool UpdateBoat(int id, Boat boat)
+        {
+            if (dalGear.UpdateBoat(id, boat))
+            {
+                return true;
+            }
 
+            return false;
+        }
+
+        //update item
+        public bool UpdateItem(int id, Item item)
+        {
+            if (dalGear.UpdateItem(id, item))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        //add new item
         public bool AddItem(Item item)
         {
 
@@ -66,6 +91,7 @@ namespace SynthesisAssignment.Models
                 for (int i = 0; i < items.Count; i++)
                 {
                     Item itm = new Item();
+
                     itm.ItemType = items[i].ItemType;
 
                     if (itm.ItemType == item.ItemType)
@@ -79,22 +105,56 @@ namespace SynthesisAssignment.Models
             }
         }
 
+        //get boat by id
+        public Boat GetBoatByID(int id)
+        {
+
+            List<Boat> boats = AllGear().OfType<Boat>().ToList();
+
+            foreach (var item in boats)
+            {
+                if (item.ID == id)
+                {
+                    boat = item;
+                    return boat;
+                }
+            }
+
+            return null;
+        }
+
+        //get item by id
+        public Item GetItemByID(int id)
+        {
+
+            List<Item> items = AllGear().OfType<Item>().ToList();
+
+            foreach (var itm in items)
+            {
+                if (itm.ID == id)
+                {
+                    item = itm;
+                    return item;
+                }
+            }
+
+            return null;
+        }
+
+        public bool DeleteGear(Inventory gear)
+        {
+            if (dalGear.DeleteGear(gear))
+            {
+                return true;
+            }
+            
+            return false;
+        }
 
         //all gear
         public List<Inventory> AllGear()
         {
             return dalGear.GetAllGear().ToList();
         }
-
-
-        //public Inventory GetGearByID(int id)
-        //{
-        //    foreach (Inventory gear in AllGear())
-        //    {
-        //        if (id == gear.ID)
-        //        { return gear; }
-        //    }
-        //    return null;
-        //}
     }
 }

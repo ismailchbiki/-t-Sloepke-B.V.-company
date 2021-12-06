@@ -47,5 +47,15 @@ namespace SynthesisAssignment.Models.Classes
         {
             return "Error:\nYou cannot add a new boat that already exists";
         }
+
+        public string SuccessfulUpdate()
+        {
+            return "Item successfully updated in the inventory";
+        }
+
+        public string UnsuccessfulUpdate()
+        {
+            return "Error:\nItem didn't get updated. Please try again";
+        }
     }
 }

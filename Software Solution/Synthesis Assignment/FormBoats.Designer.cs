@@ -49,6 +49,7 @@ namespace Synthesis_Assignment
             this.buttonAddBoat = new System.Windows.Forms.Button();
             this.labelEuroSymbole = new System.Windows.Forms.Label();
             this.labelEuroSymbole2 = new System.Windows.Forms.Label();
+            this.buttonUpdateBoat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,9 +91,9 @@ namespace Synthesis_Assignment
             this.labelTitle.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelTitle.Location = new System.Drawing.Point(598, 79);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(410, 61);
+            this.labelTitle.Size = new System.Drawing.Size(495, 61);
             this.labelTitle.TabIndex = 11;
-            this.labelTitle.Text = "ADD NEW BOAT";
+            this.labelTitle.Text = "ADD/UPDATE BOAT";
             // 
             // labelBoatType
             // 
@@ -217,11 +218,11 @@ namespace Synthesis_Assignment
             // buttonAddBoat
             // 
             this.buttonAddBoat.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.buttonAddBoat.Location = new System.Drawing.Point(116, 738);
+            this.buttonAddBoat.Location = new System.Drawing.Point(98, 734);
             this.buttonAddBoat.Name = "buttonAddBoat";
-            this.buttonAddBoat.Size = new System.Drawing.Size(1204, 74);
+            this.buttonAddBoat.Size = new System.Drawing.Size(598, 74);
             this.buttonAddBoat.TabIndex = 25;
-            this.buttonAddBoat.Text = "ADD";
+            this.buttonAddBoat.Text = "ADD BOAT";
             this.buttonAddBoat.UseVisualStyleBackColor = false;
             this.buttonAddBoat.Click += new System.EventHandler(this.buttonAddBoat_Click);
             // 
@@ -247,12 +248,24 @@ namespace Synthesis_Assignment
             this.labelEuroSymbole2.TabIndex = 27;
             this.labelEuroSymbole2.Text = "€";
             // 
+            // buttonUpdateBoat
+            // 
+            this.buttonUpdateBoat.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.buttonUpdateBoat.Location = new System.Drawing.Point(752, 734);
+            this.buttonUpdateBoat.Name = "buttonUpdateBoat";
+            this.buttonUpdateBoat.Size = new System.Drawing.Size(598, 74);
+            this.buttonUpdateBoat.TabIndex = 28;
+            this.buttonUpdateBoat.Text = "UPDATE BOAT";
+            this.buttonUpdateBoat.UseVisualStyleBackColor = false;
+            this.buttonUpdateBoat.Click += new System.EventHandler(this.buttonUpdateBoat_Click);
+            // 
             // FormBoats
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1504, 900);
+            this.Controls.Add(this.buttonUpdateBoat);
             this.Controls.Add(this.labelEuroSymbole2);
             this.Controls.Add(this.labelEuroSymbole);
             this.Controls.Add(this.buttonAddBoat);
@@ -304,5 +317,6 @@ namespace Synthesis_Assignment
         private System.Windows.Forms.Button buttonAddBoat;
         private System.Windows.Forms.Label labelEuroSymbole;
         private System.Windows.Forms.Label labelEuroSymbole2;
+        private System.Windows.Forms.Button buttonUpdateBoat;
     }
 }

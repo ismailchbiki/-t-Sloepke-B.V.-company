@@ -47,6 +47,7 @@ namespace Synthesis_Assignment
             this.labelItem = new System.Windows.Forms.Label();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
+            this.buttonUpdateItem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,9 +67,9 @@ namespace Synthesis_Assignment
             this.labelTitle.Font = new System.Drawing.Font("Microsoft JhengHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelTitle.Location = new System.Drawing.Point(597, 88);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(395, 61);
+            this.labelTitle.Size = new System.Drawing.Size(480, 61);
             this.labelTitle.TabIndex = 12;
-            this.labelTitle.Text = "ADD NEW ITEM";
+            this.labelTitle.Text = "ADD/UPDATE ITEM";
             // 
             // labelEuroSymbole2
             // 
@@ -97,7 +98,7 @@ namespace Synthesis_Assignment
             this.buttonAddItem.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.buttonAddItem.Location = new System.Drawing.Point(119, 733);
             this.buttonAddItem.Name = "buttonAddItem";
-            this.buttonAddItem.Size = new System.Drawing.Size(1204, 74);
+            this.buttonAddItem.Size = new System.Drawing.Size(598, 74);
             this.buttonAddItem.TabIndex = 41;
             this.buttonAddItem.Text = "ADD";
             this.buttonAddItem.UseVisualStyleBackColor = false;
@@ -226,12 +227,24 @@ namespace Synthesis_Assignment
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
+            // buttonUpdateItem
+            // 
+            this.buttonUpdateItem.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.buttonUpdateItem.Location = new System.Drawing.Point(751, 733);
+            this.buttonUpdateItem.Name = "buttonUpdateItem";
+            this.buttonUpdateItem.Size = new System.Drawing.Size(598, 74);
+            this.buttonUpdateItem.TabIndex = 46;
+            this.buttonUpdateItem.Text = "UPDATE ITEM";
+            this.buttonUpdateItem.UseVisualStyleBackColor = false;
+            this.buttonUpdateItem.Click += new System.EventHandler(this.buttonUpdateItem_Click);
+            // 
             // FormItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1504, 900);
+            this.Controls.Add(this.buttonUpdateItem);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.labelEuroSymbole2);
@@ -279,5 +292,6 @@ namespace Synthesis_Assignment
         private System.Windows.Forms.Label labelItem;
         private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.Button buttonBack;
+        private System.Windows.Forms.Button buttonUpdateItem;
     }
 }

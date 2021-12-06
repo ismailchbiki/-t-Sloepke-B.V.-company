@@ -16,6 +16,7 @@ namespace Synthesis_Assignment
     public partial class FormItems : Form
     {
 
+        int id = FormInventory.ItemID;
         Inventory gear;
         InventoryAdministration gearManager;
         Validation validate;
@@ -37,13 +38,27 @@ namespace Synthesis_Assignment
 
             //populating the comboBoxes with enums
             comboBoxItem.DataSource = Enum.GetValues(typeof(ITEMTYPE));
+
+            //in case of a boat update => fill in all the fields
+            if (id != 0)
+            {
+                Item item = new Item();
+                item = gearManager.GetItemByID(id);
+
+                comboBoxItem.Text = item.ItemType.ToString();
+                textBoxCost.Text = item.Cost.ToString();
+                textBoxDeposit.Text = item.Deposit.ToString();
+                textBoxQuantity.Text = item.Quantity.ToString();
+                textBoxRemark.Text = item.Remark;
+            }
+
         }
 
         //logout
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             FormLogin login = new FormLogin();
-
+            id = 0;
             login.Show();
             this.Hide();
         }
@@ -52,7 +67,7 @@ namespace Synthesis_Assignment
         private void buttonBack_Click(object sender, EventArgs e)
         {
             FormSelectOption selectOption = new FormSelectOption();
-
+            id = 0;
             selectOption.Show();
             this.Hide();
         }
@@ -62,7 +77,7 @@ namespace Synthesis_Assignment
             try
             {
                 //check if all fields are filled
-                if (string.IsNullOrEmpty(textBoxCost.Text)  || string.IsNullOrEmpty(textBoxQuantity.Text))
+                if (string.IsNullOrEmpty(textBoxCost.Text) || string.IsNullOrEmpty(textBoxQuantity.Text))
                 {
                     MessageBox.Show(message.EmptyFieldsError());
                 }
@@ -86,6 +101,45 @@ namespace Synthesis_Assignment
                     else
                     {
                         MessageBox.Show(message.SuccessfulSave());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void buttonUpdateItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //check if all fields are filled
+                if (string.IsNullOrEmpty(textBoxCost.Text) || string.IsNullOrEmpty(textBoxQuantity.Text))
+                {
+                    MessageBox.Show(message.EmptyFieldsError());
+                }
+
+                else if (validate.ContainLetters(textBoxCost.Text) || validate.ContainLetters(textBoxDeposit.Text)
+                    || validate.ContainLetters(textBoxQuantity.Text))
+                {
+                    MessageBox.Show(message.GearFieldsError());
+                }
+
+                else
+                {
+
+                    gear = new Item((ITEMTYPE)comboBoxItem.SelectedItem, Convert.ToDouble(textBoxCost.Text),
+                        Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
+
+
+                    if (!gearManager.UpdateItem(id, (Item)gear))
+                    {
+                        MessageBox.Show(message.UnsuccessfulUpdate());
+                    }
+                    else
+                    {
+                        MessageBox.Show(message.SuccessfulUpdate());
                     }
                 }
             }
