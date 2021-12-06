@@ -1,5 +1,4 @@
-﻿using SynthesisAssignment.Models.Interfaces;
-using SynthesisAssignment.Services;
+﻿using SynthesisAssignment.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,49 +10,37 @@ namespace SynthesisAssignment.Models
 
     public class InventoryAdministration
     {
-
-        static Boat boat = new Boat();
-        static Item item = new Item();
-
-        //DAL
+        
+        /// <summary>
+        /// Fields
+        /// </summary>
+        
+        //data access layer
         DALInventory dalGear = new DALInventory();
 
-        //add new boat
-        public bool AddBoat(Boat gear)
+        /// <summary>
+        /// Methods
+        /// </summary>
+
+        //add gear
+        public bool AddGear(Inventory gear)
         {
 
-            List<Boat> boats = AllGear().OfType<Boat>().ToList();
-
-            //if the list is empty
-            if (boats.Count == 0)
+            //to prevent creating duplicate gear
+            if ((GetGearByType(gear)) == null)
             {
-                dalGear.AddBoat(gear);
+                dalGear.AddGear(gear);
                 return true;
             }
-
-            else
-            {
-
-                for (int i = 0; i < boats.Count; i++)
-                {
-                    Boat b = new Boat();
-                    b.BoatType = boats[i].BoatType;
-
-                    if (b.BoatType == gear.BoatType)
-                    {
-                        return false;
-                    }
-                }
-
-                dalGear.AddBoat(gear);
-                return true;
-            }
+            
+            //if there is an error
+            return false;
         }
 
-        //update boat
-        public bool UpdateBoat(int id, Boat boat)
+        //update gear
+        public bool UpdateGear(int id, Inventory gear)
         {
-            if (dalGear.UpdateBoat(id, boat))
+            if (dalGear.UpdateGear(id, gear))
             {
                 return true;
             }
@@ -61,86 +48,65 @@ namespace SynthesisAssignment.Models
             return false;
         }
 
-        //update item
-        public bool UpdateItem(int id, Item item)
-        {
-            if (dalGear.UpdateItem(id, item))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        //add new item
-        public bool AddItem(Item item)
+        //get gear by type
+        public Inventory GetGearByType(Inventory gear)
         {
 
-            List<Item> items = AllGear().OfType<Item>().ToList();
-
-            //if the list is empty
-            if (items.Count == 0)
+            if (gear is Boat)
             {
-                dalGear.AddItem(item);
-                return true;
-            }
-
-            else
-            {
-
-                for (int i = 0; i < items.Count; i++)
+                foreach (var b in AllGear().OfType<Boat>().ToList())
                 {
-                    Item itm = new Item();
-
-                    itm.ItemType = items[i].ItemType;
-
-                    if (itm.ItemType == item.ItemType)
+                    if (b.BoatType == ((Boat)gear).BoatType)
                     {
-                        return false;
+                        return b;
                     }
                 }
-
-                dalGear.AddItem(item);
-                return true;
             }
-        }
 
-        //get boat by id
-        public Boat GetBoatByID(int id)
-        {
-
-            List<Boat> boats = AllGear().OfType<Boat>().ToList();
-
-            foreach (var item in boats)
+            else if (gear is Item)
             {
-                if (item.ID == id)
+                foreach (var item in AllGear().OfType<Item>().ToList())
                 {
-                    boat = item;
-                    return boat;
+                    if (item.ItemType == ((Item)gear).ItemType)
+                    {
+                        return item;
+                    }
                 }
             }
 
             return null;
         }
 
-        //get item by id
-        public Item GetItemByID(int id)
+        //get gear by id
+        public Inventory GetGearByID(Inventory gear)
         {
 
-            List<Item> items = AllGear().OfType<Item>().ToList();
-
-            foreach (var itm in items)
+            if (gear is Boat)
             {
-                if (itm.ID == id)
+                foreach (var b in AllGear().OfType<Boat>().ToList())
                 {
-                    item = itm;
-                    return item;
+                    if (b.ID == ((Boat)gear).ID)
+                    {
+                        return b;
+                    }
+                }
+            }
+
+            else if (gear is Item)
+            {
+                foreach (var item in AllGear().OfType<Item>().ToList())
+                {
+                    if (item.ID == ((Item)gear).ID)
+                    {
+                        return item;
+                    }
                 }
             }
 
             return null;
         }
 
+        //delete gear
         public bool DeleteGear(Inventory gear)
         {
             if (dalGear.DeleteGear(gear))

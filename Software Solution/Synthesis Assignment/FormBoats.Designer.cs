@@ -50,6 +50,7 @@ namespace Synthesis_Assignment
             this.labelEuroSymbole = new System.Windows.Forms.Label();
             this.labelEuroSymbole2 = new System.Windows.Forms.Label();
             this.buttonUpdateBoat = new System.Windows.Forms.Button();
+            this.labelBType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -259,12 +260,23 @@ namespace Synthesis_Assignment
             this.buttonUpdateBoat.UseVisualStyleBackColor = false;
             this.buttonUpdateBoat.Click += new System.EventHandler(this.buttonUpdateBoat_Click);
             // 
+            // labelBType
+            // 
+            this.labelBType.AutoSize = true;
+            this.labelBType.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelBType.ForeColor = System.Drawing.Color.PaleTurquoise;
+            this.labelBType.Location = new System.Drawing.Point(340, 278);
+            this.labelBType.Name = "labelBType";
+            this.labelBType.Size = new System.Drawing.Size(0, 45);
+            this.labelBType.TabIndex = 29;
+            // 
             // FormBoats
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1504, 900);
+            this.Controls.Add(this.labelBType);
             this.Controls.Add(this.buttonUpdateBoat);
             this.Controls.Add(this.labelEuroSymbole2);
             this.Controls.Add(this.labelEuroSymbole);
@@ -318,5 +330,6 @@ namespace Synthesis_Assignment
         private System.Windows.Forms.Label labelEuroSymbole;
         private System.Windows.Forms.Label labelEuroSymbole2;
         private System.Windows.Forms.Button buttonUpdateBoat;
+        private System.Windows.Forms.Label labelBType;
     }
 }

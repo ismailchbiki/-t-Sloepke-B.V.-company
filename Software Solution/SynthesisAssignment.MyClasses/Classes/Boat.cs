@@ -21,11 +21,6 @@ namespace SynthesisAssignment.Services
 
         }
 
-        public Boat(int id) : base(id)
-        {
-
-        }
-
         public Boat(BOATTYPE boat, CAPACITY capacity,
             double cost, double deposit, int qnty, string remamrk)
             : base(cost, deposit, qnty, remamrk)
@@ -35,12 +30,6 @@ namespace SynthesisAssignment.Services
         }
 
         //properties
-        //public string BoatType
-        //{
-        //    get { return this.type; }
-        //    set { type = value; }
-        //}
-
         public string Capacity
         {
             get { return this.capacity.ToString(); }

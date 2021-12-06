@@ -16,7 +16,10 @@ namespace Synthesis_Assignment
 {
     public partial class FormBoats : Form
     {
+
+        //id of the selected row
         int id = FormInventory.BoatID;
+
         Inventory gear;
         InventoryAdministration gearManager;
         Validation validate;
@@ -30,7 +33,6 @@ namespace Synthesis_Assignment
             gearManager = new InventoryAdministration();
             validate = new Validation();
             message = new GuidingMessages();
-
         }
 
         private void FormAddBoat_Load(object sender, EventArgs e)
@@ -41,13 +43,24 @@ namespace Synthesis_Assignment
             comboBoxBoatType.DataSource = Enum.GetValues(typeof(BOATTYPE));
             comboBoxCapacity.DataSource = Enum.GetValues(typeof(CAPACITY));
 
+            buttonUpdateBoat.Visible = false;
+
             //in case of a boat update => fill in all the fields
             if (id != 0)
             {
-                Boat b = new Boat();
-                b = gearManager.GetBoatByID(id);
+                gear = new Boat();
+                gear.ID = id;
 
-                comboBoxBoatType.Text = b.BoatType.ToString();
+                //retrieve data of the item to update
+                Boat b = (Boat)gearManager.GetGearByID(gear);
+
+                //control visibility some items on the form on update click event
+                comboBoxBoatType.Visible = false;
+                buttonAddBoat.Visible = false;
+                buttonUpdateBoat.Visible = true;
+
+                //fill in fields with data
+                labelBType.Text = b.BoatType.ToString();
                 comboBoxCapacity.Text = b.Capacity.ToString();
                 textBoxCost.Text = b.Cost.ToString();
                 textBoxDeposit.Text = b.Deposit.ToString();
@@ -56,26 +69,34 @@ namespace Synthesis_Assignment
             }
         }
         
-
         //logout
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             FormLogin login = new FormLogin();
-            id = 0;
+            FormInventory.BoatID = 0;
             login.Show();
             this.Hide();
         }
-
 
         //go back
         private void buttonBack_Click(object sender, EventArgs e)
         {
             FormSelectOption selectOption = new FormSelectOption();
-            id = 0;
-            selectOption.Show();
-            this.Hide();
-        }
+            FormInventory inventoryForm = new FormInventory();
 
+            // in case of an update event => back to inventory or dashboard
+            if (FormInventory.BoatID != 0)
+            {
+                FormInventory.BoatID = 0;
+                inventoryForm.Show();
+                this.Hide();
+            }
+            else
+            {
+                selectOption.Show();
+                this.Hide();
+            }
+        }
 
         //add new boat
         private void buttonAddBoat_Click(object sender, EventArgs e)
@@ -102,8 +123,8 @@ namespace Synthesis_Assignment
                         (CAPACITY)comboBoxCapacity.SelectedItem, Convert.ToDouble(textBoxCost.Text),
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
-
-                    if (!gearManager.AddBoat((Boat)gear))
+                    // add boat
+                    if (!gearManager.AddGear(gear))
                     {
                         MessageBox.Show(message.UnsuccessfulSave());
                     }
@@ -119,6 +140,7 @@ namespace Synthesis_Assignment
             }
         }
 
+        //update boat
         private void buttonUpdateBoat_Click(object sender, EventArgs e)
         {
             try
@@ -143,14 +165,18 @@ namespace Synthesis_Assignment
                         (CAPACITY)comboBoxCapacity.SelectedItem, Convert.ToDouble(textBoxCost.Text),
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
-
-                    if (!gearManager.UpdateBoat(id, (Boat)gear))
+                    //update boat
+                    if (!gearManager.UpdateGear(id, (Boat)gear))
                     {
                         MessageBox.Show(message.UnsuccessfulUpdate());
                     }
                     else
                     {
                         MessageBox.Show(message.SuccessfulUpdate());
+                        FormInventory inventoryForm = new FormInventory();
+
+                        inventoryForm.Show();
+                        this.Hide();
                     }
                 }
             }

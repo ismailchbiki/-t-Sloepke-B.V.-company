@@ -21,11 +21,6 @@ namespace SynthesisAssignment.Models
 
         }
 
-        public Inventory(int id)
-        {
-            this.id = id;
-        }
-
         public Inventory(double cost, double deposit, int qty, string remark)
         {
             this.cost = cost;

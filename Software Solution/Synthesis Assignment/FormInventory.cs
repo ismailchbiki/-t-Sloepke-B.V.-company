@@ -20,19 +20,16 @@ namespace Synthesis_Assignment
         public static int BoatID = 0;
         public static int ItemID = 0;
 
-        Inventory gear;
-
         InventoryAdministration manageGear;
 
         public FormInventory()
         {
             InitializeComponent();
 
-            gear = new Inventory();
             manageGear = new InventoryAdministration();
         }
 
-
+        //on load fill in the tables
         private void FormInventory_Load(object sender, EventArgs e)
         {
             CenterToScreen();
@@ -63,7 +60,6 @@ namespace Synthesis_Assignment
             }).ToList();
         }
 
-
         //back to previous form
         private void buttonBack_Click(object sender, EventArgs e)
         {
@@ -72,7 +68,6 @@ namespace Synthesis_Assignment
             dashboard.Show();
             this.Hide();
         }
-
 
         //logout 
         private void buttonLogout_Click(object sender, EventArgs e)
@@ -83,6 +78,7 @@ namespace Synthesis_Assignment
             this.Hide();
         }
 
+        // add new gear
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             FormSelectOption selectOpt = new FormSelectOption();
@@ -91,10 +87,11 @@ namespace Synthesis_Assignment
             this.Hide();
         }
 
+        //update existing gear
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
 
-            //forwarding user depends on the selected row from which table
+            //forwarding user depends on the selected row from which tabPage
             if (tabControlAdministration.SelectedTab == tabPageBoats)
             {
 
@@ -118,14 +115,15 @@ namespace Synthesis_Assignment
         //delete selected row
         private void buttonDeleteSelectedRow_Click(object sender, EventArgs e)
         {
-            //forwarding user depends on the selected row from which table
+            //forwarding user depends on the selected row from which tabPage
             if (tabControlAdministration.SelectedTab == tabPageBoats)
             {
 
                 BoatID = (int)dataGridViewBoats.SelectedRows[0].Cells["ID"].Value;
 
-                gear = new Boat(BoatID);
-                FormConfirmDeletion boats = new FormConfirmDeletion(gear);
+                Boat b = new Boat();
+                b.ID = BoatID;
+                FormConfirmDeletion boats = new FormConfirmDeletion(b);
 
                 boats.Show();
                 this.Hide();
@@ -135,8 +133,9 @@ namespace Synthesis_Assignment
 
                 ItemID = (int)dataGridViewItems.SelectedRows[0].Cells["ID"].Value;
 
-                gear = new Item(ItemID);
-                FormConfirmDeletion items = new FormConfirmDeletion(gear);
+                Item item = new Item();
+                item.ID = ItemID;
+                FormConfirmDeletion items = new FormConfirmDeletion(item);
 
                 items.Show();
                 this.Hide();

@@ -16,7 +16,9 @@ namespace Synthesis_Assignment
     public partial class FormItems : Form
     {
 
+        //id of the selected row
         int id = FormInventory.ItemID;
+
         Inventory gear;
         InventoryAdministration gearManager;
         Validation validate;
@@ -39,26 +41,36 @@ namespace Synthesis_Assignment
             //populating the comboBoxes with enums
             comboBoxItem.DataSource = Enum.GetValues(typeof(ITEMTYPE));
 
+            buttonUpdateItem.Visible = false;
+
             //in case of a boat update => fill in all the fields
             if (id != 0)
             {
-                Item item = new Item();
-                item = gearManager.GetItemByID(id);
+                gear = new Item();
+                gear.ID = id;
 
-                comboBoxItem.Text = item.ItemType.ToString();
+                //retrieve data of the item to update
+                Item item = (Item)gearManager.GetGearByID(gear);
+
+                //control visibility some items on the form on update click event
+                comboBoxItem.Visible = false;
+                buttonAddItem.Visible = false;
+                buttonUpdateItem.Visible = true;
+
+                //fill in fields with data
+                labelItmType.Text = item.ItemType.ToString();
                 textBoxCost.Text = item.Cost.ToString();
                 textBoxDeposit.Text = item.Deposit.ToString();
                 textBoxQuantity.Text = item.Quantity.ToString();
                 textBoxRemark.Text = item.Remark;
             }
-
         }
 
         //logout
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             FormLogin login = new FormLogin();
-            id = 0;
+            FormInventory.ItemID = 0;
             login.Show();
             this.Hide();
         }
@@ -67,11 +79,23 @@ namespace Synthesis_Assignment
         private void buttonBack_Click(object sender, EventArgs e)
         {
             FormSelectOption selectOption = new FormSelectOption();
-            id = 0;
-            selectOption.Show();
-            this.Hide();
+            FormInventory inventoryForm = new FormInventory();
+
+            // in case of an update event => back to inventory or dashboard
+            if (FormInventory.ItemID != 0)
+            {
+                FormInventory.ItemID = 0;
+                inventoryForm.Show();
+                this.Hide();
+            }
+            else
+            {
+                selectOption.Show();
+                this.Hide();
+            }
         }
 
+        //add new item
         private void buttonAddItem_Click(object sender, EventArgs e)
         {
             try
@@ -94,7 +118,8 @@ namespace Synthesis_Assignment
                     gear = new Item((ITEMTYPE)comboBoxItem.SelectedItem, Convert.ToDouble(textBoxCost.Text),
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
-                    if (!gearManager.AddItem((Item)gear))
+                    //add item
+                    if (!gearManager.AddGear((Item)gear))
                     {
                         MessageBox.Show(message.UnsuccessfulSave());
                     }
@@ -110,6 +135,7 @@ namespace Synthesis_Assignment
             }
         }
 
+        //update item
         private void buttonUpdateItem_Click(object sender, EventArgs e)
         {
             try
@@ -132,14 +158,18 @@ namespace Synthesis_Assignment
                     gear = new Item((ITEMTYPE)comboBoxItem.SelectedItem, Convert.ToDouble(textBoxCost.Text),
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
-
-                    if (!gearManager.UpdateItem(id, (Item)gear))
+                    //update item
+                    if (!gearManager.UpdateGear(id, (Item)gear))
                     {
                         MessageBox.Show(message.UnsuccessfulUpdate());
                     }
                     else
                     {
                         MessageBox.Show(message.SuccessfulUpdate());
+                        FormInventory inventoryForm = new FormInventory();
+
+                        inventoryForm.Show();
+                        this.Hide();
                     }
                 }
             }

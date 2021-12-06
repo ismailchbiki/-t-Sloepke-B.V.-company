@@ -48,6 +48,7 @@ namespace Synthesis_Assignment
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonUpdateItem = new System.Windows.Forms.Button();
+            this.labelItmType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -238,12 +239,23 @@ namespace Synthesis_Assignment
             this.buttonUpdateItem.UseVisualStyleBackColor = false;
             this.buttonUpdateItem.Click += new System.EventHandler(this.buttonUpdateItem_Click);
             // 
+            // labelItmType
+            // 
+            this.labelItmType.AutoSize = true;
+            this.labelItmType.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelItmType.ForeColor = System.Drawing.Color.PaleTurquoise;
+            this.labelItmType.Location = new System.Drawing.Point(343, 273);
+            this.labelItmType.Name = "labelItmType";
+            this.labelItmType.Size = new System.Drawing.Size(0, 45);
+            this.labelItmType.TabIndex = 47;
+            // 
             // FormItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1504, 900);
+            this.Controls.Add(this.labelItmType);
             this.Controls.Add(this.buttonUpdateItem);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.buttonBack);
@@ -293,5 +305,6 @@ namespace Synthesis_Assignment
         private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Button buttonUpdateItem;
+        private System.Windows.Forms.Label labelItmType;
     }
 }

@@ -22,6 +22,7 @@ namespace Synthesis_Assignment
             CenterToScreen();
         }
 
+        //logout
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             FormLogin login = new FormLogin();
@@ -30,6 +31,7 @@ namespace Synthesis_Assignment
             this.Hide();
         }
 
+        //go back
         private void buttonBack_Click(object sender, EventArgs e)
         {
             FormInventory inventory = new FormInventory();
@@ -38,6 +40,7 @@ namespace Synthesis_Assignment
             this.Hide();
         }
 
+        //boats option
         private void buttonBoats_Click(object sender, EventArgs e)
         {
             FormBoats boats = new FormBoats();
@@ -46,6 +49,7 @@ namespace Synthesis_Assignment
             this.Hide();
         }
 
+        //items option
         private void buttonItems_Click(object sender, EventArgs e)
         {
             FormItems items = new FormItems();

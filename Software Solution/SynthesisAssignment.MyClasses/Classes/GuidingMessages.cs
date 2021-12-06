@@ -45,7 +45,7 @@ namespace SynthesisAssignment.Models.Classes
 
         public string UnsuccessfulSave()
         {
-            return "Error:\nYou cannot add a new boat that already exists";
+            return "Error:\nYou cannot add a new item that already exists";
         }
 
         public string SuccessfulUpdate()
@@ -55,7 +55,7 @@ namespace SynthesisAssignment.Models.Classes
 
         public string UnsuccessfulUpdate()
         {
-            return "Error:\nItem didn't get updated. Please try again";
+            return "Error:\nItem didn't get updated. Please make sure you provide a unique name for the type";
         }
     }
 }

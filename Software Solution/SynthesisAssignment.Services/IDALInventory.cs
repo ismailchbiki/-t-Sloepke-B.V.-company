@@ -11,14 +11,11 @@ namespace SynthesisAssignment.Services
     {
 
         //Inventory
-        bool AddBoat(Boat gear);
-        bool AddItem(Item gear);
-        bool UpdateBoat(int id, Boat gear);
-        bool UpdateItem(int id, Item gear);
+        bool AddGear(Inventory gear);
+        bool UpdateGear(int id, Inventory gear);
         bool DeleteGear(Inventory gear);
         IEnumerable<Inventory> GetAllBoats();
         IEnumerable<Inventory> GetAllItems();
-        IEnumerable<Inventory> GetAllGear();
-
+        IEnumerable<Inventory> GetAllGear();        
     }
 }

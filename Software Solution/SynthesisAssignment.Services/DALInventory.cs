@@ -15,26 +15,60 @@ namespace SynthesisAssignment.Services
         List<Inventory> inventory = new List<Inventory>();
         ConnectionString SQLConnection = new ConnectionString();
 
+        /// <summary>
+        /// data manipulation depend on the object type
+        /// </summary>
 
-        //add new boat
-        public bool AddBoat(Boat boat)
+        //add gear
+        public bool AddGear(Inventory gear)
         {
-
             try
             {
+
+                object type = "";
+                object capacity = "";
+
+                if (gear is Boat)
+                {
+                    type = ((Boat)gear).BoatType;
+                    capacity = ((Boat)gear).Capacity;
+                }
+                else if (gear is Item)
+                {
+                    type = ((Item)gear).ItemType;
+                }
+
+
                 //connection string
                 MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
 
-                string sqlQuery = "insert into syn_boat (boat_type, boat_capacity, boat_cost, boat_deposit, boat_quantity, boat_remark) VALUES (@boat_type, @capacity, @cost, @deposit, @quantity, @remark) ";
+                string sqlQuery = null;
+                if (gear.GetType() == typeof(Boat))
+                {
+
+                    sqlQuery = "insert into syn_boat (boat_type, boat_capacity, boat_cost, boat_deposit, boat_quantity, boat_remark) VALUES (@boat_type, @capacity, @cost, @deposit, @quantity, @remark) ";
+
+                }
+                else if (gear.GetType() == typeof(Item))
+                {
+                    sqlQuery = "insert into syn_item (item_type, item_cost, item_deposit, item_quantity, item_remark) VALUES (@item_type, @cost, @deposit, @quantity, @remark) ";
+                }
+
+
                 MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
 
-                cmd.Parameters.AddWithValue("@boat_type", boat.BoatType.ToString());
-                cmd.Parameters.AddWithValue("@capacity", boat.Capacity.ToString());
-                cmd.Parameters.AddWithValue("@cost", boat.Cost);
-                cmd.Parameters.AddWithValue("@deposit", boat.Deposit);
-                cmd.Parameters.AddWithValue("@quantity", boat.Quantity);
-                cmd.Parameters.AddWithValue("@remark", boat.Remark);
-                
+                //if boat
+                cmd.Parameters.AddWithValue("@boat_type", type.ToString());
+                cmd.Parameters.AddWithValue("@capacity", capacity.ToString());
+                //if item
+                cmd.Parameters.AddWithValue("@item_type", type.ToString());
+
+                //the rest applies for both
+                cmd.Parameters.AddWithValue("@cost", gear.Cost);
+                cmd.Parameters.AddWithValue("@deposit", gear.Deposit);
+                cmd.Parameters.AddWithValue("@quantity", gear.Quantity);
+                cmd.Parameters.AddWithValue("@remark", gear.Remark);
+
 
                 //Open the connection
                 con.Open();
@@ -54,24 +88,56 @@ namespace SynthesisAssignment.Services
             }
         }
 
-        //update boat
-        public bool UpdateBoat(int id, Boat boat)
+        //update gear
+        public bool UpdateGear(int id, Inventory gear)
         {
-            try
+
+            //try
             {
+                //object type = "";
+                object capacity = "";
+
+                if (gear is Boat)
+                {
+                    //type = ((Boat)gear).BoatType;
+                    capacity = ((Boat)gear).Capacity;
+                }
+                else if (gear is Item)
+                {
+                    //type = ((Item)gear).ItemType;
+                }
+
+
                 //connection string
                 MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
 
-                string sqlQuery = "update syn_boat set boat_type=@boat_type, boat_capacity=@boat_capacity, boat_cost=@boat_cost, boat_deposit=@boat_deposit, boat_quantity=@boat_quantity, boat_remark=@boat_remark where boat_ID=@boat_ID";
+                string sqlQuery = null;
+                if (gear.GetType() == typeof(Boat))
+                {
+
+                    sqlQuery = "update syn_boat set boat_capacity=@capacity, boat_cost=@cost, boat_deposit=@deposit, boat_quantity=@quantity, boat_remark=@remark where boat_ID=@ID";
+
+                }
+                else if (gear.GetType() == typeof(Item))
+                {
+                    sqlQuery = "update syn_item set item_cost=@cost, item_deposit=@deposit, item_quantity=@quantity, item_remark=@remark where item_ID=@ID";
+                }
+
+
                 MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
 
-                cmd.Parameters.AddWithValue("@boat_ID", id);
-                cmd.Parameters.AddWithValue("@boat_type", boat.BoatType.ToString());
-                cmd.Parameters.AddWithValue("@boat_capacity", boat.Capacity.ToString());
-                cmd.Parameters.AddWithValue("@boat_cost", boat.Cost);
-                cmd.Parameters.AddWithValue("@boat_deposit", boat.Deposit);
-                cmd.Parameters.AddWithValue("@boat_quantity", boat.Quantity);
-                cmd.Parameters.AddWithValue("@boat_remark", boat.Remark);
+                //if boat
+                //cmd.Parameters.AddWithValue("@boat_type", type.ToString());
+                cmd.Parameters.AddWithValue("@capacity", capacity.ToString());
+                //if item
+                //cmd.Parameters.AddWithValue("@item_type", type.ToString());
+
+                //the rest applies for both
+                cmd.Parameters.AddWithValue("@ID", id);
+                cmd.Parameters.AddWithValue("@cost", gear.Cost);
+                cmd.Parameters.AddWithValue("@deposit", gear.Deposit);
+                cmd.Parameters.AddWithValue("@quantity", gear.Quantity);
+                cmd.Parameters.AddWithValue("@remark", gear.Remark);
 
 
                 //Open the connection
@@ -85,100 +151,11 @@ namespace SynthesisAssignment.Services
 
                 return true;
             }
-            catch (Exception)
-            {
-                throw;
-                //return false;
-            }
-        }
-
-        //add new item
-        public bool AddItem(Item item)
-        {
-            try
-            {
-                //connection string
-                MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
-
-                string sqlQuery = "insert into syn_item (item_type, item_cost, item_deposit, item_quantity, item_remark) VALUES (@item_type, @cost, @deposit, @quantity, @remark) ";
-                MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
-
-                cmd.Parameters.AddWithValue("@item_type", item.ItemType.ToString());
-                cmd.Parameters.AddWithValue("@cost", item.Cost);
-
-                if (!string.IsNullOrEmpty(item.Deposit.ToString()))
-                {
-                    cmd.Parameters.AddWithValue("@deposit", item.Deposit);
-                }
-                else
-                {
-                    cmd.Parameters.AddWithValue("@deposit", 0);
-                }
-
-                cmd.Parameters.AddWithValue("@quantity", item.Quantity);
-
-                //if remark is null
-                if (!string.IsNullOrEmpty(item.Remark))
-                {
-                    cmd.Parameters.AddWithValue("@remark", item.Remark);
-                }
-                else
-                {
-                    cmd.Parameters.AddWithValue("@remark", "");
-                }
-
-                //Open the connection
-                con.Open();
-
-                //Execute the command
-                cmd.ExecuteNonQuery();
-
-                //Close the connection
-                con.Close();
-
-                return true;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        //update item
-        public bool UpdateItem(int id, Item item)
-        {
-            try
-            {
-                //connection string
-                MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
-
-                string sqlQuery = "update syn_item set item_type=@item_type, item_cost=@item_cost, item_deposit=@item_deposit, item_quantity=@item_quantity, item_remark=@item_remark where item_ID=@item_ID";
-                MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
-
-                cmd.Parameters.AddWithValue("@item_ID", id);
-                cmd.Parameters.AddWithValue("@item_type", item.ItemType.ToString());
-                cmd.Parameters.AddWithValue("@item_cost", item.Cost);
-                cmd.Parameters.AddWithValue("@item_deposit", item.Deposit);
-                cmd.Parameters.AddWithValue("@item_quantity", item.Quantity);
-                cmd.Parameters.AddWithValue("@item_remark", item.Remark);
-
-
-                //Open the connection
-                con.Open();
-
-                //Execute the command
-                cmd.ExecuteNonQuery();
-
-                //Close the connection
-                con.Close();
-
-                return true;
-            }
-            catch (Exception)
-            {
-                throw;
-                //return false;
-            }
+            //catch (Exception)
+            //{
+            //    throw;
+            //    //return false;
+            //}
         }
 
         //delete gear

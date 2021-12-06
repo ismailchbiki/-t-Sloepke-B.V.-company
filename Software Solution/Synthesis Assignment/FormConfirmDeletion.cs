@@ -15,6 +15,7 @@ namespace Synthesis_Assignment
     public partial class FormConfirmDeletion : Form
     {
 
+        //id of the gear to delete
         Inventory gear;
         InventoryAdministration gearManager;
 
@@ -23,20 +24,44 @@ namespace Synthesis_Assignment
         {
             InitializeComponent();
 
-            gearManager = new InventoryAdministration();
             this.gear = gear;
+            gearManager = new InventoryAdministration();
+
+        }
+
+        private void FormConfirmDeletion_Load(object sender, EventArgs e)
+        {
+            CenterToParent();
         }
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            if (gear.GetType() == typeof(Boat))
+            //if gear is deleted
+            if (gearManager.DeleteGear(gear))
             {
-                gearManager.DeleteGear((Boat)gear);
+                MessageBox.Show("Item Removed successfully");
+                FormInventory inventory = new FormInventory();
+
+                //to clear the variables
+                FormInventory.BoatID = 0;
+                FormInventory.ItemID = 0;
+
+                inventory.Show();
+                this.Hide();
             }
-            else if (gear.GetType() == typeof(Item))
-            {
-                gearManager.DeleteGear((Item)gear);
-            }
+        }
+
+        //cancel
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            FormInventory inventory = new FormInventory();
+
+            //to clear the variables
+            FormInventory.BoatID = 0;
+            FormInventory.ItemID = 0;
+
+            inventory.Show();
+            this.Hide();
         }
     }
 }
