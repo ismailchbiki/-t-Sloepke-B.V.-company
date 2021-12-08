@@ -22,16 +22,15 @@ namespace Synthesis_Assignment
         Inventory gear;
         InventoryAdministration gearManager;
         Validation validate;
-        MessageInventoryGuide ms;
+        MessageInventoryGuide message;
 
         public FormItems()
         {
             InitializeComponent();
 
-            gear = new Inventory();
             gearManager = new InventoryAdministration();
             validate = new Validation();
-            ms = new MessageInventoryGuide();
+            message = new MessageInventoryGuide();
         }
 
         //form
@@ -104,13 +103,13 @@ namespace Synthesis_Assignment
                 //check if all fields are filled
                 if (string.IsNullOrEmpty(textBoxCost.Text) || string.IsNullOrEmpty(textBoxQuantity.Text))
                 {
-                    MessageBox.Show(ms.EmptyFieldsErrorMessage());
+                    MessageBox.Show(message.EmptyFieldsErrorMessage());
                 }
 
                 else if (validate.ContainLetters(textBoxCost.Text) || validate.ContainLetters(textBoxDeposit.Text)
                     || validate.ContainLetters(textBoxQuantity.Text))
                 {
-                    MessageBox.Show(ms.LettersNotAllowedErrorMessage());
+                    MessageBox.Show(message.LettersNotAllowedErrorMessage());
                 }
 
                 else
@@ -122,11 +121,11 @@ namespace Synthesis_Assignment
                     //add item
                     if (!gearManager.AddGear((Item)gear))
                     {
-                        MessageBox.Show(ms.UnsuccessfulAddingMessage());
+                        MessageBox.Show(message.UnsuccessfulAddingMessage());
                     }
                     else
                     {
-                        MessageBox.Show(ms.SuccessfulAddingMessage());
+                        MessageBox.Show(message.SuccessfulAddingMessage());
                     }
                 }
             }
@@ -144,13 +143,13 @@ namespace Synthesis_Assignment
                 //check if all fields are filled
                 if (string.IsNullOrEmpty(textBoxCost.Text) || string.IsNullOrEmpty(textBoxQuantity.Text))
                 {
-                    MessageBox.Show(ms.EmptyFieldsErrorMessage());
+                    MessageBox.Show(message.EmptyFieldsErrorMessage());
                 }
 
                 else if (validate.ContainLetters(textBoxCost.Text) || validate.ContainLetters(textBoxDeposit.Text)
                     || validate.ContainLetters(textBoxQuantity.Text))
                 {
-                    MessageBox.Show(ms.LettersNotAllowedErrorMessage());
+                    MessageBox.Show(message.LettersNotAllowedErrorMessage());
                 }
 
                 else
@@ -162,11 +161,11 @@ namespace Synthesis_Assignment
                     //update item
                     if (!gearManager.UpdateGear(id, (Item)gear))
                     {
-                        MessageBox.Show(ms.UnsuccessfulUpdateMessage());
+                        MessageBox.Show(message.UnsuccessfulUpdateMessage());
                     }
                     else
                     {
-                        MessageBox.Show(ms.SuccessfulUpdateMessage());
+                        MessageBox.Show(message.SuccessfulUpdateMessage());
                         FormInventory inventoryForm = new FormInventory();
 
                         inventoryForm.Show();

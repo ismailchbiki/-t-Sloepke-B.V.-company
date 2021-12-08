@@ -5,9 +5,4 @@
     <RootNamespace>Synthesis_Assignment_Web_App</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\SynthesisAssignment.Models\SynthesisAssignment.Models.csproj" />
-    <ProjectReference Include="..\SynthesisAssignment.MyClasses\SynthesisAssignment.MyClasses.csproj" />
-  </ItemGroup>
-
 </Project>

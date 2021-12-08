@@ -29,7 +29,6 @@ namespace Synthesis_Assignment
         {
             InitializeComponent();
 
-            gear = new Inventory();
             gearManager = new InventoryAdministration();
             validate = new Validation();
             message = new MessageInventoryGuide();
@@ -173,7 +172,7 @@ namespace Synthesis_Assignment
                     }
                     else
                     {
-                        MessageBox.Show(message.UnsuccessfulUpdateMessage());
+                        MessageBox.Show(message.SuccessfulUpdateMessage());
                         FormInventory inventoryForm = new FormInventory();
 
                         inventoryForm.Show();

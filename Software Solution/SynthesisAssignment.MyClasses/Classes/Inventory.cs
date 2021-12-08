@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SynthesisAssignment.Models
 {
-    public class Inventory
+    public abstract class Inventory
     {
         //fields
         private int id;
