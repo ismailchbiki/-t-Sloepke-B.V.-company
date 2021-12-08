@@ -16,14 +16,14 @@ namespace Synthesis_Assignment
     public partial class FormLogin : Form
     {
         Validation validate;
-        GuidingMessages message;
+        MessageLoginGuide message;
 
         public FormLogin()
         {
             InitializeComponent();
 
             validate = new Validation();
-            message = new GuidingMessages();
+            message = new MessageLoginGuide();
         }
 
         private void FormLogin_Load(object sender, EventArgs e)
@@ -54,14 +54,14 @@ namespace Synthesis_Assignment
 
             if (string.IsNullOrEmpty(textBoxUsername.Text) || string.IsNullOrEmpty(textBoxPassword.Text))
             {
-                MessageBox.Show(message.EmptyCredentialsFieldsError());
+                MessageBox.Show(message.EmptyFieldsErrorMessage());
             }
             else
             {
                 //method here to validate username fields (not a number)
                 if (validate.ContainNumbers(textBoxUsername.Text))
                 {
-                    MessageBox.Show(message.NumbersNotAllowedError());
+                    MessageBox.Show(message.NumbersNotAllowedErrorMessage());
                 }
 
                 else if (textBoxUsername.Text == username && textBoxPassword.Text == password)
@@ -73,7 +73,7 @@ namespace Synthesis_Assignment
                 }
                 else
                 {
-                    MessageBox.Show(message.InvalidCredentialsError());
+                    MessageBox.Show(message.InvalidCredntialsErrorMessage());
                 }
             }
         }

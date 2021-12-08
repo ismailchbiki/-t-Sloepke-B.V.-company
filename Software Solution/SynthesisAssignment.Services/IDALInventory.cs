@@ -7,15 +7,26 @@ using System.Threading.Tasks;
 
 namespace SynthesisAssignment.Services
 {
-    public interface IDALInventory
-    {
 
+    //crud ops
+    public interface IDALCrud
+    {
         //Inventory
         bool AddGear(Inventory gear);
         bool UpdateGear(int id, Inventory gear);
         bool DeleteGear(Inventory gear);
+    }
+
+    //lists
+    public interface IDALLists
+    {
         IEnumerable<Inventory> GetAllBoats();
         IEnumerable<Inventory> GetAllItems();
-        IEnumerable<Inventory> GetAllGear();        
+        IEnumerable<Inventory> GetAllGear();
+    }
+
+    public interface IDALInventory : IDALCrud, IDALLists
+    {
+
     }
 }

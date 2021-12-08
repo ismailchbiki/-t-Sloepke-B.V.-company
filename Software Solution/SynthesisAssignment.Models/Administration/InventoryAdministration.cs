@@ -11,16 +11,8 @@ namespace SynthesisAssignment.Models
     public class InventoryAdministration
     {
         
-        /// <summary>
-        /// Fields
-        /// </summary>
-        
         //data access layer
-        DALInventory dalGear = new DALInventory();
-
-        /// <summary>
-        /// Methods
-        /// </summary>
+        private DALInventory dalGear = new DALInventory();
 
         //add gear
         public bool AddGear(Inventory gear)

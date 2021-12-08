@@ -1,0 +1,97 @@
+﻿@page
+@model Dutch_Experience.Pages.LoginModel
+@{
+    Layout = "_LayoutLogin"; //overriding the default layout
+                             //Layout = "null"; //don't use any layout for this page
+
+    ViewData["Title"] = "Dutch Experience | Login";
+}
+
+<div class="form-box">
+    <div class="button-box">
+        <div id="button"></div>
+        <button type="button" class="toggle-button" onclick="login()">
+            Log in
+        </button>
+        <button type="button" class="toggle-button" onclick="register()">
+            Register
+        </button>
+    </div>
+
+    <div class="login-required">@ViewData["loginRequired"]</div>
+
+    <!--  Login  -->
+    @*<form method="post" id="login" class="input-group">
+        <div>
+            <b>@Model.Notification</b>
+        </div>
+        <div>
+            <label asp-for="NewUser.Username"></label>
+        </div>
+        <input asp-for="NewUser.Username"
+               class="input-field" />
+        <span asp-validation-for="NewUser.Username"></span>
+
+        <div>
+            <label asp-for="NewUser.Password"></label>
+        </div>
+        <input type="password" asp-for="NewUser.Password"
+               class="input-field" />
+        <span asp-validation-for="NewUser.Password"></span>
+        <button type="submit" asp-page-handler="Login" class="submit-button">Log in</button>
+    </form>*@
+
+
+    <!--  Registration  -->
+    <!--<form method="post" id="register" class="input-group">
+
+        <!--  confirmation notification  -->
+        <!--<div>
+            <b>Model.Notification</b>
+        </div>-->
+
+        @*Username*@
+        <!--<span asp-validation-for="NewUser.Username"></span>
+        <div>
+            <label asp-for="NewUser.Username"></label>
+        </div>
+        <input asp-for="NewUser.Username"
+               class="input-field" />-->
+
+        @*Nationality*@
+        <!--<span asp-validation-for="NewUser.Nationality"></span>
+        <div>
+            <label asp-for="NewUser.Nationality"></label>
+        </div>
+        <input asp-for="NewUser.Nationality"
+               class="input-field" />-->
+
+
+        @*Email*@
+        <!--<span asp-validation-for="NewUser.Email"></span>
+        <div>
+            <label asp-for="NewUser.Email"></label>
+        </div>
+        <input type="email" asp-for="NewUser.Email"
+               class="input-field" />-->
+
+        @*Password*@
+        @*<span asp-validation-for="NewUser.Password"></span>*@
+        <div>
+            @*<label asp-for="NewUser.Password"></label>*@
+        </div>
+        @*<input type="password" asp-for="NewUser.Password"*@
+               class="input-field" />
+
+        @*<span asp-validation-for="NewUser.Password2"></span>*@
+        <div>
+            @*<label asp-for="NewUser.Password2"></label>*@
+        </div>
+        @*<input type="password" asp-for="NewUser.Password2"*@
+               class="input-field" />
+
+        <button type="submit" class="submit-button">
+            Register
+        </button>
+    @*</form>-->*@
+</div>

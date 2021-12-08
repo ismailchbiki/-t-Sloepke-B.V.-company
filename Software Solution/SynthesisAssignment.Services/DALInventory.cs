@@ -15,10 +15,6 @@ namespace SynthesisAssignment.Services
         List<Inventory> inventory = new List<Inventory>();
         ConnectionString SQLConnection = new ConnectionString();
 
-        /// <summary>
-        /// data manipulation depend on the object type
-        /// </summary>
-
         //add gear
         public bool AddGear(Inventory gear)
         {

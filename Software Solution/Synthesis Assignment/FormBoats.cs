@@ -17,13 +17,13 @@ namespace Synthesis_Assignment
     public partial class FormBoats : Form
     {
 
-        //id of the selected row
+        //To get the id of the selected row (in case of an update request)
         int id = FormInventory.BoatID;
 
         Inventory gear;
         InventoryAdministration gearManager;
         Validation validate;
-        GuidingMessages message;
+        MessageInventoryGuide message;
 
         public FormBoats()
         {
@@ -32,9 +32,10 @@ namespace Synthesis_Assignment
             gear = new Inventory();
             gearManager = new InventoryAdministration();
             validate = new Validation();
-            message = new GuidingMessages();
+            message = new MessageInventoryGuide();
         }
 
+        //form
         private void FormAddBoat_Load(object sender, EventArgs e)
         {
             CenterToScreen();
@@ -107,13 +108,13 @@ namespace Synthesis_Assignment
                 if (string.IsNullOrEmpty(textBoxCost.Text) || string.IsNullOrEmpty(textBoxDeposit.Text) ||
                     string.IsNullOrEmpty(textBoxQuantity.Text) || string.IsNullOrEmpty(textBoxRemark.Text))
                 {
-                    MessageBox.Show(message.EmptyFieldsError());
+                    MessageBox.Show(message.EmptyFieldsErrorMessage());
                 }
 
                 else if (validate.ContainLetters(textBoxCost.Text) || validate.ContainLetters(textBoxDeposit.Text)
                     || validate.ContainLetters(textBoxQuantity.Text))
                 {
-                    MessageBox.Show(message.GearFieldsError()) ;
+                    MessageBox.Show(message.LettersNotAllowedErrorMessage()) ;
                 }
 
                 else
@@ -126,11 +127,11 @@ namespace Synthesis_Assignment
                     // add boat
                     if (!gearManager.AddGear(gear))
                     {
-                        MessageBox.Show(message.UnsuccessfulSave());
+                        MessageBox.Show(message.UnsuccessfulAddingMessage());
                     }
                     else
                     {
-                        MessageBox.Show(message.SuccessfulSave());
+                        MessageBox.Show(message.SuccessfulAddingMessage());
                     }
                 }
             }
@@ -149,13 +150,13 @@ namespace Synthesis_Assignment
                 if (string.IsNullOrEmpty(textBoxCost.Text) || string.IsNullOrEmpty(textBoxDeposit.Text) ||
                     string.IsNullOrEmpty(textBoxQuantity.Text) || string.IsNullOrEmpty(textBoxRemark.Text))
                 {
-                    MessageBox.Show(message.EmptyFieldsError());
+                    MessageBox.Show(message.EmptyFieldsErrorMessage());
                 }
 
                 else if (validate.ContainLetters(textBoxCost.Text) || validate.ContainLetters(textBoxDeposit.Text)
                     || validate.ContainLetters(textBoxQuantity.Text))
                 {
-                    MessageBox.Show(message.GearFieldsError());
+                    MessageBox.Show(message.LettersNotAllowedErrorMessage());
                 }
 
                 else
@@ -168,11 +169,11 @@ namespace Synthesis_Assignment
                     //update boat
                     if (!gearManager.UpdateGear(id, (Boat)gear))
                     {
-                        MessageBox.Show(message.UnsuccessfulUpdate());
+                        MessageBox.Show(message.UnsuccessfulUpdateMessage());
                     }
                     else
                     {
-                        MessageBox.Show(message.SuccessfulUpdate());
+                        MessageBox.Show(message.UnsuccessfulUpdateMessage());
                         FormInventory inventoryForm = new FormInventory();
 
                         inventoryForm.Show();
