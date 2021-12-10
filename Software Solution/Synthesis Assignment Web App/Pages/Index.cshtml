@@ -1,5 +1,6 @@
 ﻿@page
 @model IndexModel
+@using SynthesisAssignment.Services;
 @{
     ViewData["Title"] = "Home page";
 }
@@ -32,14 +33,6 @@
 
 <div class="item-collection">
     <table>
-        <tr class="column-name-color">
-            <th>Boat type</th>
-            <th>Capacity</th>
-            <th>Cost</th>
-            <th>Deposit</th>
-            <th>Quantity</th>
-            <th>Remark</th>
-        </tr>
         <tr>
             <th>Boat type</th>
             <th>Capacity</th>
@@ -48,30 +41,16 @@
             <th>Quantity</th>
             <th>Remark</th>
         </tr>
-        <tr>
-            <th>Boat type</th>
-            <th>Capacity</th>
-            <th>Cost</th>
-            <th>Deposit</th>
-            <th>Quantity</th>
-            <th>Remark</th>
-        </tr>
-        <tr>
-            <th>Boat type</th>
-            <th>Capacity</th>
-            <th>Cost</th>
-            <th>Deposit</th>
-            <th>Quantity</th>
-            <th>Remark</th>
-        </tr>
-        <tr>
-            <th>Boat type</th>
-            <th>Capacity</th>
-            <th>Cost</th>
-            <th>Deposit</th>
-            <th>Quantity</th>
-            <th>Remark</th>
-        </tr>
+        @foreach (var b in Model.Gear.OfType<Boat>().ToList()){
+                <tr>
+                    <th>@b.BoatType</th>
+                    <th>@b.Capacity</th>
+                    <th>€@b.Cost</th>
+                    <th>€@b.Deposit</th>
+                    <th>@b.Quantity</th>
+                    <th>@b.Remark</th>
+                </tr>
+        }
     </table>
 </div>
 
@@ -81,41 +60,23 @@
 
 <div class="item-collection">
     <table>
-        <tr class="column-name-color">
-            <th>Boat type</th>
-            <th>Cost</th>
-            <th>Deposit</th>
-            <th>Quantity</th>
-            <th>Remark</th>
-        </tr>
         <tr>
-            <th>Boat type</th>
+            <th>Item type</th>
             <th>Cost</th>
             <th>Deposit</th>
             <th>Quantity</th>
             <th>Remark</th>
         </tr>
-        <tr>
-            <th>Boat type</th>
-            <th>Cost</th>
-            <th>Deposit</th>
-            <th>Quantity</th>
-            <th>Remark</th>
-        </tr>
-        <tr>
-            <th>Boat type</th>
-            <th>Cost</th>
-            <th>Deposit</th>
-            <th>Quantity</th>
-            <th>Remark</th>
-        </tr>
-        <tr>
-            <th>Boat type</th>
-            <th>Cost</th>
-            <th>Deposit</th>
-            <th>Quantity</th>
-            <th>Remark</th>
-        </tr>
+        @foreach (var item in Model.Gear.OfType<Item>().ToList())
+        {
+            <tr>
+                <th>@item.ItemType</th>
+                <th>€@item.Cost</th>
+                <th>€@item.Deposit</th>
+                <th>@item.Quantity</th>
+                <th>@item.Remark</th>
+            </tr>
+        }
     </table>
 </div>
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using SynthesisAssignment.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,13 @@ namespace Synthesis_Assignment_Web_App.Pages
             _logger = logger;
         }
 
+        InventoryAdministration manageGear = new InventoryAdministration();
+
+        public List<Inventory> Gear;
+
         public void OnGet()
         {
-
+            Gear = manageGear.AllGear();
         }
     }
 }

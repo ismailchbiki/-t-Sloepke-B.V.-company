@@ -9,4 +9,9 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SynthesisAssignment.Models\SynthesisAssignment.Models.csproj" />
+    <ProjectReference Include="..\SynthesisAssignment.MyClasses\SynthesisAssignment.MyClasses.csproj" />
+  </ItemGroup>
+
 </Project>
