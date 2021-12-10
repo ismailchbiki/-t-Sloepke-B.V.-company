@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-
+/*  Header  */
 .sticky {
     position: fixed;
     top: 0;
@@ -21,7 +21,7 @@ body {
 
 header {
     width: 100%;
-    background-color: #D2691E;
+    background-color: #ff6145c7;
     background-position: center;
     background-size: inherit;
     position: relative;
@@ -36,6 +36,68 @@ header {
     position: relative;
     filter: drop-shadow(120%) | brightness(120%);
 }
+
+
+.book-cover-img {
+    height: 70vh;
+    width: 100%;
+    background-image: url(/Synfiles/yacht-and-kayak.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    filter: drop-shadow(120%) | brightness(120%);
+}
+
+.book-filter {
+    background-color: coral;
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+    top: 470px;
+    position: inherit;
+    height: 80px;
+    border-radius: 15px;
+}
+
+.form-fields {
+    padding: 15px 15px 0;
+    justify-content: space-between;
+    display: flex;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 23px;
+    color: white;
+}
+
+#date {
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.filter-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 6px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+}
+
+    .filter-button:hover {
+        background-color: gold;
+        color: white;
+    }
+
 
 #menu {
     position: fixed;

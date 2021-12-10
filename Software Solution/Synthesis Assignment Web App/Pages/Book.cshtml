@@ -1,8 +1,29 @@
 ﻿@page
 @model Synthesis_Assignment_Web_App.Pages.BookModel
 @{
+    ViewData["Title"] = "Book";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Book now</h1>
+<!--  cover image  -->
+<div class="book-cover-img">
+    
+    <form class="book-filter" action="/" method="post">
+        <div class="form-fields">
+            <label for="date">Start date:</label>
+            <input type="date" id="date" placeholder="dd/MM/yyyy" name="date">
+            <label for="date">End date:</label>
+            <input type="date" id="date" placeholder="dd/MM/yyyy" name="date">
+            <button class="filter-button" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+<!------ Item1 - little Intro ------->
+<div class="item1-intro">
+    <h1>Your Boat Is Waiting</h1>
+    <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+        Fuga alias voluptatem magnam quos eligendi earum quia harum
+        quidem impedit itaque excepturi
+    </p>
 </div>

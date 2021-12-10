@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<!------ Item1 - Intro ------->
+<!------ Item1 - little Intro ------->
 <div class="item1-intro">
     <h1>Your Boat Is Waiting</h1>
     <p>
@@ -27,6 +27,7 @@
 </div>
 
 
+<!------ Item2 - BOATS ------->
 <div class="item1-intro">
     <h1 class="display-4">Our Boat Collection</h1>
 </div>
@@ -41,19 +42,22 @@
             <th>Quantity</th>
             <th>Remark</th>
         </tr>
-        @foreach (var b in Model.Gear.OfType<Boat>().ToList()){
-                <tr>
-                    <th>@b.BoatType</th>
-                    <th>@b.Capacity</th>
-                    <th>€@b.Cost</th>
-                    <th>€@b.Deposit</th>
-                    <th>@b.Quantity</th>
-                    <th>@b.Remark</th>
-                </tr>
+        @foreach (var b in Model.Gear.OfType<Boat>().ToList())
+        {
+            <tr>
+                <th>@b.BoatType</th>
+                <th>@b.Capacity</th>
+                <th>€@b.Cost</th>
+                <th>€@b.Deposit</th>
+                <th>@b.Quantity</th>
+                <th>@b.Remark</th>
+            </tr>
         }
     </table>
 </div>
 
+
+<!------ Item2 - ITEMS ------->
 <div class="item1-intro">
     <h1 class="display-4">Our Items Collection</h1>
 </div>

@@ -18,8 +18,7 @@ namespace Synthesis_Assignment_Web_App.Pages
             _logger = logger;
         }
 
-        InventoryAdministration manageGear = new InventoryAdministration();
-
+        private InventoryAdministration manageGear = new InventoryAdministration();
         public List<Inventory> Gear;
 
         public void OnGet()
