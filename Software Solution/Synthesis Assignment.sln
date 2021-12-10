@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SynthesisAssignment.Models"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SynthesisAssignment.MyClasses", "SynthesisAssignment.MyClasses\SynthesisAssignment.MyClasses.csproj", "{6DFD6F2F-1934-411A-B332-A595E6B7A028}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synthesis Assignment Web App", "Synthesis Assignment Web App\Synthesis Assignment Web App.csproj", "{6E7A11C6-0F68-4DF6-B5D1-1FC2FD4EACD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Synthesis Assignment Web App", "Synthesis Assignment Web App\Synthesis Assignment Web App.csproj", "{6E7A11C6-0F68-4DF6-B5D1-1FC2FD4EACD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
