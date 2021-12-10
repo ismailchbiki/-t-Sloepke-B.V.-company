@@ -3,8 +3,16 @@
     padding: 0;
 }
 
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+
+
 body {
-    background-color: aliceblue;
+    background-color: antiquewhite;
 }
 
 /* -------------------------  HEADER SECTION*/
@@ -13,26 +21,21 @@ body {
 
 header {
     width: 100%;
-    background-color: #99B4D1;
+    background-color: #D2691E;
     background-position: center;
     background-size: inherit;
     position: relative;
 }
 
-/*header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    height: 100%;
+.index-cover-img {
+    height: 70vh;
     width: 100%;
-    background-color: #99B4D1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: column;
-    text-align: center;
-}*/
+    background-image: url(/Synfiles/sailboat-sunset.jpeg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    filter: drop-shadow(120%) | brightness(120%);
+}
 
 #menu {
     position: fixed;
@@ -87,9 +90,9 @@ nav {
 
         /* Navigation bar links (text display) */
         .nav-links ul li a {
-            color: rgb(245, 237, 237);
+            color: floralwhite;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 20px;
         }
 
         /* Navigation bar links (texts' underline) */
@@ -118,18 +121,20 @@ nav {
     text-align: center;
 }
 
-    /* homepage Website: title (The Dutch Experience)*/
+    /* homepage Website: title*/
     .text-box h1 {
         font-size: 62px;
         margin: 3%;
+        display: block ruby;
+        font-style: oblique;
     }
 
     /* homepage Website: everything you need ... */
     .text-box p {
         margin: 10px 0px 40px;
-        font-size: 25px;
-        font: italic;
-        color: #fff;
+        font-size: 26px;
+        font-style: italic;
+        color: yellow;
     }
 
 /* Website responsiveness on other devices */
@@ -147,7 +152,7 @@ nav {
     .nav-links {
         /*navigation links background*/
         position: absolute;
-        background: #b43d3d;
+        background: dodgerblue;
         height: 100vh;
         width: 200px;
         top: 0;
@@ -167,7 +172,7 @@ nav {
 
 .container {
     height: 100%;
-    display: grid;
+    /*display: grid;*/
     justify-content: space-around;
     grid-template-rows: auto auto; /*Body's layout between the header and the footer*/
 }
@@ -176,10 +181,12 @@ nav {
     width: 80%;
     margin: auto;
     text-align: center;
-    padding: 30px;
+    padding: 2%;
 }
 
 h1 {
+    padding-top: 2%;
+    padding-bottom: 1%;
     font-size: 36px;
     font-weight: 600;
 }
@@ -215,10 +222,39 @@ h3 {
     margin: 10px 0;
 }
 
+
+
 .item2-highlights-intro-col:hover {
     box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
 }
 
+
+/*  Boat collection  */
+
+/*.column-name-color {
+    background-color: cornflowerblue;
+}*/
+
+.item-collection {
+
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+    .item-collection table {
+        border-collapse: collapse;
+        width: 100%;
+        background-color: cornflowerblue;
+    }
+
+    .item-collection th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    .item-collection tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
 
 /*--------------------------------------- ABOUT PAGE */
 
@@ -463,6 +499,7 @@ form{
     width: 100%;
     text-align: center;
     padding: 30px 0;
+    padding-top: 10%;
 }
 
     .footer h4 {

@@ -11,6 +11,7 @@ namespace Synthesis_Assignment_Web_App.Pages
     {
         public void OnGet()
         {
+            
         }
     }
 }

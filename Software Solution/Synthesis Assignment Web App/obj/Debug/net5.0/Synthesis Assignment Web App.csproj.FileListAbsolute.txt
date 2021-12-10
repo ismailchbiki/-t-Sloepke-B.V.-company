@@ -40,3 +40,4 @@
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment Web App\obj\Debug\net5.0\Razor\Pages\Book.cshtml.g.cs
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment Web App\obj\Debug\net5.0\Razor\Pages\MyReservation.cshtml.g.cs
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment Web App\obj\Debug\net5.0\Razor\Pages\Privacy.cshtml.g.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment Web App\bin\Debug\net5.0\Newtonsoft.Json.dll

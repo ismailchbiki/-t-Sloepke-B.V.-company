@@ -24,6 +24,13 @@ namespace Synthesis_Assignment_Web_App
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            //adding sessions to services
+            services.AddSession(option =>
+            {
+                //expiry time
+                option.IdleTimeout = TimeSpan.FromMinutes(20);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +52,7 @@ namespace Synthesis_Assignment_Web_App
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
