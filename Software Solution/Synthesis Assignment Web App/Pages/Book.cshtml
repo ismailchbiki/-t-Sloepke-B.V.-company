@@ -1,12 +1,17 @@
 ﻿@page
 @model Synthesis_Assignment_Web_App.Pages.BookModel
+@using SynthesisAssignment.Services;
 @{
     ViewData["Title"] = "Book";
 }
 
 <!--  cover image  -->
 <div class="book-cover-img">
-    
+
+    <div class="book-now-box">
+        <a href="" class="hero-btn">Book Now</a>
+    </div>
+
     <form class="book-filter" action="/" method="post">
         <div class="form-fields">
             <label for="date">Start date:</label>
@@ -18,12 +23,48 @@
     </form>
 </div>
 
+
 <!------ Item1 - little Intro ------->
 <div class="item1-intro">
-    <h1>Your Boat Is Waiting</h1>
-    <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-        Fuga alias voluptatem magnam quos eligendi earum quia harum
-        quidem impedit itaque excepturi
-    </p>
+    <h1>Choose a date and see availability</h1>
+</div>
+
+<div class="item-collection">
+    <table>
+        <tr>
+            <th>Boat type</th>
+            <th>Quantity</th>
+        </tr>
+        @foreach (var b in Model.Gear.OfType<Boat>().ToList())
+        {
+            <tr>
+                <th>@b.BoatType</th>
+                <th>@b.Quantity</th>
+            </tr>
+        }
+    </table>
+</div>
+
+<!------ Item1 - Booking form ------->
+<div class="item1-intro">
+    <h1>Fill in your preferences</h1>
+</div>
+
+<div class="booking-form">
+    <form action="/action_page.php" method="post">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+        <label for="country">Country</label>
+        <select id="country" name="country">
+            <option value="australia">Australia</option>
+            <option value="canada">Canada</option>
+            <option value="usa">USA</option>
+        </select>
+
+        <input type="submit" value="Submit">
+    </form>
 </div>
