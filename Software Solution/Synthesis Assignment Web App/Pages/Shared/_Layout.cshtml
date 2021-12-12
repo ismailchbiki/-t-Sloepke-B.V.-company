@@ -41,12 +41,7 @@
         </main>
     </div>
 
-    @*<footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2021 - Synthesis_Assignment_Web_App - <a asp-area="" asp-page="/Privacy">Privacy</a>
-            </div>
-        </footer>*@
-
+    <!--  footer  -->
     <footer class="footer">
         <div class="container">
             <h4>About Us</h4>
@@ -107,4 +102,49 @@
             header.classList.remove("sticky");
         }
     }
+
+    //duplicate input fields
+    //$(document).ready(function () {
+    //    var i = 1;
+    //    $('#add').click(function () {
+    //        i++;
+    //        $('#dynamic_field').append('<tr id="row'+i+'">< td > <input type="text" name="name[]" id="name" placeholder="Enter Name" class="form-control name_list" value="" /></td ><td><button name="remove" id="'+i+'">X</button></td></tr >');
+    //    });
+    //    $(document).on('click', '.btn_remove', function () {
+    //        var button_id = $(this).attr("id");
+    //        $("#row"+button_id+"").remove();
+    //    });
+    //});
+
+    //add to cart
+    //var addItemId = 0;
+    //function addToCart(item) {
+    //    addItemId += 1;
+    //    var selectedItem = document.createElement('div');
+    //    selectedItem.classList.add('cartimg');
+    //    selectedItem.setAttribute('id', addItemId);
+
+    //    //img
+    //    var img = document.createElement('img');
+    //    img.setAttribute('scr', item.children[0].currentScr);
+
+    //    //item title
+    //    var title = document.createElement('div');
+    //    title.innerText = item.children[1].innerText;
+
+    //    //quantity
+    //    var label = document.createElement('div');
+    //    label.innerText = item.children[2].children[0].innerText;
+
+    //    var select = document.createElement('span');
+    //    select.innerText = item.children[2].children[1].value;
+
+    //    label.append(select);
+
+    //    var cartItems = document.getElementById('item-title');
+    //    //selectedItem.append(img);
+    //    selectedItem.append(title);
+    //    selectedItem.append(label);
+    //    cartItems.append(selectedItem);
+    //}
 </script>

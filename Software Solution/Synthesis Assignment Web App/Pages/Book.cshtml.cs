@@ -5,17 +5,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SynthesisAssignment.Models;
+using SynthesisAssignment.Services;
 
 namespace Synthesis_Assignment_Web_App.Pages
 {
     public class BookModel : PageModel
     {
-        private InventoryAdministration manageGear = new InventoryAdministration();
-        public List<Inventory> Gear;
+        [BindProperty]
+        public Boat Boat { get; set; }
+
+        [BindProperty]
+        public Item Item { get; set; }
 
         public void OnGet()
         {
-            Gear = manageGear.AllGear();
+            
         }
     }
 }

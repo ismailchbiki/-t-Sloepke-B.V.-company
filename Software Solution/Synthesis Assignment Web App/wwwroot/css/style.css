@@ -37,7 +37,7 @@ header {
     filter: drop-shadow(120%) | brightness(120%);
 }
 
-
+/*  BOOK Page  */
 .book-cover-img {
     height: 70vh;
     width: 100%;
@@ -111,6 +111,55 @@ header {
     z-index: 1000;
     display: none;
 }
+
+/*  ADD TO CART  */
+/*.container-choose {
+    left: 200px;
+    position: absolute;
+    width: max-content;
+}
+
+.card-choose{
+    border: 1px solid black;
+    width: max-content;
+    text-align: center;
+    display: inline-block;
+    margin: 5px;
+}
+
+.item-title{
+    font-weight: bold;
+    margin: 20px;
+}
+
+.select-qty {
+    width: 60%;
+    padding: 5px 20px;
+    margin: 15px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}*/
+/*
+.btn-cart{
+    border: 2px, solid green;
+    background: white;
+    color: black;
+    font-weight: bold;
+    margin: 20px;
+    padding: 5px 10px;
+}
+
+.cart{
+    width: 250px;
+    float: right;
+    text-align: center;
+    border: 1px solid black;
+    overflow-y: scroll;
+    height: 100%;
+}*/
+
 
 /* page title on the header (on other pages)*/
 
@@ -240,12 +289,29 @@ nav {
 
 /*------ Body (Container) -------*/
 
+.boats-title {
+    margin-left: 30%;
+    color: cornflowerblue;
+    font-style: oblique;
+    font-size: 30px;
+    margin-bottom: 0%;
+}
+
+.select-btn {
+    color: black;
+    margin-left: 30%;
+    margin-right: 30%;
+    width: 100px;
+    height: 35px;
+    background-color: lightskyblue;
+    border-radius: 7px;
+    margin-top: 10px;
+}
 
 .container {
     height: 100%;
-    /*display: grid;*/
     justify-content: space-around;
-    grid-template-rows: auto auto; /*Body's layout between the header and the footer*/
+    grid-template-rows: auto auto;
 }
 
 .item1-intro {
@@ -278,13 +344,13 @@ p {
 }
 
 .item2-highlights-intro-col {
-    flex-basis: 31%;
-    background: #fff3f3;
+    background: yellowgreen;
     border-radius: 10px;
     margin-bottom: 5%;
     padding: 20px 12px;
     box-sizing: border-box;
     transition: 0.5s;
+    width: 18%;
 }
 
 h3 {
@@ -592,13 +658,13 @@ form{
 
 /*Content table*/
 
+
+
 .blog-content {
-    margin-top: 5%;
-    display: block;
+    margin-top: 3%;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 60%;
 }
 
 .post-upload {
@@ -743,23 +809,24 @@ th {
 /*  BOOKING FORM  */
 
 .booking-form {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
-.booking-form input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+    .booking-form input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: beige;
+    }
 
 .booking-form input[type=submit] {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: cornflowerblue;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;

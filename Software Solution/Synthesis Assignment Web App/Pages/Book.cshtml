@@ -1,6 +1,8 @@
 ﻿@page
 @model Synthesis_Assignment_Web_App.Pages.BookModel
 @using SynthesisAssignment.Services;
+@using SynthesisAssignment.Models;
+@using SynthesisAssignment.Models.Enums;
 @{
     ViewData["Title"] = "Book";
 }
@@ -8,9 +10,9 @@
 <!--  cover image  -->
 <div class="book-cover-img">
 
-    <div class="book-now-box">
-        <a href="" class="hero-btn">Book Now</a>
-    </div>
+    @*<div class="book-now-box">
+            <a href="" class="hero-btn">Book Now</a>
+        </div>*@
 
     <form class="book-filter" action="/" method="post">
         <div class="form-fields">
@@ -18,53 +20,69 @@
             <input type="date" id="date" placeholder="dd/MM/yyyy" name="date">
             <label for="date">End date:</label>
             <input type="date" id="date" placeholder="dd/MM/yyyy" name="date">
-            <button class="filter-button" type="submit">Submit</button>
+            <button class="filter-button" type="submit">Check Availability</button>
         </div>
     </form>
 </div>
 
 
-<!------ Item1 - little Intro ------->
-<div class="item1-intro">
-    <h1>Choose a date and see availability</h1>
-</div>
-
-<div class="item-collection">
-    <table>
-        <tr>
-            <th>Boat type</th>
-            <th>Quantity</th>
-        </tr>
-        @foreach (var b in Model.Gear.OfType<Boat>().ToList())
-        {
-            <tr>
-                <th>@b.BoatType</th>
-                <th>@b.Quantity</th>
-            </tr>
-        }
-    </table>
-</div>
-
 <!------ Item1 - Booking form ------->
 <div class="item1-intro">
-    <h1>Fill in your preferences</h1>
+    <h1>Select your preferences and book</h1>
 </div>
 
-<div class="booking-form">
-    <form action="/action_page.php" method="post">
-        <label for="fname">First Name</label>
-        <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
-        <label for="lname">Last Name</label>
-        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+<!--  Print all boats  -->
+<h2 class="boats-title">Our Boats</h2>
 
-        <label for="country">Country</label>
-        <select id="country" name="country">
-            <option value="australia">Australia</option>
-            <option value="canada">Canada</option>
-            <option value="usa">USA</option>
+<div class="post-col">
+    <!-- Refers to the whole form combination-->
+    <form class="booking-form" method="post">
+
+        <!--  Boat type  -->
+        <span class="dataV" asp-validation-for="Boat.BoatType"></span>
+        <select asp-for="Boat.BoatType" asp-items="Html.GetEnumSelectList<BOATTYPE>()">
         </select>
 
-        <input type="submit" value="Submit">
+        <!--  item type  -->
+        <span class="dataV" asp-validation-for="Item.ItemType"></span>
+        <select asp-for="Item.ItemType" asp-items="Html.GetEnumSelectList<ITEMTYPE>()">
+        </select>
+
+        <!--  Capacity  -->
+        <span class="dataV" asp-validation-for="Boat.Capacity"></span>
+        <select asp-for="Boat.Capacity" asp-items="Html.GetEnumSelectList<CAPACITY>()">
+        </select>
+
+        <!--  Duration  -->
+        <select id="Select1">
+            <option>2</option>
+            <option>4</option>
+            <option>6</option>
+            <option>8</option>
+            <option>10</option>
+            <option>24</option>
+        </select>
+
+        <!--  start date  -->
+        <label for="date">Start date:</label>
+        <input type="date" id="date" placeholder="dd/MM/yyyy" name="date">
+
+        <!--  end date  -->
+        <label for="date">End date:</label>
+        <input type="date" id="date" placeholder="dd/MM/yyyy" name="date">
+
+        <!--  Quantity  -->
+        <span class="dataV" asp-validation-for="Boat.Quantity"></span>
+        <input type="text" asp-for="Boat.Quantity"
+               placeholder="Quantity" />
+
+        <!--  Location (create the object and bind it later)  -->
+        <span class="dataV"></span>
+        <input type="text"
+               placeholder="Location" />
+
+        <!--  Submit button  -->
+        <input id="Submit1" type="submit" value="Book" />
     </form>
 </div>
