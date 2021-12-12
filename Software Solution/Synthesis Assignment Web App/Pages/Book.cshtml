@@ -3,6 +3,7 @@
 @using SynthesisAssignment.Services;
 @using SynthesisAssignment.Models;
 @using SynthesisAssignment.Models.Enums;
+@using SynthesisAssignment.MyClasses.Enums;
 @{
     ViewData["Title"] = "Book";
 }
@@ -32,8 +33,8 @@
 </div>
 
 
-<!--  Print all boats  -->
-<h2 class="boats-title">Our Boats</h2>
+<!--  Title  -->
+<!--  <h2 class="boats-title">Our Collection</h2>  -->
 
 <div class="post-col">
     <!-- Refers to the whole form combination-->
@@ -44,24 +45,23 @@
         <select asp-for="Boat.BoatType" asp-items="Html.GetEnumSelectList<BOATTYPE>()">
         </select>
 
+        <!--  boat Quantity  -->
+        <span class="dataV" asp-validation-for="Boat.Quantity"></span>
+        <input required type="text" asp-for="Boat.Quantity"
+               placeholder="Boat Quantity" />
+
         <!--  item type  -->
         <span class="dataV" asp-validation-for="Item.ItemType"></span>
         <select asp-for="Item.ItemType" asp-items="Html.GetEnumSelectList<ITEMTYPE>()">
         </select>
 
-        <!--  Capacity  -->
-        <span class="dataV" asp-validation-for="Boat.Capacity"></span>
-        <select asp-for="Boat.Capacity" asp-items="Html.GetEnumSelectList<CAPACITY>()">
-        </select>
+        <!--  item Quantity  -->
+        <span class="dataV" asp-validation-for="Item.Quantity"></span>
+        <input required type="text" asp-for="Item.Quantity"
+               placeholder="Item Quantity" />
 
         <!--  Duration  -->
-        <select id="Select1">
-            <option>2</option>
-            <option>4</option>
-            <option>6</option>
-            <option>8</option>
-            <option>10</option>
-            <option>24</option>
+        <select asp-for="Quote.Duration" asp-items="new SelectList(Model.GenerateHours())">
         </select>
 
         <!--  start date  -->
@@ -72,15 +72,10 @@
         <label for="date">End date:</label>
         <input type="date" id="date" placeholder="dd/MM/yyyy" name="date">
 
-        <!--  Quantity  -->
-        <span class="dataV" asp-validation-for="Boat.Quantity"></span>
-        <input type="text" asp-for="Boat.Quantity"
-               placeholder="Quantity" />
-
-        <!--  Location (create the object and bind it later)  -->
-        <span class="dataV"></span>
-        <input type="text"
-               placeholder="Location" />
+        <!--  item type  -->
+        <span class="dataV" asp-validation-for="Quote.Location"></span>
+        <select asp-for="Quote.Location" asp-items="Html.GetEnumSelectList<LOCATION>()">
+        </select>
 
         <!--  Submit button  -->
         <input id="Submit1" type="submit" value="Book" />
