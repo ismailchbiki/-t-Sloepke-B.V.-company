@@ -19,8 +19,16 @@ namespace SynthesisAssignment.Services
 
         }
 
-        public Item(ITEMTYPE item, double cost, double deposit, int qnty, string remamrk)
-            : base(cost, deposit, qnty, remamrk)
+        //inventory management
+        public Item(ITEMTYPE item, double cost, double deposit, int qty, string remark) 
+            : base(cost, deposit, qty, remark)
+        {
+            this.type = item;
+        }
+
+        //for customers' reservations
+        public Item(ITEMTYPE item, double cost, double deposit, int qty, string remark, int duration) 
+            : base(cost, deposit, qty, remark, duration)
         {
             this.type = item;
         }

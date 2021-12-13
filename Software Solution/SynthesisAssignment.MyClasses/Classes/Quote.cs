@@ -16,7 +16,7 @@ namespace SynthesisAssignment.MyClasses.Classes
 
         //location and duration
         private LOCATION location;
-        private int duration;
+        //private int duration;
 
         //total price of all rented items
         private double totalPrice;
@@ -35,7 +35,7 @@ namespace SynthesisAssignment.MyClasses.Classes
 
         }
 
-        public Quote(int refNumber, LOCATION location, int duration, double totalPrice, DateTime date, DateTime startDate,
+        public Quote(int refNumber, LOCATION location, double totalPrice, DateTime date, DateTime startDate,
             DateTime endDate, DateTime startTime, DateTime endTime)
         {
             this.refNumber = refNumber;
@@ -45,7 +45,7 @@ namespace SynthesisAssignment.MyClasses.Classes
             this.endDate = endDate;
             this.startTime = startTime;
             this.endTime = endTime;
-            this.duration = duration;
+            //this.duration = duration;
             this.totalPrice = totalPrice;
         }
 
@@ -55,7 +55,7 @@ namespace SynthesisAssignment.MyClasses.Classes
             get { return this.location.ToString(); }
             set { location = (LOCATION)Enum.Parse(typeof(LOCATION), value); }
         }
-        public int Duration { get { return this.duration; } set { duration = value; } }
+        //public int Duration { get { return this.duration; } set { duration = value; } }
         public double TotalPrice { get { return this.totalPrice; } set { totalPrice = value; } }
         public DateTime Date { get { return this.date; } set { date = value; } }
         

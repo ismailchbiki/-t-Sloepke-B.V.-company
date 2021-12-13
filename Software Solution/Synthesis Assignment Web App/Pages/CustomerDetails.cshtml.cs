@@ -16,7 +16,7 @@ namespace Synthesis_Assignment_Web_App.Pages
         [BindProperty]
         public Customer Customer { get; set; }
 
-        QuoteAdministration manage = new QuoteAdministration();
+        QuoteAdministration manageQuote = new QuoteAdministration();
 
         public void OnGet()
         {
@@ -25,12 +25,16 @@ namespace Synthesis_Assignment_Web_App.Pages
 
         public void OnPost()
         {
-            
+            if (!ModelState.IsValid)
+            {
+                Page();
+            }
+
             Boat boat = HttpContext.Session.GetObjectFromJson<Boat>("BoatDescription");
             Item item = HttpContext.Session.GetObjectFromJson<Item>("ItemDescription");
             Quote quote = HttpContext.Session.GetObjectFromJson<Quote>("Quote");
 
-            manage = new QuoteAdministration(Customer, boat, item, quote);
+            //manageQuote.AddQuote(Customer, boat, item, quote);
         }
     }
 }

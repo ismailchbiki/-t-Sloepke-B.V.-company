@@ -29,11 +29,8 @@ namespace Synthesis_Assignment_Web_App.Pages
             return duration;
         }
 
-        //ask about how to cast Gear in the view page (with asp-for)
-        Inventory Gear;
-
-        public BoatDescription Boat { get; set; }
-        public ItemDescription Item { get; set; }
+        public Boat Boat { get; set; }
+        public Item Item { get; set; }
         public Quote Quote { get; set; }
 
         public void OnGet()
@@ -41,20 +38,19 @@ namespace Synthesis_Assignment_Web_App.Pages
 
         }
 
-        public IActionResult OnPost()
+        public void OnPost()
         {
 
             if (!ModelState.IsValid)
             {
-                return Page();
+                Page();
             }
-
 
             HttpContext.Session.SetObjectAsJson("BoatDescription", Boat);
             HttpContext.Session.SetObjectAsJson("ItemDescription", Item);
             HttpContext.Session.SetObjectAsJson("Quote", Quote);
 
-            return RedirectToPage("./CustomerDetails");
+            RedirectToPage("./CustomerDetails");
         }
     }
 }

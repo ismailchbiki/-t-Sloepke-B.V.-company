@@ -90,5 +90,12 @@ namespace SynthesisAssignment.Services
 
             return false;
         }
+
+        public bool AddQuote(Customer rentor, Boat boat, Item item, Quote quote)
+        {
+
+
+            return false;
+        }
     }
 }

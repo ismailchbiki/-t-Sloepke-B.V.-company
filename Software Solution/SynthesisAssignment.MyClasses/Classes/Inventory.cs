@@ -16,13 +16,17 @@ namespace SynthesisAssignment.Models
         private int qty;
         private string remark;
 
+        //for renting purposes
+        private int duration;
+
         //constructors
         public Inventory()
         {
 
         }
 
-        public Inventory(double cost, double deposit, int qty, string remark)
+        //for inventory management
+        protected Inventory(double cost, double deposit, int qty, string remark)
         {
             this.cost = cost;
             this.deposit = deposit;
@@ -30,15 +34,29 @@ namespace SynthesisAssignment.Models
             this.remark = remark;
         }
 
+        //for customers' reservations
+        protected Inventory(double cost, double deposit, int qty, string remark, int duration)
+        {
+            this.cost = cost;
+            this.deposit = deposit;
+            this.qty = qty;
+            this.remark = remark;
+            this.duration = duration;
+        }
+
         //Properties
         public int ID { get { return this.id; } set { this.id = value;  } }
         public double Cost { get { return this.cost; } set { cost = value; } }
         [Required]
         public double Deposit { get { return this.deposit; } set { deposit = value; } }
-
         [Required(ErrorMessage = "Please provide a number")]
         [RegularExpression("^[0-9]*$", ErrorMessage = "Please provide a valid number")]
         public int Quantity { get { return this.qty; } set { qty = value; } }
         public string Remark { get { return this.remark; } set { remark = value; } }
+
+        //Property for renting purposes
+        public int Duration { get { return this.duration; } set { duration = value; } }
+        public double PriceSemiTotal { get; set; }
+
     }
 }

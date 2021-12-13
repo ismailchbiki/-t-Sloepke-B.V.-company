@@ -11,22 +11,29 @@ namespace SynthesisAssignment.Models.Administration
     public class QuoteAdministration
     {
 
-        Customer rentor;
-        Boat boat;
-        Item item;
-        Quote quote;
+        //to fetch inventory details from the DB
+        InventoryAdministration manageGear = new InventoryAdministration();
 
-        public QuoteAdministration()
+        //to insert customers' reservations in the DB
+        DALQuote dalQuote = new DALQuote();
+
+        //methods
+        public bool AddQuote(Customer rentor, Boat boat, Item item, Quote quote)
         {
 
-        }
+            boat.Cost = manageGear.GetGearByType(boat).Cost;
+            item.Cost = manageGear.GetGearByType(item).Cost;
 
-        public QuoteAdministration(Customer rentor, Boat boat, Item item, Quote quote)
-        {
-            this.rentor = rentor;
-            this.boat = boat;
-            this.item = item;
-            this.quote = quote;
+            //Convert.ToDouble(this.Cost) * (this.duration / 2) * this.Quantity;
+
+
+            boat.PriceSemiTotal = boat.Cost * (boat.Duration / 2) * boat.Quantity;
+            item.PriceSemiTotal = item.Cost * (item.Duration / 2) * item.Quantity;
+
+
+            dalQuote.AddQuote(rentor, boat, item, quote);
+
+            return false;
         }
     }
 }

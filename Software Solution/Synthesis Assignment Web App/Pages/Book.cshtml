@@ -41,30 +41,41 @@
     <form class="booking-form" method="post">
 
         <!--  Boat type  -->
+        <h2 class="boats-title">Choose a boat</h2>
         <span class="dataV" asp-validation-for="Boat.BoatType"></span>
         <select asp-for="Boat.BoatType" asp-items="Html.GetEnumSelectList<BOATTYPE>()">
         </select>
 
         <!--  boat Quantity  -->
+        <h2 class="boats-title">Choose quantity</h2>
         <span class="dataV" asp-validation-for="Boat.Quantity"></span>
         <input type="text" asp-for="Boat.Quantity"
                placeholder="Boat Quantity" />
 
+        <!--  Boat Duration  -->
+        <h2 class="boats-title">Choose duration</h2>
+        <select asp-for="Boat.Duration" asp-items="new SelectList(Model.GenerateHours())">
+        </select>
+
         <!--  item type  -->
+        <h2 class="boats-title">Choose item</h2>
         <span class="dataV" asp-validation-for="Item.ItemType"></span>
         <select asp-for="Item.ItemType" asp-items="Html.GetEnumSelectList<ITEMTYPE>()">
         </select>
 
         <!--  item Quantity  -->
+        <h2 class="boats-title">Choose quantity</h2>
         <span class="dataV" asp-validation-for="Item.Quantity"></span>
         <input type="text" asp-for="Item.Quantity"
                placeholder="Item Quantity" />
 
-        <!--  Duration  -->
-        <select asp-for="Quote.Duration" asp-items="new SelectList(Model.GenerateHours())">
+        <!--  Item Duration  -->
+        <h2 class="boats-title">Choose duration</h2>
+        <select asp-for="Item.Duration" asp-items="new SelectList(Model.GenerateHours())">
         </select>
 
         <!--  start date  -->
+        <h2 class="boats-title">Choose start and end dates</h2>
         <span class="dataV" asp-validation-for="Quote.StartDate"></span>
         <label for="date">Start date:</label>
         <input required asp-for="Quote.StartDate" type="date" id="date" placeholder="dd/MM/yyyy" name="date">
@@ -74,12 +85,13 @@
         <label for="date">End date:</label>
         <input required asp-for="Quote.EndDate" type="date" id="date" placeholder="dd/MM/yyyy" name="date">
 
-        <!--  item type  -->
+        <!--  location  -->
+        <h2 class="boats-title">Choose location</h2>
         <span class="dataV" asp-validation-for="Quote.Location"></span>
         <select asp-for="Quote.Location" asp-items="Html.GetEnumSelectList<LOCATION>()">
         </select>
 
         <!--  Submit button  -->
-        <input id="Submit1" type="submit" value="Book" />
+        <input id="Submit1" type="submit" value="Add My Selections" />
     </form>
 </div>
