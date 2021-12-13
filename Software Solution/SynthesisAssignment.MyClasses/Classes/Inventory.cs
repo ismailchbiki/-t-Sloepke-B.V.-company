@@ -33,6 +33,7 @@ namespace SynthesisAssignment.Models
         //Properties
         public int ID { get { return this.id; } set { this.id = value;  } }
         public double Cost { get { return this.cost; } set { cost = value; } }
+        [Required]
         public double Deposit { get { return this.deposit; } set { deposit = value; } }
 
         [Required(ErrorMessage = "Please provide a number")]

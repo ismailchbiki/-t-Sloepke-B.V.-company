@@ -2,3 +2,52 @@
 @model Synthesis_Assignment_Web_App.Pages.CustomerDetailsModel
 @{
 }
+
+
+
+<!------ Item1 - Booking form ------->
+<div class="item1-intro">
+    <h1>Please enter your contact details</h1>
+</div>
+
+
+<!--  Title  -->
+<!--  <h2 class="boats-title">Our Collection</h2>  -->
+
+<div class="post-col">
+    <!-- Refers to the whole form combination-->
+    <form class="booking-form" method="post">
+
+        <!--  Customer details  -->
+        <span class="dataV" asp-validation-for="Customer.FirstName"></span>
+        <input type="text" asp-for="Customer.FirstName"
+               placeholder="Enter firstname" />
+
+        <span class="dataV" asp-validation-for="Customer.LastName"></span>
+        <input type="text" asp-for="Customer.LastName"
+               placeholder="Enter lastname" />
+
+        <span class="dataV" asp-validation-for="Customer.Address"></span>
+        <input type="text" asp-for="Customer.Address"
+               placeholder="Enter address" />
+
+        <span class="dataV" asp-validation-for="Customer.Zipcode"></span>
+        <input type="text" asp-for="Customer.Zipcode"
+               placeholder="Enter Zipcode" />
+
+        <span class="dataV" asp-validation-for="Customer.City"></span>
+        <input type="text" asp-for="Customer.City"
+               placeholder="Enter city" />
+
+        <span class="dataV" asp-validation-for="Customer.Phone"></span>
+        <input type="text" asp-for="Customer.Phone"
+               placeholder="Enter phone" />
+
+        <span class="dataV" asp-validation-for="Customer.Email"></span>
+        <input type="text" asp-for="Customer.Email"
+               placeholder="Enter email" />
+
+        <!--  Submit button  -->
+        <input id="Submit1" type="submit" value="Confirm Booking" />
+    </form>
+</div>

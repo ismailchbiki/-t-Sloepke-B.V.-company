@@ -47,7 +47,7 @@
 
         <!--  boat Quantity  -->
         <span class="dataV" asp-validation-for="Boat.Quantity"></span>
-        <input required type="text" asp-for="Boat.Quantity"
+        <input type="text" asp-for="Boat.Quantity"
                placeholder="Boat Quantity" />
 
         <!--  item type  -->
@@ -57,7 +57,7 @@
 
         <!--  item Quantity  -->
         <span class="dataV" asp-validation-for="Item.Quantity"></span>
-        <input required type="text" asp-for="Item.Quantity"
+        <input type="text" asp-for="Item.Quantity"
                placeholder="Item Quantity" />
 
         <!--  Duration  -->
@@ -65,12 +65,14 @@
         </select>
 
         <!--  start date  -->
+        <span class="dataV" asp-validation-for="Quote.StartDate"></span>
         <label for="date">Start date:</label>
-        <input type="date" id="date" placeholder="dd/MM/yyyy" name="date">
+        <input required asp-for="Quote.StartDate" type="date" id="date" placeholder="dd/MM/yyyy" name="date">
 
         <!--  end date  -->
+        <span class="dataV" asp-validation-for="Quote.EndDate"></span>
         <label for="date">End date:</label>
-        <input type="date" id="date" placeholder="dd/MM/yyyy" name="date">
+        <input required asp-for="Quote.EndDate" type="date" id="date" placeholder="dd/MM/yyyy" name="date">
 
         <!--  item type  -->
         <span class="dataV" asp-validation-for="Quote.Location"></span>

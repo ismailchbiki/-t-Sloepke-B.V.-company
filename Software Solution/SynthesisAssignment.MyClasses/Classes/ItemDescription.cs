@@ -1,4 +1,5 @@
 ﻿using SynthesisAssignment.Models;
+using SynthesisAssignment.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,47 +8,33 @@ using System.Threading.Tasks;
 
 namespace SynthesisAssignment.MyClasses.Classes
 {
-    public class ItemDescription
+    public class ItemDescription : Item
     {
-        private int id;
-
-        private int quantity;
         private int duration;
+        private double priceSemiTotal;
 
-        //get items cost from inventory table
-        private Inventory unitPrice;
-
-        //calculate price per item order
-        private double price;
-
+        //constructors
         public ItemDescription()
         {
 
         }
-
-        public ItemDescription(int id, int quantity, int duration, Inventory unitPrice, double price)
+        public ItemDescription(int duration, double priceSemi, ITEMTYPE item, double cost, double deposit, int qnty, string remamrk) 
+            : base(item, cost, deposit, qnty, remamrk)
         {
-            this.id = id;
-            this.quantity = quantity;
             this.duration = duration;
-            this.unitPrice = unitPrice;
-            this.price = price;
+            this.priceSemiTotal = priceSemi;
         }
 
         //properties
-        public int ID { get { return this.id; } set { this.id = value; } }
-        public int Quantity { get { return this.quantity; } set { quantity = value; } }
         public int Duration { get { return this.duration; } set { duration = value; } }
-        public Inventory UnitPrice { get { return this.unitPrice; } set { unitPrice = value; } }
-
-        //calculate price per item in order
-        public double Price
+        public double PriceSemiTotal
         {
-            get { return this.price; }
+            get { return this.priceSemiTotal; }
 
             set
             {
-                price = Convert.ToDouble(this.unitPrice) * (this.duration / 2) * this.quantity;
+                //calculate price per item in order
+                priceSemiTotal = Convert.ToDouble(this.Cost) * (this.duration / 2) * this.Quantity;
             }
         }
     }

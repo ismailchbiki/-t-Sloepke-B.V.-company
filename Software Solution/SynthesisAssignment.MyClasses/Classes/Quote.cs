@@ -14,11 +14,17 @@ namespace SynthesisAssignment.MyClasses.Classes
         //quote ID
         private int refNumber;
 
-        //quote details
+        //location and duration
         private LOCATION location;
         private int duration;
+
+        //total price of all rented items
         private double totalPrice;
+
+        //date of made of quote
         private DateTime date;
+
+        //start and end date for the renting
         private DateTime startDate;
         private DateTime endDate;
         private DateTime startTime;
@@ -29,11 +35,11 @@ namespace SynthesisAssignment.MyClasses.Classes
 
         }
 
-        public Quote(int refNumber, string location, int duration, double totalPrice, DateTime date, DateTime startDate,
+        public Quote(int refNumber, LOCATION location, int duration, double totalPrice, DateTime date, DateTime startDate,
             DateTime endDate, DateTime startTime, DateTime endTime)
         {
             this.refNumber = refNumber;
-            Location = location;
+            this.location = location;
             this.date = date;
             this.startDate = startDate;
             this.endDate = endDate;
@@ -49,8 +55,8 @@ namespace SynthesisAssignment.MyClasses.Classes
             get { return this.location.ToString(); }
             set { location = (LOCATION)Enum.Parse(typeof(LOCATION), value); }
         }
-        public int Duration { get; set; }
-        public double TotalPrice { get; set; }
+        public int Duration { get { return this.duration; } set { duration = value; } }
+        public double TotalPrice { get { return this.totalPrice; } set { totalPrice = value; } }
         public DateTime Date { get { return this.date; } set { date = value; } }
         
         [Required(ErrorMessage = "Please provide a date")]
