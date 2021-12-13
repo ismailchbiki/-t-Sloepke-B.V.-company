@@ -38,19 +38,21 @@ namespace Synthesis_Assignment_Web_App.Pages
 
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
 
             if (!ModelState.IsValid)
             {
-                Page();
+                return Page();
             }
+
+            Quote.DateOfMade = DateTime.Now;
 
             HttpContext.Session.SetObjectAsJson("BoatDescription", Boat);
             HttpContext.Session.SetObjectAsJson("ItemDescription", Item);
             HttpContext.Session.SetObjectAsJson("Quote", Quote);
 
-            RedirectToPage("./CustomerDetails");
+            return RedirectToPage("CustomerDetails");
         }
     }
 }

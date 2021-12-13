@@ -14,15 +14,14 @@ namespace SynthesisAssignment.MyClasses.Classes
         //quote ID
         private int refNumber;
 
-        //location and duration
+        //location
         private LOCATION location;
-        //private int duration;
 
         //total price of all rented items
         private double totalPrice;
 
         //date of made of quote
-        private DateTime date;
+        private DateTime dateOfMade;
 
         //start and end date for the renting
         private DateTime startDate;
@@ -40,12 +39,11 @@ namespace SynthesisAssignment.MyClasses.Classes
         {
             this.refNumber = refNumber;
             this.location = location;
-            this.date = date;
+            this.dateOfMade = date;
             this.startDate = startDate;
             this.endDate = endDate;
             this.startTime = startTime;
             this.endTime = endTime;
-            //this.duration = duration;
             this.totalPrice = totalPrice;
         }
 
@@ -57,11 +55,9 @@ namespace SynthesisAssignment.MyClasses.Classes
         }
         //public int Duration { get { return this.duration; } set { duration = value; } }
         public double TotalPrice { get { return this.totalPrice; } set { totalPrice = value; } }
-        public DateTime Date { get { return this.date; } set { date = value; } }
-        
+        public DateTime DateOfMade { get { return this.dateOfMade; } set { dateOfMade = value; } }
         [Required(ErrorMessage = "Please provide a date")]
         public DateTime StartDate { get { return this.startDate; } set { startDate = value; } }
-        
         [Required(ErrorMessage = "Please provide a date")]
         public DateTime EndDate { get { return this.endDate; } set { endDate = value; } }
         public DateTime StartTime { get { return this.startTime; } set { startTime = value; } }

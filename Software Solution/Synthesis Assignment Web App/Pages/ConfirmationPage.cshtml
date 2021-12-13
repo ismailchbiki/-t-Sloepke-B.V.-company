@@ -48,11 +48,9 @@
     </span>
 
     <h2>Please sign and confirm booking</h2>
-    <form class="checkbox-booking" method="post" action="/">
+    <form class="checkbox-booking" method="post">
         Checkbox: <input type="checkbox" id="myCheck" name="test" required>
-                  <button class="submit-booking"  type="submit">
-                      Confirm Bokking
-                  </button>
+        <input class="submit-booking" type="submit" asp-page-handler="Confirm" value="Confirm Booking"/>
     </form>
 </main>
 

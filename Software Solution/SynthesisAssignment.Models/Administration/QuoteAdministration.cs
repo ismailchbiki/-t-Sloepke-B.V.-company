@@ -24,15 +24,15 @@ namespace SynthesisAssignment.Models.Administration
             boat.Cost = manageGear.GetGearByType(boat).Cost;
             item.Cost = manageGear.GetGearByType(item).Cost;
 
-            //Convert.ToDouble(this.Cost) * (this.duration / 2) * this.Quantity;
-
-
             boat.PriceSemiTotal = boat.Cost * (boat.Duration / 2) * boat.Quantity;
             item.PriceSemiTotal = item.Cost * (item.Duration / 2) * item.Quantity;
+            quote.TotalPrice = boat.PriceSemiTotal + item.PriceSemiTotal;
 
-
-            dalQuote.AddQuote(rentor, boat, item, quote);
-
+            if (dalQuote.AddQuote(rentor, boat, item, quote))
+            {
+                return true;
+            }
+            
             return false;
         }
     }

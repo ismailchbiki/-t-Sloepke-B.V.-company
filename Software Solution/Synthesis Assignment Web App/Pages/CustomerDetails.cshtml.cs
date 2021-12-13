@@ -4,8 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using SynthesisAssignment.Models;
-using SynthesisAssignment.Models.Administration;
 using SynthesisAssignment.MyClasses.Classes;
 using SynthesisAssignment.Services;
 
@@ -16,25 +14,22 @@ namespace Synthesis_Assignment_Web_App.Pages
         [BindProperty]
         public Customer Customer { get; set; }
 
-        QuoteAdministration manageQuote = new QuoteAdministration();
-
         public void OnGet()
         {
 
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
-                Page();
+                return Page();
             }
 
-            Boat boat = HttpContext.Session.GetObjectFromJson<Boat>("BoatDescription");
-            Item item = HttpContext.Session.GetObjectFromJson<Item>("ItemDescription");
-            Quote quote = HttpContext.Session.GetObjectFromJson<Quote>("Quote");
+            HttpContext.Session.SetObjectAsJson("CustomerDetails", Customer);
 
-            //manageQuote.AddQuote(Customer, boat, item, quote);
+            //Quote quote = HttpContext.Session.GetObjectFromJson<Quote>("Quote");
+            return RedirectToPage("confirmationpage");
         }
     }
 }

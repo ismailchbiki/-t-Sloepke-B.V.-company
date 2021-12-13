@@ -11,65 +11,59 @@ namespace SynthesisAssignment.Services
 {
     public class DALQuote
     {
-        public bool AddQuote(Quote quote, Customer rentor)
+
+        ConnectionString SQLConnection = new ConnectionString();
+
+        public bool AddQuote(Customer customer, Boat boat, Item item, Quote quote)
         {
-
-            ConnectionString SQLConnection = new ConnectionString();
-
             try
             {
-
-                //object type = "";
-                //object capacity = "";
-
-                //if (gear is Boat)
-                //{
-                //    type = ((Boat)gear).BoatType;
-                //    capacity = ((Boat)gear).Capacity;
-                //}
-                //else if (gear is Item)
-                //{
-                //    type = ((Item)gear).ItemType;
-                //}
-
 
                 //connection string
                 MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
 
-                //string sqlQuery = null;
-                //if (gear.GetType() == typeof(Boat))
-                //{
+                //customer, quote, boat, and item details
+                string sqlQuery = "INSERT INTO syn_customer (first_name, last_name, address, zipcode, city, phone, email) " +
+                    "VALUES(@firstname, @lastname, @address, @zipcode, @city, @phone, @email);" +
 
-                //    sqlQuery = "INSERT INTO `syn_quote`(`customer_ID`, `date_of_made`, `start_date`, `end_date`, `duration`, `location`, `total_price`) " +
-                //        "VALUES (@customerID, @dateOfMade, @startDate, @endDate, @duration, @location, @totalPride)";
+                    "INSERT INTO syn_quote (customer_ID, date_of_made, start_date, end_date, location, total_price) " +
+                    "VALUES((select max(ID) from syn_customer), @dateOfMade, @startDate, @endDate, @location, @totalPrice);" +
 
-                //}
-                //else if (gear.GetType() == typeof(Item))
-                //{
-                //    sqlQuery = "insert into syn_item (item_type, item_cost, item_deposit, item_quantity, item_remark) VALUES (@item_type, @cost, @deposit, @quantity, @remark) ";
-                //}
+                    "INSERT INTO syn_boat_description (boat_ID, quantity, duration, price, quote_ID) " +
+                    "VALUES((select boat_ID from syn_boat where boat_type = @boatType), @boatQuantity, @boatDuration, @boatPrice, (SELECT max(ID) from syn_quote));" +
 
-                string sqlQuery = "INSERT INTO `syn_customer`(`first_name`, `last_name`, `address`, `zipcode`, `city`, `phone`, `email`) VALUES " +
-                    "(@firstname, @lastname, @address, @zipcode, @city, @phone, @email); " +
-
-                    "INSERT INTO `syn_quote`(`customer_ID`, `date_of_made`, `start_date`, `end_date`, `duration`, `location`, `total_price`) " +
-                    "VALUES ((SELECT MAX(ID) from syn_customer), @dateOfMade, @startDate, @endDate, @duration, @location, @totalPrice);";
-
+                    "INSERT INTO syn_item_description (item_ID, quantity, duration, price, quote_ID) " +
+                    "VALUES((select item_ID from syn_item where item_type = @itemType), @itemQuantity, @itemDuration, @itemPrice, (SELECT max(ID) from syn_quote));";
 
                 MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
 
-                //if boat
-                //cmd.Parameters.AddWithValue("@customerID", type.ToString());
-                //cmd.Parameters.AddWithValue("@capacity", capacity.ToString());
-                ////if item
-                //cmd.Parameters.AddWithValue("@item_type", type.ToString());
+                //customer details
+                cmd.Parameters.AddWithValue("@firstname", customer.FirstName);
+                cmd.Parameters.AddWithValue("@lastname", customer.LastName);
+                cmd.Parameters.AddWithValue("@address", customer.Address);
+                cmd.Parameters.AddWithValue("@zipcode", customer.Zipcode);
+                cmd.Parameters.AddWithValue("@city", customer.City);
+                cmd.Parameters.AddWithValue("@phone", customer.Phone);
+                cmd.Parameters.AddWithValue("@email", customer.Email);
 
-                ////the rest applies for both
-                //cmd.Parameters.AddWithValue("@cost", gear.Cost);
-                //cmd.Parameters.AddWithValue("@deposit", gear.Deposit);
-                //cmd.Parameters.AddWithValue("@quantity", gear.Quantity);
-                //cmd.Parameters.AddWithValue("@remark", gear.Remark);
+                //quote details
+                cmd.Parameters.AddWithValue("@dateOfMade", quote.DateOfMade.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@startDate", quote.StartDate.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@endDate", quote.EndDate.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@location", quote.Location);
+                cmd.Parameters.AddWithValue("@totalPrice", quote.TotalPrice);
 
+                //boat description
+                cmd.Parameters.AddWithValue("@boatType", boat.BoatType.ToString());
+                cmd.Parameters.AddWithValue("@boatQuantity", boat.Quantity);
+                cmd.Parameters.AddWithValue("@boatDuration", boat.Duration);
+                cmd.Parameters.AddWithValue("@boatPrice", boat.PriceSemiTotal);
+
+                //boat description
+                cmd.Parameters.AddWithValue("@itemType", item.ItemType.ToString());
+                cmd.Parameters.AddWithValue("@itemQuantity", item.Quantity);
+                cmd.Parameters.AddWithValue("@itemDuration", item.Duration);
+                cmd.Parameters.AddWithValue("@itemPrice", item.PriceSemiTotal);                
 
                 //Open the connection
                 con.Open();
@@ -87,15 +81,6 @@ namespace SynthesisAssignment.Services
                 throw;
                 //return false;
             }
-
-            return false;
-        }
-
-        public bool AddQuote(Customer rentor, Boat boat, Item item, Quote quote)
-        {
-
-
-            return false;
         }
     }
 }
