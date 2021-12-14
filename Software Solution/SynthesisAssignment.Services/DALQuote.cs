@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SynthesisAssignment.Services
 {
-    public class DALQuote
+    public class DALQuote : IDALQuote
     {
 
         ConnectionString SQLConnection = new ConnectionString();
