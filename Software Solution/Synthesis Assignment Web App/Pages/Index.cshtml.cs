@@ -22,7 +22,7 @@ namespace Synthesis_Assignment_Web_App.Pages
 
         public void OnGet()
         {
-            Gear = InventoryAdministration.AllGear();
+            Gear = InventoryAdministration.GetAllGear();
         }
     }
 }

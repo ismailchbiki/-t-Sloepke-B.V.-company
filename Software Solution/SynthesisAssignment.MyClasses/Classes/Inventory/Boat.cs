@@ -21,7 +21,7 @@ namespace SynthesisAssignment.Services
 
         }
 
-        //inventory management
+        //for inventory management
         public Boat(BOATTYPE boat, CAPACITY capacity, double cost, double deposit, int qty, string remark)
             : base(cost, deposit, qty, remark)
         {

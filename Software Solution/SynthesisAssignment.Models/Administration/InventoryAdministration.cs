@@ -49,7 +49,7 @@ namespace SynthesisAssignment.Models
 
             if (gear is Boat)
             {
-                foreach (var b in AllGear().OfType<Boat>().ToList())
+                foreach (var b in GetAllGear().OfType<Boat>().ToList())
                 {
                     if (b.BoatType == ((Boat)gear).BoatType)
                     {
@@ -60,7 +60,7 @@ namespace SynthesisAssignment.Models
 
             else if (gear is Item)
             {
-                foreach (var item in AllGear().OfType<Item>().ToList())
+                foreach (var item in GetAllGear().OfType<Item>().ToList())
                 {
                     if (item.ItemType == ((Item)gear).ItemType)
                     {
@@ -78,7 +78,7 @@ namespace SynthesisAssignment.Models
 
             if (gear is Boat)
             {
-                foreach (var b in AllGear().OfType<Boat>().ToList())
+                foreach (var b in GetAllGear().OfType<Boat>().ToList())
                 {
                     if (b.ID == ((Boat)gear).ID)
                     {
@@ -89,7 +89,7 @@ namespace SynthesisAssignment.Models
 
             else if (gear is Item)
             {
-                foreach (var item in AllGear().OfType<Item>().ToList())
+                foreach (var item in GetAllGear().OfType<Item>().ToList())
                 {
                     if (item.ID == ((Item)gear).ID)
                     {
@@ -113,7 +113,7 @@ namespace SynthesisAssignment.Models
         }
 
         //all gear
-        public static List<Inventory> AllGear()
+        public static List<Inventory> GetAllGear()
         {
             return dalGear.GetAllGear().ToList();
         }

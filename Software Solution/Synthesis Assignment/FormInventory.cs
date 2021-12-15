@@ -32,7 +32,7 @@ namespace Synthesis_Assignment
 
             dataGridViewBoats.Columns.Clear();
 
-            List<Inventory> gear = InventoryAdministration.AllGear();
+            List<Inventory> gear = InventoryAdministration.GetAllGear();
 
             //table of boats
             dataGridViewBoats.DataSource = gear.OfType<Boat>().Select(o => new {
