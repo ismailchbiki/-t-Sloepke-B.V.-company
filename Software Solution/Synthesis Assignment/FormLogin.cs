@@ -1,5 +1,6 @@
 ﻿using SynthesisAssignment.Models;
 using SynthesisAssignment.Models.Classes;
+using SynthesisAssignment.MyClasses.Classes;
 using SynthesisAssignment.Services;
 using System;
 using System.Collections.Generic;
@@ -15,22 +16,16 @@ namespace Synthesis_Assignment
 {
     public partial class FormLogin : Form
     {
-        Validation validate;
-        MessageLoginGuide message;
 
         public FormLogin()
         {
             InitializeComponent();
-
-            validate = new Validation();
-            message = new MessageLoginGuide();
         }
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
             CenterToScreen();
         }
-
 
         //show and hide password
         private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
@@ -45,36 +40,47 @@ namespace Synthesis_Assignment
             }
         }
 
-
         //login
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             string username = "Ismail";
             string password = "123";
 
-            if (string.IsNullOrEmpty(textBoxUsername.Text) || string.IsNullOrEmpty(textBoxPassword.Text))
+            try
             {
-                MessageBox.Show(message.EmptyFieldsErrorMessage());
-            }
-            else
-            {
-                //method here to validate username fields (not a number)
-                if (validate.ContainNumbers(textBoxUsername.Text))
+                if (string.IsNullOrEmpty(textBoxUsername.Text))
                 {
-                    MessageBox.Show(message.NumbersNotAllowedErrorMessage());
+                    MessageBox.Show(MyMessage.UsernameRequired);
                 }
-
-                else if (textBoxUsername.Text == username && textBoxPassword.Text == password)
+                else if (string.IsNullOrEmpty(textBoxPassword.Text))
                 {
-                    FormDashboard dashboard = new FormDashboard();
-
-                    dashboard.Show();
-                    this.Hide();
+                    MessageBox.Show(MyMessage.PasswordRequired);
                 }
                 else
                 {
-                    MessageBox.Show(message.InvalidCredntialsErrorMessage());
+                    //method here to validate username fields (not a number)
+                    if (Verify.ContainNumbers(textBoxUsername.Text))
+                    {
+                        MessageBox.Show(MyMessage.UsernameNumbersUnallowed);
+                    }
+
+                    else if (textBoxUsername.Text == username && textBoxPassword.Text == password)
+                    {
+                        FormDashboard dashboard = new FormDashboard();
+
+                        dashboard.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show(MyMessage.IncorrectCredentials);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
             }
         }
     }

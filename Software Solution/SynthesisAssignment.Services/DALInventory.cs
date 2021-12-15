@@ -13,7 +13,6 @@ namespace SynthesisAssignment.Services
     public class DALInventory : IDALInventory
     {
         List<Inventory> inventory = new List<Inventory>();
-        ConnectionString SQLConnection = new ConnectionString();
 
         //add gear
         public bool AddGear(Inventory gear)
@@ -36,7 +35,7 @@ namespace SynthesisAssignment.Services
 
 
                 //connection string
-                MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
+                MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
 
                 string sqlQuery = null;
                 if (gear.GetType() == typeof(Boat))
@@ -105,7 +104,7 @@ namespace SynthesisAssignment.Services
 
 
                 //connection string
-                MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
+                MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
 
                 string sqlQuery = null;
                 if (gear.GetType() == typeof(Boat))
@@ -160,7 +159,7 @@ namespace SynthesisAssignment.Services
             try
             {
                 //connection string
-                MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
+                MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
 
                 string sqlQuery = null;
                 if (gear.GetType() == typeof(Boat))
@@ -203,7 +202,7 @@ namespace SynthesisAssignment.Services
                 List<Boat> boats = new List<Boat>();
                 Boat boat = new Boat();
 
-                MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
+                MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
 
                 //Query to execute
                 string query = "SELECT * from syn_boat order by boat_ID ASC;";
@@ -249,7 +248,7 @@ namespace SynthesisAssignment.Services
                 List<Item> items = new List<Item>();
                 Item item = new Item();
 
-                MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
+                MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
 
                 //Query to execute
                 string query = "SELECT * from syn_item order by item_ID ASC;";

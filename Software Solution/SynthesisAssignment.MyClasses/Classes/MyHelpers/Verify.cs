@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace SynthesisAssignment.Models.Classes
 {
-    public class Validation
+    public static class Verify
     {
 
         //check if text contains numbers
-        public bool ContainNumbers(string text)
+        public static bool ContainNumbers(string text)
         {
             bool containNumbers = Regex.IsMatch(text, @"\d");
             if (containNumbers)
@@ -36,7 +36,7 @@ namespace SynthesisAssignment.Models.Classes
 
         //check if text contains letters
 
-        public bool ContainLetters(string text)
+        public static bool ContainLetters(string text)
         {
             bool containLetters = Regex.IsMatch(text, @"^[\p{L}\s]+$");
             if (!containLetters)
@@ -64,7 +64,8 @@ namespace SynthesisAssignment.Models.Classes
         //}
 
         //validate email
-        public bool IsEmail(string email)
+
+        public static bool IsEmail(string email)
         {
             bool isEmail = Regex.IsMatch(email, @"[a-z]+@+[a-z]+.com$");
             if (!isEmail)

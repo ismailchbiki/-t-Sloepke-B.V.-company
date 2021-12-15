@@ -12,15 +12,13 @@ namespace SynthesisAssignment.Services
     public class DALQuote : IDALQuote
     {
 
-        ConnectionString SQLConnection = new ConnectionString();
-
         public bool AddQuote(Customer customer, Boat boat, Item item, Quote quote)
         {
             try
             {
 
                 //connection string
-                MySqlConnection con = new MySqlConnection(SQLConnection.MyConnection());
+                MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
 
                 //customer, quote, boat, and item details
                 string sqlQuery = "INSERT INTO syn_customer (first_name, last_name, address, zipcode, city, phone, email) " +

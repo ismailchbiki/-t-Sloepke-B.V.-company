@@ -18,12 +18,11 @@ namespace Synthesis_Assignment_Web_App.Pages
             _logger = logger;
         }
 
-        private InventoryAdministration manageGear = new InventoryAdministration();
         public List<Inventory> Gear;
 
         public void OnGet()
         {
-            Gear = manageGear.AllGear();
+            Gear = InventoryAdministration.AllGear();
         }
     }
 }

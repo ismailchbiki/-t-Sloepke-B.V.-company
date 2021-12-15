@@ -20,13 +20,9 @@ namespace Synthesis_Assignment
         public static int BoatID = 0;
         public static int ItemID = 0;
 
-        InventoryAdministration manageGear;
-
         public FormInventory()
         {
             InitializeComponent();
-
-            manageGear = new InventoryAdministration();
         }
 
         //on load fill in the tables
@@ -36,7 +32,7 @@ namespace Synthesis_Assignment
 
             dataGridViewBoats.Columns.Clear();
 
-            List<Inventory> gear = manageGear.AllGear();
+            List<Inventory> gear = InventoryAdministration.AllGear();
 
             //table of boats
             dataGridViewBoats.DataSource = gear.OfType<Boat>().Select(o => new {

@@ -18,7 +18,7 @@ namespace SynthesisAssignment.MyClasses.Classes
         private int phone;
         private string email;
 
-        public Person()
+        protected Person()
         {
 
         }

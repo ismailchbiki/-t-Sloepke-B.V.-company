@@ -13,10 +13,6 @@ namespace Synthesis_Assignment_Web_App.Pages
     public class ConfirmationPageModel : PageModel
     {
 
-        //Quote quote = HttpContext.Session.GetObjectFromJson<Quote>("Quote");
-
-        QuoteAdministration manageQuote = new QuoteAdministration();
-
         public void OnGet()
         {
         }
@@ -33,8 +29,12 @@ namespace Synthesis_Assignment_Web_App.Pages
             Customer customer = HttpContext.Session.GetObjectFromJson<Customer>("CustomerDetails");
             Quote quote = HttpContext.Session.GetObjectFromJson<Quote>("Quote");
 
-            manageQuote.AddQuote(customer,boat, item, quote);
-
+            //if reservation is successful
+            if (QuoteAdministration.AddQuote(customer, boat, item, quote))
+            {
+                return RedirectToPage("MyReservation");
+            }
+            
             return Page();
         }
     }

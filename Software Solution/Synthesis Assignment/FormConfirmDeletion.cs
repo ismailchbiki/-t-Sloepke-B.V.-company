@@ -17,16 +17,12 @@ namespace Synthesis_Assignment
 
         //id of the gear to delete
         Inventory gear;
-        InventoryAdministration gearManager;
-
 
         public FormConfirmDeletion(Inventory gear)
         {
             InitializeComponent();
 
             this.gear = gear;
-            gearManager = new InventoryAdministration();
-
         }
 
         private void FormConfirmDeletion_Load(object sender, EventArgs e)
@@ -37,7 +33,7 @@ namespace Synthesis_Assignment
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
             //if gear is deleted
-            if (gearManager.DeleteGear(gear))
+            if (InventoryAdministration.DeleteGear(gear))
             {
                 MessageBox.Show("Item Removed successfully");
                 FormInventory inventory = new FormInventory();

@@ -20,7 +20,7 @@ namespace SynthesisAssignment.Models
         private int duration;
 
         //constructors
-        public Inventory()
+        protected Inventory()
         {
 
         }

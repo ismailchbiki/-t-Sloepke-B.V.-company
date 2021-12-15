@@ -8,21 +8,24 @@ using System.Threading.Tasks;
 namespace SynthesisAssignment.Models
 {
 
-    public class InventoryAdministration
+    public static class InventoryAdministration
     {
         
         //data access layer
-        private DALInventory dalGear = new DALInventory();
+        static DALInventory dalGear = new DALInventory();
 
         //add gear
-        public bool AddGear(Inventory gear)
+        public static bool AddGear(Inventory gear)
         {
 
             //to prevent creating duplicate gear
             if ((GetGearByType(gear)) == null)
             {
-                dalGear.AddGear(gear);
-                return true;
+                //if insertion is successful
+                if (dalGear.AddGear(gear))
+                {
+                    return true;
+                }
             }
             
             //if there is an error
@@ -30,7 +33,7 @@ namespace SynthesisAssignment.Models
         }
 
         //update gear
-        public bool UpdateGear(int id, Inventory gear)
+        public static bool UpdateGear(int id, Inventory gear)
         {
             if (dalGear.UpdateGear(id, gear))
             {
@@ -41,7 +44,7 @@ namespace SynthesisAssignment.Models
         }
 
         //get gear by type
-        public Inventory GetGearByType(Inventory gear)
+        public static Inventory GetGearByType(Inventory gear)
         {
 
             if (gear is Boat)
@@ -70,7 +73,7 @@ namespace SynthesisAssignment.Models
         }
 
         //get gear by id
-        public Inventory GetGearByID(Inventory gear)
+        public static Inventory GetGearByID(Inventory gear)
         {
 
             if (gear is Boat)
@@ -99,7 +102,7 @@ namespace SynthesisAssignment.Models
         }
 
         //delete gear
-        public bool DeleteGear(Inventory gear)
+        public static bool  DeleteGear(Inventory gear)
         {
             if (dalGear.DeleteGear(gear))
             {
@@ -110,7 +113,7 @@ namespace SynthesisAssignment.Models
         }
 
         //all gear
-        public List<Inventory> AllGear()
+        public static List<Inventory> AllGear()
         {
             return dalGear.GetAllGear().ToList();
         }

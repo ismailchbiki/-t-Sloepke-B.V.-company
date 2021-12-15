@@ -8,21 +8,18 @@ using System.Threading.Tasks;
 
 namespace SynthesisAssignment.Models.Administration
 {
-    public class QuoteAdministration
+    public static class QuoteAdministration
     {
 
-        //to fetch inventory details from the DB
-        InventoryAdministration manageGear = new InventoryAdministration();
-
         //to insert customers' reservations in the DB
-        DALQuote dalQuote = new DALQuote();
+        static DALQuote dalQuote = new DALQuote();
 
         //methods
-        public bool AddQuote(Customer rentor, Boat boat, Item item, Quote quote)
+        public static bool AddQuote(Customer rentor, Boat boat, Item item, Quote quote)
         {
 
-            boat.Cost = manageGear.GetGearByType(boat).Cost;
-            item.Cost = manageGear.GetGearByType(item).Cost;
+            boat.Cost = InventoryAdministration.GetGearByType(boat).Cost;
+            item.Cost = InventoryAdministration.GetGearByType(item).Cost;
 
             boat.PriceSemiTotal = boat.Cost * (boat.Duration / 2) * boat.Quantity;
             item.PriceSemiTotal = item.Cost * (item.Duration / 2) * item.Quantity;

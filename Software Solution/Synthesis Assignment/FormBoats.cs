@@ -1,6 +1,7 @@
 ﻿using SynthesisAssignment.Models;
 using SynthesisAssignment.Models.Classes;
 using SynthesisAssignment.Models.Enums;
+using SynthesisAssignment.MyClasses.Classes;
 using SynthesisAssignment.Services;
 using System;
 using System.Collections.Generic;
@@ -21,17 +22,10 @@ namespace Synthesis_Assignment
         int id = FormInventory.BoatID;
 
         Inventory gear;
-        InventoryAdministration gearManager;
-        Validation validate;
-        MessageInventoryGuide message;
 
         public FormBoats()
         {
             InitializeComponent();
-
-            gearManager = new InventoryAdministration();
-            validate = new Validation();
-            message = new MessageInventoryGuide();
         }
 
         //form
@@ -52,7 +46,7 @@ namespace Synthesis_Assignment
                 gear.ID = id;
 
                 //retrieve data of the item to update
-                Boat b = (Boat)gearManager.GetGearByID(gear);
+                Boat b = (Boat)InventoryAdministration.GetGearByID(gear);
 
                 //control visibility some items on the form on update click event
                 comboBoxBoatType.Visible = false;
@@ -107,37 +101,38 @@ namespace Synthesis_Assignment
                 if (string.IsNullOrEmpty(textBoxCost.Text) || string.IsNullOrEmpty(textBoxDeposit.Text) ||
                     string.IsNullOrEmpty(textBoxQuantity.Text) || string.IsNullOrEmpty(textBoxRemark.Text))
                 {
-                    MessageBox.Show(message.EmptyFieldsErrorMessage());
+                    MessageBox.Show(MyMessage.AllfieldsAreRequired);
                 }
 
-                else if (validate.ContainLetters(textBoxCost.Text) || validate.ContainLetters(textBoxDeposit.Text)
-                    || validate.ContainLetters(textBoxQuantity.Text))
+                //prevent letters input
+                else if (Verify.ContainLetters(textBoxCost.Text) || Verify.ContainLetters(textBoxDeposit.Text)
+                    || Verify.ContainLetters(textBoxQuantity.Text))
                 {
-                    MessageBox.Show(message.LettersNotAllowedErrorMessage()) ;
+                    MessageBox.Show(MyMessage.GearInfoLettersUnallowed);
                 }
 
                 else
                 {
-
                     gear = new Boat((BOATTYPE)comboBoxBoatType.SelectedItem,
                         (CAPACITY)comboBoxCapacity.SelectedItem, Convert.ToDouble(textBoxCost.Text),
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
                     // add boat
-                    if (!gearManager.AddGear(gear))
+                    if (InventoryAdministration.AddGear(gear))
                     {
-                        MessageBox.Show(message.UnsuccessfulAddingMessage());
+                        MessageBox.Show(MyMessage.SuccessfulSaving);
                     }
                     else
                     {
-                        MessageBox.Show(message.SuccessfulAddingMessage());
+                        MessageBox.Show(MyMessage.UnsuccessfulSaving);
                     }
                 }
             }
             catch (Exception ex)
             {
+
                 MessageBox.Show("Error: " + ex.Message);
-            }
+            }            
         }
 
         //update boat
@@ -149,13 +144,13 @@ namespace Synthesis_Assignment
                 if (string.IsNullOrEmpty(textBoxCost.Text) || string.IsNullOrEmpty(textBoxDeposit.Text) ||
                     string.IsNullOrEmpty(textBoxQuantity.Text) || string.IsNullOrEmpty(textBoxRemark.Text))
                 {
-                    MessageBox.Show(message.EmptyFieldsErrorMessage());
+                    MessageBox.Show(MyMessage.AllfieldsAreRequired);
                 }
 
-                else if (validate.ContainLetters(textBoxCost.Text) || validate.ContainLetters(textBoxDeposit.Text)
-                    || validate.ContainLetters(textBoxQuantity.Text))
+                else if (Verify.ContainLetters(textBoxCost.Text) || Verify.ContainLetters(textBoxDeposit.Text)
+                    || Verify.ContainLetters(textBoxQuantity.Text))
                 {
-                    MessageBox.Show(message.LettersNotAllowedErrorMessage());
+                    MessageBox.Show(MyMessage.GearInfoLettersUnallowed);
                 }
 
                 else
@@ -166,17 +161,17 @@ namespace Synthesis_Assignment
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
                     //update boat
-                    if (!gearManager.UpdateGear(id, (Boat)gear))
+                    if (InventoryAdministration.UpdateGear(id, (Boat)gear))
                     {
-                        MessageBox.Show(message.UnsuccessfulUpdateMessage());
-                    }
-                    else
-                    {
-                        MessageBox.Show(message.SuccessfulUpdateMessage());
+                        MessageBox.Show(MyMessage.SuccessfulUpdate);
                         FormInventory inventoryForm = new FormInventory();
 
                         inventoryForm.Show();
                         this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show(MyMessage.UnsuccessfulUpdate);
                     }
                 }
             }
