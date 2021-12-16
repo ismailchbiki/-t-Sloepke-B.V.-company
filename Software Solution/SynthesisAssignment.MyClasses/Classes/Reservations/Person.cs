@@ -9,33 +9,31 @@ namespace SynthesisAssignment.MyClasses.Classes
 {
     public abstract class Person
     {
-        private int id;
-        private string firstName;
-        private string lastName;
-        private string address;
-        private string zipcode;
-        private string city;
-        private int phone;
-        private string email;
+        int id;
+        string firstName;
+        string lastName;
+        string address;
+        string zipcode;
+        string city;
+        int phone;
+        string email;
 
         protected Person()
         {
 
         }
 
-        protected Person(string firstName, string lastName, string address, string zipcode, string city, int phone, string email)
+        public Person(int id)
         {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.address = address;
-            this.zipcode = zipcode;
-            this.city = city;
-            this.phone = phone;
-            Email = email;
+            this.id = id;
         }
 
-        public int ID { get { return this.id; } set { this.id = value; } }
+        public int ID { get { return this.id; } }
 
+        /// <summary>
+        /// public get for model binding
+        /// </summary>
+        
         [Required(ErrorMessage = "Required field")]
         [DataType(DataType.Text, ErrorMessage = "Invalid input for firstname")]
         public string FirstName { get { return this.firstName; } set { firstName = value; } }

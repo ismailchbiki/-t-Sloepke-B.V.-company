@@ -22,10 +22,12 @@ namespace Synthesis_Assignment
         int id = FormInventory.BoatID;
 
         Inventory gear;
+        InventoryAdministration manageGear;
 
         public FormBoats()
         {
             InitializeComponent();
+            manageGear = new InventoryAdministration();
         }
 
         //form
@@ -42,11 +44,11 @@ namespace Synthesis_Assignment
             //in case of a boat update => fill in all the fields
             if (id != 0)
             {
-                gear = new Boat();
-                gear.ID = id;
+                gear = new Boat(id);
+                //gear.ID = id;
 
                 //retrieve data of the item to update
-                Boat b = (Boat)InventoryAdministration.GetGearByID(gear);
+                Boat b = (Boat)manageGear.GetGearByID(gear);
 
                 //control visibility some items on the form on update click event
                 comboBoxBoatType.Visible = false;
@@ -118,7 +120,7 @@ namespace Synthesis_Assignment
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
                     // add boat
-                    if (InventoryAdministration.AddGear(gear))
+                    if (manageGear.AddGear(gear))
                     {
                         MessageBox.Show(MyMessage.SuccessfulSaving);
                     }
@@ -132,7 +134,7 @@ namespace Synthesis_Assignment
             {
 
                 MessageBox.Show("Error: " + ex.Message);
-            }            
+            }
         }
 
         //update boat
@@ -161,7 +163,7 @@ namespace Synthesis_Assignment
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
                     //update boat
-                    if (InventoryAdministration.UpdateGear(id, (Boat)gear))
+                    if (manageGear.UpdateGear(id, (Boat)gear))
                     {
                         MessageBox.Show(MyMessage.SuccessfulUpdate);
                         FormInventory inventoryForm = new FormInventory();

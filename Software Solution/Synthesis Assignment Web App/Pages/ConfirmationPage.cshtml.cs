@@ -12,9 +12,11 @@ namespace Synthesis_Assignment_Web_App.Pages
 {
     public class ConfirmationPageModel : PageModel
     {
+        QuoteAdministration manageQuote = new QuoteAdministration();
 
         public void OnGet()
         {
+            // code here to fill in the fields
         }
 
         public IActionResult OnPostConfirm()
@@ -24,13 +26,14 @@ namespace Synthesis_Assignment_Web_App.Pages
                 return Page();
             }
 
+            //get all the objects from sessions
             Boat boat = HttpContext.Session.GetObjectFromJson<Boat>("BoatDescription");
             Item item = HttpContext.Session.GetObjectFromJson<Item>("ItemDescription");
             Customer customer = HttpContext.Session.GetObjectFromJson<Customer>("CustomerDetails");
             Quote quote = HttpContext.Session.GetObjectFromJson<Quote>("Quote");
 
             //if reservation is successful
-            if (QuoteAdministration.AddQuote(customer, boat, item, quote))
+            if (manageQuote.AddQuote(customer, boat, item, quote))
             {
                 return RedirectToPage("MyReservation");
             }

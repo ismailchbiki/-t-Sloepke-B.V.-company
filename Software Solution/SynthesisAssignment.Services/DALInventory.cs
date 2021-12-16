@@ -12,7 +12,6 @@ namespace SynthesisAssignment.Services
 {
     public class DALInventory : IDALInventory
     {
-        List<Inventory> inventory = new List<Inventory>();
 
         //add gear
         public bool AddGear(Inventory gear)
@@ -213,11 +212,12 @@ namespace SynthesisAssignment.Services
 
                 MySqlDataReader dr = cmd.ExecuteReader();
 
+                //read data from db
                 while (dr.Read())
                 {
-                    //all boats
+
                     boat = new Boat();
-                    boat.ID = Convert.ToInt32(dr["boat_ID"]);
+                    boat = new Boat(Convert.ToInt32(dr["boat_ID"]));
                     boat.BoatType = dr["boat_type"].ToString();
                     boat.Capacity = dr["boat_capacity"].ToString();
                     boat.Cost = Convert.ToDouble(dr["boat_cost"]);
@@ -259,12 +259,11 @@ namespace SynthesisAssignment.Services
 
                 MySqlDataReader dr = cmd.ExecuteReader();
 
+                //read data from DB
                 while (dr.Read())
                 {
-
-                    //all items
                     item = new Item();
-                    item.ID = Convert.ToInt32(dr["item_ID"]);
+                    item = new Item(Convert.ToInt32(dr["item_ID"]));
                     item.ItemType = dr["item_type"].ToString();
                     item.Cost = Convert.ToDouble(dr["item_cost"]);
                     item.Deposit = Convert.ToDouble(dr["item_deposit"]);
@@ -272,7 +271,6 @@ namespace SynthesisAssignment.Services
                     item.Remark = dr["item_remark"].ToString();
 
                     items.Add(item);
-
                 }
 
                 con.Close();
@@ -288,6 +286,7 @@ namespace SynthesisAssignment.Services
         //list of all gear
         public IEnumerable<Inventory> GetAllGear()
         {
+            List<Inventory> inventory = new List<Inventory>();
 
             inventory.AddRange(GetAllBoats());
             inventory.AddRange(GetAllItems());

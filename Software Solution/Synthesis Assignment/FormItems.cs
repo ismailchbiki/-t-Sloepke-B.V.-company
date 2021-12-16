@@ -21,10 +21,12 @@ namespace Synthesis_Assignment
         int id = FormInventory.ItemID;
 
         Inventory gear;
+        InventoryAdministration manageGear;
 
         public FormItems()
         {
             InitializeComponent();
+            manageGear = new InventoryAdministration();
         }
 
         //form
@@ -40,11 +42,10 @@ namespace Synthesis_Assignment
             //in case of a boat update => fill in all the fields
             if (id != 0)
             {
-                gear = new Item();
-                gear.ID = id;
+                gear = new Item(id);
 
                 //retrieve data of the item to update
-                Item item = (Item)InventoryAdministration.GetGearByID(gear);
+                Item item = (Item)manageGear.GetGearByID(gear);
 
                 //control visibility some items on the form on update click event
                 comboBoxItem.Visible = false;
@@ -113,7 +114,7 @@ namespace Synthesis_Assignment
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
                     //add item
-                    if (InventoryAdministration.AddGear((Item)gear))
+                    if (manageGear.AddGear((Item)gear))
                     {
                         MessageBox.Show(MyMessage.SuccessfulSaving);
                     }
@@ -153,7 +154,7 @@ namespace Synthesis_Assignment
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
                     //update item
-                    if (InventoryAdministration.UpdateGear(id, (Item)gear))
+                    if (manageGear.UpdateGear(id, (Item)gear))
                     {
                         MessageBox.Show(MyMessage.SuccessfulUpdate);
                         FormInventory inventoryForm = new FormInventory();

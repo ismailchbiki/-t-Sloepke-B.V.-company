@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 namespace SynthesisAssignment.Models
 {
 
-    public static class InventoryAdministration
+    public class InventoryAdministration
     {
         
         //data access layer
-        static DALInventory dalGear = new DALInventory();
+        DALInventory dalGear = new DALInventory();
 
         //add gear
-        public static bool AddGear(Inventory gear)
+        public bool AddGear(Inventory gear)
         {
 
             //to prevent creating duplicate gear
@@ -33,7 +33,7 @@ namespace SynthesisAssignment.Models
         }
 
         //update gear
-        public static bool UpdateGear(int id, Inventory gear)
+        public bool UpdateGear(int id, Inventory gear)
         {
             if (dalGear.UpdateGear(id, gear))
             {
@@ -44,7 +44,7 @@ namespace SynthesisAssignment.Models
         }
 
         //get gear by type
-        public static Inventory GetGearByType(Inventory gear)
+        public Inventory GetGearByType(Inventory gear)
         {
 
             if (gear is Boat)
@@ -73,7 +73,7 @@ namespace SynthesisAssignment.Models
         }
 
         //get gear by id
-        public static Inventory GetGearByID(Inventory gear)
+        public Inventory GetGearByID(Inventory gear)
         {
 
             if (gear is Boat)
@@ -102,7 +102,7 @@ namespace SynthesisAssignment.Models
         }
 
         //delete gear
-        public static bool  DeleteGear(Inventory gear)
+        public bool  DeleteGear(Inventory gear)
         {
             if (dalGear.DeleteGear(gear))
             {
@@ -113,7 +113,7 @@ namespace SynthesisAssignment.Models
         }
 
         //all gear
-        public static List<Inventory> GetAllGear()
+        public List<Inventory> GetAllGear()
         {
             return dalGear.GetAllGear().ToList();
         }

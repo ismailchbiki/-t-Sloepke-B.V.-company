@@ -20,9 +20,12 @@ namespace Synthesis_Assignment
         public static int BoatID = 0;
         public static int ItemID = 0;
 
+        InventoryAdministration manageGear;
+
         public FormInventory()
         {
             InitializeComponent();
+            manageGear = new InventoryAdministration();
         }
 
         //on load fill in the tables
@@ -32,7 +35,7 @@ namespace Synthesis_Assignment
 
             dataGridViewBoats.Columns.Clear();
 
-            List<Inventory> gear = InventoryAdministration.GetAllGear();
+            List<Inventory> gear = manageGear.GetAllGear();
 
             //table of boats
             dataGridViewBoats.DataSource = gear.OfType<Boat>().Select(o => new {
@@ -117,8 +120,7 @@ namespace Synthesis_Assignment
 
                 BoatID = (int)dataGridViewBoats.SelectedRows[0].Cells["ID"].Value;
 
-                Boat b = new Boat();
-                b.ID = BoatID;
+                Boat b = new Boat(BoatID);
                 FormConfirmDeletion boats = new FormConfirmDeletion(b);
 
                 boats.Show();
@@ -129,8 +131,7 @@ namespace Synthesis_Assignment
 
                 ItemID = (int)dataGridViewItems.SelectedRows[0].Cells["ID"].Value;
 
-                Item item = new Item();
-                item.ID = ItemID;
+                Item item = new Item(ItemID);
                 FormConfirmDeletion items = new FormConfirmDeletion(item);
 
                 items.Show();

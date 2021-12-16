@@ -20,18 +20,11 @@ namespace SynthesisAssignment.Services
         {
 
         }
-
-        //for inventory management
+        public Boat(int id) : base(id)
+        {
+        }
         public Boat(BOATTYPE boat, CAPACITY capacity, double cost, double deposit, int qty, string remark)
             : base(cost, deposit, qty, remark)
-        {
-            this.type = boat;
-            this.capacity = capacity;
-        }
-
-        //for customers' reservations
-        public Boat(BOATTYPE boat, CAPACITY capacity, double cost, double deposit, int qty, string remark, int duration) 
-            : base(cost, deposit, qty, remark, duration)
         {
             this.type = boat;
             this.capacity = capacity;

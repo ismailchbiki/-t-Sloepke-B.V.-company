@@ -28,7 +28,6 @@ namespace Synthesis_Assignment_Web_App.Pages
 
             HttpContext.Session.SetObjectAsJson("CustomerDetails", Customer);
 
-            //Quote quote = HttpContext.Session.GetObjectFromJson<Quote>("Quote");
             return RedirectToPage("confirmationpage");
         }
     }

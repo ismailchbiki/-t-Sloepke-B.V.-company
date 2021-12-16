@@ -840,14 +840,15 @@ th {
         background-color: #45a049;
     }
 
-.booking-form div {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-}
+    .booking-form div {
+        border-radius: 5px;
+        background-color: beige;
+        padding: 20px;
+    }
+
+
 
 /*  Confirmation Page  */
-
 .confirm-logo img {
     width: 28%;
     display: block;

@@ -1,4 +1,5 @@
 ﻿using SynthesisAssignment.MyClasses.Classes;
+using SynthesisAssignment.MyClasses.Classes.MyHelpers;
 using SynthesisAssignment.Services;
 using System;
 using System.Collections.Generic;
@@ -8,29 +9,40 @@ using System.Threading.Tasks;
 
 namespace SynthesisAssignment.Models.Administration
 {
-    public static class QuoteAdministration
+    public class QuoteAdministration
     {
 
         //to insert customers' reservations in the DB
         static DALQuote dalQuote = new DALQuote();
 
         //methods
-        public static bool AddQuote(Customer rentor, Boat boat, Item item, Quote quote)
+        public bool AddQuote(Customer customer, Boat boat, Item item, Quote quote)
         {
 
-            boat.Cost = InventoryAdministration.GetGearByType(boat).Cost;
-            item.Cost = InventoryAdministration.GetGearByType(item).Cost;
+            //duration calculation per hours between 2 dates
+            double diff = (quote.EndDateTime - quote.StartDateTime).TotalHours;
+            int durationPerHours = Convert.ToInt32(Math.Ceiling(diff));
 
-            boat.PriceSemiTotal = boat.Cost * (boat.Duration / 2) * boat.Quantity;
-            item.PriceSemiTotal = item.Cost * (item.Duration / 2) * item.Quantity;
-            quote.TotalPrice = boat.PriceSemiTotal + item.PriceSemiTotal;
+            //only multiple of 2 hrs is accepted
+            double reminder = durationPerHours % 2;
 
-            if (dalQuote.AddQuote(rentor, boat, item, quote))
+            //minimum 2 hrs / max 2 weeks
+            if (durationPerHours < 2 || durationPerHours > 336 || reminder != 0)
+            {
+                return false;
+            }
+
+            if (dalQuote.AddQuote(customer, boat, item, quote))
             {
                 return true;
             }
             
             return false;
+        }
+
+        public List<ClassCollection> GetAllQuotes()
+        {
+            return dalQuote.GetAllQuotes().ToList();
         }
     }
 }

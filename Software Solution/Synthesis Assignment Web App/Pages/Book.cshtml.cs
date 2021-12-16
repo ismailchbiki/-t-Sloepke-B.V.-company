@@ -46,8 +46,10 @@ namespace Synthesis_Assignment_Web_App.Pages
                 return Page();
             }
 
-            Quote.DateOfMade = DateTime.Now;
+            //get the time of booking
+            Quote.DateTimeOfMade = DateTime.Now;
 
+            //storing the objects in sessios
             HttpContext.Session.SetObjectAsJson("BoatDescription", Boat);
             HttpContext.Session.SetObjectAsJson("ItemDescription", Item);
             HttpContext.Session.SetObjectAsJson("Quote", Quote);

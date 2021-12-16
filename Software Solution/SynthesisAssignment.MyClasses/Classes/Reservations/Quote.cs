@@ -12,55 +12,54 @@ namespace SynthesisAssignment.MyClasses.Classes
     public class Quote
     {
         //quote ID
-        private int refNumber;
+        int refNumber;
 
         //location
-        private LOCATION location;
-
-        //total price of all rented items
-        private double totalPrice;
+        LOCATION location;
 
         //date of made of quote
-        private DateTime dateOfMade;
+        DateTime dateTimeOfMade;
 
         //start and end date for the renting
-        private DateTime startDate;
-        private DateTime endDate;
-        private DateTime startTime;
-        private DateTime endTime;
+        DateTime startDateTime;
+        DateTime endDateTime;
 
+        //CONSTRUCTORS
         public Quote()
         {
 
         }
-
-        public Quote(int refNumber, LOCATION location, double totalPrice, DateTime date, DateTime startDate,
-            DateTime endDate, DateTime startTime, DateTime endTime)
+        public Quote(int id)
         {
-            this.refNumber = refNumber;
-            this.location = location;
-            this.dateOfMade = date;
-            this.startDate = startDate;
-            this.endDate = endDate;
-            this.startTime = startTime;
-            this.endTime = endTime;
-            this.totalPrice = totalPrice;
+            this.refNumber = id;
         }
 
-        public int RefNumber { get { return this.refNumber; } set { this.refNumber = value; } }
+        // --------- PROPERTIES
+
+        //quote ID
+        public int RefNumber { get { return this.refNumber; }}
+        
+        //location
         public string Location
         {
             get { return this.location.ToString(); }
             set { location = (LOCATION)Enum.Parse(typeof(LOCATION), value); }
         }
-        //public int Duration { get { return this.duration; } set { duration = value; } }
-        public double TotalPrice { get { return this.totalPrice; } set { totalPrice = value; } }
-        public DateTime DateOfMade { get { return this.dateOfMade; } set { dateOfMade = value; } }
+        
+        //date of made
+        public DateTime DateTimeOfMade { get { return this.dateTimeOfMade; } set { dateTimeOfMade = value; } }
+
+        //start DateTime
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd HH-mm")]
         [Required(ErrorMessage = "Please provide a date")]
-        public DateTime StartDate { get { return this.startDate; } set { startDate = value; } }
+        public DateTime StartDateTime { get { return this.startDateTime; } set { startDateTime = value; } }        
+
+        //end Datetime
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd HH-mm")]
         [Required(ErrorMessage = "Please provide a date")]
-        public DateTime EndDate { get { return this.endDate; } set { endDate = value; } }
-        public DateTime StartTime { get { return this.startTime; } set { startTime = value; } }
-        public DateTime EndTime { get { return this.endTime; } set { endTime = value; } }
+        public DateTime EndDateTime { get { return this.endDateTime; } set { endDateTime = value; } }
+        
     }
 }

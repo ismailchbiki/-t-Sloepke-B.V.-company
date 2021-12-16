@@ -19,10 +19,12 @@ namespace Synthesis_Assignment_Web_App.Pages
         }
 
         public List<Inventory> Gear;
+        InventoryAdministration manageGear = new InventoryAdministration();
+
 
         public void OnGet()
         {
-            Gear = InventoryAdministration.GetAllGear();
+            Gear = manageGear.GetAllGear();
         }
     }
 }
