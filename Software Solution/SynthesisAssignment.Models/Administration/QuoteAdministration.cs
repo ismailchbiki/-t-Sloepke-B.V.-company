@@ -16,23 +16,19 @@ namespace SynthesisAssignment.Models.Administration
         static DALQuote dalQuote = new DALQuote();
 
         //methods
-        public bool AddQuote(Customer customer, Boat boat, Item item, Quote quote)
+        public bool AddQuote(Quote quote)
         {
 
-            //duration calculation per hours between 2 dates
-            double diff = (quote.EndDateTime - quote.StartDateTime).TotalHours;
-            int durationPerHours = Convert.ToInt32(Math.Ceiling(diff));
+            //calculate time difference between 2 dates
+            int duration = Calculate.CalculateDuration(quote.EndDateTime, quote.StartDateTime);
 
-            //only multiple of 2 hrs is accepted
-            double reminder = durationPerHours % 2;
-
-            //minimum 2 hrs / max 2 weeks
-            if (durationPerHours < 2 || durationPerHours > 336 || reminder != 0)
+            //duration must be bigger than 2hrs and less than two weeks
+            if (!Calculate.ApproveDuration(duration))
             {
                 return false;
             }
 
-            if (dalQuote.AddQuote(customer, boat, item, quote))
+            if (dalQuote.AddQuote(quote))
             {
                 return true;
             }
@@ -40,7 +36,7 @@ namespace SynthesisAssignment.Models.Administration
             return false;
         }
 
-        public List<ClassCollection> GetAllQuotes()
+        public List<Quote> GetAllQuotes()
         {
             return dalQuote.GetAllQuotes().ToList();
         }

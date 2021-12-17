@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SynthesisAssignment.Models;
 using SynthesisAssignment.MyClasses.Classes;
+using SynthesisAssignment.MyClasses.Classes.MyHelpers;
 using SynthesisAssignment.Services;
 
 namespace Synthesis_Assignment_Web_App.Pages
@@ -13,24 +14,7 @@ namespace Synthesis_Assignment_Web_App.Pages
     [BindProperties]
     public class BookModel : PageModel
     {
-        //duration hours
-        public List<int> GenerateHours()
-        {
 
-            List<int> duration = new List<int>();
-            int hours;
-
-            for (int i = 2; i < 338; i = i + 2)
-            {
-                hours = i;
-                duration.Add(hours);
-            }
-
-            return duration;
-        }
-
-        public Boat Boat { get; set; }
-        public Item Item { get; set; }
         public Quote Quote { get; set; }
 
         public void OnGet()
@@ -41,17 +25,11 @@ namespace Synthesis_Assignment_Web_App.Pages
         public IActionResult OnPost()
         {
 
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
             //get the time of booking
             Quote.DateTimeOfMade = DateTime.Now;
-
-            //storing the objects in sessios
-            HttpContext.Session.SetObjectAsJson("BoatDescription", Boat);
-            HttpContext.Session.SetObjectAsJson("ItemDescription", Item);
+            Quote.RefNumber = DateTime.Now.ToString("yyyy") + "-" + Calculate.Generate().ToString();
+            
+            //storing the object in session
             HttpContext.Session.SetObjectAsJson("Quote", Quote);
 
             return RedirectToPage("CustomerDetails");

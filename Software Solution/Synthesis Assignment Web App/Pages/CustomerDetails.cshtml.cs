@@ -12,7 +12,7 @@ namespace Synthesis_Assignment_Web_App.Pages
     public class CustomerDetailsModel : PageModel
     {
         [BindProperty]
-        public Customer Customer { get; set; }
+        public Quote Quote { get; set; }
 
         public void OnGet()
         {
@@ -26,7 +26,7 @@ namespace Synthesis_Assignment_Web_App.Pages
                 return Page();
             }
 
-            HttpContext.Session.SetObjectAsJson("CustomerDetails", Customer);
+            HttpContext.Session.SetObjectAsJson("CustomerDetails", Quote.Customer);
 
             return RedirectToPage("confirmationpage");
         }

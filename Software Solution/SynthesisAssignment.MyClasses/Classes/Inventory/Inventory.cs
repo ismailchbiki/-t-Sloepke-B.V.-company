@@ -25,8 +25,18 @@ namespace SynthesisAssignment.Models
         {
             this.id = id;
         }
-        protected Inventory(double cost, double deposit, int qty, string remark)
+        //to create gear
+        public Inventory(double cost, double deposit, int qty, string remark)
         {
+            this.cost = cost;
+            this.deposit = deposit;
+            this.qty = qty;
+            this.remark = remark;
+        }
+        //to select * gear
+        protected Inventory(int id, double cost, double deposit, int qty, string remark)
+        {
+            this.id = id;
             this.cost = cost;
             this.deposit = deposit;
             this.qty = qty;
@@ -35,13 +45,14 @@ namespace SynthesisAssignment.Models
 
         //Properties
         public int ID { get { return this.id; } }
-        public double Cost { get { return this.cost; } set { cost = value; } }
-        [Required]
-        public double Deposit { get { return this.deposit; } set { deposit = value; } }
+        public double Cost { get { return this.cost; } }
+        public double Deposit { get { return this.deposit; }}
+
+        // public set to bound quantity to the view
         [Required(ErrorMessage = "Please provide a number")]
         [RegularExpression("^[0-9]*$", ErrorMessage = "Please provide a valid number")]
         public int Quantity { get { return this.qty; } set { qty = value; } }
-        public string Remark { get { return this.remark; } set { remark = value; } }
+        public string Remark { get { return this.remark; } }
 
     }
 }

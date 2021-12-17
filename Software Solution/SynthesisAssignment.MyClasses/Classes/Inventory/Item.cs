@@ -21,8 +21,15 @@ namespace SynthesisAssignment.Services
         public Item(int id) : base(id)
         {
         }
-        public Item(ITEMTYPE item, double cost, double deposit, int qty, string remark) 
+        //to create items
+        public Item(ITEMTYPE itemType, double cost, double deposit, int qty, string remark) 
             : base(cost, deposit, qty, remark)
+        {
+            this.type = itemType;
+        }
+        //to select * items
+        public Item(int id, ITEMTYPE item, double cost, double deposit, int qty, string remark) 
+            : base(id, cost, deposit, qty, remark)
         {
             this.type = item;
         }

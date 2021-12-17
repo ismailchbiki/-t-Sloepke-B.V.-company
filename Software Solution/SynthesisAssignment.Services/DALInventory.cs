@@ -32,7 +32,6 @@ namespace SynthesisAssignment.Services
                     type = ((Item)gear).ItemType;
                 }
 
-
                 //connection string
                 MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
 
@@ -48,7 +47,6 @@ namespace SynthesisAssignment.Services
                     sqlQuery = "insert into syn_item (item_type, item_cost, item_deposit, item_quantity, item_remark) VALUES (@item_type, @cost, @deposit, @quantity, @remark) ";
                 }
 
-
                 MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
 
                 //if boat
@@ -62,7 +60,6 @@ namespace SynthesisAssignment.Services
                 cmd.Parameters.AddWithValue("@deposit", gear.Deposit);
                 cmd.Parameters.AddWithValue("@quantity", gear.Quantity);
                 cmd.Parameters.AddWithValue("@remark", gear.Remark);
-
 
                 //Open the connection
                 con.Open();
@@ -216,14 +213,15 @@ namespace SynthesisAssignment.Services
                 while (dr.Read())
                 {
 
-                    boat = new Boat();
-                    boat = new Boat(Convert.ToInt32(dr["boat_ID"]));
-                    boat.BoatType = dr["boat_type"].ToString();
-                    boat.Capacity = dr["boat_capacity"].ToString();
-                    boat.Cost = Convert.ToDouble(dr["boat_cost"]);
-                    boat.Deposit = Convert.ToDouble(dr["boat_deposit"]);
-                    boat.Quantity = Convert.ToInt32(dr["boat_quantity"]);
-                    boat.Remark = dr["boat_remark"].ToString();
+                    int boatID = Convert.ToInt32(dr["boat_ID"]);
+                    string bType = dr["boat_type"].ToString();
+                    string capacity = dr["boat_capacity"].ToString();
+                    double boatCost = Convert.ToDouble(dr["boat_cost"]);
+                    double boatDeposit = Convert.ToDouble(dr["boat_deposit"]);
+                    int boatQuantity = Convert.ToInt32(dr["boat_quantity"]);
+                    string boatRemark = dr["boat_remark"].ToString();
+
+                    boat = new Boat(boatID, (BOATTYPE)Enum.Parse(typeof(BOATTYPE), bType), (CAPACITY)Enum.Parse(typeof(CAPACITY), capacity), boatCost, boatDeposit, boatQuantity, boatRemark);
 
                     boats.Add(boat);
                 }
@@ -262,13 +260,14 @@ namespace SynthesisAssignment.Services
                 //read data from DB
                 while (dr.Read())
                 {
-                    item = new Item();
-                    item = new Item(Convert.ToInt32(dr["item_ID"]));
-                    item.ItemType = dr["item_type"].ToString();
-                    item.Cost = Convert.ToDouble(dr["item_cost"]);
-                    item.Deposit = Convert.ToDouble(dr["item_deposit"]);
-                    item.Quantity = Convert.ToInt32(dr["item_quantity"]);
-                    item.Remark = dr["item_remark"].ToString();
+                    
+                    string itemType = dr["item_type"].ToString();
+                    double itemCost = Convert.ToDouble(dr["item_cost"]);
+                    double itemDeposit = Convert.ToDouble(dr["item_deposit"]);
+                    int itemQuantity = Convert.ToInt32(dr["item_quantity"]);
+                    string itemRemark = dr["item_remark"].ToString();
+
+                    item = new Item((ITEMTYPE)Enum.Parse(typeof(ITEMTYPE), itemType), itemCost, itemDeposit, itemQuantity, itemRemark);
 
                     items.Add(item);
                 }

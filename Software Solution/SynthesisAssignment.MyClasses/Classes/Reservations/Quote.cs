@@ -1,5 +1,6 @@
 ﻿using SynthesisAssignment.Models;
 using SynthesisAssignment.MyClasses.Enums;
+using SynthesisAssignment.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,15 +13,13 @@ namespace SynthesisAssignment.MyClasses.Classes
     public class Quote
     {
         //quote ID
-        int refNumber;
+        string refNumber;
 
-        //location
+        Customer customer = new Customer();
+        Boat boat = new Boat();
+        Item item = new Item();
         LOCATION location;
-
-        //date of made of quote
         DateTime dateTimeOfMade;
-
-        //start and end date for the renting
         DateTime startDateTime;
         DateTime endDateTime;
 
@@ -29,23 +28,22 @@ namespace SynthesisAssignment.MyClasses.Classes
         {
 
         }
-        public Quote(int id)
-        {
-            this.refNumber = id;
-        }
 
-        // --------- PROPERTIES
-
+        // --------- PROPERTIES(public setters to bound the properties to the view template)
         //quote ID
-        public int RefNumber { get { return this.refNumber; }}
-        
+        public string RefNumber { get { return this.refNumber; } set { refNumber = value; } }
+
+        public Customer Customer { get { return this.customer; } set { customer = value; } }
+        public Boat Boat { get { return this.boat; } set { boat = value; } }
+        public Item Item { get { return this.item; } set { item = value; } }
+
         //location
         public string Location
         {
             get { return this.location.ToString(); }
             set { location = (LOCATION)Enum.Parse(typeof(LOCATION), value); }
         }
-        
+
         //date of made
         public DateTime DateTimeOfMade { get { return this.dateTimeOfMade; } set { dateTimeOfMade = value; } }
 

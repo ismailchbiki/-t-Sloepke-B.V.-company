@@ -12,39 +12,58 @@
     <div class="quote-info">
         <div class="align-left">
             <h2>Rental Quote</h2>
-            <span>Date 9/21/2021</span>
-            <span>Reference No. 2021-021234</span>
-            <span>Location Eindhoven</span>
-            <span>Start 18/12/2021 at 10.00</span>
-            <span>End 18/12/2021 at 14.00</span>
+            <span>Date @Model.Quote.DateTimeOfMade.ToString("d/M/yyyy")</span>
+            <span>Reference No. @Model.Quote.RefNumber</span>
+            <span>Location @Model.Quote.Location</span>
+            <span>Start @Model.Quote.StartDateTime.ToString("dd/MM/yyyy") at @Model.Quote.StartDateTime.ToString("HH.mm")</span>
+            <span>End @Model.Quote.EndDateTime.ToString("dd/MM/yyyy") at @Model.Quote.EndDateTime.ToString("HH.mm")</span>
         </div>
 
         <div class="align-right">
             <h2>Customer</h2>
-            <span>Name John Doe</span>
-            <span>Address Rachelsmolen 3</span>
-            <span>Zipcode &Aacute; City 5612 MA Eindhoven</span>
-            <span>Phone 0888377353</span>
-            <span>Email john@email.com</span>
+            <span>Name @Model.Quote.Customer.FirstName @Model.Quote.Customer.LastName</span>
+            <span>Address @Model.Quote.Customer.Address</span>
+            <span>Zipcode & City @Model.Quote.Customer.Zipcode @Model.Quote.Customer.City</span>
+            <span>Phone @Model.Quote.Customer.Phone</span>
+            <span>Email @Model.Quote.Customer.Email</span>
         </div>
     </div>
 
 
     <table class="quote-description">
         <tr>
+            <!-- first row -->
             <th>Description</th>
             <th>Quantity</th>
             <th>Duration (h)</th>
             <th>Unit Price (2h)</th>
             <th>Price</th>
         </tr>
+
+        <tr>
+            <!-- 2nd row -->
+            <th>@Model.Quote.Boat.BoatType</th>
+            <th>@Model.Quote.Boat.Quantity</th>
+            <th>calculate duration</th>
+            <th>@Model.Quote.Boat.Cost</th>
+            <th>calculate price</th>
+        </tr>
+
+        <tr>
+            <!-- 3rd row -->
+            <th>@Model.Quote.Item.ItemType</th>
+            <th>@Model.Quote.Item.Quantity</th>
+            <th>calculate duration</th>
+            <th>@Model.Quote.Item.Cost</th>
+            <th>calculate price</th>
+        </tr>
     </table>
 
-    <span>Toral: €105.00</span>
+    <span>Toral: €toBeCalculated</span>
 
     <h2>Quote terms</h2>
     <span class="quote-terms">
-        Note that when retrieving the boat at the rental location you are required to first transfer a deposit of €150.
+        Note that when retrieving the boat at the rental location you are required to first transfer a deposit of €toBeCalculated.
     </span>
 
     <h2>Please sign and confirm booking</h2>

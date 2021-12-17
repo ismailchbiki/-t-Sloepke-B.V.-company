@@ -44,26 +44,26 @@
 
         <!--  Boat type  -->
         <h2 class="boats-title">Choose a boat</h2>
-        <span class="dataV" asp-validation-for="Boat.BoatType"></span>
-        <select asp-for="Boat.BoatType" asp-items="Html.GetEnumSelectList<BOATTYPE>()">
+        <span class="dataV" asp-validation-for="Quote.Boat.BoatType"></span>
+        <select asp-for="Quote.Boat.BoatType" asp-items="Html.GetEnumSelectList<BOATTYPE>()">
         </select>
 
         <!--  boat Quantity  -->
         <h2 class="boats-title">Choose quantity</h2>
-        <span class="dataV" asp-validation-for="Boat.Quantity"></span>
-        <input type="text" asp-for="Boat.Quantity"
+        <span class="dataV" asp-validation-for="Quote.Boat.Quantity"></span>
+        <input type="text" asp-for="Quote.Boat.Quantity"
                placeholder="Boat Quantity" />        
 
         <!--  item type  -->
         <h2 class="boats-title">Choose item</h2>
-        <span class="dataV" asp-validation-for="Item.ItemType"></span>
-        <select asp-for="Item.ItemType" asp-items="Html.GetEnumSelectList<ITEMTYPE>()">
+        <span class="dataV" asp-validation-for="Quote.Item.ItemType"></span>
+        <select asp-for="Quote.Item.ItemType" asp-items="Html.GetEnumSelectList<ITEMTYPE>()">
         </select>
 
         <!--  item Quantity  -->
         <h2 class="boats-title">Choose quantity</h2>
-        <span class="dataV" asp-validation-for="Item.Quantity"></span>
-        <input type="text" asp-for="Item.Quantity"
+        <span class="dataV" asp-validation-for="Quote.Item.Quantity"></span>
+        <input type="text" asp-for="Quote.Item.Quantity"
                placeholder="Item Quantity" />
 
         <!--  start date  -->

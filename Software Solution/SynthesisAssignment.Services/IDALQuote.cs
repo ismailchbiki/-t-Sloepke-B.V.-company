@@ -9,6 +9,6 @@ namespace SynthesisAssignment.Services
 {
     public interface IDALQuote
     {
-        public bool AddQuote(Customer customer, Boat boat, Item item, Quote quote);
+        public bool AddQuote(Quote quote);
     }
 }

@@ -31,7 +31,7 @@ namespace SynthesisAssignment.MyClasses.Classes
         public int ID { get { return this.id; } }
 
         /// <summary>
-        /// public get for model binding
+        /// public set for model binding
         /// </summary>
         
         [Required(ErrorMessage = "Required field")]
