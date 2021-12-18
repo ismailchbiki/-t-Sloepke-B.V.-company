@@ -23,7 +23,8 @@ namespace SynthesisAssignment.Services
                 MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
 
                 //customer, quote, boat, and item details
-                string sqlQuery = "INSERT INTO syn_customer (first_name, last_name, address, zipcode, city, phone, email) " +
+                string sqlQuery = "START TRANSACTION;" +
+                    "INSERT INTO syn_customer (first_name, last_name, address, zipcode, city, phone, email) " +
                     "VALUES(@firstname, @lastname, @address, @zipcode, @city, @phone, @email);" +
 
                     "INSERT INTO syn_quote (customer_ID, date_of_made, start_date, end_date, location, ref_no) " +
@@ -33,7 +34,8 @@ namespace SynthesisAssignment.Services
                     "VALUES((select boat_ID from syn_boat where boat_type = @boatType), @boatQuantity, (SELECT max(ID) from syn_quote));" +
 
                     "INSERT INTO syn_item_description (item_ID, quantity, quote_ID) " +
-                    "VALUES((select item_ID from syn_item where item_type = @itemType), @itemQuantity, (SELECT max(ID) from syn_quote));";
+                    "VALUES((select item_ID from syn_item where item_type = @itemType), @itemQuantity, (SELECT max(ID) from syn_quote));" +
+                    "COMMIT;";
 
                 MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
 
@@ -90,13 +92,15 @@ namespace SynthesisAssignment.Services
                 MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
 
                 //Query to execute
-                string query = "SELECT syn_quote.ID as Quote_ID, `first_name`, `last_name`, `address`, `zipcode`, `city`, `phone`, `email`, " +
+                string query = "START TRANSACTION;" +
+                    "SELECT syn_quote.ID as Quote_ID, `first_name`, `last_name`, `address`, `zipcode`, `city`, `phone`, `email`, " +
                     "`date_of_made`, `start_date`, `end_date`, `location`, ref_no as Quote_refNumber, " +
                     "b.boat_type, b.boat_capacity, b.boat_cost, b.boat_deposit, b_d.quantity as boat_quantity, " +
                     "i.item_type, i.item_cost, i.item_deposit, i_d.quantity as item_quantity FROM `syn_customer` " +
                     "inner join syn_quote on syn_customer.ID = syn_quote.customer_ID INNER JOIN syn_boat_description as b_d on b_d.quote_ID = syn_quote.ID " +
                     "INNER JOIN syn_item_description as i_d on i_d.quote_ID = syn_quote.ID INNER JOIN syn_boat as b on b_d.boat_ID = b.boat_ID " +
-                    "INNER JOIN syn_item as i on i.item_ID = i_d.item_ID;";
+                    "INNER JOIN syn_item as i on i.item_ID = i_d.item_ID;" +
+                    "COMMIT;";
 
                 MySqlCommand cmd = new MySqlCommand(query, con);
 

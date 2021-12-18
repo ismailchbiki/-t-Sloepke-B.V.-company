@@ -3,10 +3,14 @@
 @{
 }
 
-@*<div class="text-center">
+<div class="text-center">
     <h1 class="display-4">My Reservations</h1>
-</div>*@
+</div>
 
-<h2>
-    Your reference number of your reservation is: @Model.Quote.RefNumber Please save it to access your booking details
-</h2>
+@if (@Model.Quote.RefNumber != null)
+{
+    <h2>
+        Your reference number of your reservation is: @Model.Quote.RefNumber Please save it to access your booking details
+    </h2>
+}
+
