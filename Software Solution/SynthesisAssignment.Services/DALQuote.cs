@@ -23,11 +23,11 @@ namespace SynthesisAssignment.Services
                 MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
 
                 //customer, quote, boat, and item details
-                string sqlQuery = "INSERT INTO syn_customer (first_name, last_name, address, zipcode, city, phone, email, ref_no) " +
-                    "VALUES(@firstname, @lastname, @address, @zipcode, @city, @phone, @email, @ref_no);" +
+                string sqlQuery = "INSERT INTO syn_customer (first_name, last_name, address, zipcode, city, phone, email) " +
+                    "VALUES(@firstname, @lastname, @address, @zipcode, @city, @phone, @email);" +
 
-                    "INSERT INTO syn_quote (customer_ID, date_of_made, start_date, end_date, location) " +
-                    "VALUES((select max(ID) from syn_customer), @dateOfMade, @startDate, @endDate, @location);" +
+                    "INSERT INTO syn_quote (customer_ID, date_of_made, start_date, end_date, location, ref_no) " +
+                    "VALUES((select max(ID) from syn_customer), @dateOfMade, @startDate, @endDate, @location, @refNum);" +
 
                     "INSERT INTO syn_boat_description (boat_ID, quantity, quote_ID) " +
                     "VALUES((select boat_ID from syn_boat where boat_type = @boatType), @boatQuantity, (SELECT max(ID) from syn_quote));" +
@@ -51,7 +51,7 @@ namespace SynthesisAssignment.Services
                 cmd.Parameters.AddWithValue("@startDate", quote.StartDateTime.ToString("yyyy-MM-dd HH-mm"));
                 cmd.Parameters.AddWithValue("@endDate", quote.EndDateTime.ToString("yyyy-MM-dd HH-mm"));
                 cmd.Parameters.AddWithValue("@location", quote.Location);
-                cmd.Parameters.AddWithValue("@ref_no", quote.RefNumber);
+                cmd.Parameters.AddWithValue("@refNum", quote.RefNumber);
 
                 //boat description
                 cmd.Parameters.AddWithValue("@boatType", quote.Boat.BoatType.ToString());
@@ -91,7 +91,7 @@ namespace SynthesisAssignment.Services
 
                 //Query to execute
                 string query = "SELECT syn_quote.ID as Quote_ID, `first_name`, `last_name`, `address`, `zipcode`, `city`, `phone`, `email`, " +
-                    "`date_of_made`, `start_date`, `end_date`, `location`, ref_no, " +
+                    "`date_of_made`, `start_date`, `end_date`, `location`, ref_no as Quote_refNumber, " +
                     "b.boat_type, b.boat_capacity, b.boat_cost, b.boat_deposit, b_d.quantity as boat_quantity, " +
                     "i.item_type, i.item_cost, i.item_deposit, i_d.quantity as item_quantity FROM `syn_customer` " +
                     "inner join syn_quote on syn_customer.ID = syn_quote.customer_ID INNER JOIN syn_boat_description as b_d on b_d.quote_ID = syn_quote.ID " +
@@ -117,7 +117,7 @@ namespace SynthesisAssignment.Services
                     quote.Customer.Email = dr["email"].ToString();
 
                     //quote details
-                    quote.RefNumber = dr["ref_no"].ToString();
+                    quote.RefNumber = dr["Quote_refNumber"].ToString();
                     quote.DateTimeOfMade = Convert.ToDateTime(dr["date_of_made"]);
                     quote.StartDateTime = Convert.ToDateTime(dr["start_date"]);
                     quote.EndDateTime = Convert.ToDateTime(dr["end_date"]);

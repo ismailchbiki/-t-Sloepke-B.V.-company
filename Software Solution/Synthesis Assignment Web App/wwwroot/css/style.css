@@ -944,3 +944,8 @@ th {
     margin-left: inherit;
     font-size: 25px;
 }
+
+.valid-duration{
+    color: red;
+    text-align: center;
+}

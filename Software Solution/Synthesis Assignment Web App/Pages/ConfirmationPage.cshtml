@@ -44,26 +44,26 @@
             <!-- 2nd row -->
             <th>@Model.Quote.Boat.BoatType</th>
             <th>@Model.Quote.Boat.Quantity</th>
-            <th>calculate duration</th>
-            <th>@Model.Quote.Boat.Cost</th>
-            <th>calculate price</th>
+            <th>@Model.BoatDuration</th>
+            <th>@Model.BoatUnitPrice</th>
+            <th>@Model.BoatPrice</th>
         </tr>
 
         <tr>
             <!-- 3rd row -->
             <th>@Model.Quote.Item.ItemType</th>
             <th>@Model.Quote.Item.Quantity</th>
-            <th>calculate duration</th>
-            <th>@Model.Quote.Item.Cost</th>
-            <th>calculate price</th>
+            <th>@Model.ItemDuration</th>
+            <th>@Model.ItemUnitPrice</th>
+            <th>@Model.ItemPrice</th>
         </tr>
     </table>
 
-    <span>Toral: €toBeCalculated</span>
+    <span>Total: €@Model.TotalPrice</span>
 
     <h2>Quote terms</h2>
     <span class="quote-terms">
-        Note that when retrieving the boat at the rental location you are required to first transfer a deposit of €toBeCalculated.
+        Note that when retrieving the boat at the rental location you are required to first transfer a deposit of €@Model.TotalDeposit.
     </span>
 
     <h2>Please sign and confirm booking</h2>

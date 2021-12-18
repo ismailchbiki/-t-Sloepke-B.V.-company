@@ -19,6 +19,8 @@ namespace Synthesis_Assignment_Web_App.Pages
         QuoteAdministration manageQuote = new QuoteAdministration();
         InventoryAdministration manageGear = new InventoryAdministration();
 
+        public string Notification;
+
         public double BoatUnitPrice;
         public int BoatDuration;
         public double BoatPrice;
@@ -28,6 +30,7 @@ namespace Synthesis_Assignment_Web_App.Pages
         public double ItemPrice;
 
         public double TotalPrice;
+        public double TotalDeposit;
 
         public void OnGet()
         {
@@ -46,6 +49,12 @@ namespace Synthesis_Assignment_Web_App.Pages
             ItemPrice = ItemUnitPrice * (ItemDuration / 2) * Quote.Item.Quantity;
 
             TotalPrice = BoatPrice + ItemPrice;
+
+            //deposit calculation
+            double boatDeposit = manageGear.GetGearByType(Quote.Boat).Deposit;
+            double itemDeposit = manageGear.GetGearByType(Quote.Item).Deposit;
+            
+            TotalDeposit = (boatDeposit * Quote.Boat.Quantity) + (itemDeposit * Quote.Item.Quantity);
         }
 
         public IActionResult OnPostConfirm()
