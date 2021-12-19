@@ -32,9 +32,20 @@ namespace Synthesis_Assignment_Web_App.Pages
         public double TotalPrice;
         public double TotalDeposit;
 
-        public void OnGet()
+        public IActionResult OnGet(Quote reservation)
         {
-            //to fill in the fields
+            if (reservation != null)
+            {
+                //RESERATION CHECK
+                Quote test = reservation;
+            }
+
+            //to fill in the fields (in case of a reservation)
+            if (HttpContext.Session.GetObjectFromJson<Quote>("Quote") == null)
+            {
+                return RedirectToPage("Book");
+            }
+
             Quote = HttpContext.Session.GetObjectFromJson<Quote>("Quote");
             Quote.Customer = HttpContext.Session.GetObjectFromJson<Customer>("CustomerDetails");
 
@@ -53,8 +64,10 @@ namespace Synthesis_Assignment_Web_App.Pages
             //deposit calculation
             double boatDeposit = manageGear.GetGearByType(Quote.Boat).Deposit;
             double itemDeposit = manageGear.GetGearByType(Quote.Item).Deposit;
-            
+
             TotalDeposit = (boatDeposit * Quote.Boat.Quantity) + (itemDeposit * Quote.Item.Quantity);
+
+            return null;
         }
 
         public IActionResult OnPostConfirm()

@@ -13,7 +13,7 @@ namespace SynthesisAssignment.Models.Administration
     {
 
         //to insert customers' reservations in the DB
-        static DALQuote dalQuote = new DALQuote();
+        DALQuote dalQuote = new DALQuote();
 
         //methods
         public bool AddQuote(Quote quote)
@@ -39,6 +39,20 @@ namespace SynthesisAssignment.Models.Administration
         public List<Quote> GetAllQuotes()
         {
             return dalQuote.GetAllQuotes().ToList();
+        }
+
+        public Quote GetQuoteByID(Quote quote)
+        {
+
+            foreach (var q in GetAllQuotes())
+            {
+                if (q.RefNumber == quote.RefNumber && q.Customer.LastName == quote.Customer.LastName)
+                {
+                    return q;
+                }
+            }
+
+            return null;
         }
     }
 }

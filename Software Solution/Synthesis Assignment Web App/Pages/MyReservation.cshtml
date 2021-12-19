@@ -3,14 +3,43 @@
 @{
 }
 
-<div class="text-center">
-    <h1 class="display-4">My Reservations</h1>
+<div class="page-title">
+    <h1>My Reservations</h1>
 </div>
 
-@if (@Model.Quote.RefNumber != null)
-{
-    <h2>
-        Your reference number of your reservation is: @Model.Quote.RefNumber Please save it to access your booking details
-    </h2>
-}
+<div class="book-now-box">
+    <a href="Book" class="hero-btn">Book Now</a>
+</div>
 
+<div class="reservation-block">
+    <div class="access-form">
+        <form method="post">
+            <span class="dataV" asp-validation-for="Reservation.Customer.LastName"></span>
+            <label for="fname">Last Name</label>
+            <input required type="text" asp-for="Reservation.Customer.LastName" id="fname" placeholder="Your last name..">
+
+            <span class="dataV" asp-validation-for="Reservation.RefNumber"></span>
+            <label for="lname">Booking reference Number</label>
+            <input required type="text" asp-for="Reservation.RefNumber" id="lname" placeholder="Reference number..">
+
+            @*<label for="country">Country</label>
+        <select id="country" name="country">
+            <option value="australia">Australia</option>
+            <option value="canada">Canada</option>
+            <option value="usa">USA</option>
+        </select>*@
+
+            <input type="submit" asp-page-handler="FindQuote" value="Find My Reservation">
+        </form>
+    </div>
+    @if (@Model.Quote.RefNumber != null)
+    {
+        <div class="access-form">
+            <h2>Reservation Number: @Model.Quote.RefNumber</h2>
+            <p>Please save your reference number of your reservation in a safe place to access your booking details</p>
+            <form method="post">
+                <input type="submit" asp-page-handler="Clear" value="Reference Number Saved">
+            </form>
+        </div>        
+    }
+</div>

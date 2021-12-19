@@ -11,16 +11,46 @@ namespace Synthesis_Assignment_Web_App.Pages
 {
     public class MyReservationModel : PageModel
     {
-
+        [BindProperty]
+        public Quote Reservation { get; set; }
         public Quote Quote = new Quote();
-        QuoteAdministration test = new QuoteAdministration();
+
+        //to get all the quotes
+        QuoteAdministration manageQuotes = new QuoteAdministration();
 
         public void OnGet()
         {
-            //test.GetAllQuotes();
+            //communicate reference number
+            if (HttpContext.Session.GetObjectFromJson<Quote>("Quote") != null)
+            {
+                Quote = HttpContext.Session.GetObjectFromJson<Quote>("Quote");
+            }
+        }
 
-            Quote = HttpContext.Session.GetObjectFromJson<Quote>("Quote");
+        public IActionResult OnPostFindQuote()
+        {
+            //clear the session
+            HttpContext.Session.SetObjectAsJson("Quote", null);
 
+            //fetch quote by id
+            if (manageQuotes.GetQuoteByID(Reservation) != null)
+            {
+                return RedirectToPage("ConfirmationPage", manageQuotes.GetQuoteByID(Reservation));
+            }
+
+            //return RedirectToPage("Book");
+
+            return RedirectToPage("MyReservation");
+        }
+
+        public void OnPostClear()
+        {
+            if (HttpContext.Session.GetObjectFromJson<Quote>("Quote") != null)
+            {
+                HttpContext.Session.SetObjectAsJson("Quote", null);
+
+                RedirectToPage("MyReservation");
+            }
         }
     }
 }

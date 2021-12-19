@@ -1,0 +1,12 @@
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.MyClasses\bin\Release\net5.0\SynthesisAssignment.MyClasses.deps.json
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.MyClasses\bin\Release\net5.0\SynthesisAssignment.MyClasses.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.MyClasses\bin\Release\net5.0\ref\SynthesisAssignment.MyClasses.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.MyClasses\bin\Release\net5.0\SynthesisAssignment.MyClasses.pdb
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.MyClasses\obj\Release\net5.0\SynthesisAssignment.MyClasses.csproj.AssemblyReference.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.MyClasses\obj\Release\net5.0\SynthesisAssignment.MyClasses.GeneratedMSBuildEditorConfig.editorconfig
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.MyClasses\obj\Release\net5.0\SynthesisAssignment.MyClasses.AssemblyInfoInputs.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.MyClasses\obj\Release\net5.0\SynthesisAssignment.MyClasses.AssemblyInfo.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.MyClasses\obj\Release\net5.0\SynthesisAssignment.MyClasses.csproj.CoreCompileInputs.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.MyClasses\obj\Release\net5.0\SynthesisAssignment.MyClasses.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.MyClasses\obj\Release\net5.0\ref\SynthesisAssignment.MyClasses.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.MyClasses\obj\Release\net5.0\SynthesisAssignment.MyClasses.pdb

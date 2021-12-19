@@ -87,20 +87,17 @@ namespace SynthesisAssignment.Services
             try
             {
                 List<Quote> allQuotes = new List<Quote>();
-                Quote quote = new Quote();
 
                 MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
 
                 //Query to execute
-                string query = "START TRANSACTION;" +
-                    "SELECT syn_quote.ID as Quote_ID, `first_name`, `last_name`, `address`, `zipcode`, `city`, `phone`, `email`, " +
+                string query = "SELECT syn_quote.ID as Quote_ID, `first_name`, `last_name`, `address`, `zipcode`, `city`, `phone`, `email`, " +
                     "`date_of_made`, `start_date`, `end_date`, `location`, ref_no as Quote_refNumber, " +
                     "b.boat_type, b.boat_capacity, b.boat_cost, b.boat_deposit, b_d.quantity as boat_quantity, " +
                     "i.item_type, i.item_cost, i.item_deposit, i_d.quantity as item_quantity FROM `syn_customer` " +
                     "inner join syn_quote on syn_customer.ID = syn_quote.customer_ID INNER JOIN syn_boat_description as b_d on b_d.quote_ID = syn_quote.ID " +
                     "INNER JOIN syn_item_description as i_d on i_d.quote_ID = syn_quote.ID INNER JOIN syn_boat as b on b_d.boat_ID = b.boat_ID " +
-                    "INNER JOIN syn_item as i on i.item_ID = i_d.item_ID;" +
-                    "COMMIT;";
+                    "INNER JOIN syn_item as i on i.item_ID = i_d.item_ID;";
 
                 MySqlCommand cmd = new MySqlCommand(query, con);
 
@@ -110,6 +107,7 @@ namespace SynthesisAssignment.Services
 
                 while (dr.Read())
                 {
+                    Quote quote = new Quote();
 
                     //customer details
                     quote.Customer.FirstName = dr["first_name"].ToString();

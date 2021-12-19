@@ -1,0 +1,951 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+/*  Header  */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+
+
+body {
+    background-color: antiquewhite;
+}
+
+/* -------------------------  HEADER SECTION*/
+
+/* header*/
+
+header {
+    width: 100%;
+    background-color: #ff6145c7;
+    background-position: center;
+    background-size: inherit;
+    position: relative;
+}
+
+.index-cover-img {
+    height: 70vh;
+    width: 100%;
+    background-image: url(/Synfiles/sailboat-sunset.jpeg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    filter: drop-shadow(120%) | brightness(120%);
+}
+
+/*  BOOK Page  */
+.book-cover-img {
+    height: 70vh;
+    width: 100%;
+    background-image: url(/Synfiles/yacht-and-kayak.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    filter: drop-shadow(120%) | brightness(120%);
+}
+
+.book-filter {
+    background-color: #ff6145c7;
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+    top: 470px;
+    position: inherit;
+    height: 80px;
+    border-radius: 15px;
+}
+
+.form-fields {
+    padding: 15px 15px 0;
+    justify-content: space-between;
+    display: flex;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 23px;
+    color: white;
+}
+
+#date {
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.filter-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 6px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+}
+
+    .filter-button:hover {
+        background-color: gold;
+        color: white;
+    }
+
+
+#menu {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: #333;
+    color: #fff;
+    cursor: pointer;
+    font-size: 2.5rem;
+    padding: 1rem 1.5rem;
+    z-index: 1000;
+    display: none;
+}
+
+/*  ADD TO CART  */
+/*.container-choose {
+    left: 200px;
+    position: absolute;
+    width: max-content;
+}
+
+.card-choose{
+    border: 1px solid black;
+    width: max-content;
+    text-align: center;
+    display: inline-block;
+    margin: 5px;
+}
+
+.item-title{
+    font-weight: bold;
+    margin: 20px;
+}
+
+.select-qty {
+    width: 60%;
+    padding: 5px 20px;
+    margin: 15px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}*/
+/*
+.btn-cart{
+    border: 2px, solid green;
+    background: white;
+    color: black;
+    font-weight: bold;
+    margin: 20px;
+    padding: 5px 10px;
+}
+
+.cart{
+    width: 250px;
+    float: right;
+    text-align: center;
+    border: 1px solid black;
+    overflow-y: scroll;
+    height: 100%;
+}*/
+
+
+/* page title on the header (on other pages)*/
+
+    .header h1 {
+        font-size: 60px;
+        margin: 7%;
+    }
+
+/* Navegation bar and logo*/
+nav {
+    display: flex;
+    padding: 2px 6px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    /* logo image*/
+    nav img {
+        width: 200px;
+        border-radius: 1vh;
+        margin-top: 1%;
+    }
+
+/* Navigation bar links as whole (position)*/
+.nav-links {
+    flex: 1;
+    text-align: right;
+    margin: auto;
+
+}
+
+    /* Navigation bar links (text display) */
+    .nav-links ul li {
+        list-style: none;
+        display: inline-block;
+        padding: 8px 12px;
+        position: relative;
+    }
+
+        /* Navigation bar links (text display) */
+        .nav-links ul li a {
+            color: floralwhite;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        /* Navigation bar links (texts' underline) */
+        .nav-links ul li::after {
+            content: "";
+            width: 0%;
+            height: 2px;
+            background: #f44336;
+            display: block;
+            margin: auto;
+            transition: 0.5;
+        }
+
+        .nav-links ul li:hover::after {
+            width: 100%;
+        }
+
+
+/* all text on the homepage image*/
+.book-now-box {
+    color: #fff;
+    position: absolute;
+    top: 10%;
+    right: 1px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.text-box {
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+    /* homepage Website: title*/
+    .text-box h1 {
+        font-size: 62px;
+        margin: 3%;
+        display: block ruby;
+        font-style: oblique;
+    }
+
+    /* homepage Website: everything you need ... */
+    .text-box p {
+        margin: 10px 0px 40px;
+        font-size: 26px;
+        font-style: italic;
+        color: yellow;
+    }
+
+/* Website responsiveness on other devices */
+@media (max-width: 700px) {
+    .text-box h1 {
+        /*Title text on image*/
+        font-size: 20px;
+    }
+
+    .nav-links ul li {
+        /*navigation links*/
+        display: block;
+    }
+
+    .nav-links {
+        /*navigation links background*/
+        position: absolute;
+        background: dodgerblue;
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        right: 0;
+        text-align: left;
+        z-index: 2; /* send to front */
+        opacity: 60%;
+    }
+}
+
+/*------ End of Header Section -------*/
+
+/*--------------------------------------- INDEX PAGE */
+
+/*------ Body (Container) -------*/
+
+.boats-title {
+    color: blue;
+    font-style: oblique;
+    font-size: 25px;
+    margin-bottom: 0%;
+    margin-bottom: 11px;
+    margin-top: 15px;
+}
+
+.select-btn {
+    color: black;
+    margin-left: 30%;
+    margin-right: 30%;
+    width: 100px;
+    height: 35px;
+    background-color: lightskyblue;
+    border-radius: 7px;
+    margin-top: 10px;
+}
+
+.container {
+    height: 100%;
+    justify-content: space-around;
+    grid-template-rows: auto auto;
+}
+
+.item1-intro {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 3%;
+}
+
+h1 {
+    padding-top: 2%;
+    padding-bottom: 1%;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+p {
+    color: #777;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+    padding: 10px;
+}
+
+.item2-highlights {
+    margin-top: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.item2-highlights-intro-col {
+    background: yellowgreen;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    width: 18%;
+}
+
+h3 {
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+
+
+.item2-highlights-intro-col:hover {
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+/*  Inventory collection  */
+
+
+.item-collection {
+
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+    .item-collection table {
+        border-collapse: collapse;
+        width: 100%;
+        background-color: cornflowerblue;
+    }
+
+    .columns-name{
+        font-size: larger;
+    }
+
+    .item-collection th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    .item-collection th {
+        font-size: larger;
+    }
+
+    .item-collection tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+/*--------------------------------------- ABOUT PAGE */
+
+
+/* about us button, applies also on the button in contact us page*/
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 7px 30px;
+    font-size: 27px;
+    background: forestgreen;
+    position: relative;
+    cursor: pointer;
+    margin: 1%;
+    border-radius: 5px;
+    display: block ruby;
+}
+
+    .hero-btn:hover {
+        border: 1px solid #f44336;
+        background: #f44336;
+        transition: 1s;
+    }
+
+
+.about-us {
+    width: 80%;
+    margin: auto;
+    padding-top: 80px;
+    padding-bottom: 50px;
+}
+
+.about-col {
+    flex-basis: 48%;
+    padding: 30px 2px;
+}
+
+    .about-col img {
+        width: 100%;
+    }
+
+    .about-col h1 {
+        padding-top: 0;
+    }
+
+    .about-col p {
+        padding: 15px 0 25px;
+    }
+
+
+.red-btn {
+    border: 1px solid #f44336;
+    background: transparent;
+    color: #f44336;
+}
+
+    .red-btn:hover {
+        color: #fff;
+    }
+
+
+/*---------------------------------------- contact us page*/
+
+/*------ contact us (all page except header and footer)-------*/
+
+.inquery-note{
+    font-size: 25px;
+    text-align: center;
+    display: block;
+    color: cornflowerblue;
+    font-style: oblique;
+    margin-top: 20px
+}
+
+/*------ map view on page -------*/
+.location {
+    width: 100%;
+    margin: auto;
+    padding: 80px 0;
+}
+
+    .location iframe {
+        width: 100%;
+    }
+
+
+/*------ contact us: contact details and text fields for user input -------*/
+.contact-us {
+    width: 80%;
+    margin: auto;
+}
+
+.contact h1 {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 50px;
+}
+
+.contact-col div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+    .contact-col div p {
+        padding: 0;
+    }
+
+    .contact-col div h5 {
+        font-size: 20px;
+        margin-bottom: 5px;
+        color: #555;
+        font-weight: 400;
+    }
+
+.contact-col input,
+.contact-col textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 17px;
+    outline: none;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+/* LOGIN FORM */
+
+form{
+    position: center;
+}
+
+.login-required{
+    text-align: center;
+    font-size: 20px;
+    color: blue;
+    font-style: oblique;
+}
+
+/* whole form login box*/
+.form-box {
+    width: 400px;
+    height: 700px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0%;
+    overflow: hidden;
+    background-color: rgb(235, 222, 222);
+    opacity: 80%;
+    border-radius: 4%;
+}
+
+    .form-box span {
+        color: red;
+    }
+
+/*both toggling buttons*/
+.button-box {
+    width: 220px;
+    margin: 30px auto;
+    position: relative;
+    box-shadow: 0 0 20px 9px #e4313191;
+    border-radius: 30px;
+}
+
+/*--login and register buttons (toggling)*/
+.toggle-button {
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+}
+
+/*--login and register buttons (color)*/
+#button {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: linear-gradient(to right, rgb(55, 138, 158), rgb(255, 17, 77));
+    border-radius: 30px;
+    transition: 0.5s;
+}
+
+/*--fields for input*/
+
+.input-group {
+    top: 150px;
+    position: absolute;
+    width: 280px;
+    transition: 0.5s;
+}
+
+/*--fields for input*/
+
+.input-field {
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+}
+
+/*-- login and register buttons*/
+
+.submit-button {
+    width: 85%;
+    /*button size*/
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    /* button position*/
+    margin: 10% auto;
+    /*button color*/
+    background: linear-gradient(to right, rgb(55, 138, 158), rgb(255, 17, 77));
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+
+
+#login {
+    left: 35px;
+}
+
+#register {
+    left: 450px;
+}
+
+/*------ Footer -------*/
+
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+    padding-top: 10%;
+}
+
+    .footer h4 {
+        margin-bottom: 25px;
+        margin-top: 20px;
+        font-weight: 600;
+    }
+
+
+
+/*------ Blog -------*/
+
+/*Content table*/
+
+
+
+.blog-content {
+    margin-top: 3%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.post-upload {
+    text-align: center;
+    font-size: 30px;
+    color: blue;
+    font-style: oblique;
+}
+
+.actual-images {
+    max-width: 100%;
+    height: 40%;
+    width: 100%;
+}
+
+.users-images {
+    max-width: 100%;
+    height: 40%;
+    width: 100%;
+}
+
+table, th {
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    padding: 15px;
+}
+
+
+/*---------------------------------------- add post page*/
+
+/*------ add post (all page except header and footer)-------*/
+
+.post {
+    width: 80%;
+    margin: auto;
+}
+
+.post-success{
+    color: royalblue;
+    font-size: 150%;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.post h1 {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 50px;
+}
+
+.post-col input,
+.post-col textarea,
+.post-col select{
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 17px;
+    outline: none;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.dataV {
+    color: red;
+}
+
+.browse{
+    margin: 13px;
+}
+
+/* media queries  */
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 55%;
+    }
+
+    .home {
+        padding: 1rem 4rem;
+    }
+}
+
+@media (max-width: 991px) {
+    header {
+        left: -120%;
+    }
+
+    #menu {
+        display: block;
+    }
+
+    header.toggle {
+        left: 0%;
+    }
+
+    body {
+        padding: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 50%;
+    }
+}
+
+@media (max-width: 400px) {
+    header {
+        width: 100vw;
+    }
+
+    .heading {
+        margin: 0 3rem;
+    }
+
+    .about .row .counter .box {
+        width: 100%;
+    }
+
+    .education .box-container .box {
+        width: 100%;
+    }
+
+    .portfolio .box-container .box {
+        width: 100%;
+    }
+
+    .contact .row form {
+        margin: 3rem 0;
+    }
+}
+
+
+/*  BOOKING FORM  */
+
+.booking-form {
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+    .booking-form input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: beige;
+    }
+
+.booking-form input[type=submit] {
+    width: 100%;
+    background-color: cornflowerblue;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .booking-form input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    .booking-form div {
+        border-radius: 5px;
+        background-color: beige;
+        padding: 20px;
+    }
+
+
+
+/*  Confirmation Page  */
+.confirm-logo img {
+    width: 28%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border-radius: 15px;
+}
+
+.confirm-body {
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-right: 5%;
+}
+
+    .confirm-body span {
+        display: block;
+        text-align: right;
+        margin-right: inherit;
+        font-size: x-large;
+        font: bold;
+        margin-top: 20px;
+    }
+
+    .confirm-body h2 {
+        margin-left: inherit;
+        margin-bottom: revert;
+        margin-top: inherit;
+    }
+
+.quote-info{
+    display: flex;
+    margin: inherit;
+    margin-block: 80px;
+}
+
+.quote-info div {
+    display: grid;
+}
+
+.align-left {
+    margin-left: 40px;
+    text-align-last: left;
+}
+
+.align-right {
+    display: grid;
+    margin-left: auto;
+    text-align-last: left;
+}
+
+.align-left h2{
+    margin: 10px;
+}
+
+    .align-left span {
+        margin: 3px;
+        font-size: 20px;
+    }
+
+.align-right h2 {
+    margin: 10px;
+}
+
+.align-right span {
+    margin: 3px;
+    font-size: 20px;
+}
+
+.quote-description table{
+    width: 95%;
+    margin-left: inherit;
+}
+
+.quote-terms {
+    margin: inherit;
+    font-size: larger;
+    text-align-last: left;
+}
+
+.submit-booking {
+    background-color: #20ba20;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 8px;
+    margin-left: 15%;
+    width: 40%;
+}
+
+.checkbox-booking {
+    margin-left: inherit;
+    font-size: 25px;
+}
+
+.valid-duration{
+    color: red;
+    text-align: center;
+}
