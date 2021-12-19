@@ -10,5 +10,9 @@ namespace SynthesisAssignment.Services
     public interface IDALQuote
     {
         public bool AddQuote(Quote quote);
+
+        public IEnumerable<Quote> GetAllQuotes();
+
+        public bool DeleteQuote(Quote quote);
     }
 }

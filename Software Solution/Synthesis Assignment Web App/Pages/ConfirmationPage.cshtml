@@ -1,5 +1,6 @@
 ﻿@page
 @model Synthesis_Assignment_Web_App.Pages.ConfirmationPageModel
+@using SynthesisAssignment.MyClasses.Classes;
 @{
     ViewData["Title"] = "Confirm Booking";
 }
@@ -44,7 +45,7 @@
             <!-- 2nd row -->
             <th>@Model.Quote.Boat.BoatType</th>
             <th>@Model.Quote.Boat.Quantity</th>
-            <th>@Model.BoatDuration</th>
+            <th>@Model.BoatValidDuration</th>
             <th>@Model.BoatUnitPrice</th>
             <th>@Model.BoatPrice</th>
         </tr>
@@ -53,7 +54,7 @@
             <!-- 3rd row -->
             <th>@Model.Quote.Item.ItemType</th>
             <th>@Model.Quote.Item.Quantity</th>
-            <th>@Model.ItemDuration</th>
+            <th>@Model.ItemValidDuration</th>
             <th>@Model.ItemUnitPrice</th>
             <th>@Model.ItemPrice</th>
         </tr>
@@ -66,10 +67,22 @@
         Note that when retrieving the boat at the rental location you are required to first transfer a deposit of €@Model.TotalDeposit.
     </span>
 
-    <h2>Please sign and confirm booking</h2>
-    <form class="checkbox-booking" method="post">
-        Checkbox: <input type="checkbox" id="myCheck" name="test" required>
-        <input class="submit-booking" type="submit" asp-page-handler="Confirm" value="Confirm Booking"/>
-    </form>
+
+    @if (HttpContext.Session.GetObjectFromJson<Quote>("Quote") != null)
+    {
+        <h2>Please sign and confirm booking</h2>
+        <form class="checkbox-booking" method="post">
+            Checkbox: <input type="checkbox" id="myCheck" name="test" required>
+            <input class="submit-booking" type="submit" asp-page-handler="Confirm" value="Confirm Booking" />
+        </form>
+    }
+    else if (Model.RentalInMoreThanWeek)
+    {
+        <form class="update-reservation" method="post">
+            <input class="submit-update" type="submit" asp-page-handler="Update" value="Update Reservation" />
+            <input class="submit-update" type="submit" asp-page-handler="Cancel" value="Cancel Reservation" />
+        </form>
+    }
+
 </main>
 

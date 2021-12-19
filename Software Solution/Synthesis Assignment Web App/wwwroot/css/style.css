@@ -945,6 +945,26 @@ th {
     font-size: 25px;
 }
 
+.update-reservation {
+    display: flex;
+    margin-top: 50px;
+}
+
+.submit-update {
+    background-color: cornflowerblue;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 8px;
+    width: 40%;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    color: cornsilk;
+}
+
 .valid-duration{
     color: red;
     text-align: center;

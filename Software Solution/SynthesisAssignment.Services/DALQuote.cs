@@ -24,11 +24,11 @@ namespace SynthesisAssignment.Services
 
                 //customer, quote, boat, and item details
                 string sqlQuery = "START TRANSACTION;" +
-                    "INSERT INTO syn_customer (first_name, last_name, address, zipcode, city, phone, email) " +
-                    "VALUES(@firstname, @lastname, @address, @zipcode, @city, @phone, @email);" +
+                    "INSERT INTO syn_quote (date_of_made, start_date, end_date, location, ref_no) " +
+                    "VALUES(@dateOfMade, @startDate, @endDate, @location, @refNum);" +
 
-                    "INSERT INTO syn_quote (customer_ID, date_of_made, start_date, end_date, location, ref_no) " +
-                    "VALUES((select max(ID) from syn_customer), @dateOfMade, @startDate, @endDate, @location, @refNum);" +
+                    "INSERT INTO syn_customer (quote_ID, first_name, last_name, address, zipcode, city, phone, email) " +
+                    "VALUES((SELECT max(ID) from syn_quote), @firstname, @lastname, @address, @zipcode, @city, @phone, @email);" +
 
                     "INSERT INTO syn_boat_description (boat_ID, quantity, quote_ID) " +
                     "VALUES((select boat_ID from syn_boat where boat_type = @boatType), @boatQuantity, (SELECT max(ID) from syn_quote));" +
@@ -91,11 +91,11 @@ namespace SynthesisAssignment.Services
                 MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
 
                 //Query to execute
-                string query = "SELECT syn_quote.ID as Quote_ID, `first_name`, `last_name`, `address`, `zipcode`, `city`, `phone`, `email`, " +
+                string query = "SELECT `first_name`, `last_name`, `address`, `zipcode`, `city`, `phone`, `email`, " +
                     "`date_of_made`, `start_date`, `end_date`, `location`, ref_no as Quote_refNumber, " +
                     "b.boat_type, b.boat_capacity, b.boat_cost, b.boat_deposit, b_d.quantity as boat_quantity, " +
-                    "i.item_type, i.item_cost, i.item_deposit, i_d.quantity as item_quantity FROM `syn_customer` " +
-                    "inner join syn_quote on syn_customer.ID = syn_quote.customer_ID INNER JOIN syn_boat_description as b_d on b_d.quote_ID = syn_quote.ID " +
+                    "i.item_type, i.item_cost, i.item_deposit, i_d.quantity as item_quantity FROM `syn_quote` " +
+                    "inner join syn_customer on syn_quote.ID = syn_customer.quote_ID INNER JOIN syn_boat_description as b_d on b_d.quote_ID = syn_quote.ID " +
                     "INNER JOIN syn_item_description as i_d on i_d.quote_ID = syn_quote.ID INNER JOIN syn_boat as b on b_d.boat_ID = b.boat_ID " +
                     "INNER JOIN syn_item as i on i.item_ID = i_d.item_ID;";
 
@@ -155,6 +155,37 @@ namespace SynthesisAssignment.Services
             {
                 throw;
                 //return inventory;
+            }
+        }
+
+        public bool DeleteQuote(Quote quote)
+        {
+            try
+            {
+                //connection string
+                MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
+
+                string sqlQuery = "DELETE FROM `syn_quote` WHERE ref_no = @ref_no";
+
+                MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
+
+                cmd.Parameters.AddWithValue("@ref_no", quote.RefNumber);
+
+                //Open the connection
+                con.Open();
+
+                //Execute the command
+                cmd.ExecuteNonQuery();
+
+                //Close the connection
+                con.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+                //return false;
             }
         }
     }

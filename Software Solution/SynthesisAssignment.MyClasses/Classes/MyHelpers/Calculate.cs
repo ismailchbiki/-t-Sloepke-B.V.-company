@@ -28,14 +28,20 @@ namespace SynthesisAssignment.MyClasses.Classes.MyHelpers
             //MidpointRounding.ToEven for duration
             int durationHours = Convert.ToInt32(Math.Round(diff, 0, MidpointRounding.ToEven));
 
+            return durationHours;
+        }
+
+        //to make duration an even number
+        public static int DurationMultipleOfTwo(int duration)
+        {
             //to round manually odd numbers for multiple of 2 hours
-            double reminder = durationHours % 2;
+            double reminder = duration % 2;
             if (reminder != 0)
             {
-                durationHours += 1;
+                duration += 1;
             }
 
-            return durationHours;
+            return duration;
         }
 
         //time difference must meet these criteria

@@ -20,7 +20,7 @@ namespace Synthesis_Assignment_Web_App.Pages
 
         public void OnGet()
         {
-            //communicate reference number
+            //communicate the quote to the page (reference number)
             if (HttpContext.Session.GetObjectFromJson<Quote>("Quote") != null)
             {
                 Quote = HttpContext.Session.GetObjectFromJson<Quote>("Quote");
@@ -35,7 +35,8 @@ namespace Synthesis_Assignment_Web_App.Pages
             //fetch quote by id
             if (manageQuotes.GetQuoteByID(Reservation) != null)
             {
-                return RedirectToPage("ConfirmationPage", manageQuotes.GetQuoteByID(Reservation));
+                HttpContext.Session.SetObjectAsJson("MyReservation", manageQuotes.GetQuoteByID(Reservation));
+                return RedirectToPage("ConfirmationPage");
             }
 
             //return RedirectToPage("Book");

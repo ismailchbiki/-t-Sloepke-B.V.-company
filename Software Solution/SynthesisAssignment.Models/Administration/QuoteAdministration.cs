@@ -43,16 +43,28 @@ namespace SynthesisAssignment.Models.Administration
 
         public Quote GetQuoteByID(Quote quote)
         {
-
+            Quote reservation = new Quote();
+            reservation = null;
             foreach (var q in GetAllQuotes())
             {
                 if (q.RefNumber == quote.RefNumber && q.Customer.LastName == quote.Customer.LastName)
                 {
-                    return q;
+                    reservation = q;
                 }
             }
 
-            return null;
+            return reservation;
+        }
+
+        public bool DeleteQuote(Quote quote)
+        {
+
+            if (dalQuote.DeleteQuote(quote))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

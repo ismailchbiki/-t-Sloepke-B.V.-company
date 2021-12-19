@@ -15,7 +15,7 @@ namespace Synthesis_Assignment_Web_App.Pages
     public class BookModel : PageModel
     {
 
-        public string Notification;
+        public string Notification = null;
         public Quote Quote { get; set; }
 
         public void OnGet()
@@ -25,10 +25,15 @@ namespace Synthesis_Assignment_Web_App.Pages
 
         public IActionResult OnPost()
         {
-
             //Booked period check
-            if (!Calculate.ApproveDuration(Calculate.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime))
-                 || !Calculate.ApproveDuration(Calculate.CalculateDuration(Quote.EndDateTime, DateTime.Now)))
+            int duration = Calculate.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime);
+            int evenDuration = Calculate.DurationMultipleOfTwo(duration);
+
+            
+
+            if (!Calculate.ApproveDuration(evenDuration)
+                 || DateTime.Compare(Quote.StartDateTime, DateTime.Now) < 0
+                 || DateTime.Compare(Quote.EndDateTime, DateTime.Now) < 0)
             {
                 Notification = "Please choose valid dates.\nThe desired period must be more than 2 hrs and less than 2 weeks";
                 return Page();
