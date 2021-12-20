@@ -8,6 +8,7 @@ namespace SynthesisAssignment.Models
 {
     public enum ITEMTYPE
     {
+        None,
         LifeJacket,
         Waterproof_Container,
         Cool_Box,

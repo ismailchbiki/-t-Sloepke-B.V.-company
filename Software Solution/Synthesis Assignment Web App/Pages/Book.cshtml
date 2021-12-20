@@ -29,68 +29,142 @@
 <!--  to display date  -->
 @*<input type="date" value="@string.Format("{0:yyyy-MM-dd}", Model.Quote.StartDate)" />*@
 
-<!------ Item1 - Booking form ------->
-<div class="item1-intro">
-    <h1>Select your preferences and book</h1>
-</div>
-
-
-<!--  Title  -->
-@if (!string.IsNullOrEmpty(@Model.Notification))
+<!--  ADD NEW QUOTES  -->
+@if (Model.QuoteToUpdate == null)
 {
-    <h2 class="valid-duration">@Model.Notification</h2>
+    <!------ Item1 - Booking form ------->
+    <div class="item1-intro">
+        <h1>Select your preferences and book</h1>
+    </div>
+
+
+    <!--  Title  -->
+    @if (!string.IsNullOrEmpty(@Model.Notification))
+    {
+        <h2 class="valid-duration">@Model.Notification</h2>
+    }
+
+
+    <div class="post-col">
+        <!-- Refers to the whole form combination-->
+        <form class="booking-form" method="post">
+
+            <!--  Boat type  -->
+            <h2 class="boats-title">Choose a boat *</h2>
+            <select asp-for="Quote.Boat.BoatType" asp-items="Html.GetEnumSelectList<BOATTYPE>()">
+            </select>
+
+            <!--  boat Quantity  -->
+            <h2 class="boats-title">Choose quantity *</h2>
+            <input required type="number" asp-for="Quote.Boat.Quantity"
+                   placeholder="Boat Quantity" />
+
+            <!--  item type  -->
+            <h2 class="boats-title">Choose item (Optional)</h2>
+            <select asp-for="Quote.Item.ItemType" asp-items="Html.GetEnumSelectList<ITEMTYPE>()">
+            </select>
+
+            <!--  item Quantity  -->
+            <h2 class="boats-title">Choose quantity (Optional)</h2>
+            <input type="number" asp-for="Quote.Item.Quantity"
+                   placeholder="Item Quantity" />
+
+            <!--  start date  -->
+            <h2 class="boats-title">Choose start and end dates *</h2>
+            <div class="quote-dates">
+                <label for="date">Start date & time:</label>
+                @Html.TextBoxFor(Model => Model.Quote.StartDateTime, new { type = "datetime-local" })
+
+                <!--  end date  -->
+                <label for="date">End date & time:</label>
+                @Html.TextBoxFor(Model => Model.Quote.EndDateTime, new { type = "datetime-local" })
+            </div>
+
+            <!--  location  -->
+            <h2 class="boats-title">Choose location *</h2>
+            <select asp-for="Quote.Location" asp-items="Html.GetEnumSelectList<LOCATION>()">
+            </select>
+
+            <span>* Required fields</span>
+
+            <!--  Submit button  -->
+            <input id="Submit1" type="submit" value="Add My Selections" />
+        </form>
+    </div>
+
+}
+
+else if (Model.QuoteToUpdate != null)
+{
+    <!------ UPDATE RESERVATION ------->
+    <div class="item1-intro">
+        <h1>Update your reservation</h1>
+    </div>
+
+
+    <!--  Title  -->
+    @if (!string.IsNullOrEmpty(@Model.Notification))
+    {
+        <h2 class="valid-duration">@Model.Notification</h2>
+    }
+
+
+    <div class="post-col">
+        <!-- Refers to the whole form combination-->
+        <form class="booking-form" method="post">
+
+            <!--  Boat type  -->
+            <h2 class="boats-title">Choose a boat *</h2>
+            <label>Your current choice is: "@Model.QuoteToUpdate.Boat.BoatType"</label>
+            <select asp-for="Quote.Boat.BoatType" asp-items="Html.GetEnumSelectList<BOATTYPE>()">
+            </select>
+
+            <!--  boat Quantity  -->
+            <h2 class="boats-title">Choose quantity *</h2>
+            <label>Your current choice is: "@Model.QuoteToUpdate.Boat.Quantity"</label>
+            <input required type="number" asp-for="Quote.Boat.Quantity"
+                   placeholder="Boat Quantity" />
+
+            <!--  item type  -->
+            <h2 class="boats-title">Choose item (Optional)</h2>
+            <label>Your current choice is: "@Model.QuoteToUpdate.Item.ItemType"</label>
+
+            <select asp-for="Quote.Item.ItemType" asp-items="Html.GetEnumSelectList<ITEMTYPE>()">
+            </select>
+
+            <!--  item Quantity  -->
+            <label>Your current choice is: "@Model.QuoteToUpdate.Item.Quantity"</label>
+            <h2 class="boats-title">Choose quantity (Optional)</h2>
+            <input type="number" asp-for="Quote.Item.Quantity"
+                   placeholder="Item Quantity" />
+
+            <!--  start date  -->
+            <h2 class="boats-title">Choose start and end dates *</h2>
+            <div class="quote-dates">
+                <label for="date">Start date & time:</label>
+                <label>Your current choice is: "@Model.QuoteToUpdate.StartDateTime.ToString("dd/MM/yyyy HH.mm")"</label>
+                @Html.TextBoxFor(Model => Model.Quote.StartDateTime, new { type = "datetime-local" })
+
+                <!--  end date  -->
+                <label for="date">End date & time:</label>
+                <label>Your current choice is: "@Model.QuoteToUpdate.EndDateTime.ToString("dd/MM/yyyy HH.mm")"</label>
+                @Html.TextBoxFor(Model => Model.Quote.EndDateTime, new { type = "datetime-local" })
+            </div>
+
+            <!--  location  -->
+            <h2 class="boats-title">Choose location *</h2>
+            <label>Your current choice is: "@Model.QuoteToUpdate.Location"</label>
+            <select asp-for="Quote.Location" asp-items="Html.GetEnumSelectList<LOCATION>()">
+            </select>
+
+            <span>* Required fields</span>
+
+            <!--  Submit button  -->
+            <input id="Submit1" type="submit" asp-page-handler="UpdateQuote" value="Add My Selections" />
+        </form>
+    </div>
+
 }
 
 
-<div class="post-col">
-    <!-- Refers to the whole form combination-->
-    <form class="booking-form" method="post">
 
-        <!--  Boat type  -->
-        <h2 class="boats-title">Choose a boat</h2>
-        <span class="dataV" asp-validation-for="Quote.Boat.BoatType"></span>
-        <select asp-for="Quote.Boat.BoatType" asp-items="Html.GetEnumSelectList<BOATTYPE>()">
-        </select>
-
-        <!--  boat Quantity  -->
-        <h2 class="boats-title">Choose quantity</h2>
-        <span class="dataV" asp-validation-for="Quote.Boat.Quantity"></span>
-        <input type="text" asp-for="Quote.Boat.Quantity"
-               placeholder="Boat Quantity" />
-
-        <!--  item type  -->
-        <h2 class="boats-title">Choose item</h2>
-        <span class="dataV" asp-validation-for="Quote.Item.ItemType"></span>
-        <select asp-for="Quote.Item.ItemType" asp-items="Html.GetEnumSelectList<ITEMTYPE>()">
-        </select>
-
-        <!--  item Quantity  -->
-        <h2 class="boats-title">Choose quantity</h2>
-        <span class="dataV" asp-validation-for="Quote.Item.Quantity"></span>
-        <input type="text" asp-for="Quote.Item.Quantity"
-               placeholder="Item Quantity" />
-
-        <!--  start date  -->
-        <h2 class="boats-title">Choose start and end dates</h2>
-
-        <div class="quote-dates">
-            <span class="dataV" asp-validation-for="Quote.StartDateTime"></span>
-            <label for="date">Start date & time:</label>
-            @Html.TextBoxFor(Model => Model.Quote.StartDateTime, new { type = "datetime-local" })
-
-            <!--  end date  -->
-            <span class="dataV" asp-validation-for="Quote.EndDateTime"></span>
-            <label for="date">End date & time:</label>
-            @Html.TextBoxFor(Model => Model.Quote.EndDateTime, new { type = "datetime-local" })
-        </div>
-
-        <!--  location  -->
-        <h2 class="boats-title">Choose location</h2>
-        <span class="dataV" asp-validation-for="Quote.Location"></span>
-        <select asp-for="Quote.Location" asp-items="Html.GetEnumSelectList<LOCATION>()">
-        </select>
-
-        <!--  Submit button  -->
-        <input id="Submit1" type="submit" value="Add My Selections" />
-    </form>
-</div>

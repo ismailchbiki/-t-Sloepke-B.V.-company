@@ -19,20 +19,20 @@ namespace SynthesisAssignment.Models.Administration
         public bool AddQuote(Quote quote)
         {
 
-            //calculate time difference between 2 dates
-            int duration = Calculate.CalculateDuration(quote.EndDateTime, quote.StartDateTime);
-
-            //duration must be bigger than 2hrs and less than two weeks
-            if (!Calculate.ApproveDuration(duration))
-            {
-                return false;
-            }
-
             if (dalQuote.AddQuote(quote))
             {
                 return true;
             }
             
+            return false;
+        }
+
+        public bool UpdateQuote(Quote quote)
+        {
+            if (dalQuote.UpdateQuote(quote))
+            {
+                return true;
+            }
             return false;
         }
 

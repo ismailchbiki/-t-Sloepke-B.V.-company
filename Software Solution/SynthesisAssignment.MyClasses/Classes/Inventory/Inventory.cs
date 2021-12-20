@@ -49,8 +49,8 @@ namespace SynthesisAssignment.Models
         public double Deposit { get { return this.deposit; }}
 
         // public set to bound quantity to the view
-        [Required(ErrorMessage = "Please provide a number")]
-        [RegularExpression("^[0-9]*$", ErrorMessage = "Please provide a valid number")]
+        //[Required(ErrorMessage = "Please provide a number")]
+        //[RegularExpression("^[0-9]*$", ErrorMessage = "Please provide a valid number")]
         public int Quantity { get { return this.qty; } set { qty = value; } }
         public string Remark { get { return this.remark; } }
 

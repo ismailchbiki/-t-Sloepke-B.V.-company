@@ -66,8 +66,10 @@
     <span class="quote-terms">
         Note that when retrieving the boat at the rental location you are required to first transfer a deposit of €@Model.TotalDeposit.
     </span>
+    <p>Please, bear in mind that up until (7) days before the start of the rental occurs, our guests are allowed to change or cancel their reservations.</p>
 
 
+    <!--  NEW QUOTES  -->
     @if (HttpContext.Session.GetObjectFromJson<Quote>("Quote") != null)
     {
         <h2>Please sign and confirm booking</h2>
@@ -76,8 +78,18 @@
             <input class="submit-booking" type="submit" asp-page-handler="Confirm" value="Confirm Booking" />
         </form>
     }
+    else if (HttpContext.Session.GetObjectFromJson<Quote>("NewQuote") != null)
+    {
+        <!--  UPDATE QUOTES  -->
+        <h2>Please sign and confirm booking</h2>
+        <form class="checkbox-booking" method="post">
+            Checkbox: <input type="checkbox" id="myCheck" name="test" required>
+            <input class="submit-booking" type="submit" asp-page-handler="SaveUpdate" value="Save New Updates" />
+        </form>
+    }
     else if (Model.RentalInMoreThanWeek)
     {
+        <!--  QUOTE ACCESS  -->
         <form class="update-reservation" method="post">
             <input class="submit-update" type="submit" asp-page-handler="Update" value="Update Reservation" />
             <input class="submit-update" type="submit" asp-page-handler="Cancel" value="Cancel Reservation" />

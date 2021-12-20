@@ -5,6 +5,11 @@
 
 <div class="page-title">
     <h1>My Reservations</h1>
+
+    @if (!string.IsNullOrEmpty(MyReservationModel.QuoteIsNotFound))
+    {
+        <h2>@MyReservationModel.QuoteIsNotFound</h2>
+    }
 </div>
 
 <div class="book-now-box">

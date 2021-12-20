@@ -864,6 +864,17 @@ th {
     margin-right: 5%;
 }
 
+    .confirm-body p {
+        color: forestgreen;
+        font-size: 22px;
+        font-weight: 300;
+        line-height: 22px;
+        padding: 10px;
+        text-align: left;
+        margin-left: 53px;
+        margin-top: 20px;
+    }
+
     .confirm-body span {
         display: block;
         text-align: right;

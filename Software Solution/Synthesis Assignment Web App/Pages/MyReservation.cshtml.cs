@@ -15,6 +15,8 @@ namespace Synthesis_Assignment_Web_App.Pages
         public Quote Reservation { get; set; }
         public Quote Quote = new Quote();
 
+        public static string QuoteIsNotFound;
+
         //to get all the quotes
         QuoteAdministration manageQuotes = new QuoteAdministration();
 
@@ -36,11 +38,12 @@ namespace Synthesis_Assignment_Web_App.Pages
             if (manageQuotes.GetQuoteByID(Reservation) != null)
             {
                 HttpContext.Session.SetObjectAsJson("MyReservation", manageQuotes.GetQuoteByID(Reservation));
+
+                QuoteIsNotFound = null;
                 return RedirectToPage("ConfirmationPage");
             }
 
-            //return RedirectToPage("Book");
-
+            QuoteIsNotFound = "Quote was not found";
             return RedirectToPage("MyReservation");
         }
 

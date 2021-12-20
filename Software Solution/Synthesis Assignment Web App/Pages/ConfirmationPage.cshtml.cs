@@ -38,8 +38,10 @@ namespace Synthesis_Assignment_Web_App.Pages
         {
             int duration;
 
-            //MADE QUOTES
-            if (HttpContext.Session.GetObjectFromJson<Quote>("MyReservation") != null)
+            //MADE QUOTES ACCESS
+            if (HttpContext.Session.GetObjectFromJson<Quote>("MyReservation") != null &&
+                HttpContext.Session.GetObjectFromJson<Quote>("Quote") == null &&
+                HttpContext.Session.GetObjectFromJson<Quote>("NewQuote") == null)
             {
 
                 //made reservations from DB
@@ -79,7 +81,7 @@ namespace Synthesis_Assignment_Web_App.Pages
                 TotalDeposit = (boatDeposit * Quote.Boat.Quantity) + (itemDeposit * Quote.Item.Quantity);
             }
 
-            //NEW QUOTES
+            //MAKING NEW QUOTES
             else if (HttpContext.Session.GetObjectFromJson<Quote>("Quote") != null &&
                 HttpContext.Session.GetObjectFromJson<Customer>("CustomerDetails") != null)
             {
@@ -114,7 +116,41 @@ namespace Synthesis_Assignment_Web_App.Pages
                 TotalDeposit = (boatDeposit * Quote.Boat.Quantity) + (itemDeposit * Quote.Item.Quantity);
             }
 
-            //This page can be accessed only in case of an existing quote
+            //UPDATE EXISTING QUOTES
+            else if (HttpContext.Session.GetObjectFromJson<Quote>("NewQuote") != null &&
+                HttpContext.Session.GetObjectFromJson<Customer>("NewCustomerDetails") != null)
+            {
+                Quote = HttpContext.Session.GetObjectFromJson<Quote>("NewQuote");
+                Quote.Customer = HttpContext.Session.GetObjectFromJson<Customer>("NewCustomerDetails");
+
+                //boat
+                BoatUnitPrice = manageGear.GetGearByType(Quote.Boat).Cost;
+                //calculate duration
+                duration = Calculate.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime);
+                //make duration an even number
+                BoatValidDuration = Calculate.DurationMultipleOfTwo(duration);
+                //calculate boat price
+                BoatPrice = BoatUnitPrice * (BoatValidDuration / 2) * Quote.Boat.Quantity;
+
+                //item
+                ItemUnitPrice = manageGear.GetGearByType(Quote.Item).Cost;
+                //calculate duration
+                duration = Calculate.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime);
+                //make duration an even number
+                ItemValidDuration = Calculate.DurationMultipleOfTwo(duration);
+                //calculate item price
+                ItemPrice = ItemUnitPrice * (ItemValidDuration / 2) * Quote.Item.Quantity;
+
+                //total price per quote
+                TotalPrice = BoatPrice + ItemPrice;
+
+                //deposit calculation
+                double boatDeposit = manageGear.GetGearByType(Quote.Boat).Deposit;
+                double itemDeposit = manageGear.GetGearByType(Quote.Item).Deposit;
+                TotalDeposit = (boatDeposit * Quote.Boat.Quantity) + (itemDeposit * Quote.Item.Quantity);
+            }
+
+            //QUOTE IS EMPTY
             else if (HttpContext.Session.GetObjectFromJson<Quote>("Quote") == null)
             {
                 return RedirectToPage("Book");
@@ -143,17 +179,39 @@ namespace Synthesis_Assignment_Web_App.Pages
             return Page();
         }
 
-        public void OnPostUpdate()
+        public IActionResult OnPostUpdate()
         {
-
+            Quote = HttpContext.Session.GetObjectFromJson<Quote>("MyReservation");
+            HttpContext.Session.SetObjectAsJson("QuoteToUpdate", Quote);
+            return RedirectToPage("Book");
         }
 
-        public void OnPostCancel()
+        public IActionResult OnPostCancel()
         {
             Quote = HttpContext.Session.GetObjectFromJson<Quote>("MyReservation");
             manageQuote.DeleteQuote(Quote);
 
-            RedirectToPage("Book");
+            return RedirectToPage("Book");
+        }
+
+        public IActionResult OnPostSaveUpdate()
+        {
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
+
+            //get all the objects from sessions
+            Quote = HttpContext.Session.GetObjectFromJson<Quote>("NewQuote");
+            Quote.Customer = HttpContext.Session.GetObjectFromJson<Customer>("NewCustomerDetails");
+
+            //if reservation is successful
+            if (manageQuote.UpdateQuote(Quote))
+            {
+                return RedirectToPage("MyReservation");
+            }
+
+            return Page();
         }
     }
 }

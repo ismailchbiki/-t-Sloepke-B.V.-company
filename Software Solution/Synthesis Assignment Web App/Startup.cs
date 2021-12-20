@@ -29,7 +29,7 @@ namespace Synthesis_Assignment_Web_App
             services.AddSession(option =>
             {
                 //expiry time
-                option.IdleTimeout = TimeSpan.FromMinutes(20);
+                option.IdleTimeout = TimeSpan.FromMinutes(5);
             });
         }
 

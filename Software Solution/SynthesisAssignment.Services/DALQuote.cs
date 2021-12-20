@@ -13,7 +13,7 @@ namespace SynthesisAssignment.Services
 {
     public class DALQuote : IDALQuote
     {
-        
+        //add quote
         public bool AddQuote(Quote quote)
         {
             try
@@ -81,7 +81,91 @@ namespace SynthesisAssignment.Services
             }
         }
 
-        // get all the quotes and their details
+        //update quote
+        public bool UpdateQuote(Quote quote)
+        {
+            //connection string
+            MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
+
+            string sqlQuery = "START TRANSACTION;" +
+                "UPDATE `syn_quote` SET date_of_made=@dateOfMade, start_date=@startDate, end_date=@endDate, `location`=@location where ref_no=@refNum;" +
+                "UPDATE syn_customer SET first_name=@firstname, last_name=@lastname, address=@address, zipcode=@zipcode, city=@city, phone=@phone, email=@email where quote_ID = (select ID from syn_quote where ref_no=@refNum);" +
+                "UPDATE syn_boat_description SET boat_ID=(select boat_ID from syn_boat where boat_type=@boatType), quantity=@boatQuantity where quote_ID = (select ID from syn_quote where ref_no=@refNum);" +
+                "UPDATE syn_item_description SET item_ID=(select item_ID from syn_item where item_type=@itemType), quantity=@itemQuantity where quote_ID = (select ID from syn_quote where ref_no=@refNum);" +
+                "COMMIT;";
+
+            MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
+
+            //quote details
+            cmd.Parameters.AddWithValue("@dateOfMade", quote.DateTimeOfMade.ToString("yyyy-MM-dd HH-mm"));
+            cmd.Parameters.AddWithValue("@startDate", quote.StartDateTime.ToString("yyyy-MM-dd HH-mm"));
+            cmd.Parameters.AddWithValue("@endDate", quote.EndDateTime.ToString("yyyy-MM-dd HH-mm"));
+            cmd.Parameters.AddWithValue("@location", quote.Location);
+            cmd.Parameters.AddWithValue("@refNum", quote.RefNumber);
+
+            //customer details
+            cmd.Parameters.AddWithValue("@firstname", quote.Customer.FirstName);
+            cmd.Parameters.AddWithValue("@lastname", quote.Customer.LastName);
+            cmd.Parameters.AddWithValue("@address", quote.Customer.Address);
+            cmd.Parameters.AddWithValue("@zipcode", quote.Customer.Zipcode);
+            cmd.Parameters.AddWithValue("@city", quote.Customer.City);
+            cmd.Parameters.AddWithValue("@phone", quote.Customer.Phone);
+            cmd.Parameters.AddWithValue("@email", quote.Customer.Email);
+
+            //boat description
+            cmd.Parameters.AddWithValue("@boatType", quote.Boat.BoatType.ToString());
+            cmd.Parameters.AddWithValue("@boatQuantity", quote.Boat.Quantity);
+
+            //boat description
+            cmd.Parameters.AddWithValue("@itemType", quote.Item.ItemType.ToString());
+            cmd.Parameters.AddWithValue("@itemQuantity", quote.Item.Quantity);
+
+
+            //Open the connection
+            con.Open();
+
+            //Execute the command
+            cmd.ExecuteNonQuery();
+
+            //Close the connection
+            con.Close();
+
+            return true;
+        }
+
+        //delete quote
+        public bool DeleteQuote(Quote quote)
+        {
+            try
+            {
+                //connection string
+                MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
+
+                string sqlQuery = "DELETE FROM `syn_quote` WHERE ref_no = @ref_no";
+
+                MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
+
+                cmd.Parameters.AddWithValue("@ref_no", quote.RefNumber);
+
+                //Open the connection
+                con.Open();
+
+                //Execute the command
+                cmd.ExecuteNonQuery();
+
+                //Close the connection
+                con.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+                //return false;
+            }
+        }
+
+        // get all the quotes
         public IEnumerable<Quote> GetAllQuotes()
         {
             try
@@ -150,43 +234,13 @@ namespace SynthesisAssignment.Services
 
                 return allQuotes;
             }
-            
+
             catch (Exception)
             {
                 throw;
                 //return inventory;
             }
         }
-
-        public bool DeleteQuote(Quote quote)
-        {
-            try
-            {
-                //connection string
-                MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
-
-                string sqlQuery = "DELETE FROM `syn_quote` WHERE ref_no = @ref_no";
-
-                MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
-
-                cmd.Parameters.AddWithValue("@ref_no", quote.RefNumber);
-
-                //Open the connection
-                con.Open();
-
-                //Execute the command
-                cmd.ExecuteNonQuery();
-
-                //Close the connection
-                con.Close();
-
-                return true;
-            }
-            catch (Exception)
-            {
-                throw;
-                //return false;
-            }
-        }
+        
     }
 }
