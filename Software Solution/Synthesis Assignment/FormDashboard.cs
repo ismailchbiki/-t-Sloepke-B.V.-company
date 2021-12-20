@@ -17,7 +17,6 @@ namespace Synthesis_Assignment
             InitializeComponent();
         }
 
-
         private void FormDashboard_Load(object sender, EventArgs e)
         {
             CenterToScreen();

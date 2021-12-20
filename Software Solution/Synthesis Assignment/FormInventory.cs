@@ -17,8 +17,7 @@ namespace Synthesis_Assignment
     {
 
         //get id of selected row
-        public static int BoatID = 0;
-        public static int ItemID = 0;
+        int id = 0;
 
         InventoryAdministration manageGear;
 
@@ -94,8 +93,9 @@ namespace Synthesis_Assignment
             if (tabControlAdministration.SelectedTab == tabPageBoats)
             {
 
-                BoatID = (int)dataGridViewBoats.SelectedRows[0].Cells["ID"].Value;
-                FormBoats boats = new FormBoats();
+                id = (int)dataGridViewBoats.SelectedRows[0].Cells["ID"].Value;
+                Boat b = new Boat(id);
+                FormBoats boats = new FormBoats(b);
 
                 boats.Show();
                 this.Hide();
@@ -103,8 +103,9 @@ namespace Synthesis_Assignment
             else if (tabControlAdministration.SelectedTab == tabPageItems)
             {
 
-                ItemID = (int)dataGridViewItems.SelectedRows[0].Cells["ID"].Value;
-                FormItems items = new FormItems();
+                id = (int)dataGridViewItems.SelectedRows[0].Cells["ID"].Value;
+                Item item = new Item(id);
+                FormItems items = new FormItems(item);
 
                 items.Show();
                 this.Hide();
@@ -118,9 +119,9 @@ namespace Synthesis_Assignment
             if (tabControlAdministration.SelectedTab == tabPageBoats)
             {
 
-                BoatID = (int)dataGridViewBoats.SelectedRows[0].Cells["ID"].Value;
+                id = (int)dataGridViewBoats.SelectedRows[0].Cells["ID"].Value;
 
-                Boat b = new Boat(BoatID);
+                Boat b = new Boat(id);
                 FormConfirmDeletion boats = new FormConfirmDeletion(b);
 
                 boats.Show();
@@ -129,9 +130,9 @@ namespace Synthesis_Assignment
             else if (tabControlAdministration.SelectedTab == tabPageItems)
             {
 
-                ItemID = (int)dataGridViewItems.SelectedRows[0].Cells["ID"].Value;
+                id = (int)dataGridViewItems.SelectedRows[0].Cells["ID"].Value;
 
-                Item item = new Item(ItemID);
+                Item item = new Item(id);
                 FormConfirmDeletion items = new FormConfirmDeletion(item);
 
                 items.Show();

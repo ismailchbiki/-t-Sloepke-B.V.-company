@@ -16,4 +16,9 @@ namespace SynthesisAssignment.Services
 
         public IEnumerable<Quote> GetAllQuotes();
     }
+
+    public interface IControlQuote
+    {
+
+    }
 }

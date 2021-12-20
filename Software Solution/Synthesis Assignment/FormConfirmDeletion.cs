@@ -15,9 +15,7 @@ namespace Synthesis_Assignment
     public partial class FormConfirmDeletion : Form
     {
 
-        //id of the gear to delete
         Inventory gear;
-
         InventoryAdministration manageGear;
 
         public FormConfirmDeletion(Inventory gear)
@@ -43,8 +41,8 @@ namespace Synthesis_Assignment
                 FormInventory inventory = new FormInventory();
 
                 //to clear the variables
-                FormInventory.BoatID = 0;
-                FormInventory.ItemID = 0;
+                gear = new Boat();
+                gear = new Item();
 
                 inventory.Show();
                 this.Hide();
@@ -57,8 +55,8 @@ namespace Synthesis_Assignment
             FormInventory inventory = new FormInventory();
 
             //to clear the variables
-            FormInventory.BoatID = 0;
-            FormInventory.ItemID = 0;
+            gear = new Boat();
+            gear = new Item();
 
             inventory.Show();
             this.Hide();

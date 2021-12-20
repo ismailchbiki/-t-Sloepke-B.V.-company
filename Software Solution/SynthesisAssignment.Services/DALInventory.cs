@@ -80,7 +80,7 @@ namespace SynthesisAssignment.Services
         }
 
         //update gear
-        public bool UpdateGear(int id, Inventory gear)
+        public bool UpdateGear(Inventory gear)
         {
 
             //try
@@ -124,7 +124,7 @@ namespace SynthesisAssignment.Services
                 //cmd.Parameters.AddWithValue("@item_type", type.ToString());
 
                 //the rest applies for both
-                cmd.Parameters.AddWithValue("@ID", id);
+                cmd.Parameters.AddWithValue("@ID", gear.ID);
                 cmd.Parameters.AddWithValue("@cost", gear.Cost);
                 cmd.Parameters.AddWithValue("@deposit", gear.Deposit);
                 cmd.Parameters.AddWithValue("@quantity", gear.Quantity);
@@ -184,8 +184,8 @@ namespace SynthesisAssignment.Services
             }
             catch (Exception)
             {
-                throw;
-                //return false;
+                //throw;
+                return false;
             }
         }
 
@@ -261,13 +261,14 @@ namespace SynthesisAssignment.Services
                 while (dr.Read())
                 {
                     
+                    int itemID = Convert.ToInt32(dr["item_ID"]);
                     string itemType = dr["item_type"].ToString();
                     double itemCost = Convert.ToDouble(dr["item_cost"]);
                     double itemDeposit = Convert.ToDouble(dr["item_deposit"]);
                     int itemQuantity = Convert.ToInt32(dr["item_quantity"]);
                     string itemRemark = dr["item_remark"].ToString();
 
-                    item = new Item((ITEMTYPE)Enum.Parse(typeof(ITEMTYPE), itemType), itemCost, itemDeposit, itemQuantity, itemRemark);
+                    item = new Item(itemID, (ITEMTYPE)Enum.Parse(typeof(ITEMTYPE), itemType), itemCost, itemDeposit, itemQuantity, itemRemark);
 
                     items.Add(item);
                 }

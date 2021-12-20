@@ -11,6 +11,7 @@ namespace SynthesisAssignment.Models
         Kayak,
         Canoe,
         Sailboat_Laser,
-        Sailboat_Valk
+        Sailboat_Valk,
+        Test_Boat
     }
 }

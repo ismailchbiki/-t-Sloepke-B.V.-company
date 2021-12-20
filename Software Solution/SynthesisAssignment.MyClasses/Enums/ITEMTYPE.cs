@@ -15,6 +15,7 @@ namespace SynthesisAssignment.Models
         Navigation_Device,
         Spare_Paddle,
         Tent,
-        Electric_Furnace
+        Electric_Furnace,
+        Test_Item
     }
 }

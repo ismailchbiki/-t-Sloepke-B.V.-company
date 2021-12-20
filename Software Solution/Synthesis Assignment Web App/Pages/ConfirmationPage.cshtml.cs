@@ -123,6 +123,13 @@ namespace Synthesis_Assignment_Web_App.Pages
                 Quote = HttpContext.Session.GetObjectFromJson<Quote>("NewQuote");
                 Quote.Customer = HttpContext.Session.GetObjectFromJson<Customer>("NewCustomerDetails");
 
+                //update/cancel a reservation allowed for longer period than a week
+                duration = Calculate.CalculateDuration(Quote.StartDateTime, DateTime.Now);
+                if (duration > 168)
+                {
+                    RentalInMoreThanWeek = true;
+                }
+
                 //boat
                 BoatUnitPrice = manageGear.GetGearByType(Quote.Boat).Cost;
                 //calculate duration
@@ -186,6 +193,7 @@ namespace Synthesis_Assignment_Web_App.Pages
             return RedirectToPage("Book");
         }
 
+        //delete quote
         public IActionResult OnPostCancel()
         {
             Quote = HttpContext.Session.GetObjectFromJson<Quote>("MyReservation");
@@ -208,6 +216,8 @@ namespace Synthesis_Assignment_Web_App.Pages
             //if reservation is successful
             if (manageQuote.UpdateQuote(Quote))
             {
+                HttpContext.Session.SetObjectAsJson("NewQuote", null);
+                HttpContext.Session.SetObjectAsJson("NewCustomerDetails", null);
                 return RedirectToPage("MyReservation");
             }
 

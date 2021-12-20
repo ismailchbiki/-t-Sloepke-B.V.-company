@@ -18,9 +18,6 @@ namespace Synthesis_Assignment
     public partial class FormBoats : Form
     {
 
-        //To get the id of the selected row (in case of an update request)
-        int id = FormInventory.BoatID;
-
         Inventory gear;
         InventoryAdministration manageGear;
 
@@ -28,6 +25,14 @@ namespace Synthesis_Assignment
         {
             InitializeComponent();
             manageGear = new InventoryAdministration();
+            gear = new Boat();
+        }
+
+        public FormBoats(Inventory gear)
+        {
+            InitializeComponent();
+            manageGear = new InventoryAdministration();
+            this.gear = gear;
         }
 
         //form
@@ -42,13 +47,8 @@ namespace Synthesis_Assignment
             buttonUpdateBoat.Visible = false;
 
             //in case of a boat update => fill in all the fields
-            if (id != 0)
+            if (gear.ID != 0)
             {
-                gear = new Boat(id);
-                //gear.ID = id;
-
-                //retrieve data of the item to update
-                Boat b = (Boat)manageGear.GetGearByID(gear);
 
                 //control visibility some items on the form on update click event
                 comboBoxBoatType.Visible = false;
@@ -56,12 +56,12 @@ namespace Synthesis_Assignment
                 buttonUpdateBoat.Visible = true;
 
                 //fill in fields with data
-                labelBType.Text = b.BoatType.ToString();
-                comboBoxCapacity.Text = b.Capacity.ToString();
-                textBoxCost.Text = b.Cost.ToString();
-                textBoxDeposit.Text = b.Deposit.ToString();
-                textBoxQuantity.Text = b.Quantity.ToString();
-                textBoxRemark.Text = b.Remark;
+                labelBType.Text = ((Boat)manageGear.GetGearByID(gear)).BoatType.ToString();
+                comboBoxCapacity.Text = ((Boat)manageGear.GetGearByID(gear)).Capacity.ToString();
+                textBoxCost.Text = ((Boat)manageGear.GetGearByID(gear)).Cost.ToString();
+                textBoxDeposit.Text = ((Boat)manageGear.GetGearByID(gear)).Deposit.ToString();
+                textBoxQuantity.Text = ((Boat)manageGear.GetGearByID(gear)).Quantity.ToString();
+                textBoxRemark.Text = ((Boat)manageGear.GetGearByID(gear)).Remark;
             }
         }
         
@@ -69,7 +69,6 @@ namespace Synthesis_Assignment
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             FormLogin login = new FormLogin();
-            FormInventory.BoatID = 0;
             login.Show();
             this.Hide();
         }
@@ -81,9 +80,10 @@ namespace Synthesis_Assignment
             FormInventory inventoryForm = new FormInventory();
 
             // in case of an update event => back to inventory or dashboard
-            if (FormInventory.BoatID != 0)
+            if (gear.ID != 0)
             {
-                FormInventory.BoatID = 0;
+                gear = new Boat();
+                gear = new Item();
                 inventoryForm.Show();
                 this.Hide();
             }
@@ -158,12 +158,12 @@ namespace Synthesis_Assignment
                 else
                 {
 
-                    gear = new Boat((BOATTYPE)comboBoxBoatType.SelectedItem,
+                    gear = new Boat(gear.ID, (BOATTYPE)comboBoxBoatType.SelectedItem,
                         (CAPACITY)comboBoxCapacity.SelectedItem, Convert.ToDouble(textBoxCost.Text),
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
                     //update boat
-                    if (manageGear.UpdateGear(id, (Boat)gear))
+                    if (manageGear.UpdateGear((Boat)gear))
                     {
                         MessageBox.Show(MyMessage.SuccessfulUpdate);
                         FormInventory inventoryForm = new FormInventory();

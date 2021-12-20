@@ -17,9 +17,6 @@ namespace Synthesis_Assignment
     public partial class FormItems : Form
     {
 
-        //id of the selected row
-        int id = FormInventory.ItemID;
-
         Inventory gear;
         InventoryAdministration manageGear;
 
@@ -27,6 +24,14 @@ namespace Synthesis_Assignment
         {
             InitializeComponent();
             manageGear = new InventoryAdministration();
+            gear = new Item();
+        }
+
+        public FormItems(Inventory gear)
+        {
+            InitializeComponent();
+            manageGear = new InventoryAdministration();
+            this.gear = gear;
         }
 
         //form
@@ -40,12 +45,8 @@ namespace Synthesis_Assignment
             buttonUpdateItem.Visible = false;
 
             //in case of a boat update => fill in all the fields
-            if (id != 0)
+            if (gear.ID != 0)
             {
-                gear = new Item(id);
-
-                //retrieve data of the item to update
-                Item item = (Item)manageGear.GetGearByID(gear);
 
                 //control visibility some items on the form on update click event
                 comboBoxItem.Visible = false;
@@ -53,11 +54,11 @@ namespace Synthesis_Assignment
                 buttonUpdateItem.Visible = true;
 
                 //fill in fields with data
-                labelItmType.Text = item.ItemType.ToString();
-                textBoxCost.Text = item.Cost.ToString();
-                textBoxDeposit.Text = item.Deposit.ToString();
-                textBoxQuantity.Text = item.Quantity.ToString();
-                textBoxRemark.Text = item.Remark;
+                labelItmType.Text = ((Item)manageGear.GetGearByID(gear)).ItemType.ToString();
+                textBoxCost.Text = ((Item)manageGear.GetGearByID(gear)).Cost.ToString();
+                textBoxDeposit.Text = ((Item)manageGear.GetGearByID(gear)).Deposit.ToString();
+                textBoxQuantity.Text = ((Item)manageGear.GetGearByID(gear)).Quantity.ToString();
+                textBoxRemark.Text = ((Item)manageGear.GetGearByID(gear)).Remark;
             }
         }
 
@@ -65,7 +66,7 @@ namespace Synthesis_Assignment
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             FormLogin login = new FormLogin();
-            FormInventory.ItemID = 0;
+            gear = new Item();
             login.Show();
             this.Hide();
         }
@@ -77,9 +78,9 @@ namespace Synthesis_Assignment
             FormInventory inventoryForm = new FormInventory();
 
             // in case of an update event => back to inventory or dashboard
-            if (FormInventory.ItemID != 0)
+            if (gear.ID != 0)
             {
-                FormInventory.ItemID = 0;
+                gear = new Item();
                 inventoryForm.Show();
                 this.Hide();
             }
@@ -150,11 +151,11 @@ namespace Synthesis_Assignment
                 else
                 {
 
-                    gear = new Item((ITEMTYPE)comboBoxItem.SelectedItem, Convert.ToDouble(textBoxCost.Text),
+                    gear = new Item(gear.ID, (ITEMTYPE)comboBoxItem.SelectedItem, Convert.ToDouble(textBoxCost.Text),
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
                     //update item
-                    if (manageGear.UpdateGear(id, (Item)gear))
+                    if (manageGear.UpdateGear((Item)gear))
                     {
                         MessageBox.Show(MyMessage.SuccessfulUpdate);
                         FormInventory inventoryForm = new FormInventory();

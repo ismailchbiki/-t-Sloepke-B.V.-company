@@ -13,7 +13,6 @@ namespace Synthesis_Assignment_Web_App.Pages
     {
         [BindProperty]
         public Quote Quote { get; set; }
-
         public Quote QuoteToUpdate;
 
         public void OnGet()
@@ -55,10 +54,10 @@ namespace Synthesis_Assignment_Web_App.Pages
         //keep same contact details
         public IActionResult OnPostDontChangeContactDetails()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
 
             HttpContext.Session.SetObjectAsJson("CustomerDetails", null);
             HttpContext.Session.SetObjectAsJson("NewCustomerDetails", HttpContext.Session.GetObjectFromJson<Quote>("QuoteToUpdate").Customer);

@@ -43,8 +43,8 @@ namespace Synthesis_Assignment
         //boats option
         private void buttonBoats_Click(object sender, EventArgs e)
         {
+
             FormBoats boats = new FormBoats();
-            FormInventory.BoatID =  0;
             boats.Show();
             this.Hide();
         }
@@ -53,7 +53,6 @@ namespace Synthesis_Assignment
         private void buttonItems_Click(object sender, EventArgs e)
         {
             FormItems items = new FormItems();
-            FormInventory.ItemID = 0;
             items.Show();
             this.Hide();
         }

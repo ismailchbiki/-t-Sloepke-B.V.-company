@@ -33,9 +33,9 @@ namespace SynthesisAssignment.Models
         }
 
         //update gear
-        public bool UpdateGear(int id, Inventory gear)
+        public bool UpdateGear(Inventory gear)
         {
-            if (dalGear.UpdateGear(id, gear))
+            if (dalGear.UpdateGear(gear))
             {
                 return true;
             }
@@ -72,7 +72,7 @@ namespace SynthesisAssignment.Models
             return null;
         }
 
-        //get gear by id
+        //get gear by ID
         public Inventory GetGearByID(Inventory gear)
         {
 

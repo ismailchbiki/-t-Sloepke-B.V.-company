@@ -11,7 +11,7 @@ namespace SynthesisAssignment.Services
     {
         //Inventory Crud
         bool AddGear(Inventory gear);
-        bool UpdateGear(int id, Inventory gear);
+        bool UpdateGear(Inventory gear);
         bool DeleteGear(Inventory gear);
 
         //lists
