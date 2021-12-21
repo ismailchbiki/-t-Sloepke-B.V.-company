@@ -37,5 +37,13 @@ namespace Synthesis_Assignment
             inventory.Show();
             this.Hide();
         }
+
+        private void buttonAdministration_Click(object sender, EventArgs e)
+        {
+            FormFindCustomer findCustomer = new FormFindCustomer();
+
+            findCustomer.Show();
+            this.Hide();
+        }
     }
 }

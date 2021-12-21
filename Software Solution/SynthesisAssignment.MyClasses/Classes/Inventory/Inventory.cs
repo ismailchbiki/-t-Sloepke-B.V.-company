@@ -15,6 +15,7 @@ namespace SynthesisAssignment.Models
         double deposit;
         int qty;
         string remark;
+        double price;
 
         //CONSTRUCTORS
         protected Inventory()
@@ -25,6 +26,7 @@ namespace SynthesisAssignment.Models
         {
             this.id = id;
         }
+        
         //to create gear
         public Inventory(double cost, double deposit, int qty, string remark)
         {
@@ -33,6 +35,7 @@ namespace SynthesisAssignment.Models
             this.qty = qty;
             this.remark = remark;
         }
+        
         //to select * gear
         protected Inventory(int id, double cost, double deposit, int qty, string remark)
         {
@@ -41,6 +44,16 @@ namespace SynthesisAssignment.Models
             this.deposit = deposit;
             this.qty = qty;
             this.remark = remark;
+        }
+
+        //to select rented gear
+        protected Inventory(double price, double cost, double deposit, int qty, string remark)
+        {
+            this.cost = cost;
+            this.deposit = deposit;
+            this.qty = qty;
+            this.remark = remark;
+            this.price = price;
         }
 
         //Properties
@@ -54,5 +67,7 @@ namespace SynthesisAssignment.Models
         public int Quantity { get { return this.qty; } set { qty = value; } }
         public string Remark { get { return this.remark; } }
 
+        //booking price
+        public double Price { get { return this.price; } set { price = value; } }
     }
 }

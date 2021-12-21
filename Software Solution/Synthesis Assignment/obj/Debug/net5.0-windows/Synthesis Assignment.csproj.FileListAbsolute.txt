@@ -42,3 +42,5 @@
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Http.Abstractions.dll
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Http.Features.dll
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\Microsoft.Extensions.Primitives.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormFindCustomer.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormPayment.resources

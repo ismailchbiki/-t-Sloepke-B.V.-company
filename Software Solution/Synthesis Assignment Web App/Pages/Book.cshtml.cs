@@ -18,7 +18,7 @@ namespace Synthesis_Assignment_Web_App.Pages
         [BindProperty]
         public Quote Quote { get; set; }
         public string Notification = null;
-
+        InventoryAdministration manageGear = new InventoryAdministration();
         public Quote QuoteToUpdate;
 
         public void OnGet()
@@ -51,6 +51,14 @@ namespace Synthesis_Assignment_Web_App.Pages
             Quote.DateTimeOfMade = DateTime.Now;
             Quote.RefNumber = DateTime.Now.ToString("yyyy") + "-" + Calculate.Generate().ToString();
             
+            //prices calculation
+            Quote.Duration = evenDuration;
+            Quote.Boat.Price = manageGear.GetGearByType(Quote.Boat).Cost * (evenDuration / 2) * Quote.Boat.Quantity;
+            Quote.Item.Price = manageGear.GetGearByType(Quote.Item).Cost * (evenDuration / 2) * Quote.Item.Quantity;
+            Quote.TotalPrice = Quote.Boat.Price + Quote.Item.Price;
+            Quote.Deposit = Calculate.CalculateDeposit(manageGear.GetGearByType(Quote.Boat).Deposit, Quote.Boat.Quantity,
+                                    manageGear.GetGearByType(Quote.Item).Deposit, Quote.Item.Quantity);
+
             //storing the object in session
             HttpContext.Session.SetObjectAsJson("Quote", Quote);
 
@@ -78,6 +86,15 @@ namespace Synthesis_Assignment_Web_App.Pages
             //get the time of booking
             Quote.DateTimeOfMade = DateTime.Now;
             Quote.RefNumber = HttpContext.Session.GetObjectFromJson<Quote>("QuoteToUpdate").RefNumber;
+
+            //prices calculation
+            Quote.Duration = evenDuration;
+            Quote.Boat.Price = manageGear.GetGearByType(Quote.Boat).Cost * (evenDuration / 2) * Quote.Boat.Quantity;
+            Quote.Item.Price = manageGear.GetGearByType(Quote.Item).Cost * (evenDuration / 2) * Quote.Item.Quantity;
+            Quote.TotalPrice = Quote.Boat.Price + Quote.Item.Price;
+            Quote.Deposit = Calculate.CalculateDeposit(manageGear.GetGearByType(Quote.Boat).Deposit, Quote.Boat.Quantity,
+                                    manageGear.GetGearByType(Quote.Item).Deposit, Quote.Item.Quantity);
+
             //storing the object in session
             HttpContext.Session.SetObjectAsJson("Quote", null);
             HttpContext.Session.SetObjectAsJson("NewQuote", Quote);

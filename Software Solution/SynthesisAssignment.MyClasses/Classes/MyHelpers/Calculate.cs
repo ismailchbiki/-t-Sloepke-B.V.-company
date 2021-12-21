@@ -55,5 +55,15 @@ namespace SynthesisAssignment.MyClasses.Classes.MyHelpers
 
             return true;
         }
+
+        //calculate total deposit
+        public static double CalculateDeposit(double boatDeposit,
+            int boatQuantity, double itemDeposit, int itemQuantity)
+        {
+            double output;
+            output = (boatDeposit * boatQuantity) + (itemDeposit * itemQuantity);
+
+            return output;
+        }
     }
 }

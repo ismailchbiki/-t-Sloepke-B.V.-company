@@ -23,15 +23,26 @@ namespace SynthesisAssignment.Services
         public Boat(int id) : base(id)
         {
         }        
+        
         //to create boats
-        public Boat(BOATTYPE bType, CAPACITY capacity, double cost, double deposit, int qty, string remark) : base(cost, deposit, qty, remark)
+        public Boat(BOATTYPE boat, CAPACITY capacity, double cost, double deposit, int qty, string remark)
+            : base(cost, deposit, qty, remark)
         {
-            this.type = bType;
+            this.type = boat;
             this.capacity = capacity;
         }
+
         //to select * boats
         public Boat(int id, BOATTYPE boat, CAPACITY capacity, double cost, double deposit, int qty, string remark)
             : base(id, cost, deposit, qty, remark)
+        {
+            this.type = boat;
+            this.capacity = capacity;
+        }
+
+        //rented boats
+        public Boat(BOATTYPE boat, CAPACITY capacity, double price, double cost, double deposit, int qty, string remark) 
+            : base(price, cost, deposit, qty, remark)
         {
             this.type = boat;
             this.capacity = capacity;

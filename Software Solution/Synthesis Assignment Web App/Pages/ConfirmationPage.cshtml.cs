@@ -19,66 +19,36 @@ namespace Synthesis_Assignment_Web_App.Pages
         QuoteAdministration manageQuote = new QuoteAdministration();
         InventoryAdministration manageGear = new InventoryAdministration();
 
-        public bool RentalInMoreThanWeek = false;
-
+        //message to show
         public string Notification;
 
-        public double BoatUnitPrice;
-        public int BoatValidDuration;
-        public double BoatPrice;
+        //gear price
+        public double BoatCost;
+        public double ItemCost;
 
-        public double ItemUnitPrice;
-        public int ItemValidDuration;
-        public double ItemPrice;
-
-        public double TotalPrice;
-        public double TotalDeposit;
+        //check rental time
+        public bool RentalInMoreThanWeek = false;
 
         public IActionResult OnGet()
         {
-            int duration;
 
             //MADE QUOTES ACCESS
             if (HttpContext.Session.GetObjectFromJson<Quote>("MyReservation") != null &&
                 HttpContext.Session.GetObjectFromJson<Quote>("Quote") == null &&
                 HttpContext.Session.GetObjectFromJson<Quote>("NewQuote") == null)
             {
-
                 //made reservations from DB
                 Quote = HttpContext.Session.GetObjectFromJson<Quote>("MyReservation");
 
                 //update/cancel a reservation allowed for longer period than a week
-                duration = Calculate.CalculateDuration(Quote.StartDateTime, DateTime.Now);
-                if (duration > 168)
+                if (Quote.Duration > 168)
                 {
                     RentalInMoreThanWeek = true;
                 }
 
-                //boat
-                BoatUnitPrice = manageGear.GetGearByType(Quote.Boat).Cost;
-                //calculate duration
-                duration = Calculate.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime);
-                //make duration an even number
-                BoatValidDuration = Calculate.DurationMultipleOfTwo(duration);
-                //caluclate boat price
-                BoatPrice = BoatUnitPrice * (BoatValidDuration / 2) * Quote.Boat.Quantity;
-
-                //item
-                ItemUnitPrice = manageGear.GetGearByType(Quote.Item).Cost;
-                //calculate duration
-                duration = Calculate.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime);
-                //make duration an even number
-                ItemValidDuration = Calculate.DurationMultipleOfTwo(duration);
-                //calculate item price
-                ItemPrice = ItemUnitPrice * (ItemValidDuration / 2) * Quote.Item.Quantity;
-
-                //total price per quote
-                TotalPrice = BoatPrice + ItemPrice;
-
-                //deposit calculation
-                double boatDeposit = manageGear.GetGearByType(Quote.Boat).Deposit;
-                double itemDeposit = manageGear.GetGearByType(Quote.Item).Deposit;
-                TotalDeposit = (boatDeposit * Quote.Boat.Quantity) + (itemDeposit * Quote.Item.Quantity);
+                //gear cost
+                BoatCost = manageGear.GetGearByType(Quote.Boat).Cost;
+                ItemCost = manageGear.GetGearByType(Quote.Item).Cost;
             }
 
             //MAKING NEW QUOTES
@@ -89,31 +59,9 @@ namespace Synthesis_Assignment_Web_App.Pages
                 Quote = HttpContext.Session.GetObjectFromJson<Quote>("Quote");
                 Quote.Customer = HttpContext.Session.GetObjectFromJson<Customer>("CustomerDetails");
 
-                //boat
-                BoatUnitPrice = manageGear.GetGearByType(Quote.Boat).Cost;
-                //calculate duration
-                duration = Calculate.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime);
-                //make duration an even number
-                BoatValidDuration = Calculate.DurationMultipleOfTwo(duration);
-                //calculate boat price
-                BoatPrice = BoatUnitPrice * (BoatValidDuration / 2) * Quote.Boat.Quantity;
-
-                //item
-                ItemUnitPrice = manageGear.GetGearByType(Quote.Item).Cost;
-                //calculate duration
-                duration = Calculate.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime);
-                //make duration an even number
-                ItemValidDuration = Calculate.DurationMultipleOfTwo(duration);
-                //calculate item price
-                ItemPrice = ItemUnitPrice * (ItemValidDuration / 2) * Quote.Item.Quantity;
-
-                //total price per quote
-                TotalPrice = BoatPrice + ItemPrice;
-
-                //deposit calculation
-                double boatDeposit = manageGear.GetGearByType(Quote.Boat).Deposit;
-                double itemDeposit = manageGear.GetGearByType(Quote.Item).Deposit;
-                TotalDeposit = (boatDeposit * Quote.Boat.Quantity) + (itemDeposit * Quote.Item.Quantity);
+                //gear cost
+                BoatCost = manageGear.GetGearByType(Quote.Boat).Cost;
+                ItemCost = manageGear.GetGearByType(Quote.Item).Cost;
             }
 
             //UPDATE EXISTING QUOTES
@@ -124,37 +72,14 @@ namespace Synthesis_Assignment_Web_App.Pages
                 Quote.Customer = HttpContext.Session.GetObjectFromJson<Customer>("NewCustomerDetails");
 
                 //update/cancel a reservation allowed for longer period than a week
-                duration = Calculate.CalculateDuration(Quote.StartDateTime, DateTime.Now);
-                if (duration > 168)
+                if (Quote.Duration > 168)
                 {
                     RentalInMoreThanWeek = true;
                 }
 
-                //boat
-                BoatUnitPrice = manageGear.GetGearByType(Quote.Boat).Cost;
-                //calculate duration
-                duration = Calculate.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime);
-                //make duration an even number
-                BoatValidDuration = Calculate.DurationMultipleOfTwo(duration);
-                //calculate boat price
-                BoatPrice = BoatUnitPrice * (BoatValidDuration / 2) * Quote.Boat.Quantity;
-
-                //item
-                ItemUnitPrice = manageGear.GetGearByType(Quote.Item).Cost;
-                //calculate duration
-                duration = Calculate.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime);
-                //make duration an even number
-                ItemValidDuration = Calculate.DurationMultipleOfTwo(duration);
-                //calculate item price
-                ItemPrice = ItemUnitPrice * (ItemValidDuration / 2) * Quote.Item.Quantity;
-
-                //total price per quote
-                TotalPrice = BoatPrice + ItemPrice;
-
-                //deposit calculation
-                double boatDeposit = manageGear.GetGearByType(Quote.Boat).Deposit;
-                double itemDeposit = manageGear.GetGearByType(Quote.Item).Deposit;
-                TotalDeposit = (boatDeposit * Quote.Boat.Quantity) + (itemDeposit * Quote.Item.Quantity);
+                //gear cost
+                BoatCost = manageGear.GetGearByType(Quote.Boat).Cost;
+                ItemCost = manageGear.GetGearByType(Quote.Item).Cost;
             }
 
             //QUOTE IS EMPTY
@@ -166,6 +91,7 @@ namespace Synthesis_Assignment_Web_App.Pages
             return null;
         }
 
+        //create new quote
         public IActionResult OnPostConfirm()
         {
             //if (!ModelState.IsValid)
@@ -186,6 +112,7 @@ namespace Synthesis_Assignment_Web_App.Pages
             return Page();
         }
 
+        //go to the update page
         public IActionResult OnPostUpdate()
         {
             Quote = HttpContext.Session.GetObjectFromJson<Quote>("MyReservation");
@@ -202,6 +129,7 @@ namespace Synthesis_Assignment_Web_App.Pages
             return RedirectToPage("Book");
         }
 
+        //save new updates
         public IActionResult OnPostSaveUpdate()
         {
             //if (!ModelState.IsValid)

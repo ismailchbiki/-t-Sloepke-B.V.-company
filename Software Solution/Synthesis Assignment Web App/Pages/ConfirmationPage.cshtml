@@ -45,26 +45,26 @@
             <!-- 2nd row -->
             <th>@Model.Quote.Boat.BoatType</th>
             <th>@Model.Quote.Boat.Quantity</th>
-            <th>@Model.BoatValidDuration</th>
-            <th>@Model.BoatUnitPrice</th>
-            <th>@Model.BoatPrice</th>
+            <th>@Model.Quote.Duration</th>
+            <th>@Model.BoatCost</th>
+            <th>@Model.Quote.Boat.Price</th>
         </tr>
 
         <tr>
             <!-- 3rd row -->
             <th>@Model.Quote.Item.ItemType</th>
             <th>@Model.Quote.Item.Quantity</th>
-            <th>@Model.ItemValidDuration</th>
-            <th>@Model.ItemUnitPrice</th>
-            <th>@Model.ItemPrice</th>
+            <th>@Model.Quote.Duration</th>
+            <th>@Model.ItemCost</th>
+            <th>@Model.Quote.Item.Price</th>
         </tr>
     </table>
 
-    <span>Total: €@Model.TotalPrice</span>
+    <span>Total: €@Model.Quote.TotalPrice</span>
 
     <h2>Quote terms</h2>
     <span class="quote-terms">
-        Note that when retrieving the boat at the rental location you are required to first transfer a deposit of €@Model.TotalDeposit.
+        Note that when retrieving the boat at the rental location you are required to first transfer a deposit of €@Model.Quote.Deposit.
     </span>
     <p>Please, bear in mind that up until (7) days before the start of the rental occurs, our guests are allowed to change or cancel their reservations.</p>
 

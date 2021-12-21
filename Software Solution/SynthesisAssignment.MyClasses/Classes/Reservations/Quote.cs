@@ -23,6 +23,13 @@ namespace SynthesisAssignment.MyClasses.Classes
         DateTime startDateTime;
         DateTime endDateTime;
 
+        int duration;
+        double totalPrice;
+        double deposit;
+
+        string depositStatus;
+        string paymentStatus;
+
         //CONSTRUCTORS
         public Quote()
         {
@@ -58,6 +65,12 @@ namespace SynthesisAssignment.MyClasses.Classes
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd HH-mm")]
         [Required(ErrorMessage = "Please provide a date")]
         public DateTime EndDateTime { get { return this.endDateTime; } set { endDateTime = value; } }
-        
+
+        public int Duration { get { return this.duration; } set { duration = value; } }
+        public double TotalPrice { get { return this.totalPrice; } set { totalPrice = value; } }
+        public double Deposit { get { return this.deposit; } set { deposit = value; } }
+
+        public string DepositStatus { get { return this.depositStatus; } set { depositStatus = value; } }
+        public string PaymentStatus { get { return this.paymentStatus; } set { paymentStatus = value; } }
     }
 }

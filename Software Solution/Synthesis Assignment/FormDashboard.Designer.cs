@@ -31,10 +31,11 @@ namespace Synthesis_Assignment
         {
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.panelAdministration = new System.Windows.Forms.Panel();
+            this.buttonExtra = new System.Windows.Forms.Button();
             this.buttonInventory = new System.Windows.Forms.Button();
             this.buttonAdministration = new System.Windows.Forms.Button();
-            this.buttonExtra = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
+            this.labelSelectOption = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.panelAdministration.SuspendLayout();
             this.SuspendLayout();
@@ -52,6 +53,7 @@ namespace Synthesis_Assignment
             // panelAdministration
             // 
             this.panelAdministration.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panelAdministration.Controls.Add(this.labelSelectOption);
             this.panelAdministration.Controls.Add(this.buttonExtra);
             this.panelAdministration.Controls.Add(this.buttonInventory);
             this.panelAdministration.Controls.Add(this.buttonAdministration);
@@ -59,6 +61,17 @@ namespace Synthesis_Assignment
             this.panelAdministration.Name = "panelAdministration";
             this.panelAdministration.Size = new System.Drawing.Size(526, 528);
             this.panelAdministration.TabIndex = 2;
+            // 
+            // buttonExtra
+            // 
+            this.buttonExtra.BackColor = System.Drawing.Color.Tan;
+            this.buttonExtra.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonExtra.Location = new System.Drawing.Point(60, 350);
+            this.buttonExtra.Name = "buttonExtra";
+            this.buttonExtra.Size = new System.Drawing.Size(410, 94);
+            this.buttonExtra.TabIndex = 2;
+            this.buttonExtra.Text = "EXTRA";
+            this.buttonExtra.UseVisualStyleBackColor = false;
             // 
             // buttonInventory
             // 
@@ -82,17 +95,7 @@ namespace Synthesis_Assignment
             this.buttonAdministration.TabIndex = 1;
             this.buttonAdministration.Text = "ADMINISTRATION";
             this.buttonAdministration.UseVisualStyleBackColor = false;
-            // 
-            // buttonExtra
-            // 
-            this.buttonExtra.BackColor = System.Drawing.Color.Tan;
-            this.buttonExtra.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonExtra.Location = new System.Drawing.Point(60, 350);
-            this.buttonExtra.Name = "buttonExtra";
-            this.buttonExtra.Size = new System.Drawing.Size(410, 94);
-            this.buttonExtra.TabIndex = 2;
-            this.buttonExtra.Text = "EXTRA";
-            this.buttonExtra.UseVisualStyleBackColor = false;
+            this.buttonAdministration.Click += new System.EventHandler(this.buttonAdministration_Click);
             // 
             // buttonLogout
             // 
@@ -104,6 +107,17 @@ namespace Synthesis_Assignment
             this.buttonLogout.Text = "LOGOUT";
             this.buttonLogout.UseVisualStyleBackColor = true;
             this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
+            // 
+            // labelSelectOption
+            // 
+            this.labelSelectOption.AutoSize = true;
+            this.labelSelectOption.Font = new System.Drawing.Font("Calibri", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelSelectOption.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.labelSelectOption.Location = new System.Drawing.Point(140, 15);
+            this.labelSelectOption.Name = "labelSelectOption";
+            this.labelSelectOption.Size = new System.Drawing.Size(258, 53);
+            this.labelSelectOption.TabIndex = 9;
+            this.labelSelectOption.Text = "Select Option";
             // 
             // FormDashboard
             // 
@@ -119,6 +133,7 @@ namespace Synthesis_Assignment
             this.Load += new System.EventHandler(this.FormDashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.panelAdministration.ResumeLayout(false);
+            this.panelAdministration.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -131,5 +146,6 @@ namespace Synthesis_Assignment
         private System.Windows.Forms.Button buttonInventory;
         private System.Windows.Forms.Button buttonAdministration;
         private System.Windows.Forms.Button buttonLogout;
+        private System.Windows.Forms.Label labelSelectOption;
     }
 }
