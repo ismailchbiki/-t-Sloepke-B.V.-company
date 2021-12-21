@@ -1,5 +1,4 @@
 ﻿using SynthesisAssignment.Models;
-using SynthesisAssignment.Models.Enums;
 using SynthesisAssignment.Services;
 using System;
 using System.Collections.Generic;
@@ -16,9 +15,9 @@ namespace Synthesis_Assignment
     public partial class FormInventory : Form
     {
 
-        //get id of selected row
-        int id = 0;
-
+        //get type of the selected row
+        string type = null;
+        Inventory gear;
         InventoryAdministration manageGear;
 
         public FormInventory()
@@ -38,7 +37,6 @@ namespace Synthesis_Assignment
 
             //table of boats
             dataGridViewBoats.DataSource = gear.OfType<Boat>().Select(o => new {
-                ID = o.ID,
                 Boat_Type = o.BoatType,
                 Capacity = o.Capacity,
                 Costs = o.Cost,
@@ -49,7 +47,6 @@ namespace Synthesis_Assignment
 
             //table of items
             dataGridViewItems.DataSource = gear.OfType<Item>().Select(o => new {
-                ID = o.ID,
                 Item = o.ItemType,
                 Costs = o.Cost,
                 Deposit = o.Deposit,
@@ -93,9 +90,8 @@ namespace Synthesis_Assignment
             if (tabControlAdministration.SelectedTab == tabPageBoats)
             {
 
-                id = (int)dataGridViewBoats.SelectedRows[0].Cells["ID"].Value;
-                Boat b = new Boat(id);
-                FormBoats boats = new FormBoats(b);
+                type = dataGridViewBoats.SelectedRows[0].Cells["Boat_Type"].Value.ToString();
+                FormBoats boats = new FormBoats(type);
 
                 boats.Show();
                 this.Hide();
@@ -103,9 +99,8 @@ namespace Synthesis_Assignment
             else if (tabControlAdministration.SelectedTab == tabPageItems)
             {
 
-                id = (int)dataGridViewItems.SelectedRows[0].Cells["ID"].Value;
-                Item item = new Item(id);
-                FormItems items = new FormItems(item);
+                type = dataGridViewItems.SelectedRows[0].Cells["Item"].Value.ToString();
+                FormItems items = new FormItems(type);
 
                 items.Show();
                 this.Hide();
@@ -119,10 +114,9 @@ namespace Synthesis_Assignment
             if (tabControlAdministration.SelectedTab == tabPageBoats)
             {
 
-                id = (int)dataGridViewBoats.SelectedRows[0].Cells["ID"].Value;
-
-                Boat b = new Boat(id);
-                FormConfirmDeletion boats = new FormConfirmDeletion(b);
+                type = dataGridViewBoats.SelectedRows[0].Cells["Boat_Type"].Value.ToString();
+                gear = new Boat(type);
+                FormConfirmDeletion boats = new FormConfirmDeletion(gear);
 
                 boats.Show();
                 this.Hide();
@@ -130,10 +124,9 @@ namespace Synthesis_Assignment
             else if (tabControlAdministration.SelectedTab == tabPageItems)
             {
 
-                id = (int)dataGridViewItems.SelectedRows[0].Cells["ID"].Value;
-
-                Item item = new Item(id);
-                FormConfirmDeletion items = new FormConfirmDeletion(item);
+                type = dataGridViewItems.SelectedRows[0].Cells["Item"].Value.ToString();
+                gear = new Item(type);
+                FormConfirmDeletion items = new FormConfirmDeletion(gear);
 
                 items.Show();
                 this.Hide();

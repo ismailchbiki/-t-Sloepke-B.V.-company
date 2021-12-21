@@ -38,7 +38,6 @@ namespace Synthesis_Assignment
             this.textBoxQuantity = new System.Windows.Forms.TextBox();
             this.textBoxDeposit = new System.Windows.Forms.TextBox();
             this.textBoxCost = new System.Windows.Forms.TextBox();
-            this.comboBoxItem = new System.Windows.Forms.ComboBox();
             this.labelRequiredFields = new System.Windows.Forms.Label();
             this.labelRemark = new System.Windows.Forms.Label();
             this.labelQuantity = new System.Windows.Forms.Label();
@@ -49,6 +48,7 @@ namespace Synthesis_Assignment
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonUpdateItem = new System.Windows.Forms.Button();
             this.labelItmType = new System.Windows.Forms.Label();
+            this.textBoxItemType = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -133,14 +133,6 @@ namespace Synthesis_Assignment
             this.textBoxCost.Name = "textBoxCost";
             this.textBoxCost.Size = new System.Drawing.Size(356, 39);
             this.textBoxCost.TabIndex = 37;
-            // 
-            // comboBoxItem
-            // 
-            this.comboBoxItem.FormattingEnabled = true;
-            this.comboBoxItem.Location = new System.Drawing.Point(343, 280);
-            this.comboBoxItem.Name = "comboBoxItem";
-            this.comboBoxItem.Size = new System.Drawing.Size(356, 40);
-            this.comboBoxItem.TabIndex = 35;
             // 
             // labelRequiredFields
             // 
@@ -249,12 +241,20 @@ namespace Synthesis_Assignment
             this.labelItmType.Size = new System.Drawing.Size(0, 45);
             this.labelItmType.TabIndex = 47;
             // 
+            // textBoxItemType
+            // 
+            this.textBoxItemType.Location = new System.Drawing.Point(343, 279);
+            this.textBoxItemType.Name = "textBoxItemType";
+            this.textBoxItemType.Size = new System.Drawing.Size(356, 39);
+            this.textBoxItemType.TabIndex = 48;
+            // 
             // FormItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1504, 900);
+            this.Controls.Add(this.textBoxItemType);
             this.Controls.Add(this.labelItmType);
             this.Controls.Add(this.buttonUpdateItem);
             this.Controls.Add(this.buttonLogout);
@@ -266,7 +266,6 @@ namespace Synthesis_Assignment
             this.Controls.Add(this.textBoxQuantity);
             this.Controls.Add(this.textBoxDeposit);
             this.Controls.Add(this.textBoxCost);
-            this.Controls.Add(this.comboBoxItem);
             this.Controls.Add(this.labelRequiredFields);
             this.Controls.Add(this.labelRemark);
             this.Controls.Add(this.labelQuantity);
@@ -295,7 +294,6 @@ namespace Synthesis_Assignment
         private System.Windows.Forms.TextBox textBoxQuantity;
         private System.Windows.Forms.TextBox textBoxDeposit;
         private System.Windows.Forms.TextBox textBoxCost;
-        private System.Windows.Forms.ComboBox comboBoxItem;
         private System.Windows.Forms.Label labelRequiredFields;
         private System.Windows.Forms.Label labelRemark;
         private System.Windows.Forms.Label labelQuantity;
@@ -306,5 +304,6 @@ namespace Synthesis_Assignment
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Button buttonUpdateItem;
         private System.Windows.Forms.Label labelItmType;
+        private System.Windows.Forms.TextBox textBoxItemType;
     }
 }

@@ -11,45 +11,37 @@ namespace SynthesisAssignment.Services
     {
 
         //fields
-        private ITEMTYPE type;
+        private string type;
 
         //constructors
         public Item()
         {
 
         }
-        public Item(int id) : base(id)
+        public Item(string typ)
         {
+            this.type = typ;
         }
-        
-        //to create items
-        public Item(ITEMTYPE itemType, double cost, double deposit, int qty, string remark) 
+        public Item(string itemType, double cost, double deposit, int qty, string remark) 
             : base(cost, deposit, qty, remark)
         {
             this.type = itemType;
         }
-
-        //to select * items
-        public Item(int id, ITEMTYPE itemType, double cost, double deposit, int qty, string remark)
-            : base(id, cost, deposit, qty, remark)
+        public Item(string itemType, double cost, double deposit, int qty, string remark, double price)
+            : base(cost, deposit, qty, remark, price)
         {
             this.type = itemType;
         }
-
-        //rented item
-        public Item(ITEMTYPE itemType, double price, double cost, double deposit, int qty, string remark)
-            : base(price, cost, deposit, qty, remark)
-        {
-            this.type = itemType;
-        }
-
-
 
         //properties
         public string ItemType
         {
-            get { return this.type.ToString(); }
-            set { type = (ITEMTYPE)Enum.Parse(typeof(ITEMTYPE), value); }
+            get { return this.type; }
+            set { type = value; }
+        }
+        public override string GetInventoryType()
+        {
+            return this.type;
         }
     }
 }

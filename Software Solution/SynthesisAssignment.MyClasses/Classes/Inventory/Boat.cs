@@ -1,5 +1,4 @@
 ﻿using SynthesisAssignment.Models;
-using SynthesisAssignment.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,53 +11,43 @@ namespace SynthesisAssignment.Services
     {
 
         //fields
-        private BOATTYPE type;
-        private CAPACITY capacity;
-
+        private string type;
+        private string capacity;
+        
         //constructors
         public Boat()
         {
 
         }
-        public Boat(int id) : base(id)
+        public Boat(string typ)
         {
-        }        
-        
-        //to create boats
-        public Boat(BOATTYPE boat, CAPACITY capacity, double cost, double deposit, int qty, string remark)
+            this.type = typ;
+        }
+        public Boat(string boat, string capacity, double cost, double deposit, int qty, string remark)
             : base(cost, deposit, qty, remark)
         {
             this.type = boat;
             this.capacity = capacity;
         }
-
-        //to select * boats
-        public Boat(int id, BOATTYPE boat, CAPACITY capacity, double cost, double deposit, int qty, string remark)
-            : base(id, cost, deposit, qty, remark)
+        public Boat(string boat, double cost, double deposit, int qty, string remark, double price)
+            : base(cost, deposit, qty, remark, price)
         {
             this.type = boat;
-            this.capacity = capacity;
-        }
-
-        //rented boats
-        public Boat(BOATTYPE boat, CAPACITY capacity, double price, double cost, double deposit, int qty, string remark) 
-            : base(price, cost, deposit, qty, remark)
-        {
-            this.type = boat;
-            this.capacity = capacity;
         }
 
         //properties
         public string BoatType
         {
-            get { return this.type.ToString(); }
-            set { type = (BOATTYPE)Enum.Parse(typeof(BOATTYPE), value); }
+            get { return this.type; }
+            set { type = value; }
         }
         public string Capacity
         {
-            get { return this.capacity.ToString(); }
-            set { capacity = (CAPACITY)Enum.Parse(typeof(CAPACITY), value); }
+            get { return this.capacity; }
         }
-
+        public override string GetInventoryType()
+        {
+            return this.type;
+        }
     }
 }

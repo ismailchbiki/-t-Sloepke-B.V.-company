@@ -18,22 +18,23 @@ namespace SynthesisAssignment.Models.Administration
         //methods
         public bool AddQuote(Quote quote)
         {
-
+            bool status = false;
             if (dalQuote.AddQuote(quote))
             {
-                return true;
+                status = true;
             }
             
-            return false;
+            return status;
         }
 
         public bool UpdateQuote(Quote quote)
         {
+            bool status = false;
             if (dalQuote.UpdateQuote(quote))
             {
-                return true;
+                status = true;
             }
-            return false;
+            return status;
         }
 
         public List<Quote> GetAllQuotes()
@@ -58,13 +59,12 @@ namespace SynthesisAssignment.Models.Administration
 
         public bool DeleteQuote(Quote quote)
         {
-
+            bool status = false;
             if (dalQuote.DeleteQuote(quote))
             {
-                return true;
+                status = true;
             }
-
-            return false;
+            return status;
         }
     }
 }

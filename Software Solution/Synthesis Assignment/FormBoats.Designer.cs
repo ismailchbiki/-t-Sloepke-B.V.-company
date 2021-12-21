@@ -40,8 +40,6 @@ namespace Synthesis_Assignment
             this.labelQuantity = new System.Windows.Forms.Label();
             this.labelRemark = new System.Windows.Forms.Label();
             this.labelAllfieldsRequired = new System.Windows.Forms.Label();
-            this.comboBoxBoatType = new System.Windows.Forms.ComboBox();
-            this.comboBoxCapacity = new System.Windows.Forms.ComboBox();
             this.textBoxCost = new System.Windows.Forms.TextBox();
             this.textBoxDeposit = new System.Windows.Forms.TextBox();
             this.textBoxQuantity = new System.Windows.Forms.TextBox();
@@ -51,6 +49,8 @@ namespace Synthesis_Assignment
             this.labelEuroSymbole2 = new System.Windows.Forms.Label();
             this.buttonUpdateBoat = new System.Windows.Forms.Button();
             this.labelBType = new System.Windows.Forms.Label();
+            this.textBoxBoatType = new System.Windows.Forms.TextBox();
+            this.textBoxCapacity = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -171,22 +171,6 @@ namespace Synthesis_Assignment
             this.labelAllfieldsRequired.TabIndex = 18;
             this.labelAllfieldsRequired.Text = "* All fields are required";
             // 
-            // comboBoxBoatType
-            // 
-            this.comboBoxBoatType.FormattingEnabled = true;
-            this.comboBoxBoatType.Location = new System.Drawing.Point(340, 285);
-            this.comboBoxBoatType.Name = "comboBoxBoatType";
-            this.comboBoxBoatType.Size = new System.Drawing.Size(356, 40);
-            this.comboBoxBoatType.TabIndex = 19;
-            // 
-            // comboBoxCapacity
-            // 
-            this.comboBoxCapacity.FormattingEnabled = true;
-            this.comboBoxCapacity.Location = new System.Drawing.Point(340, 435);
-            this.comboBoxCapacity.Name = "comboBoxCapacity";
-            this.comboBoxCapacity.Size = new System.Drawing.Size(356, 40);
-            this.comboBoxCapacity.TabIndex = 20;
-            // 
             // textBoxCost
             // 
             this.textBoxCost.Location = new System.Drawing.Point(340, 611);
@@ -270,12 +254,28 @@ namespace Synthesis_Assignment
             this.labelBType.Size = new System.Drawing.Size(0, 45);
             this.labelBType.TabIndex = 29;
             // 
+            // textBoxBoatType
+            // 
+            this.textBoxBoatType.Location = new System.Drawing.Point(340, 284);
+            this.textBoxBoatType.Name = "textBoxBoatType";
+            this.textBoxBoatType.Size = new System.Drawing.Size(356, 39);
+            this.textBoxBoatType.TabIndex = 30;
+            // 
+            // textBoxCapacity
+            // 
+            this.textBoxCapacity.Location = new System.Drawing.Point(340, 437);
+            this.textBoxCapacity.Name = "textBoxCapacity";
+            this.textBoxCapacity.Size = new System.Drawing.Size(356, 39);
+            this.textBoxCapacity.TabIndex = 31;
+            // 
             // FormBoats
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1504, 900);
+            this.Controls.Add(this.textBoxCapacity);
+            this.Controls.Add(this.textBoxBoatType);
             this.Controls.Add(this.labelBType);
             this.Controls.Add(this.buttonUpdateBoat);
             this.Controls.Add(this.labelEuroSymbole2);
@@ -285,8 +285,6 @@ namespace Synthesis_Assignment
             this.Controls.Add(this.textBoxQuantity);
             this.Controls.Add(this.textBoxDeposit);
             this.Controls.Add(this.textBoxCost);
-            this.Controls.Add(this.comboBoxCapacity);
-            this.Controls.Add(this.comboBoxBoatType);
             this.Controls.Add(this.labelAllfieldsRequired);
             this.Controls.Add(this.labelRemark);
             this.Controls.Add(this.labelQuantity);
@@ -320,8 +318,6 @@ namespace Synthesis_Assignment
         private System.Windows.Forms.Label labelQuantity;
         private System.Windows.Forms.Label labelRemark;
         private System.Windows.Forms.Label labelAllfieldsRequired;
-        private System.Windows.Forms.ComboBox comboBoxBoatType;
-        private System.Windows.Forms.ComboBox comboBoxCapacity;
         private System.Windows.Forms.TextBox textBoxCost;
         private System.Windows.Forms.TextBox textBoxDeposit;
         private System.Windows.Forms.TextBox textBoxQuantity;
@@ -331,5 +327,7 @@ namespace Synthesis_Assignment
         private System.Windows.Forms.Label labelEuroSymbole2;
         private System.Windows.Forms.Button buttonUpdateBoat;
         private System.Windows.Forms.Label labelBType;
+        private System.Windows.Forms.TextBox textBoxBoatType;
+        private System.Windows.Forms.TextBox textBoxCapacity;
     }
 }

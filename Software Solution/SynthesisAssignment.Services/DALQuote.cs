@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using SynthesisAssignment.Models;
-using SynthesisAssignment.Models.Enums;
 using SynthesisAssignment.MyClasses.Classes;
 using SynthesisAssignment.MyClasses.Classes.MyHelpers;
 using System;
@@ -241,8 +240,8 @@ namespace SynthesisAssignment.Services
 
                     string remark = null;
 
-                    quote.Boat = new Boat((BOATTYPE)Enum.Parse(typeof(BOATTYPE), boatType), (CAPACITY)Enum.Parse(typeof(CAPACITY), capacity), boatPrice, boatCost, boatDeposit, boatQuantity, remark);
-                    quote.Item = new Item((ITEMTYPE)Enum.Parse(typeof(ITEMTYPE), itemType), itemPrice, itemCost, itemDeposit, itemQuantity, remark);
+                    quote.Boat = new Boat(boatType, boatCost, boatDeposit, boatQuantity, remark, boatPrice);
+                    quote.Item = new Item(itemType, itemCost, itemDeposit, itemQuantity, remark, itemPrice);
 
                     allQuotes.Add(quote);
                 }

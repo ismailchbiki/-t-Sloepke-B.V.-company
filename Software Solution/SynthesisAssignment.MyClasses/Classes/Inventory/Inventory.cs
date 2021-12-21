@@ -10,7 +10,6 @@ namespace SynthesisAssignment.Models
     public abstract class Inventory
     {
         //fields
-        int id;
         double cost;
         double deposit;
         int qty;
@@ -22,32 +21,14 @@ namespace SynthesisAssignment.Models
         {
 
         }
-        protected Inventory(int id)
-        {
-            this.id = id;
-        }
-        
-        //to create gear
-        public Inventory(double cost, double deposit, int qty, string remark)
+        protected Inventory(double cost, double deposit, int qty, string remark)
         {
             this.cost = cost;
             this.deposit = deposit;
             this.qty = qty;
             this.remark = remark;
         }
-        
-        //to select * gear
-        protected Inventory(int id, double cost, double deposit, int qty, string remark)
-        {
-            this.id = id;
-            this.cost = cost;
-            this.deposit = deposit;
-            this.qty = qty;
-            this.remark = remark;
-        }
-
-        //to select rented gear
-        protected Inventory(double price, double cost, double deposit, int qty, string remark)
+        protected Inventory(double cost, double deposit, int qty, string remark, double price)
         {
             this.cost = cost;
             this.deposit = deposit;
@@ -57,17 +38,13 @@ namespace SynthesisAssignment.Models
         }
 
         //Properties
-        public int ID { get { return this.id; } }
         public double Cost { get { return this.cost; } }
         public double Deposit { get { return this.deposit; }}
-
-        // public set to bound quantity to the view
-        //[Required(ErrorMessage = "Please provide a number")]
-        //[RegularExpression("^[0-9]*$", ErrorMessage = "Please provide a valid number")]
         public int Quantity { get { return this.qty; } set { qty = value; } }
         public string Remark { get { return this.remark; } }
+        public abstract string GetInventoryType();
 
         //booking price
-        public double Price { get { return this.price; } set { price = value; } }
+        public double Price { get { return this.price; } }
     }
 }

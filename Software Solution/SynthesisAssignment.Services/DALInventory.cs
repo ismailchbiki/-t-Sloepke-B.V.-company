@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using SynthesisAssignment.Models;
-using SynthesisAssignment.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,11 +15,12 @@ namespace SynthesisAssignment.Services
         //add gear
         public bool AddGear(Inventory gear)
         {
+            bool status = false;
             try
             {
 
-                object type = "";
-                object capacity = "";
+                object type = null;
+                object capacity = null;
 
                 if (gear is Boat)
                 {
@@ -50,10 +50,10 @@ namespace SynthesisAssignment.Services
                 MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
 
                 //if boat
-                cmd.Parameters.AddWithValue("@boat_type", type.ToString());
-                cmd.Parameters.AddWithValue("@capacity", capacity.ToString());
+                cmd.Parameters.AddWithValue("@boat_type", type);
+                cmd.Parameters.AddWithValue("@capacity", capacity);
                 //if item
-                cmd.Parameters.AddWithValue("@item_type", type.ToString());
+                cmd.Parameters.AddWithValue("@item_type", type);
 
                 //the rest applies for both
                 cmd.Parameters.AddWithValue("@cost", gear.Cost);
@@ -70,34 +70,34 @@ namespace SynthesisAssignment.Services
                 //Close the connection
                 con.Close();
 
-                return true;
+                status = true;
+                return status;
             }
             catch (Exception)
             {
+                //return status;
                 throw;
-                //return false;
             }
         }
 
         //update gear
         public bool UpdateGear(Inventory gear)
         {
-
-            //try
+            bool status = false;
+            try
             {
-                //object type = "";
-                object capacity = "";
+                string type = "";
+                string capacity = "";
 
                 if (gear is Boat)
                 {
-                    //type = ((Boat)gear).BoatType;
+                    type = ((Boat)gear).BoatType;
                     capacity = ((Boat)gear).Capacity;
                 }
                 else if (gear is Item)
                 {
-                    //type = ((Item)gear).ItemType;
+                    type = ((Item)gear).ItemType;
                 }
-
 
                 //connection string
                 MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
@@ -106,25 +106,25 @@ namespace SynthesisAssignment.Services
                 if (gear.GetType() == typeof(Boat))
                 {
 
-                    sqlQuery = "update syn_boat set boat_capacity=@capacity, boat_cost=@cost, boat_deposit=@deposit, boat_quantity=@quantity, boat_remark=@remark where boat_ID=@ID";
+                    sqlQuery = "update syn_boat set boat_capacity=@capacity, boat_cost=@cost, boat_deposit=@deposit, boat_quantity=@quantity, boat_remark=@remark where boat_type=@boat_type";
 
                 }
                 else if (gear.GetType() == typeof(Item))
                 {
-                    sqlQuery = "update syn_item set item_cost=@cost, item_deposit=@deposit, item_quantity=@quantity, item_remark=@remark where item_ID=@ID";
+                    sqlQuery = "update syn_item set item_cost=@cost, item_deposit=@deposit, item_quantity=@quantity, item_remark=@remark where item_type=@item_type";
                 }
 
 
                 MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
 
                 //if boat
-                //cmd.Parameters.AddWithValue("@boat_type", type.ToString());
-                cmd.Parameters.AddWithValue("@capacity", capacity.ToString());
+                cmd.Parameters.AddWithValue("@boat_type", type);
+                cmd.Parameters.AddWithValue("@capacity", capacity);
+
                 //if item
-                //cmd.Parameters.AddWithValue("@item_type", type.ToString());
+                cmd.Parameters.AddWithValue("@item_type", type);
 
                 //the rest applies for both
-                cmd.Parameters.AddWithValue("@ID", gear.ID);
                 cmd.Parameters.AddWithValue("@cost", gear.Cost);
                 cmd.Parameters.AddWithValue("@deposit", gear.Deposit);
                 cmd.Parameters.AddWithValue("@quantity", gear.Quantity);
@@ -140,18 +140,20 @@ namespace SynthesisAssignment.Services
                 //Close the connection
                 con.Close();
 
-                return true;
+                status = true;
+                return status;
             }
-            //catch (Exception)
-            //{
-            //    throw;
-            //    //return false;
-            //}
+            catch (Exception)
+            {
+                //return status;
+                throw;
+            }
         }
 
         //delete gear
         public bool DeleteGear(Inventory gear)
         {
+            bool status = false;
             try
             {
                 //connection string
@@ -160,16 +162,24 @@ namespace SynthesisAssignment.Services
                 string sqlQuery = null;
                 if (gear.GetType() == typeof(Boat))
                 {
-                    sqlQuery = "DELETE FROM `syn_boat` WHERE boat_ID=@ID";
+                    sqlQuery = "DELETE FROM `syn_boat` WHERE boat_type=@boat_type";
                 } 
                 else if (gear.GetType() == typeof(Item))
                 {
-                    sqlQuery = "DELETE FROM `syn_item` WHERE item_ID=@ID";
+                    sqlQuery = "DELETE FROM `syn_item` WHERE item_type=@item_type";
                 }
 
                 MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
 
-                cmd.Parameters.AddWithValue("@ID", gear.ID);
+                if (gear is Boat)
+                {
+                    cmd.Parameters.AddWithValue("@boat_type", ((Boat)gear).BoatType);
+
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@item_type", ((Item)gear).ItemType);
+                }
 
                 //Open the connection
                 con.Open();
@@ -180,12 +190,13 @@ namespace SynthesisAssignment.Services
                 //Close the connection
                 con.Close();
 
-                return true;
+                status = true;
+                return status;
             }
             catch (Exception)
             {
-                //throw;
-                return false;
+                //return status;
+                throw;
             }
         }
 
@@ -213,7 +224,6 @@ namespace SynthesisAssignment.Services
                 while (dr.Read())
                 {
 
-                    int boatID = Convert.ToInt32(dr["boat_ID"]);
                     string bType = dr["boat_type"].ToString();
                     string capacity = dr["boat_capacity"].ToString();
                     double boatCost = Convert.ToDouble(dr["boat_cost"]);
@@ -221,7 +231,7 @@ namespace SynthesisAssignment.Services
                     int boatQuantity = Convert.ToInt32(dr["boat_quantity"]);
                     string boatRemark = dr["boat_remark"].ToString();
 
-                    boat = new Boat(boatID, (BOATTYPE)Enum.Parse(typeof(BOATTYPE), bType), (CAPACITY)Enum.Parse(typeof(CAPACITY), capacity), boatCost, boatDeposit, boatQuantity, boatRemark);
+                    boat = new Boat(bType, capacity, boatCost, boatDeposit, boatQuantity, boatRemark);
 
                     boats.Add(boat);
                 }
@@ -261,14 +271,13 @@ namespace SynthesisAssignment.Services
                 while (dr.Read())
                 {
                     
-                    int itemID = Convert.ToInt32(dr["item_ID"]);
                     string itemType = dr["item_type"].ToString();
                     double itemCost = Convert.ToDouble(dr["item_cost"]);
                     double itemDeposit = Convert.ToDouble(dr["item_deposit"]);
                     int itemQuantity = Convert.ToInt32(dr["item_quantity"]);
                     string itemRemark = dr["item_remark"].ToString();
 
-                    item = new Item(itemID, (ITEMTYPE)Enum.Parse(typeof(ITEMTYPE), itemType), itemCost, itemDeposit, itemQuantity, itemRemark);
+                    item = new Item(itemType, itemCost, itemDeposit, itemQuantity, itemRemark);
 
                     items.Add(item);
                 }

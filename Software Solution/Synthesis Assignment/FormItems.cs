@@ -17,48 +17,46 @@ namespace Synthesis_Assignment
     public partial class FormItems : Form
     {
 
-        Inventory gear;
+        string type = null;
+        Item item;
         InventoryAdministration manageGear;
 
         public FormItems()
         {
             InitializeComponent();
             manageGear = new InventoryAdministration();
-            gear = new Item();
+            item = new Item();
         }
 
-        public FormItems(Inventory gear)
+        public FormItems(string type)
         {
             InitializeComponent();
             manageGear = new InventoryAdministration();
-            this.gear = gear;
+            item = new Item();
+            this.type = type;
         }
 
         //form
         private void FormItems_Load(object sender, EventArgs e)
         {
             CenterToScreen();
-
-            //populating the comboBoxes with enums
-            comboBoxItem.DataSource = Enum.GetValues(typeof(ITEMTYPE));
-
             buttonUpdateItem.Visible = false;
 
             //in case of a boat update => fill in all the fields
-            if (gear.ID != 0)
+            if (type != null)
             {
 
-                //control visibility some items on the form on update click event
-                comboBoxItem.Visible = false;
+                textBoxItemType.Visible = false;
                 buttonAddItem.Visible = false;
                 buttonUpdateItem.Visible = true;
 
                 //fill in fields with data
-                labelItmType.Text = ((Item)manageGear.GetGearByID(gear)).ItemType.ToString();
-                textBoxCost.Text = ((Item)manageGear.GetGearByID(gear)).Cost.ToString();
-                textBoxDeposit.Text = ((Item)manageGear.GetGearByID(gear)).Deposit.ToString();
-                textBoxQuantity.Text = ((Item)manageGear.GetGearByID(gear)).Quantity.ToString();
-                textBoxRemark.Text = ((Item)manageGear.GetGearByID(gear)).Remark;
+                item = new Item(type);
+                labelItmType.Text = ((Item)manageGear.GetGearByType(item)).ItemType.ToString();
+                textBoxCost.Text = ((Item)manageGear.GetGearByType(item)).Cost.ToString();
+                textBoxDeposit.Text = ((Item)manageGear.GetGearByType(item)).Deposit.ToString();
+                textBoxQuantity.Text = ((Item)manageGear.GetGearByType(item)).Quantity.ToString();
+                textBoxRemark.Text = ((Item)manageGear.GetGearByType(item)).Remark;
             }
         }
 
@@ -66,7 +64,7 @@ namespace Synthesis_Assignment
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             FormLogin login = new FormLogin();
-            gear = new Item();
+            type = null;
             login.Show();
             this.Hide();
         }
@@ -78,9 +76,9 @@ namespace Synthesis_Assignment
             FormInventory inventoryForm = new FormInventory();
 
             // in case of an update event => back to inventory or dashboard
-            if (gear.ID != 0)
+            if (type != null)
             {
-                gear = new Item();
+                type = null;
                 inventoryForm.Show();
                 this.Hide();
             }
@@ -97,11 +95,17 @@ namespace Synthesis_Assignment
             try
             {
                 //check if all fields are filled
-                if (string.IsNullOrEmpty(textBoxCost.Text) || string.IsNullOrEmpty(textBoxQuantity.Text))
+                if (string.IsNullOrEmpty(textBoxCost.Text) || string.IsNullOrEmpty(textBoxQuantity.Text)
+                    || string.IsNullOrEmpty(textBoxItemType.Text))
                 {
                     MessageBox.Show(MyMessage.AllfieldsAreRequired);
                 }
+                else if (Verify.ContainNumbers(textBoxItemType.Text))
+                {
+                    MessageBox.Show("Item type cannot contain numbers");
+                }
 
+                //prevent letters for input numbers
                 else if (Verify.ContainLetters(textBoxCost.Text) || Verify.ContainLetters(textBoxDeposit.Text)
                     || Verify.ContainLetters(textBoxQuantity.Text))
                 {
@@ -111,11 +115,11 @@ namespace Synthesis_Assignment
                 else
                 {
 
-                    gear = new Item((ITEMTYPE)comboBoxItem.SelectedItem, Convert.ToDouble(textBoxCost.Text),
+                    item = new Item(textBoxItemType.Text, Convert.ToDouble(textBoxCost.Text),
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
                     //add item
-                    if (manageGear.AddGear((Item)gear))
+                    if (manageGear.AddGear(item))
                     {
                         MessageBox.Show(MyMessage.SuccessfulSaving);
                     }
@@ -137,7 +141,8 @@ namespace Synthesis_Assignment
             try
             {
                 //check if all fields are filled
-                if (string.IsNullOrEmpty(textBoxCost.Text) || string.IsNullOrEmpty(textBoxQuantity.Text))
+                if (string.IsNullOrEmpty(textBoxCost.Text) || string.IsNullOrEmpty(textBoxQuantity.Text)
+                    || string.IsNullOrEmpty(textBoxDeposit.Text))
                 {
                     MessageBox.Show(MyMessage.AllfieldsAreRequired);
                 }
@@ -151,11 +156,11 @@ namespace Synthesis_Assignment
                 else
                 {
 
-                    gear = new Item(gear.ID, (ITEMTYPE)comboBoxItem.SelectedItem, Convert.ToDouble(textBoxCost.Text),
+                    item = new Item(type, Convert.ToDouble(textBoxCost.Text),
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
                     //update item
-                    if (manageGear.UpdateGear((Item)gear))
+                    if (manageGear.UpdateGear(item))
                     {
                         MessageBox.Show(MyMessage.SuccessfulUpdate);
                         FormInventory inventoryForm = new FormInventory();

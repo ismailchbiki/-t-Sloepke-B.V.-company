@@ -47,7 +47,6 @@ namespace SynthesisAssignment.MyClasses.Classes.MyHelpers
         //time difference must meet these criteria
         public static bool ApproveDuration(int duration)
         {
-
             if (duration < 2 || duration > 336)
             {
                 return false;

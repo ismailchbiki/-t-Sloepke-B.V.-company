@@ -1,5 +1,4 @@
 ﻿using SynthesisAssignment.Models;
-using SynthesisAssignment.MyClasses.Enums;
 using SynthesisAssignment.Services;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,7 @@ namespace SynthesisAssignment.MyClasses.Classes
         Customer customer = new Customer();
         Boat boat = new Boat();
         Item item = new Item();
-        LOCATION location;
+        string location;
         DateTime dateTimeOfMade;
         DateTime startDateTime;
         DateTime endDateTime;
@@ -36,8 +35,6 @@ namespace SynthesisAssignment.MyClasses.Classes
 
         }
 
-        // --------- PROPERTIES(public setters to bound the properties to the view template)
-        //quote ID
         public string RefNumber { get { return this.refNumber; } set { refNumber = value; } }
 
         public Customer Customer { get { return this.customer; } set { customer = value; } }
@@ -47,8 +44,8 @@ namespace SynthesisAssignment.MyClasses.Classes
         //location
         public string Location
         {
-            get { return this.location.ToString(); }
-            set { location = (LOCATION)Enum.Parse(typeof(LOCATION), value); }
+            get { return this.location; }
+            set { location =  value; }
         }
 
         //date of made

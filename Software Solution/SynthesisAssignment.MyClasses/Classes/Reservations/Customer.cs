@@ -13,7 +13,8 @@ namespace SynthesisAssignment.MyClasses.Classes
 
         }
 
-        public Customer(int id) : base(id)
+        public Customer(string firstName, string lastName, string address, string zipcode, string city, int phone, string email)
+            : base(firstName, lastName, address, zipcode, city, phone, email)
         {
         }
     }

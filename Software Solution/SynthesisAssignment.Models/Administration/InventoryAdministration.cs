@@ -17,99 +17,125 @@ namespace SynthesisAssignment.Models
         //add gear
         public bool AddGear(Inventory gear)
         {
-
+            bool status = false;
             //to prevent creating duplicate gear
             if ((GetGearByType(gear)) == null)
             {
                 //if insertion is successful
                 if (dalGear.AddGear(gear))
                 {
-                    return true;
+                    status = true;
                 }
             }
             
             //if there is an error
-            return false;
+            return status;
         }
 
         //update gear
         public bool UpdateGear(Inventory gear)
         {
+            bool status = false;
             if (dalGear.UpdateGear(gear))
             {
-                return true;
+                status = true;
             }
 
-            return false;
+            return status;
+        }
+
+        public Inventory GetGearByType(Inventory gear)
+        {
+            Inventory g = null;
+
+            foreach (var item in GetAllGear().ToList())
+            {
+                if (item.GetInventoryType() == gear.GetInventoryType())
+                {
+                    g = item;
+                }
+            }
+
+            return g;
         }
 
         //get gear by type
-        public Inventory GetGearByType(Inventory gear)
-        {
+        //public Inventory GetGearByType(Inventory gear)
+        //{
 
-            if (gear is Boat)
-            {
-                foreach (var b in GetAllGear().OfType<Boat>().ToList())
-                {
-                    if (b.BoatType == ((Boat)gear).BoatType)
-                    {
-                        return b;
-                    }
-                }
-            }
+        //    foreach (var b in GetAllGear().ToList())
+        //    {
+        //        if (b.GetInventoryType() == gear.GetInventoryType())
+        //        {
+        //            return b;
+        //        }
+        //    }
 
-            else if (gear is Item)
-            {
-                foreach (var item in GetAllGear().OfType<Item>().ToList())
-                {
-                    if (item.ItemType == ((Item)gear).ItemType)
-                    {
-                        return item;
-                    }
-                }
-            }
+        //    //if (gear is Boat)
+        //    //{
+        //    //    foreach (var b in GetAllGear().OfType<Boat>().ToList())
+        //    //    {
+        //    //        if (b.BoatType == ((Boat)gear).BoatType)
+        //    //        {
+        //    //            return b;
+        //    //        }
+        //    //    }
+        //    //}
 
-            return null;
-        }
+        //    //else if (gear is Item)
+        //    //{
+        //    //    foreach (var item in GetAllGear().OfType<Item>().ToList())
+        //    //    {
+        //    //        if (item.ItemType == ((Item)gear).ItemType)
+        //    //        {
+        //    //            return item;
+        //    //        }
+        //    //    }
+        //    //}
+
+        //    return null;
+        //}
 
         //get gear by ID
-        public Inventory GetGearByID(Inventory gear)
-        {
+        //public Inventory GetGearByID(Inventory gear)
+        //{
 
-            if (gear is Boat)
-            {
-                foreach (var b in GetAllGear().OfType<Boat>().ToList())
-                {
-                    if (b.ID == ((Boat)gear).ID)
-                    {
-                        return b;
-                    }
-                }
-            }
+        //    if (gear is Boat)
+        //    {
+        //        foreach (var b in GetAllGear().OfType<Boat>().ToList())
+        //        {
+        //            if (b.ID == ((Boat)gear).ID)
+        //            {
+        //                return b;
+        //            }
+        //        }
+        //    }
 
-            else if (gear is Item)
-            {
-                foreach (var item in GetAllGear().OfType<Item>().ToList())
-                {
-                    if (item.ID == ((Item)gear).ID)
-                    {
-                        return item;
-                    }
-                }
-            }
+        //    else if (gear is Item)
+        //    {
+        //        foreach (var item in GetAllGear().OfType<Item>().ToList())
+        //        {
+        //            if (item.ID == ((Item)gear).ID)
+        //            {
+        //                return item;
+        //            }
+        //        }
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
 
         //delete gear
+
         public bool  DeleteGear(Inventory gear)
         {
+            bool status = false;
             if (dalGear.DeleteGear(gear))
             {
-                return true;
+                status = true;
             }
             
-            return false;
+            return status;
         }
 
         //all gear

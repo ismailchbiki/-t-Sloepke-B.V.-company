@@ -35,7 +35,7 @@ namespace Synthesis_Assignment
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
             //if gear is deleted
-            if (manageGear.DeleteGear(gear))
+            if (manageGear.DeleteGear(manageGear.GetGearByType(gear)))
             {
                 MessageBox.Show("Item Removed successfully");
                 FormInventory inventory = new FormInventory();
