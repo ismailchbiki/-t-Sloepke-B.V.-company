@@ -1,4 +1,5 @@
 ﻿using SynthesisAssignment.Models;
+using SynthesisAssignment.MyClasses.Classes.MyHelpers;
 using SynthesisAssignment.Services;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,9 @@ namespace SynthesisAssignment.MyClasses.Classes
 {
     public class Quote
     {
-        //quote ID
-        string refNumber;
 
+        //create quote
+        string refNumber;
         Customer customer = new Customer();
         Boat boat = new Boat();
         Item item = new Item();
@@ -21,11 +22,9 @@ namespace SynthesisAssignment.MyClasses.Classes
         DateTime dateTimeOfMade;
         DateTime startDateTime;
         DateTime endDateTime;
-
         int duration;
         double totalPrice;
         double deposit;
-
         string depositStatus;
         string paymentStatus;
 
@@ -35,8 +34,8 @@ namespace SynthesisAssignment.MyClasses.Classes
 
         }
 
+        //PROPERTIES
         public string RefNumber { get { return this.refNumber; } set { refNumber = value; } }
-
         public Customer Customer { get { return this.customer; } set { customer = value; } }
         public Boat Boat { get { return this.boat; } set { boat = value; } }
         public Item Item { get { return this.item; } set { item = value; } }
@@ -63,11 +62,55 @@ namespace SynthesisAssignment.MyClasses.Classes
         [Required(ErrorMessage = "Please provide a date")]
         public DateTime EndDateTime { get { return this.endDateTime; } set { endDateTime = value; } }
 
-        public int Duration { get { return this.duration; } set { duration = value; } }
-        public double TotalPrice { get { return this.totalPrice; } set { totalPrice = value; } }
-        public double Deposit { get { return this.deposit; } set { deposit = value; } }
+        public int Duration { get { return this.duration; } }
+        public double TotalPrice { get { return this.totalPrice; }}
+        public double Deposit { get { return this.deposit; } }
 
-        public string DepositStatus { get { return this.depositStatus; } set { depositStatus = value; } }
-        public string PaymentStatus { get { return this.paymentStatus; } set { paymentStatus = value; } }
+        public string GetDepositStatus { get { return this.depositStatus; } }
+        public string GetPaymentStatus { get { return this.paymentStatus; }}
+
+        public string SetRefNumber(string refNum)
+        {
+            this.refNumber = refNum;
+            return this.refNumber;
+        }
+        public double CalculateDeposit(double boatDeposit, int boatQuantity, double itemDeposit, int itemQuantity)
+        {
+            
+            this.deposit = (boatDeposit * boatQuantity) + (itemDeposit * itemQuantity);
+            return this.deposit;
+        }
+        public double CalculateTotalPrice(double boatPrice, double itemPrice)
+        {
+
+            this.totalPrice = boatPrice + itemPrice;
+            return this.totalPrice;
+        }
+        public double GetTotalPrice(double total)
+        {
+            this.totalPrice = total;
+            return this.totalPrice;
+        }
+        public double GetDeposit(double deposit)
+        {
+            this.deposit = deposit;
+            return this.deposit;
+        }
+        public string SetDepositStatus(string status)
+        {
+            this.depositStatus = status;
+            return this.depositStatus;
+        }
+        public string SetPaymentStatus(string status)
+        {
+            this.paymentStatus = status;
+            return this.paymentStatus;
+        }
+        public int SetDuration(int duration)
+        {
+            this.duration = duration;
+            return this.duration;
+        }
+
     }
 }

@@ -14,15 +14,18 @@ namespace Synthesis_Assignment_Web_App.Pages
 
     public class BookModel : PageModel
     {
-
         [BindProperty]
         public Quote Quote { get; set; }
-        public string Notification = null;
-        InventoryAdministration manageGear = new InventoryAdministration();
+        public List<Inventory> GearList { get; set; }
         public Quote QuoteToUpdate;
+        readonly InventoryAdministration manageGear = new InventoryAdministration();
+        public string Notification = null;
 
         public void OnGet()
         {
+
+            GearList = manageGear.GetAllGear();
+
             if (HttpContext.Session.GetObjectFromJson<Quote>("QuoteToUpdate") != null)
             {
                 QuoteToUpdate = new Quote();
@@ -32,7 +35,7 @@ namespace Synthesis_Assignment_Web_App.Pages
 
         public IActionResult OnPost()
         {
-            //Booked period check
+            //Booked period calculation and check
             int duration = Calculate.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime);
             int evenDuration = Calculate.DurationMultipleOfTwo(duration);
 
@@ -41,23 +44,41 @@ namespace Synthesis_Assignment_Web_App.Pages
                  || DateTime.Compare(Quote.EndDateTime, DateTime.Now) < 0)
             {
                 Notification = "Please choose valid dates.\nThe desired period must be more than 2 hrs and less than 2 weeks";
-                return Page();
+                //on get doesn't get fired
+                GearList = manageGear.GetAllGear();
+                return Page() ;
             }
 
-            //code to restrict booked quantity per reservation here
-            //Code to check quantity availability during some period here
-
-            //get the time of booking
+            //booking reference and time details
             Quote.DateTimeOfMade = DateTime.Now;
-            Quote.RefNumber = DateTime.Now.ToString("yyyy") + "-" + Calculate.Generate().ToString();
-            
+            Quote.SetRefNumber(DateTime.Now.ToString("yyyy") + "-" + Calculate.Generate().ToString());
+            Quote.SetDuration(evenDuration);
+
             //prices calculation
-            Quote.Duration = evenDuration;
-            Quote.Boat.Price = manageGear.GetGearByType(Quote.Boat).Cost * (evenDuration / 2) * Quote.Boat.Quantity;
-            Quote.Item.Price = manageGear.GetGearByType(Quote.Item).Cost * (evenDuration / 2) * Quote.Item.Quantity;
-            Quote.TotalPrice = Quote.Boat.Price + Quote.Item.Price;
-            Quote.Deposit = Calculate.CalculateDeposit(manageGear.GetGearByType(Quote.Boat).Deposit, Quote.Boat.Quantity,
-                                    manageGear.GetGearByType(Quote.Item).Deposit, Quote.Item.Quantity);
+            double itemDeposit = 0;
+            int itemQuantity = 0;
+            double itemPrice = 0;
+
+            //item fields check => items are optional
+            if (Quote.Item.ItemType != null)
+            {
+                itemDeposit = manageGear.GetGearByType(Quote.Item).Deposit;
+                itemQuantity = Quote.Item.Quantity;
+                itemPrice = manageGear.GetGearByType(Quote.Item).UnitCost
+                    * (evenDuration / 2) * Quote.Item.Quantity;
+            }
+
+            //deposit calculation
+            Quote.CalculateDeposit(manageGear.GetGearByType(Quote.Boat).Deposit, Quote.Boat.Quantity,
+               itemDeposit, itemQuantity);
+
+
+            //boat price calculation
+            double boatPrice = manageGear.GetGearByType(Quote.Boat).UnitCost
+                * (evenDuration / 2) * Quote.Boat.Quantity;
+
+            //total price
+            Quote.CalculateTotalPrice(boatPrice, itemPrice);
 
             //storing the object in session
             HttpContext.Session.SetObjectAsJson("Quote", Quote);
@@ -77,23 +98,43 @@ namespace Synthesis_Assignment_Web_App.Pages
                  || DateTime.Compare(Quote.EndDateTime, DateTime.Now) < 0)
             {
                 Notification = "Please choose valid dates.\nThe desired period must be more than 2 hrs and less than 2 weeks";
+                //on get doesn't get fired
+                GearList = manageGear.GetAllGear();
                 return Page();
             }
 
-            //code to restrict booked quantity per reservation here
-            //Code to check quantity availability during some period here
-
             //get the time of booking
             Quote.DateTimeOfMade = DateTime.Now;
-            Quote.RefNumber = HttpContext.Session.GetObjectFromJson<Quote>("QuoteToUpdate").RefNumber;
+            Quote.SetRefNumber(HttpContext.Session.GetObjectFromJson<Quote>("QuoteToUpdate").RefNumber);
+            Quote.SetDuration(evenDuration);
 
             //prices calculation
-            Quote.Duration = evenDuration;
-            Quote.Boat.Price = manageGear.GetGearByType(Quote.Boat).Cost * (evenDuration / 2) * Quote.Boat.Quantity;
-            Quote.Item.Price = manageGear.GetGearByType(Quote.Item).Cost * (evenDuration / 2) * Quote.Item.Quantity;
-            Quote.TotalPrice = Quote.Boat.Price + Quote.Item.Price;
-            Quote.Deposit = Calculate.CalculateDeposit(manageGear.GetGearByType(Quote.Boat).Deposit, Quote.Boat.Quantity,
-                                    manageGear.GetGearByType(Quote.Item).Deposit, Quote.Item.Quantity);
+            double itemDeposit = 0;
+            int itemQuantity = 0;
+            double itemPrice = 0;
+
+            //item fields check => items are optional
+            if (Quote.Item.ItemType != null)
+            {
+                itemDeposit = manageGear.GetGearByType(Quote.Item).Deposit;
+                itemQuantity = Quote.Item.Quantity;
+                itemPrice = manageGear.GetGearByType(Quote.Item).UnitCost
+                    * (evenDuration / 2) * Quote.Item.Quantity;
+            }
+
+            //deposit calculation
+            Quote.CalculateDeposit(manageGear.GetGearByType(Quote.Boat).Deposit, Quote.Boat.Quantity,
+               itemDeposit, itemQuantity);
+
+
+            //boat price calculation
+            double boatPrice = manageGear.GetGearByType(Quote.Boat).UnitCost
+                * (evenDuration / 2) * Quote.Boat.Quantity;
+
+            //total price
+            Quote.CalculateTotalPrice(boatPrice, itemPrice);
+            //storing the object in session
+            HttpContext.Session.SetObjectAsJson("Quote", Quote);
 
             //storing the object in session
             HttpContext.Session.SetObjectAsJson("Quote", null);

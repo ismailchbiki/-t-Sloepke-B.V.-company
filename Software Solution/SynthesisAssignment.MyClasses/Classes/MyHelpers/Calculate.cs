@@ -47,12 +47,13 @@ namespace SynthesisAssignment.MyClasses.Classes.MyHelpers
         //time difference must meet these criteria
         public static bool ApproveDuration(int duration)
         {
+            bool status = true;
             if (duration < 2 || duration > 336)
             {
-                return false;
+                status = false;
             }
 
-            return true;
+            return status;
         }
 
         //calculate total deposit

@@ -21,12 +21,12 @@ namespace Synthesis_Assignment
 
             this.quote = quote;
 
-            if (quote.DepositStatus == "Done")
+            if (quote.GetDepositStatus == "Done")
             {
                 lblDepositStatus.ForeColor = Color.SpringGreen;
             }
 
-            if (quote.PaymentStatus == "Done")
+            if (quote.GetPaymentStatus == "Done")
             {
                 lblPaymentStatus.ForeColor = Color.SpringGreen;
             }
@@ -51,8 +51,8 @@ namespace Synthesis_Assignment
                 lblItem.Text = quote.Item.ItemType;
                 lblItemQuantity.Text = quote.Item.Quantity.ToString();
 
-                lblDepositStatus.Text = quote.DepositStatus;
-                lblPaymentStatus.Text = quote.PaymentStatus;
+                lblDepositStatus.Text = quote.GetDepositStatus;
+                lblPaymentStatus.Text = quote.GetPaymentStatus;
             }
         }
 

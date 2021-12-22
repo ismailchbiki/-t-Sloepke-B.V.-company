@@ -39,7 +39,7 @@ namespace Synthesis_Assignment
             dataGridViewBoats.DataSource = gear.OfType<Boat>().Select(o => new {
                 Boat_Type = o.BoatType,
                 Capacity = o.Capacity,
-                Costs = o.Cost,
+                Costs = o.UnitCost,
                 Deposit = o.Deposit,
                 Quantity = o.Quantity,
                 Remark = o.Remark
@@ -48,7 +48,7 @@ namespace Synthesis_Assignment
             //table of items
             dataGridViewItems.DataSource = gear.OfType<Item>().Select(o => new {
                 Item = o.ItemType,
-                Costs = o.Cost,
+                Costs = o.UnitCost,
                 Deposit = o.Deposit,
                 Quantity = o.Quantity,
                 Remark = o.Remark

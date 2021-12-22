@@ -207,12 +207,12 @@ namespace SynthesisAssignment.Services
                     quote.DateTimeOfMade = Convert.ToDateTime(dr["date_of_made"]);
                     quote.StartDateTime = Convert.ToDateTime(dr["start_date"]);
                     quote.EndDateTime = Convert.ToDateTime(dr["end_date"]);
-                    quote.Duration = Convert.ToInt32(dr["duration"]);
-                    quote.TotalPrice = Convert.ToDouble(dr["total_price"]);
-                    quote.Deposit = Convert.ToDouble(dr["deposit"]);
                     quote.Location = dr["location"].ToString();
-                    quote.DepositStatus = dr["deposit_status"].ToString();
-                    quote.PaymentStatus = dr["payment_status"].ToString();
+                    quote.SetDuration(Convert.ToInt32(dr["duration"]));                    
+                    quote.GetTotalPrice(Convert.ToDouble(dr["total_price"]));
+                    quote.GetDeposit(Convert.ToDouble(dr["deposit"]));
+                    quote.SetDepositStatus(dr["deposit_status"].ToString());
+                    quote.SetPaymentStatus(dr["payment_status"].ToString());
 
                     //customer details
                     quote.Customer.FirstName = dr["first_name"].ToString();

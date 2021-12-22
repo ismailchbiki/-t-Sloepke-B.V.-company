@@ -54,7 +54,7 @@ namespace Synthesis_Assignment
                 boat = new Boat(type);
                 labelBType.Text = ((Boat)manageGear.GetGearByType(boat)).BoatType.ToString();
                 textBoxCapacity.Text = ((Boat)manageGear.GetGearByType(boat)).Capacity.ToString();
-                textBoxCost.Text = ((Boat)manageGear.GetGearByType(boat)).Cost.ToString();
+                textBoxCost.Text = ((Boat)manageGear.GetGearByType(boat)).UnitCost.ToString();
                 textBoxDeposit.Text = ((Boat)manageGear.GetGearByType(boat)).Deposit.ToString();
                 textBoxQuantity.Text = ((Boat)manageGear.GetGearByType(boat)).Quantity.ToString();
                 textBoxRemark.Text = ((Boat)manageGear.GetGearByType(boat)).Remark;

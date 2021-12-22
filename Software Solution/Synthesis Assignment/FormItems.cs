@@ -53,7 +53,7 @@ namespace Synthesis_Assignment
                 //fill in fields with data
                 item = new Item(type);
                 labelItmType.Text = ((Item)manageGear.GetGearByType(item)).ItemType.ToString();
-                textBoxCost.Text = ((Item)manageGear.GetGearByType(item)).Cost.ToString();
+                textBoxCost.Text = ((Item)manageGear.GetGearByType(item)).UnitCost.ToString();
                 textBoxDeposit.Text = ((Item)manageGear.GetGearByType(item)).Deposit.ToString();
                 textBoxQuantity.Text = ((Item)manageGear.GetGearByType(item)).Quantity.ToString();
                 textBoxRemark.Text = ((Item)manageGear.GetGearByType(item)).Remark;

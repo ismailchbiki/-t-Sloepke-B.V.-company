@@ -56,7 +56,7 @@ namespace SynthesisAssignment.Services
                 cmd.Parameters.AddWithValue("@item_type", type);
 
                 //the rest applies for both
-                cmd.Parameters.AddWithValue("@cost", gear.Cost);
+                cmd.Parameters.AddWithValue("@cost", gear.UnitCost);
                 cmd.Parameters.AddWithValue("@deposit", gear.Deposit);
                 cmd.Parameters.AddWithValue("@quantity", gear.Quantity);
                 cmd.Parameters.AddWithValue("@remark", gear.Remark);
@@ -125,7 +125,7 @@ namespace SynthesisAssignment.Services
                 cmd.Parameters.AddWithValue("@item_type", type);
 
                 //the rest applies for both
-                cmd.Parameters.AddWithValue("@cost", gear.Cost);
+                cmd.Parameters.AddWithValue("@cost", gear.UnitCost);
                 cmd.Parameters.AddWithValue("@deposit", gear.Deposit);
                 cmd.Parameters.AddWithValue("@quantity", gear.Quantity);
                 cmd.Parameters.AddWithValue("@remark", gear.Remark);
@@ -301,7 +301,6 @@ namespace SynthesisAssignment.Services
             inventory.AddRange(GetAllItems());
             try
             {
-
                 return inventory;
             }
             catch (Exception)

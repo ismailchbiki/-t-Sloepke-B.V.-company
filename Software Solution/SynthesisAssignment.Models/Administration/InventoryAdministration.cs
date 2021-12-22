@@ -14,7 +14,7 @@ namespace SynthesisAssignment.Models
         //data access layer
         DALInventory dalGear = new DALInventory();
 
-        //add gear
+        //CRUD
         public bool AddGear(Inventory gear)
         {
             bool status = false;
@@ -31,8 +31,6 @@ namespace SynthesisAssignment.Models
             //if there is an error
             return status;
         }
-
-        //update gear
         public bool UpdateGear(Inventory gear)
         {
             bool status = false;
@@ -43,7 +41,6 @@ namespace SynthesisAssignment.Models
 
             return status;
         }
-
         public Inventory GetGearByType(Inventory gear)
         {
             Inventory g = null;
@@ -53,80 +50,12 @@ namespace SynthesisAssignment.Models
                 if (item.GetInventoryType() == gear.GetInventoryType())
                 {
                     g = item;
+                    break;
                 }
             }
 
             return g;
         }
-
-        //get gear by type
-        //public Inventory GetGearByType(Inventory gear)
-        //{
-
-        //    foreach (var b in GetAllGear().ToList())
-        //    {
-        //        if (b.GetInventoryType() == gear.GetInventoryType())
-        //        {
-        //            return b;
-        //        }
-        //    }
-
-        //    //if (gear is Boat)
-        //    //{
-        //    //    foreach (var b in GetAllGear().OfType<Boat>().ToList())
-        //    //    {
-        //    //        if (b.BoatType == ((Boat)gear).BoatType)
-        //    //        {
-        //    //            return b;
-        //    //        }
-        //    //    }
-        //    //}
-
-        //    //else if (gear is Item)
-        //    //{
-        //    //    foreach (var item in GetAllGear().OfType<Item>().ToList())
-        //    //    {
-        //    //        if (item.ItemType == ((Item)gear).ItemType)
-        //    //        {
-        //    //            return item;
-        //    //        }
-        //    //    }
-        //    //}
-
-        //    return null;
-        //}
-
-        //get gear by ID
-        //public Inventory GetGearByID(Inventory gear)
-        //{
-
-        //    if (gear is Boat)
-        //    {
-        //        foreach (var b in GetAllGear().OfType<Boat>().ToList())
-        //        {
-        //            if (b.ID == ((Boat)gear).ID)
-        //            {
-        //                return b;
-        //            }
-        //        }
-        //    }
-
-        //    else if (gear is Item)
-        //    {
-        //        foreach (var item in GetAllGear().OfType<Item>().ToList())
-        //        {
-        //            if (item.ID == ((Item)gear).ID)
-        //            {
-        //                return item;
-        //            }
-        //        }
-        //    }
-
-        //    return null;
-        //}
-
-        //delete gear
-
         public bool  DeleteGear(Inventory gear)
         {
             bool status = false;
@@ -137,8 +66,6 @@ namespace SynthesisAssignment.Models
             
             return status;
         }
-
-        //all gear
         public List<Inventory> GetAllGear()
         {
             return dalGear.GetAllGear().ToList();

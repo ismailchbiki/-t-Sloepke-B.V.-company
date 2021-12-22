@@ -10,7 +10,7 @@ namespace SynthesisAssignment.Models
     public abstract class Inventory
     {
         //fields
-        double cost;
+        double unitCost;
         double deposit;
         int qty;
         string remark;
@@ -23,14 +23,14 @@ namespace SynthesisAssignment.Models
         }
         protected Inventory(double cost, double deposit, int qty, string remark)
         {
-            this.cost = cost;
+            this.unitCost = cost;
             this.deposit = deposit;
             this.qty = qty;
             this.remark = remark;
         }
         protected Inventory(double cost, double deposit, int qty, string remark, double price)
         {
-            this.cost = cost;
+            this.unitCost = cost;
             this.deposit = deposit;
             this.qty = qty;
             this.remark = remark;
@@ -38,8 +38,9 @@ namespace SynthesisAssignment.Models
         }
 
         //Properties
-        public double Cost { get { return this.cost; } }
+        public double UnitCost { get { return this.unitCost; } }
         public double Deposit { get { return this.deposit; }}
+        //public set for ModelBinding
         public int Quantity { get { return this.qty; } set { qty = value; } }
         public string Remark { get { return this.remark; } }
         public abstract string GetInventoryType();

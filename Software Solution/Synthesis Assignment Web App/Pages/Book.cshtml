@@ -2,8 +2,6 @@
 @model Synthesis_Assignment_Web_App.Pages.BookModel
 @using SynthesisAssignment.Services;
 @using SynthesisAssignment.Models;
-@using SynthesisAssignment.Models.Enums;
-@using SynthesisAssignment.MyClasses.Enums;
 @{
     ViewData["Title"] = "Book";
 }
@@ -51,7 +49,8 @@
 
             <!--  Boat type  -->
             <h2 class="boats-title">Choose a boat *</h2>
-            <select asp-for="Quote.Boat.BoatType" asp-items="Html.GetEnumSelectList<BOATTYPE>()">
+            <select required asp-for="Quote.Boat.BoatType" asp-items="@(new SelectList(Model.GearList.OfType<Boat>().ToList(), "BoatType", "BoatType"))">
+                <option value="" selected disabled>-- Select Boat --</option>
             </select>
 
             <!--  boat Quantity  -->
@@ -61,7 +60,8 @@
 
             <!--  item type  -->
             <h2 class="boats-title">Choose item (Optional)</h2>
-            <select asp-for="Quote.Item.ItemType" asp-items="Html.GetEnumSelectList<ITEMTYPE>()">
+            <select asp-for="Quote.Item.ItemType" asp-items="@(new SelectList(Model.GearList.OfType<Item>().ToList(), "ItemType", "ItemType"))">
+                <option value="" selected disabled>-- Select Item --</option>
             </select>
 
             <!--  item Quantity  -->
@@ -82,9 +82,8 @@
 
             <!--  location  -->
             <h2 class="boats-title">Choose location *</h2>
-            <select asp-for="Quote.Location" asp-items="Html.GetEnumSelectList<LOCATION>()">
-            </select>
-
+            <input required type="text" asp-for="Quote.Location"
+                   placeholder="Location" />
             <span>* Required fields</span>
 
             <!--  Submit button  -->
@@ -116,7 +115,8 @@ else if (Model.QuoteToUpdate != null)
             <!--  Boat type  -->
             <h2 class="boats-title">Choose a boat *</h2>
             <label>Your current choice is: "@Model.QuoteToUpdate.Boat.BoatType"</label>
-            <select asp-for="Quote.Boat.BoatType" asp-items="Html.GetEnumSelectList<BOATTYPE>()">
+            <select required asp-for="Quote.Boat.BoatType" asp-items="@(new SelectList(Model.GearList.OfType<Boat>().ToList(), "BoatType", "BoatType"))">
+                <option value="" selected disabled>-- Select Boat --</option>
             </select>
 
             <!--  boat Quantity  -->
@@ -128,8 +128,8 @@ else if (Model.QuoteToUpdate != null)
             <!--  item type  -->
             <h2 class="boats-title">Choose item (Optional)</h2>
             <label>Your current choice is: "@Model.QuoteToUpdate.Item.ItemType"</label>
-
-            <select asp-for="Quote.Item.ItemType" asp-items="Html.GetEnumSelectList<ITEMTYPE>()">
+            <select asp-for="Quote.Item.ItemType" asp-items="@(new SelectList(Model.GearList.OfType<Item>().ToList(), "ItemType", "ItemType"))">
+                <option value="" selected disabled>-- Select Item --</option>
             </select>
 
             <!--  item Quantity  -->
@@ -154,8 +154,8 @@ else if (Model.QuoteToUpdate != null)
             <!--  location  -->
             <h2 class="boats-title">Choose location *</h2>
             <label>Your current choice is: "@Model.QuoteToUpdate.Location"</label>
-            <select asp-for="Quote.Location" asp-items="Html.GetEnumSelectList<LOCATION>()">
-            </select>
+            <input required type="text" asp-for="Quote.Location"
+                   placeholder="Location" />
 
             <span>* Required fields</span>
 

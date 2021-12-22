@@ -51,6 +51,7 @@ namespace SynthesisAssignment.Models.Administration
                 if (q.RefNumber == quote.RefNumber && q.Customer.LastName == quote.Customer.LastName)
                 {
                     reservation = q;
+                    break;
                 }
             }
 
