@@ -19,29 +19,19 @@ namespace SynthesisAssignment.MyClasses.Classes.MyHelpers
         }
 
         //calculate time difference between 2 dates
-        public static int CalculateDuration(DateTime endDate, DateTime startDate)
+        public static double CalculateDuration(DateTime endDate, DateTime startDate)
         {
 
             //duration calculation per hours between 2 dates
             double diff = (endDate - startDate).TotalHours;
-
-            //MidpointRounding.ToEven for duration
-            int durationHours = Convert.ToInt32(Math.Round(diff, 0, MidpointRounding.ToEven));
-
-            return durationHours;
+            return diff;
         }
 
-        //to make duration an even number
-        public static int DurationMultipleOfTwo(int duration)
+        //MidpointRounding.ToEven for duration
+        public static int RoundNumberToEven(double diff)
         {
-            //to round manually odd numbers for multiple of 2 hours
-            double reminder = duration % 2;
-            if (reminder != 0)
-            {
-                duration += 1;
-            }
-
-            return duration;
+            int durationHours = Convert.ToInt32(Math.Round(diff, 0, MidpointRounding.ToEven));
+            return durationHours;
         }
 
         //time difference must meet these criteria

@@ -12,21 +12,24 @@ namespace SynthesisAssignment.MyClasses.Classes
 {
     public class Quote
     {
+        /// <summary>
+        /// static fields to not lose data from within a session when redirecting to a new page
+        /// </summary>
 
         //create quote
-        string refNumber;
+        static string refNumber;
         Customer customer = new Customer();
-        Boat boat = new Boat();
-        Item item = new Item();
+        static Boat boat = new Boat();
+        static Item item = new Item();
         string location;
         DateTime dateTimeOfMade;
         DateTime startDateTime;
         DateTime endDateTime;
-        int duration;
-        double totalPrice;
-        double deposit;
-        string depositStatus;
-        string paymentStatus;
+        static int duration;
+        static double totalPrice;
+        static double deposit;
+        static string depositStatus;
+        static string paymentStatus;
 
         //CONSTRUCTORS
         public Quote()
@@ -35,10 +38,10 @@ namespace SynthesisAssignment.MyClasses.Classes
         }
 
         //PROPERTIES
-        public string RefNumber { get { return this.refNumber; } set { refNumber = value; } }
+        public string RefNumber { get { return refNumber; } }
         public Customer Customer { get { return this.customer; } set { customer = value; } }
-        public Boat Boat { get { return this.boat; } set { boat = value; } }
-        public Item Item { get { return this.item; } set { item = value; } }
+        public Boat Boat { get { return boat; } set { boat = value; } }
+        public Item Item { get { return item; } set { item = value; } }
 
         //location
         public string Location
@@ -62,55 +65,67 @@ namespace SynthesisAssignment.MyClasses.Classes
         [Required(ErrorMessage = "Please provide a date")]
         public DateTime EndDateTime { get { return this.endDateTime; } set { endDateTime = value; } }
 
-        public int Duration { get { return this.duration; } }
-        public double TotalPrice { get { return this.totalPrice; }}
-        public double Deposit { get { return this.deposit; } }
+        public int Duration { get { return duration; } }
+        public double TotalPrice { get { return totalPrice; }}
+        public double Deposit { get { return deposit; } }
+        public string GetDepositStatus { get { return depositStatus; } }
+        public string GetPaymentStatus { get { return paymentStatus; }}
 
-        public string GetDepositStatus { get { return this.depositStatus; } }
-        public string GetPaymentStatus { get { return this.paymentStatus; }}
-
-        public string SetRefNumber(string refNum)
+        //SETTERS
+        public void SetRefNumber(string refNum)
         {
-            this.refNumber = refNum;
-            return this.refNumber;
+            refNumber = refNum;
         }
-        public double CalculateDeposit(double boatDeposit, int boatQuantity, double itemDeposit, int itemQuantity)
+        public void SetDepositStatus(string status)
         {
-            
-            this.deposit = (boatDeposit * boatQuantity) + (itemDeposit * itemQuantity);
-            return this.deposit;
+            depositStatus = status;
         }
-        public double CalculateTotalPrice(double boatPrice, double itemPrice)
+        public void SetPaymentStatus(string status)
         {
-
-            this.totalPrice = boatPrice + itemPrice;
-            return this.totalPrice;
+            paymentStatus = status;
         }
-        public double GetTotalPrice(double total)
+        public void SetDuration(int period)
         {
-            this.totalPrice = total;
-            return this.totalPrice;
+            duration = period;
         }
-        public double GetDeposit(double deposit)
+        public void SetDeposit(double depo)
         {
-            this.deposit = deposit;
-            return this.deposit;
+            deposit = depo;
         }
-        public string SetDepositStatus(string status)
+        public void SetTotalPrice(double tPrice)
         {
-            this.depositStatus = status;
-            return this.depositStatus;
-        }
-        public string SetPaymentStatus(string status)
-        {
-            this.paymentStatus = status;
-            return this.paymentStatus;
-        }
-        public int SetDuration(int duration)
-        {
-            this.duration = duration;
-            return this.duration;
+            totalPrice = tPrice;
         }
 
+        //METHODS
+        public bool CalculateDuration(DateTime endDate, DateTime startDate)
+        {
+            bool status = true;
+            if (DateTime.Compare(startDate, DateTime.Now) < 0
+               || DateTime.Compare(endDate, DateTime.Now) < 0)
+            {
+                status = false;
+            }
+
+            //calculate and round the difference to even number
+            duration = Calculate.RoundNumberToEven(Calculate.CalculateDuration(endDate, startDate));
+
+            //duration must be bigger than 2 hrs and less than 2 weeks
+            if (!Calculate.ApproveDuration(duration))
+            {
+                duration = 0;
+                status = false;
+            }
+
+            return status;
+        }
+        public void CalculateDeposit(double boatDeposit, int boatQuantity, double itemDeposit, int itemQuantity)
+        {
+            deposit = (boatDeposit * boatQuantity) + (itemDeposit * itemQuantity);
+        }
+        public void CalculateTotalPrice(double boatPrice, double itemPrice)
+        {
+            totalPrice = boatPrice + itemPrice;
+        }
     }
 }

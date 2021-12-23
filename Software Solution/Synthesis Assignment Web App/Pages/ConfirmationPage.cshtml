@@ -9,6 +9,7 @@
     <img src="/Synfiles/Logo.png" />
 </div>
 
+<!--  Quote details  -->
 <main class="confirm-body">
     <div class="quote-info">
         <div class="align-left">
@@ -20,6 +21,7 @@
             <span>End @Model.Quote.EndDateTime.ToString("dd/MM/yyyy") at @Model.Quote.EndDateTime.ToString("HH.mm")</span>
         </div>
 
+        <!--  Customer details  -->
         <div class="align-right">
             <h2>Customer</h2>
             <span>Name @Model.Quote.Customer.FirstName @Model.Quote.Customer.LastName</span>
@@ -30,7 +32,7 @@
         </div>
     </div>
 
-
+    <!--  Booked gear description  -->
     <table class="quote-description">
         <tr>
             <!-- first row -->

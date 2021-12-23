@@ -51,7 +51,7 @@ namespace Synthesis_Assignment
         private void buttonFind_Click(object sender, EventArgs e)
         {
             quote.Customer.LastName = textBoxLastName.Text;
-            quote.RefNumber = textBoxRefNum.Text;
+            //quote.RefNumber = textBoxRefNum.Text;
 
             if (string.IsNullOrEmpty(textBoxLastName.Text) ||
                 string.IsNullOrEmpty(textBoxRefNum.Text))

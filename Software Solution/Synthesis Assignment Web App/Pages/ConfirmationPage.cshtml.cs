@@ -29,6 +29,7 @@ namespace Synthesis_Assignment_Web_App.Pages
         //check rental time
         public bool RentalInMoreThanWeek = false;
 
+        //Fill in the fields
         public IActionResult OnGet()
         {
 
@@ -41,7 +42,7 @@ namespace Synthesis_Assignment_Web_App.Pages
                 Quote = HttpContext.Session.GetObjectFromJson<Quote>("MyReservation");
 
                 //update/cancel a reservation allowed for longer period than a week
-                if (Quote.Duration > 168)
+                if (Calculate.CalculateDuration(Quote.StartDateTime, DateTime.Now) > 336)
                 {
                     RentalInMoreThanWeek = true;
                 }
@@ -49,6 +50,7 @@ namespace Synthesis_Assignment_Web_App.Pages
                 //gear cost
                 BoatCost = manageGear.GetGearByType(Quote.Boat).UnitCost;
                 ItemCost = manageGear.GetGearByType(Quote.Item).UnitCost;
+
             }
 
             //MAKING NEW QUOTES
@@ -72,7 +74,7 @@ namespace Synthesis_Assignment_Web_App.Pages
                 Quote.Customer = HttpContext.Session.GetObjectFromJson<Customer>("NewCustomerDetails");
 
                 //update/cancel a reservation allowed for longer period than a week
-                if (Quote.Duration > 168)
+                if (Calculate.CalculateDuration(Quote.StartDateTime, DateTime.Now) > 336)
                 {
                     RentalInMoreThanWeek = true;
                 }
@@ -83,7 +85,8 @@ namespace Synthesis_Assignment_Web_App.Pages
             }
 
             //QUOTE IS EMPTY
-            else if (HttpContext.Session.GetObjectFromJson<Quote>("Quote") == null)
+            else if (HttpContext.Session.GetObjectFromJson<Quote>("Quote") == null &&
+                HttpContext.Session.GetObjectFromJson<Quote>("MyReservation") == null)
             {
                 return RedirectToPage("Book");
             }
@@ -91,7 +94,7 @@ namespace Synthesis_Assignment_Web_App.Pages
             return null;
         }
 
-        //create new quote
+        //Add Quote to database
         public IActionResult OnPostConfirm()
         {
             //if (!ModelState.IsValid)
@@ -99,13 +102,19 @@ namespace Synthesis_Assignment_Web_App.Pages
             //    return Page();
             //}
 
-            //get all the objects from sessions
+            //get the object from session
             Quote = HttpContext.Session.GetObjectFromJson<Quote>("Quote");
             Quote.Customer = HttpContext.Session.GetObjectFromJson<Customer>("CustomerDetails");
 
             //if reservation is successful
             if (manageQuote.AddQuote(Quote))
             {
+                //quote becomes a confirmed booked reservation
+                HttpContext.Session.SetObjectAsJson("MyReservation", Quote);
+
+                HttpContext.Session.SetObjectAsJson("Quote", null);
+                HttpContext.Session.SetObjectAsJson("CustomerDetails", null);
+
                 return RedirectToPage("MyReservation");
             }
             
@@ -120,7 +129,7 @@ namespace Synthesis_Assignment_Web_App.Pages
             return RedirectToPage("Book");
         }
 
-        //delete quote
+        //delete quote from database
         public IActionResult OnPostCancel()
         {
             Quote = HttpContext.Session.GetObjectFromJson<Quote>("MyReservation");
@@ -129,7 +138,7 @@ namespace Synthesis_Assignment_Web_App.Pages
             return RedirectToPage("Book");
         }
 
-        //save new updates
+        //save new quote updates to database
         public IActionResult OnPostSaveUpdate()
         {
             //if (!ModelState.IsValid)

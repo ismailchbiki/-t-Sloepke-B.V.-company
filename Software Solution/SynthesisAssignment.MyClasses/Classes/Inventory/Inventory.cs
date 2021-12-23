@@ -47,5 +47,10 @@ namespace SynthesisAssignment.Models
 
         //booking price
         public double Price { get { return this.price; } }
+
+        public void SetPrice(double prix)
+        {
+            this.price = prix;
+        }
     }
 }

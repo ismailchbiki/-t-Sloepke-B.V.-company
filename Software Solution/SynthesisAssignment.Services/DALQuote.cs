@@ -15,6 +15,7 @@ namespace SynthesisAssignment.Services
         //add quote
         public bool AddQuote(Quote quote)
         {
+            bool status = false;
             try
             {
 
@@ -76,75 +77,90 @@ namespace SynthesisAssignment.Services
                 //Close the connection
                 con.Close();
 
-                return true;
+                status = true;
             }
             catch (Exception)
             {
                 throw;
-                //return false;
+                //status = false;
             }
+            return status;
         }
 
         //update quote
         public bool UpdateQuote(Quote quote)
         {
-            //connection string
-            MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
+            bool status = false;
 
-            string sqlQuery = "START TRANSACTION;" +
-                "UPDATE `syn_quote` SET date_of_made=@dateOfMade, start_date=@startDate, end_date=@endDate, duration=@duration, total_price=@total_price, deposit=@deposit, `location`=@location where ref_no=@refNum;" +
-                "UPDATE syn_customer SET first_name=@firstname, last_name=@lastname, address=@address, zipcode=@zipcode, city=@city, phone=@phone, email=@email where quote_ID = (select ID from syn_quote where ref_no=@refNum);" +
-                "UPDATE syn_boat_description SET boat_ID=(select boat_ID from syn_boat where boat_type=@boatType), quantity=@boatQuantity, boat_price=@boat_price where quote_ID = (select ID from syn_quote where ref_no=@refNum);" +
-                "UPDATE syn_item_description SET item_ID=(select item_ID from syn_item where item_type=@itemType), quantity=@itemQuantity, item_price=@item_price where quote_ID = (select ID from syn_quote where ref_no=@refNum);" +
-                "COMMIT;";
+            try
+            {
+                //connection string
+                MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
 
-            MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
+                string sqlQuery = "START TRANSACTION;" +
+                    "UPDATE `syn_quote` SET date_of_made=@dateOfMade, start_date=@startDate, end_date=@endDate, duration=@duration, total_price=@total_price, deposit=@deposit, `location`=@location where ref_no=@refNum;" +
+                    "UPDATE syn_customer SET first_name=@firstname, last_name=@lastname, address=@address, zipcode=@zipcode, city=@city, phone=@phone, email=@email where quote_ID = (select ID from syn_quote where ref_no=@refNum);" +
+                    "UPDATE syn_boat_description SET boat_ID=(select boat_ID from syn_boat where boat_type=@boatType), quantity=@boatQuantity, boat_price=@boat_price where quote_ID = (select ID from syn_quote where ref_no=@refNum);" +
+                    "UPDATE syn_item_description SET item_ID=(select item_ID from syn_item where item_type=@itemType), quantity=@itemQuantity, item_price=@item_price where quote_ID = (select ID from syn_quote where ref_no=@refNum);" +
+                    "COMMIT;";
 
-            //quote details
-            cmd.Parameters.AddWithValue("@dateOfMade", quote.DateTimeOfMade.ToString("yyyy-MM-dd HH-mm"));
-            cmd.Parameters.AddWithValue("@startDate", quote.StartDateTime.ToString("yyyy-MM-dd HH-mm"));
-            cmd.Parameters.AddWithValue("@endDate", quote.EndDateTime.ToString("yyyy-MM-dd HH-mm"));
-            cmd.Parameters.AddWithValue("@location", quote.Location);
-            cmd.Parameters.AddWithValue("@duration", quote.Duration);
-            cmd.Parameters.AddWithValue("@total_price", quote.TotalPrice);
-            cmd.Parameters.AddWithValue("@deposit", quote.Deposit);
-            cmd.Parameters.AddWithValue("@refNum", quote.RefNumber);
+                MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
 
-            //customer details
-            cmd.Parameters.AddWithValue("@firstname", quote.Customer.FirstName);
-            cmd.Parameters.AddWithValue("@lastname", quote.Customer.LastName);
-            cmd.Parameters.AddWithValue("@address", quote.Customer.Address);
-            cmd.Parameters.AddWithValue("@zipcode", quote.Customer.Zipcode);
-            cmd.Parameters.AddWithValue("@city", quote.Customer.City);
-            cmd.Parameters.AddWithValue("@phone", quote.Customer.Phone);
-            cmd.Parameters.AddWithValue("@email", quote.Customer.Email);
+                //quote details
+                cmd.Parameters.AddWithValue("@dateOfMade", quote.DateTimeOfMade.ToString("yyyy-MM-dd HH-mm"));
+                cmd.Parameters.AddWithValue("@startDate", quote.StartDateTime.ToString("yyyy-MM-dd HH-mm"));
+                cmd.Parameters.AddWithValue("@endDate", quote.EndDateTime.ToString("yyyy-MM-dd HH-mm"));
+                cmd.Parameters.AddWithValue("@location", quote.Location);
+                cmd.Parameters.AddWithValue("@duration", quote.Duration);
+                cmd.Parameters.AddWithValue("@total_price", quote.TotalPrice);
+                cmd.Parameters.AddWithValue("@deposit", quote.Deposit);
+                cmd.Parameters.AddWithValue("@refNum", quote.RefNumber);
 
-            //boat description
-            cmd.Parameters.AddWithValue("@boatType", quote.Boat.BoatType.ToString());
-            cmd.Parameters.AddWithValue("@boatQuantity", quote.Boat.Quantity);
-            cmd.Parameters.AddWithValue("@boat_price", quote.Boat.Price);
+                //customer details
+                cmd.Parameters.AddWithValue("@firstname", quote.Customer.FirstName);
+                cmd.Parameters.AddWithValue("@lastname", quote.Customer.LastName);
+                cmd.Parameters.AddWithValue("@address", quote.Customer.Address);
+                cmd.Parameters.AddWithValue("@zipcode", quote.Customer.Zipcode);
+                cmd.Parameters.AddWithValue("@city", quote.Customer.City);
+                cmd.Parameters.AddWithValue("@phone", quote.Customer.Phone);
+                cmd.Parameters.AddWithValue("@email", quote.Customer.Email);
 
-            //boat description
-            cmd.Parameters.AddWithValue("@itemType", quote.Item.ItemType.ToString());
-            cmd.Parameters.AddWithValue("@itemQuantity", quote.Item.Quantity);
-            cmd.Parameters.AddWithValue("@item_price", quote.Item.Price);
+                //boat description
+                cmd.Parameters.AddWithValue("@boatType", quote.Boat.BoatType.ToString());
+                cmd.Parameters.AddWithValue("@boatQuantity", quote.Boat.Quantity);
+                cmd.Parameters.AddWithValue("@boat_price", quote.Boat.Price);
+
+                //boat description
+                cmd.Parameters.AddWithValue("@itemType", quote.Item.ItemType.ToString());
+                cmd.Parameters.AddWithValue("@itemQuantity", quote.Item.Quantity);
+                cmd.Parameters.AddWithValue("@item_price", quote.Item.Price);
 
 
-            //Open the connection
-            con.Open();
+                //Open the connection
+                con.Open();
 
-            //Execute the command
-            cmd.ExecuteNonQuery();
+                //Execute the command
+                cmd.ExecuteNonQuery();
 
-            //Close the connection
-            con.Close();
+                //Close the connection
+                con.Close();
 
-            return true;
+                status = true;
+
+            }
+            catch (Exception)
+            {
+                throw;
+                //status = false;
+            }
+            return status;
         }
 
         //delete quote
         public bool DeleteQuote(Quote quote)
         {
+            bool status = false;
+
             try
             {
                 //connection string
@@ -165,13 +181,14 @@ namespace SynthesisAssignment.Services
                 //Close the connection
                 con.Close();
 
-                return true;
+                status =  true;
             }
             catch (Exception)
             {
                 throw;
-                //return false;
+                //status = false;
             }
+            return status;
         }
 
         // get all the quotes
@@ -203,14 +220,14 @@ namespace SynthesisAssignment.Services
                     Quote quote = new Quote();
 
                     //quote details
-                    quote.RefNumber = dr["Quote_refNumber"].ToString();
+                    quote.SetRefNumber(dr["Quote_refNumber"].ToString());
                     quote.DateTimeOfMade = Convert.ToDateTime(dr["date_of_made"]);
                     quote.StartDateTime = Convert.ToDateTime(dr["start_date"]);
                     quote.EndDateTime = Convert.ToDateTime(dr["end_date"]);
                     quote.Location = dr["location"].ToString();
                     quote.SetDuration(Convert.ToInt32(dr["duration"]));                    
-                    quote.GetTotalPrice(Convert.ToDouble(dr["total_price"]));
-                    quote.GetDeposit(Convert.ToDouble(dr["deposit"]));
+                    quote.SetTotalPrice(Convert.ToDouble(dr["total_price"]));
+                    quote.SetDeposit(Convert.ToDouble(dr["deposit"]));
                     quote.SetDepositStatus(dr["deposit_status"].ToString());
                     quote.SetPaymentStatus(dr["payment_status"].ToString());
 
@@ -257,6 +274,5 @@ namespace SynthesisAssignment.Services
                 //return inventory;
             }
         }
-        
     }
 }
