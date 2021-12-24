@@ -1,0 +1,40 @@
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\b\Synthesis Assignment Web App\bin\Debug\net5.0\appsettings.Development.json
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\b\Synthesis Assignment Web App\bin\Debug\net5.0\appsettings.json
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\b\Synthesis Assignment Web App\bin\Debug\net5.0\Synthesis Assignment Web App.exe
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\b\Synthesis Assignment Web App\bin\Debug\net5.0\Synthesis Assignment Web App.deps.json
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\b\Synthesis Assignment Web App\bin\Debug\net5.0\Synthesis Assignment Web App.runtimeconfig.json
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\b\Synthesis Assignment Web App\bin\Debug\net5.0\Synthesis Assignment Web App.runtimeconfig.dev.json
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\b\Synthesis Assignment Web App\bin\Debug\net5.0\Synthesis Assignment Web App.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\b\Synthesis Assignment Web App\bin\Debug\net5.0\ref\Synthesis Assignment Web App.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\b\Synthesis Assignment Web App\bin\Debug\net5.0\Synthesis Assignment Web App.Views.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\b\Synthesis Assignment Web App\bin\Debug\net5.0\Synthesis Assignment Web App.Views.pdb
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Synthesis Assignment Web App.csproj.AssemblyReference.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Synthesis Assignment Web App.GeneratedMSBuildEditorConfig.editorconfig
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Synthesis Assignment Web App.AssemblyInfoInputs.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Synthesis Assignment Web App.AssemblyInfo.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Synthesis Assignment Web App.RazorAssemblyInfo.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Synthesis Assignment Web App.RazorAssemblyInfo.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\staticwebassets\Synthesis Assignment Web App.StaticWebAssets.Manifest.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\staticwebassets\Synthesis Assignment Web App.StaticWebAssets.xml
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\scopedcss\bundle\Synthesis Assignment Web App.styles.css
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Synthesis Assignment Web App.TagHelpers.input.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Synthesis Assignment Web App.TagHelpers.output.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Synthesis Assignment Web App.RazorCoreGenerate.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Razor\Pages\Book.cshtml.g.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Razor\Pages\ConfirmationPage.cshtml.g.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Razor\Pages\CustomerDetails.cshtml.g.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Razor\Pages\Error.cshtml.g.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Razor\Pages\Index.cshtml.g.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Razor\Pages\MyReservation.cshtml.g.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Razor\Pages\Privacy.cshtml.g.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Razor\Pages\Shared\_Layout.cshtml.g.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Razor\Pages\_ViewImports.cshtml.g.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Razor\Pages\_ViewStart.cshtml.g.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Synthesis Assignment Web App.RazorTargetAssemblyInfo.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Synthesis Assignment Web App.RazorTargetAssemblyInfo.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Synthesis Assignment Web App.Views.pdb
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Synthesis Assignment Web App.csproj.CopyComplete
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Synthesis Assignment Web App.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\ref\Synthesis Assignment Web App.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment Web App\net5.0\Synthesis Assignment Web App.genruntimeconfig.cache

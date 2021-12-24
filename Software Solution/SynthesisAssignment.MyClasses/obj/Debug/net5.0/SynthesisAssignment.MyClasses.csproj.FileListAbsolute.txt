@@ -9,4 +9,3 @@
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.MyClasses\obj\Debug\net5.0\SynthesisAssignment.MyClasses.dll
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.MyClasses\obj\Debug\net5.0\ref\SynthesisAssignment.MyClasses.dll
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.MyClasses\obj\Debug\net5.0\SynthesisAssignment.MyClasses.pdb
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\SynthesisAssignment.MyClasses\obj\Debug\net5.0\SynthesisAssignment.MyClasses.csproj.AssemblyReference.cache

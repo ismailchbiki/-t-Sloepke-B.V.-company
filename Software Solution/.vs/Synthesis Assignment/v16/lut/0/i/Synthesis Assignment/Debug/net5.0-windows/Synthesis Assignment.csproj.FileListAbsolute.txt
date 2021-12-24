@@ -1,0 +1,25 @@
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\b\Synthesis Assignment\Debug\net5.0-windows\Synthesis Assignment.exe
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\b\Synthesis Assignment\Debug\net5.0-windows\Synthesis Assignment.deps.json
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\b\Synthesis Assignment\Debug\net5.0-windows\Synthesis Assignment.runtimeconfig.json
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\b\Synthesis Assignment\Debug\net5.0-windows\Synthesis Assignment.runtimeconfig.dev.json
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\b\Synthesis Assignment\Debug\net5.0-windows\Synthesis Assignment.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\b\Synthesis Assignment\Debug\net5.0-windows\ref\Synthesis Assignment.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis Assignment.csproj.AssemblyReference.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis_Assignment.FormBoats.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis_Assignment.FormConfirmDeletion.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis_Assignment.FormDashboard.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis_Assignment.FormFindCustomer.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis_Assignment.FormInventory.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis_Assignment.FormItems.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis_Assignment.FormLogin.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis_Assignment.FormPayment.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis_Assignment.FormSelectOption.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis_Assignment.Properties.Resources.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis Assignment.csproj.GenerateResource.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis Assignment.GeneratedMSBuildEditorConfig.editorconfig
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis Assignment.AssemblyInfoInputs.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis Assignment.AssemblyInfo.cs
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis Assignment.csproj.CopyComplete
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis Assignment.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\ref\Synthesis Assignment.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\.vs\Synthesis Assignment\v16\lut\0\i\Synthesis Assignment\Debug\net5.0-windows\Synthesis Assignment.genruntimeconfig.cache
