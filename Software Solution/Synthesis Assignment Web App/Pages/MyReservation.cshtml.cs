@@ -24,9 +24,9 @@ namespace Synthesis_Assignment_Web_App.Pages
         {
 
             //communicate the new made quote to the page (reference number)
-            if (HttpContext.Session.GetObjectFromJson<Quote>("Quote") != null)
+            if (HttpContext.Session.GetObjectFromJson<Quote>("MyReservation") != null)
             {
-                Quote = HttpContext.Session.GetObjectFromJson<Quote>("Quote");
+                Quote = HttpContext.Session.GetObjectFromJson<Quote>("MyReservation");
             }
         }
 
@@ -52,11 +52,8 @@ namespace Synthesis_Assignment_Web_App.Pages
         public IActionResult OnPostClear()
         {
 
-            Reservation.SetRefNumber(null);
-            Quote.SetRefNumber(null);
-
-            //HttpContext.Session.SetObjectAsJson("Quote", null);
-            //HttpContext.Session.SetObjectAsJson("MyReservation", null);
+            HttpContext.Session.SetObjectAsJson("Quote", null);
+            HttpContext.Session.SetObjectAsJson("MyReservation", null);
 
             return RedirectToPage("MyReservation");
         }

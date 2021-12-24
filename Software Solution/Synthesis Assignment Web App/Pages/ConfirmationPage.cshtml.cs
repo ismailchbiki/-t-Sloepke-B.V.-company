@@ -109,12 +109,7 @@ namespace Synthesis_Assignment_Web_App.Pages
             //if reservation is successful
             if (manageQuote.AddQuote(Quote))
             {
-                //quote becomes a confirmed booked reservation
                 HttpContext.Session.SetObjectAsJson("MyReservation", Quote);
-
-                HttpContext.Session.SetObjectAsJson("Quote", null);
-                HttpContext.Session.SetObjectAsJson("CustomerDetails", null);
-
                 return RedirectToPage("MyReservation");
             }
             
@@ -153,8 +148,7 @@ namespace Synthesis_Assignment_Web_App.Pages
             //if reservation is successful
             if (manageQuote.UpdateQuote(Quote))
             {
-                HttpContext.Session.SetObjectAsJson("NewQuote", null);
-                HttpContext.Session.SetObjectAsJson("NewCustomerDetails", null);
+                HttpContext.Session.SetObjectAsJson("MyReservation", Quote);
                 return RedirectToPage("MyReservation");
             }
 

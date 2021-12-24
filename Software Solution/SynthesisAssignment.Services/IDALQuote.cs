@@ -17,8 +17,10 @@ namespace SynthesisAssignment.Services
         public IEnumerable<Quote> GetAllQuotes();
     }
 
-    public interface IControlQuote
+    public interface IProcessQuote
     {
-
+        //quote payments
+        public bool SettleDeposit(Quote quote);
+        public bool SettlePayment(Quote quote);
     }
 }

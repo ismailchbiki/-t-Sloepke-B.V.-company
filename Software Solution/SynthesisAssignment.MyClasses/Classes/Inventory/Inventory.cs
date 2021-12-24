@@ -46,11 +46,6 @@ namespace SynthesisAssignment.Models
         public abstract string GetInventoryType();
 
         //booking price
-        public double Price { get { return this.price; } }
-
-        public void SetPrice(double prix)
-        {
-            this.price = prix;
-        }
+        public double Price { get { return this.price; } set { price = value; } }
     }
 }

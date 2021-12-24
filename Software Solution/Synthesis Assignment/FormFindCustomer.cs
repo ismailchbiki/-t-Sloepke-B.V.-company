@@ -50,9 +50,8 @@ namespace Synthesis_Assignment
 
         private void buttonFind_Click(object sender, EventArgs e)
         {
-            quote.Customer.LastName = textBoxLastName.Text;
-            //quote.RefNumber = textBoxRefNum.Text;
 
+            //validate fields
             if (string.IsNullOrEmpty(textBoxLastName.Text) ||
                 string.IsNullOrEmpty(textBoxRefNum.Text))
             {
@@ -64,13 +63,19 @@ namespace Synthesis_Assignment
                 MessageBox.Show("Last name cannot contain numbers");
             }
 
-            else if (manageQuote.GetQuoteByID(quote) != null)
+            //search for the typed quote
+            quote.Customer.LastName = textBoxLastName.Text;
+            quote.RefNumber = (textBoxRefNum.Text);
+            quote = manageQuote.GetQuoteByID(quote);
+            
+
+            if (quote.Boat.BoatType != null)
             {
-                quote = manageQuote.GetQuoteByID(quote);
                 FormPayment payment = new FormPayment(quote);
 
                 payment.Show();
                 this.Hide();
+
             }
             else
             {

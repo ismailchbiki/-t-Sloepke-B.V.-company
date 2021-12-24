@@ -13,15 +13,18 @@ namespace SynthesisAssignment.Models.Classes
         //check if text contains numbers
         public static bool ContainNumbers(string text)
         {
+            bool status = false;
             bool containNumbers = Regex.IsMatch(text, @"\d");
             if (containNumbers)
             {
-                return true;
+                status = true;
             }
             else
             {
-                return false;
+                status = false;
             }
+
+            return status;
         }
 
         //public bool ContainNumbers(string text)
@@ -38,15 +41,19 @@ namespace SynthesisAssignment.Models.Classes
 
         public static bool ContainLetters(string text)
         {
+            bool status = false;
+
             bool containLetters = Regex.IsMatch(text, @"^[\p{L}\s]+$");
             if (!containLetters)
             {
-                return false;
+                status = false;
             }
             else
             {
-                return true;
+                status = true;
             }
+
+            return status;
         }
 
         //check if input is number or text

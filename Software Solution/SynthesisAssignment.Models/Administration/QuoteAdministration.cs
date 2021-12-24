@@ -11,7 +11,6 @@ namespace SynthesisAssignment.Models.Administration
 {
     public class QuoteAdministration
     {
-
         //to insert customers' reservations in the DB
         DALQuote dalQuote = new DALQuote();
 
@@ -44,18 +43,16 @@ namespace SynthesisAssignment.Models.Administration
 
         public Quote GetQuoteByID(Quote quote)
         {
-            Quote reservation = new Quote();
-            reservation = null;
             foreach (var q in GetAllQuotes())
             {
                 if (q.RefNumber == quote.RefNumber && q.Customer.LastName == quote.Customer.LastName)
                 {
-                    reservation = q;
+                    quote = q;
                     break;
                 }
             }
 
-            return reservation;
+            return quote;
         }
 
         public bool DeleteQuote(Quote quote)

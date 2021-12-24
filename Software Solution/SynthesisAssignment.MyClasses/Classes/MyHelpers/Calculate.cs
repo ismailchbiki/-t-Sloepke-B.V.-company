@@ -55,5 +55,27 @@ namespace SynthesisAssignment.MyClasses.Classes.MyHelpers
 
             return output;
         }
+
+        //calculate total price
+        public static double CalculateTotalPrice(double boatPrice, double itemPrice)
+        {
+            double value;
+            value = boatPrice + itemPrice;
+
+            return value;
+        }
+
+        public static bool DateIsInPast(DateTime endDate, DateTime startDate)
+        {
+            bool status = true;
+
+            if (DateTime.Compare(startDate, DateTime.Now) < 0
+               || DateTime.Compare(endDate, DateTime.Now) < 0)
+            {
+                status = false;
+            }
+
+            return status;
+        }
     }
 }

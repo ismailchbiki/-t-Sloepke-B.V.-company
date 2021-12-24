@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace SynthesisAssignment.Services
 {
-    public class DALQuote : IDALQuote
+    public class DALQuote : IDALQuote, IProcessQuote
     {
-        //add quote
+        //CRUD
         public bool AddQuote(Quote quote)
         {
             bool status = false;
@@ -86,8 +86,6 @@ namespace SynthesisAssignment.Services
             }
             return status;
         }
-
-        //update quote
         public bool UpdateQuote(Quote quote)
         {
             bool status = false;
@@ -155,8 +153,6 @@ namespace SynthesisAssignment.Services
             }
             return status;
         }
-
-        //delete quote
         public bool DeleteQuote(Quote quote)
         {
             bool status = false;
@@ -190,8 +186,6 @@ namespace SynthesisAssignment.Services
             }
             return status;
         }
-
-        // get all the quotes
         public IEnumerable<Quote> GetAllQuotes()
         {
             try
@@ -207,7 +201,7 @@ namespace SynthesisAssignment.Services
                     "i.item_type, i.item_cost, i.item_deposit, i_d.quantity as item_quantity, i_d.item_price FROM `syn_quote` " +
                     "inner join syn_customer on syn_quote.ID = syn_customer.quote_ID INNER JOIN syn_boat_description as b_d on b_d.quote_ID = syn_quote.ID " +
                     "INNER JOIN syn_item_description as i_d on i_d.quote_ID = syn_quote.ID INNER JOIN syn_boat as b on b_d.boat_ID = b.boat_ID " +
-                    "INNER JOIN syn_item as i on i.item_ID = i_d.item_ID;";
+                    "INNER JOIN syn_item as i on i.item_ID = i_d.item_ID where payment_status='Pending';";
 
                 MySqlCommand cmd = new MySqlCommand(query, con);
 
@@ -219,17 +213,17 @@ namespace SynthesisAssignment.Services
                 {
                     Quote quote = new Quote();
 
-                    //quote details
-                    quote.SetRefNumber(dr["Quote_refNumber"].ToString());
+                    ////quote details
+                    quote.RefNumber = dr["Quote_refNumber"].ToString();
                     quote.DateTimeOfMade = Convert.ToDateTime(dr["date_of_made"]);
                     quote.StartDateTime = Convert.ToDateTime(dr["start_date"]);
                     quote.EndDateTime = Convert.ToDateTime(dr["end_date"]);
                     quote.Location = dr["location"].ToString();
-                    quote.SetDuration(Convert.ToInt32(dr["duration"]));                    
-                    quote.SetTotalPrice(Convert.ToDouble(dr["total_price"]));
-                    quote.SetDeposit(Convert.ToDouble(dr["deposit"]));
-                    quote.SetDepositStatus(dr["deposit_status"].ToString());
-                    quote.SetPaymentStatus(dr["payment_status"].ToString());
+                    quote.Duration = (Convert.ToInt32(dr["duration"]));
+                    quote.TotalPrice = (Convert.ToDouble(dr["total_price"]));
+                    quote.Deposit = (Convert.ToDouble(dr["deposit"]));
+                    quote.DepositStatus = (dr["deposit_status"].ToString());
+                    quote.PaymentStatus = (dr["payment_status"].ToString());
 
                     //customer details
                     quote.Customer.FirstName = dr["first_name"].ToString();
@@ -273,6 +267,78 @@ namespace SynthesisAssignment.Services
                 throw;
                 //return inventory;
             }
+        }
+
+        //QUOTE PROCESSING
+        public bool SettleDeposit(Quote quote)
+        {
+            bool status = false;
+
+            try
+            {
+                //connection string
+                MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
+
+                string sqlQuery = "UPDATE `syn_quote` SET deposit_status=@depositStatus where ref_no=@refNum;";
+
+                MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
+
+                //quote details
+                cmd.Parameters.AddWithValue("@refNum", quote.RefNumber);
+                cmd.Parameters.AddWithValue("@depositStatus", "Done");
+
+                //Open the connection
+                con.Open();
+
+                //Execute the command
+                cmd.ExecuteNonQuery();
+
+                //Close the connection
+                con.Close();
+
+                status = true;
+            }
+            catch (Exception)
+            {
+                throw;
+                //status = false;
+            }
+            return status;
+        }
+        public bool SettlePayment(Quote quote)
+        {
+            bool status = false;
+
+            try
+            {
+                //connection string
+                MySqlConnection con = new MySqlConnection(ConnectionString.MyConnection);
+
+                string sqlQuery = "UPDATE `syn_quote` SET payment_status=@paymentStatus where ref_no=@refNum;";
+
+                MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
+
+                //quote details
+                cmd.Parameters.AddWithValue("@refNum", quote.RefNumber);
+                cmd.Parameters.AddWithValue("@paymentStatus", "Done");
+
+                //Open the connection
+                con.Open();
+
+                //Execute the command
+                cmd.ExecuteNonQuery();
+
+                //Close the connection
+                con.Close();
+
+                status = true;
+            }
+            catch (Exception)
+            {
+                throw;
+                //status = false;
+            }
+            return status;
         }
     }
 }

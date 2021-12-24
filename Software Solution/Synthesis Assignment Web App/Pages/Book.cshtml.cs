@@ -11,31 +11,38 @@ using SynthesisAssignment.Services;
 
 namespace Synthesis_Assignment_Web_App.Pages
 {
-
+    [BindProperties]
     public class BookModel : PageModel
     {
-        [BindProperty]
+
         public Quote Quote { get; set; }
         public List<Inventory> GearList { get; set; }
         public Quote QuoteToUpdate;
         readonly InventoryAdministration manageGear = new InventoryAdministration();
         public string Notification = null;
 
-        public void OnGet()
-        {
 
+        public void OnGet()
+        {            
+
+            //load available gear
             GearList = manageGear.GetAllGear();
 
             if (HttpContext.Session.GetObjectFromJson<Quote>("QuoteToUpdate") != null)
             {
                 QuoteToUpdate = new Quote();
                 QuoteToUpdate = HttpContext.Session.GetObjectFromJson<Quote>("QuoteToUpdate");
+                HttpContext.Session.SetObjectAsJson("QuoteToUpdate", null);
             }
         }
 
         public IActionResult OnPost()
         {
-            if (!Quote.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime))
+
+            Quote.Duration = Calculate.RoundNumberToEven(Calculate.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime));
+            
+            if (!Calculate.DateIsInPast(Quote.EndDateTime, Quote.StartDateTime)
+                || !Calculate.ApproveDuration(Quote.Duration))
             {
                 Notification = "Please choose valid dates.\nThe desired period must be more than 2 hrs and less than 2 weeks";
                 //OnGet doesn't get fired
@@ -43,11 +50,9 @@ namespace Synthesis_Assignment_Web_App.Pages
                 return Page();
             }
 
-            //booking reference and time details
             Quote.DateTimeOfMade = DateTime.Now;
-            Quote.SetRefNumber(DateTime.Now.ToString("yyyy") + "-" + Calculate.Generate().ToString());
+            Quote.RefNumber = DateTime.Now.ToString("yyyy") + "-" + Calculate.Generate().ToString();
 
-            //prices calculation
             double itemDeposit = 0;
             int itemQuantity = 0;
             double itemPrice = 0;
@@ -59,21 +64,23 @@ namespace Synthesis_Assignment_Web_App.Pages
                 itemQuantity = Quote.Item.Quantity;
                 itemPrice = manageGear.GetGearByType(Quote.Item).UnitCost
                     * (Quote.Duration / 2) * Quote.Item.Quantity;
-                Quote.Item.SetPrice(itemPrice);
+                
+                Quote.Item.Price = (itemPrice);
+            }
+            else
+            {
+                Quote.Item.ItemType = "None";
             }
 
-            //deposit calculation
-            Quote.CalculateDeposit(manageGear.GetGearByType(Quote.Boat).Deposit, Quote.Boat.Quantity,
+            Quote.Deposit = Calculate.CalculateDeposit(manageGear.GetGearByType(Quote.Boat).Deposit, Quote.Boat.Quantity,
                itemDeposit, itemQuantity);
-
 
             //boat price calculation
             double boatPrice = manageGear.GetGearByType(Quote.Boat).UnitCost
                 * (Quote.Duration / 2) * Quote.Boat.Quantity;
-            Quote.Boat.SetPrice(boatPrice);            
+            Quote.Boat.Price = (boatPrice);
 
-            //total price calculation
-            Quote.CalculateTotalPrice(boatPrice, itemPrice);
+            Quote.TotalPrice = Calculate.CalculateTotalPrice(boatPrice, itemPrice);
 
             //storing the object in session
             HttpContext.Session.SetObjectAsJson("Quote", Quote);
@@ -83,8 +90,10 @@ namespace Synthesis_Assignment_Web_App.Pages
 
         public IActionResult OnPostUpdateQuote()
         {
+            Quote.Duration = Calculate.RoundNumberToEven(Calculate.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime));
 
-            if (!Quote.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime))
+            if (!Calculate.DateIsInPast(Quote.EndDateTime, Quote.StartDateTime)
+                || !Calculate.ApproveDuration(Quote.Duration))
             {
                 Notification = "Please choose valid dates.\nThe desired period must be more than 2 hrs and less than 2 weeks";
                 //OnGet doesn't get fired
@@ -92,11 +101,9 @@ namespace Synthesis_Assignment_Web_App.Pages
                 return Page();
             }
 
-            //get the time of booking
             Quote.DateTimeOfMade = DateTime.Now;
-            Quote.SetRefNumber(HttpContext.Session.GetObjectFromJson<Quote>("QuoteToUpdate").RefNumber);
+            Quote.RefNumber = HttpContext.Session.GetObjectFromJson<Quote>("QuoteToUpdate").RefNumber;
 
-            //prices calculation
             double itemDeposit = 0;
             int itemQuantity = 0;
             double itemPrice = 0;
@@ -108,19 +115,23 @@ namespace Synthesis_Assignment_Web_App.Pages
                 itemQuantity = Quote.Item.Quantity;
                 itemPrice = manageGear.GetGearByType(Quote.Item).UnitCost
                     * (Quote.Duration / 2) * Quote.Item.Quantity;
+
+                Quote.Item.Price = (itemPrice);
+            }
+            else
+            {
+                Quote.Item.ItemType = "None";
             }
 
-            //deposit calculation
-            Quote.CalculateDeposit(manageGear.GetGearByType(Quote.Boat).Deposit, Quote.Boat.Quantity,
+            Quote.Deposit = Calculate.CalculateDeposit(manageGear.GetGearByType(Quote.Boat).Deposit, Quote.Boat.Quantity,
                itemDeposit, itemQuantity);
-
 
             //boat price calculation
             double boatPrice = manageGear.GetGearByType(Quote.Boat).UnitCost
                 * (Quote.Duration / 2) * Quote.Boat.Quantity;
+            Quote.Boat.Price = (boatPrice);
 
-            //total price calculation
-            Quote.CalculateTotalPrice(boatPrice, itemPrice);
+            Quote.TotalPrice = Calculate.CalculateTotalPrice(boatPrice, itemPrice);
 
             //storing the object in session
             HttpContext.Session.SetObjectAsJson("Quote", null);

@@ -5,11 +5,35 @@
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\Synthesis Assignment.dll
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\ref\Synthesis Assignment.dll
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\Synthesis Assignment.pdb
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\BouncyCastle.Crypto.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\Google.Protobuf.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\K4os.Compression.LZ4.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\K4os.Compression.LZ4.Streams.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\K4os.Hash.xxHash.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Http.Abstractions.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Http.Features.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\Microsoft.Extensions.Primitives.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\MySql.Data.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\Ubiety.Dns.Core.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\ZstdNet.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\MySqlConnector.dll
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\SynthesisAssignment.Models.dll
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\SynthesisAssignment.MyClasses.dll
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\SynthesisAssignment.Services.dll
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\SynthesisAssignment.Models.pdb
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\SynthesisAssignment.MyClasses.pdb
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\SynthesisAssignment.Services.pdb
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis Assignment.csproj.AssemblyReference.cache
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormBoats.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormConfirmDeletion.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormDashboard.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormFindCustomer.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormInventory.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormItems.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormLogin.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormPayment.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormSelectOption.resources
+\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.Properties.Resources.resources
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis Assignment.csproj.GenerateResource.cache
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis Assignment.GeneratedMSBuildEditorConfig.editorconfig
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis Assignment.AssemblyInfoInputs.cache
@@ -20,27 +44,3 @@
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\ref\Synthesis Assignment.dll
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis Assignment.pdb
 \\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis Assignment.genruntimeconfig.cache
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormDashboard.resources
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormLogin.resources
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.Properties.Resources.resources
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormInventory.resources
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormSelectOption.resources
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormBoats.resources
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\BouncyCastle.Crypto.dll
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\Google.Protobuf.dll
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\K4os.Compression.LZ4.dll
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\K4os.Compression.LZ4.Streams.dll
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\K4os.Hash.xxHash.dll
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\MySql.Data.dll
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\Ubiety.Dns.Core.dll
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\ZstdNet.dll
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\MySqlConnector.dll
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\SynthesisAssignment.MyClasses.dll
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\SynthesisAssignment.MyClasses.pdb
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormItems.resources
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormConfirmDeletion.resources
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Http.Abstractions.dll
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Http.Features.dll
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\bin\Debug\net5.0-windows\Microsoft.Extensions.Primitives.dll
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormFindCustomer.resources
-\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment\obj\Debug\net5.0-windows\Synthesis_Assignment.FormPayment.resources
