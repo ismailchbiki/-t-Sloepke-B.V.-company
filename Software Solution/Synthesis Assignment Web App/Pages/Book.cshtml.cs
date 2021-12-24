@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SynthesisAssignment.Models;
+using SynthesisAssignment.Models.Administration;
 using SynthesisAssignment.MyClasses.Classes;
 using SynthesisAssignment.MyClasses.Classes.MyHelpers;
 using SynthesisAssignment.Services;
@@ -21,12 +22,14 @@ namespace Synthesis_Assignment_Web_App.Pages
         readonly InventoryAdministration manageGear = new InventoryAdministration();
         public string Notification = null;
 
-
+        LocationManagement manageLoc = new LocationManagement();
+        public List<string> Locations { get; set; }
         public void OnGet()
         {            
 
             //load available gear
             GearList = manageGear.GetAllGear();
+            Locations = manageLoc.Locations();
 
             if (HttpContext.Session.GetObjectFromJson<Quote>("QuoteToUpdate") != null)
             {
@@ -41,12 +44,13 @@ namespace Synthesis_Assignment_Web_App.Pages
 
             Quote.Duration = Calculate.RoundNumberToEven(Calculate.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime));
             
-            if (!Calculate.DateIsInPast(Quote.EndDateTime, Quote.StartDateTime)
+            if (Calculate.DateIsInPast(Quote.EndDateTime, Quote.StartDateTime)
                 || !Calculate.ApproveDuration(Quote.Duration))
             {
                 Notification = "Please choose valid dates.\nThe desired period must be more than 2 hrs and less than 2 weeks";
                 //OnGet doesn't get fired
                 GearList = manageGear.GetAllGear();
+                Locations = manageLoc.Locations();
                 return Page();
             }
 
@@ -92,12 +96,13 @@ namespace Synthesis_Assignment_Web_App.Pages
         {
             Quote.Duration = Calculate.RoundNumberToEven(Calculate.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime));
 
-            if (!Calculate.DateIsInPast(Quote.EndDateTime, Quote.StartDateTime)
+            if (Calculate.DateIsInPast(Quote.EndDateTime, Quote.StartDateTime)
                 || !Calculate.ApproveDuration(Quote.Duration))
             {
                 Notification = "Please choose valid dates.\nThe desired period must be more than 2 hrs and less than 2 weeks";
                 //OnGet doesn't get fired
                 GearList = manageGear.GetAllGear();
+                Locations = manageLoc.Locations();
                 return Page();
             }
 

@@ -81,10 +81,10 @@
             </div>
 
             <!--  location  -->
-            <h2 class="boats-title">Choose location *</h2>
-            <input required type="text" asp-for="Quote.Location"
-                   placeholder="Location" />
-            <span>* Required fields</span>
+            <h2 class="boats-title">Choose location</h2>
+            <select asp-for="Quote.Location" asp-items="@(new SelectList(Model.Locations, "location"))">
+                <option value="" selected disabled>-- Select Location --</option>
+            </select>
 
             <!--  Submit button  -->
             <input id="Submit1" type="submit" value="Add My Selections" />

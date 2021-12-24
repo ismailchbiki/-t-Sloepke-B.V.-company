@@ -31,6 +31,13 @@ namespace SynthesisAssignment.MyClasses.Classes.MyHelpers
         public static int RoundNumberToEven(double diff)
         {
             int durationHours = Convert.ToInt32(Math.Round(diff, 0, MidpointRounding.ToEven));
+
+            double output = durationHours % 2;
+            if (output != 0)
+            {
+                durationHours += 1;
+            }
+            
             return durationHours;
         }
 
@@ -67,12 +74,12 @@ namespace SynthesisAssignment.MyClasses.Classes.MyHelpers
 
         public static bool DateIsInPast(DateTime endDate, DateTime startDate)
         {
-            bool status = true;
+            bool status = false;
 
             if (DateTime.Compare(startDate, DateTime.Now) < 0
                || DateTime.Compare(endDate, DateTime.Now) < 0)
             {
-                status = false;
+                status = true;
             }
 
             return status;
