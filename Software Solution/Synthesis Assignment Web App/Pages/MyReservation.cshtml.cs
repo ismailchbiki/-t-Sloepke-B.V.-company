@@ -36,7 +36,7 @@ namespace Synthesis_Assignment_Web_App.Pages
             HttpContext.Session.SetObjectAsJson("Quote", null);
 
             //fetch quote by id
-            if (manageQuotes.GetQuoteByID(Reservation) != null)
+            if (manageQuotes.GetQuoteByID(Reservation).PaymentStatus != null)
             {
                 HttpContext.Session.SetObjectAsJson("MyReservation", manageQuotes.GetQuoteByID(Reservation));
 

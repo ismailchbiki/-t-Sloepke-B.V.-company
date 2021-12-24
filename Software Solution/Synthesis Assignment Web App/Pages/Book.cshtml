@@ -133,8 +133,8 @@ else if (Model.QuoteToUpdate != null)
             </select>
 
             <!--  item Quantity  -->
-            <label>Your current choice is: "@Model.QuoteToUpdate.Item.Quantity"</label>
             <h2 class="boats-title">Choose quantity (Optional)</h2>
+            <label>Your current choice is: "@Model.QuoteToUpdate.Item.Quantity"</label>
             <input type="number" asp-for="Quote.Item.Quantity"
                    placeholder="Item Quantity" />
 
@@ -152,10 +152,11 @@ else if (Model.QuoteToUpdate != null)
             </div>
 
             <!--  location  -->
-            <h2 class="boats-title">Choose location *</h2>
+            <h2 class="boats-title">Choose location</h2>
             <label>Your current choice is: "@Model.QuoteToUpdate.Location"</label>
-            <input required type="text" asp-for="Quote.Location"
-                   placeholder="Location" />
+            <select asp-for="Quote.Location" asp-items="@(new SelectList(Model.Locations, "location"))">
+                <option value="" selected disabled>-- Select Location --</option>
+            </select>
 
             <span>* Required fields</span>
 

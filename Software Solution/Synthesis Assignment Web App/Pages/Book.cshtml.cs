@@ -25,7 +25,8 @@ namespace Synthesis_Assignment_Web_App.Pages
         LocationManagement manageLoc = new LocationManagement();
         public List<string> Locations { get; set; }
         public void OnGet()
-        {            
+        {
+            Quote = new Quote();
 
             //load available gear
             GearList = manageGear.GetAllGear();
@@ -35,7 +36,6 @@ namespace Synthesis_Assignment_Web_App.Pages
             {
                 QuoteToUpdate = new Quote();
                 QuoteToUpdate = HttpContext.Session.GetObjectFromJson<Quote>("QuoteToUpdate");
-                HttpContext.Session.SetObjectAsJson("QuoteToUpdate", null);
             }
         }
 
@@ -94,6 +94,7 @@ namespace Synthesis_Assignment_Web_App.Pages
 
         public IActionResult OnPostUpdateQuote()
         {
+
             Quote.Duration = Calculate.RoundNumberToEven(Calculate.CalculateDuration(Quote.EndDateTime, Quote.StartDateTime));
 
             if (Calculate.DateIsInPast(Quote.EndDateTime, Quote.StartDateTime)
@@ -108,6 +109,7 @@ namespace Synthesis_Assignment_Web_App.Pages
 
             Quote.DateTimeOfMade = DateTime.Now;
             Quote.RefNumber = HttpContext.Session.GetObjectFromJson<Quote>("QuoteToUpdate").RefNumber;
+
 
             double itemDeposit = 0;
             int itemQuantity = 0;

@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SynthesisAssignment.MyClass
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Synthesis Assignment Web App", "Synthesis Assignment Web App\Synthesis Assignment Web App.csproj", "{6E7A11C6-0F68-4DF6-B5D1-1FC2FD4EACD3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SynthesisAssignment.UnitTest", "SynthesisAssignment\SynthesisAssignment.UnitTest.csproj", "{B28FF3C1-2138-41EC-BF0F-86AA71A5155B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SynthesisAssignment.UnitTest", "SynthesisAssignment.Test\SynthesisAssignment.UnitTest.csproj", "{B28FF3C1-2138-41EC-BF0F-86AA71A5155B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
