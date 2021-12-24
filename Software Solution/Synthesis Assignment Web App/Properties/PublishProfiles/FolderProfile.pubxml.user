@@ -5,6 +5,6 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>\\Mac\Home\Desktop\Git\Synthesis Assignment\Software Solution\Synthesis Assignment Web App\bin\Release\net5.0\publish\</_PublishTargetUrl>
-    <History>True|2021-12-18T14:20:34.8479192Z;</History>
+    <History>True|2021-12-24T15:17:49.0375670Z;True|2021-12-18T15:20:34.8479192+01:00;</History>
   </PropertyGroup>
 </Project>

@@ -864,6 +864,17 @@ th {
     margin-right: 5%;
 }
 
+    .confirm-body p {
+        color: forestgreen;
+        font-size: 22px;
+        font-weight: 300;
+        line-height: 22px;
+        padding: 10px;
+        text-align: left;
+        margin-left: 53px;
+        margin-top: 20px;
+    }
+
     .confirm-body span {
         display: block;
         text-align: right;
@@ -945,7 +956,87 @@ th {
     font-size: 25px;
 }
 
+.update-reservation {
+    display: flex;
+    margin-top: 50px;
+}
+
+.submit-update {
+    background-color: cornflowerblue;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 8px;
+    width: 40%;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    color: cornsilk;
+}
+
 .valid-duration{
     color: red;
     text-align: center;
+}
+
+/*  My Reservation page  */
+
+.page-title {
+    text-align: center;
+}
+
+.access-form {
+    border-radius: 5px;
+    background-color: burlywood;
+    padding: 20px;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+}
+
+.reservation-block {
+    display: flex;
+    margin-top: 4%;
+}
+
+
+.access-form input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.access-form input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .access-form input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    .access-form h2{
+        text-align: center;
+        padding-top: 3%;
+        color: red;
+        font-size: 28px;
+    }
+
+.access-form p {
+    color: blue;
+    font-size: 20px;
+    padding: 10px;
 }
