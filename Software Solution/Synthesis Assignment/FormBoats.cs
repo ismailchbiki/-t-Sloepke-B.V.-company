@@ -1,4 +1,5 @@
 ﻿using SynthesisAssignment.Models;
+using SynthesisAssignment.Models.Administration;
 using SynthesisAssignment.Models.Classes;
 using SynthesisAssignment.MyClasses.Classes;
 using SynthesisAssignment.Services;
@@ -14,24 +15,35 @@ using System.Windows.Forms;
 
 namespace Synthesis_Assignment
 {
+    /// <summary>
+    /// The inversion of control:
+    /// the infrastructure (UI Method) injects the logic class with an instance of the needed service class
+    /// </summary>
     public partial class FormBoats : Form
     {
+        /// <summary>
+        /// the infrastructure (UI Method) injects the logic class with an instance of the needed service class
+        /// </summary>
+        /// new DALBoat(): an instance of the lower level object (service class)
+        /// new BoatManagement(): an instance of the higher level object (client class)
 
         string type = null;
         Boat boat;
-        InventoryAdministration manageGear;
+        IBoatManagement manageBoats;
 
         public FormBoats()
         {
             InitializeComponent();
-            manageGear = new InventoryAdministration();
+            //dependency injection
+            manageBoats = new BoatManagement(new DALBoat());
             boat = new Boat();
         }
 
         public FormBoats(string bType)
         {
             InitializeComponent();
-            manageGear = new InventoryAdministration();
+            //dependency injection
+            manageBoats = new BoatManagement(new DALBoat());
             boat = new Boat();
             this.type = bType;
         }
@@ -52,12 +64,13 @@ namespace Synthesis_Assignment
 
                 //fill in fields with data
                 boat = new Boat(type);
-                labelBType.Text = ((Boat)manageGear.GetGearByType(boat)).BoatType.ToString();
-                textBoxCapacity.Text = ((Boat)manageGear.GetGearByType(boat)).Capacity.ToString();
-                textBoxCost.Text = ((Boat)manageGear.GetGearByType(boat)).UnitCost.ToString();
-                textBoxDeposit.Text = ((Boat)manageGear.GetGearByType(boat)).Deposit.ToString();
-                textBoxQuantity.Text = ((Boat)manageGear.GetGearByType(boat)).Quantity.ToString();
-                textBoxRemark.Text = ((Boat)manageGear.GetGearByType(boat)).Remark;
+                boat = manageBoats.GetBoatByType(boat);
+                labelBType.Text = boat.BoatType.ToString();
+                textBoxCapacity.Text = boat.Capacity.ToString();
+                textBoxCost.Text = boat.UnitCost.ToString();
+                textBoxDeposit.Text = boat.Deposit.ToString();
+                textBoxQuantity.Text = boat.Quantity.ToString();
+                textBoxRemark.Text = boat.Remark;
             }
         }
         
@@ -116,7 +129,7 @@ namespace Synthesis_Assignment
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
                     // add boat
-                    if (manageGear.AddGear(boat))
+                    if (manageBoats.AddBoat(boat))
                     {
                         MessageBox.Show(MyMessage.SuccessfulSaving);
                     }
@@ -159,7 +172,7 @@ namespace Synthesis_Assignment
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
                     //update boat
-                    if (manageGear.UpdateGear(boat))
+                    if (manageBoats.UpdateBoat(boat))
                     {
                         MessageBox.Show(MyMessage.SuccessfulUpdate);
                         FormInventory inventoryForm = new FormInventory();

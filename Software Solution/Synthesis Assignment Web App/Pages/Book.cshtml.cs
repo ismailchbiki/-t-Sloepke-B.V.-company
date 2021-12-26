@@ -19,17 +19,19 @@ namespace Synthesis_Assignment_Web_App.Pages
         public Quote Quote { get; set; }
         public List<Inventory> GearList { get; set; }
         public Quote QuoteToUpdate;
-        readonly InventoryAdministration manageGear = new InventoryAdministration();
+        readonly BoatManagement manageBoats = new BoatManagement(new DALBoat());
+        readonly ItemManagement manageItems = new ItemManagement(new DALItem());
         public string Notification = null;
 
-        LocationManagement manageLoc = new LocationManagement();
+        ILocationManagement manageLoc = new LocationManagement(new DALLocation());
         public List<string> Locations { get; set; }
         public void OnGet()
         {
             Quote = new Quote();
 
             //load available gear
-            GearList = manageGear.GetAllGear();
+            GearList.AddRange(manageBoats.GetAllBoats());
+            GearList.AddRange(manageItems.GetAllItems());
             Locations = manageLoc.Locations();
 
             if (HttpContext.Session.GetObjectFromJson<Quote>("QuoteToUpdate") != null)
@@ -49,7 +51,8 @@ namespace Synthesis_Assignment_Web_App.Pages
             {
                 Notification = "Please choose valid dates.\nThe desired period must be more than 2 hrs and less than 2 weeks";
                 //OnGet doesn't get fired
-                GearList = manageGear.GetAllGear();
+                GearList.AddRange(manageBoats.GetAllBoats());
+                GearList.AddRange(manageItems.GetAllItems());
                 Locations = manageLoc.Locations();
                 return Page();
             }
@@ -64,9 +67,9 @@ namespace Synthesis_Assignment_Web_App.Pages
             //item fields check => items are optional
             if (Quote.Item.ItemType != null)
             {
-                itemDeposit = manageGear.GetGearByType(Quote.Item).Deposit;
+                itemDeposit = manageItems.GetItemByType(Quote.Item).Deposit;
                 itemQuantity = Quote.Item.Quantity;
-                itemPrice = manageGear.GetGearByType(Quote.Item).UnitCost
+                itemPrice = manageItems.GetItemByType(Quote.Item).UnitCost
                     * (Quote.Duration / 2) * Quote.Item.Quantity;
                 
                 Quote.Item.Price = (itemPrice);
@@ -76,11 +79,11 @@ namespace Synthesis_Assignment_Web_App.Pages
                 Quote.Item.ItemType = "None";
             }
 
-            Quote.Deposit = Calculate.CalculateDeposit(manageGear.GetGearByType(Quote.Boat).Deposit, Quote.Boat.Quantity,
+            Quote.Deposit = Calculate.CalculateDeposit(manageBoats.GetBoatByType(Quote.Boat).Deposit, Quote.Boat.Quantity,
                itemDeposit, itemQuantity);
 
             //boat price calculation
-            double boatPrice = manageGear.GetGearByType(Quote.Boat).UnitCost
+            double boatPrice = manageBoats.GetBoatByType(Quote.Boat).UnitCost
                 * (Quote.Duration / 2) * Quote.Boat.Quantity;
             Quote.Boat.Price = (boatPrice);
 
@@ -102,7 +105,8 @@ namespace Synthesis_Assignment_Web_App.Pages
             {
                 Notification = "Please choose valid dates.\nThe desired period must be more than 2 hrs and less than 2 weeks";
                 //OnGet doesn't get fired
-                GearList = manageGear.GetAllGear();
+                GearList.AddRange(manageBoats.GetAllBoats());
+                GearList.AddRange(manageItems.GetAllItems());
                 Locations = manageLoc.Locations();
                 return Page();
             }
@@ -118,9 +122,9 @@ namespace Synthesis_Assignment_Web_App.Pages
             //item fields check => items are optional
             if (Quote.Item.ItemType != null)
             {
-                itemDeposit = manageGear.GetGearByType(Quote.Item).Deposit;
+                itemDeposit = manageItems.GetItemByType(Quote.Item).Deposit;
                 itemQuantity = Quote.Item.Quantity;
-                itemPrice = manageGear.GetGearByType(Quote.Item).UnitCost
+                itemPrice = manageItems.GetItemByType(Quote.Item).UnitCost
                     * (Quote.Duration / 2) * Quote.Item.Quantity;
 
                 Quote.Item.Price = (itemPrice);
@@ -130,11 +134,11 @@ namespace Synthesis_Assignment_Web_App.Pages
                 Quote.Item.ItemType = "None";
             }
 
-            Quote.Deposit = Calculate.CalculateDeposit(manageGear.GetGearByType(Quote.Boat).Deposit, Quote.Boat.Quantity,
+            Quote.Deposit = Calculate.CalculateDeposit(manageBoats.GetBoatByType(Quote.Boat).Deposit, Quote.Boat.Quantity,
                itemDeposit, itemQuantity);
 
             //boat price calculation
-            double boatPrice = manageGear.GetGearByType(Quote.Boat).UnitCost
+            double boatPrice = manageBoats.GetBoatByType(Quote.Boat).UnitCost
                 * (Quote.Duration / 2) * Quote.Boat.Quantity;
             Quote.Boat.Price = (boatPrice);
 

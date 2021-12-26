@@ -1,4 +1,5 @@
 ﻿using SynthesisAssignment.Models;
+using SynthesisAssignment.Models.Administration;
 using SynthesisAssignment.Services;
 using System;
 using System.Collections.Generic;
@@ -18,12 +19,14 @@ namespace Synthesis_Assignment
         //get type of the selected row
         string type = null;
         Inventory gear;
-        InventoryAdministration manageGear;
+        IBoatManagement manageBoats;
+        IItemManagement manageItems;
 
         public FormInventory()
         {
             InitializeComponent();
-            manageGear = new InventoryAdministration();
+            manageBoats = new BoatManagement(new DALBoat());
+            manageItems = new ItemManagement(new DALItem());
         }
 
         //on load fill in the tables
@@ -33,10 +36,14 @@ namespace Synthesis_Assignment
 
             dataGridViewBoats.Columns.Clear();
 
-            List<Inventory> gear = manageGear.GetAllGear();
+            //List<Inventory> gear = manageGear.GetAllGear();
+            List<Boat> boats = new List<Boat>();
+            List<Item> items = new List<Item>();
+            boats = manageBoats.GetAllBoats();
+            items = manageItems.GetAllItems();
 
             //table of boats
-            dataGridViewBoats.DataSource = gear.OfType<Boat>().Select(o => new {
+            dataGridViewBoats.DataSource = boats.Select(o => new {
                 Boat_Type = o.BoatType,
                 Capacity = o.Capacity,
                 Costs = o.UnitCost,
@@ -46,7 +53,7 @@ namespace Synthesis_Assignment
             }).ToList();
 
             //table of items
-            dataGridViewItems.DataSource = gear.OfType<Item>().Select(o => new {
+            dataGridViewItems.DataSource = items.Select(o => new {
                 Item = o.ItemType,
                 Costs = o.UnitCost,
                 Deposit = o.Deposit,

@@ -1,6 +1,7 @@
 ﻿using SynthesisAssignment.Models.Administration;
 using SynthesisAssignment.Models.Classes;
 using SynthesisAssignment.MyClasses.Classes;
+using SynthesisAssignment.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,14 +18,14 @@ namespace Synthesis_Assignment
     {
 
         Quote quote;
-        QuoteAdministration manageQuote;
+        IQuoteManagment manageQuote;
 
         public FormFindCustomer()
         {
             InitializeComponent();
 
             quote = new Quote();
-            manageQuote = new QuoteAdministration();
+            manageQuote = new QuoteManagement(new DALQuote());
         }
 
         private void FormDeposit_Load(object sender, EventArgs e)

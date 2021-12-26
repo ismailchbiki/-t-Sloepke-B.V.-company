@@ -16,8 +16,9 @@ namespace Synthesis_Assignment_Web_App.Pages
     {
 
         public Quote Quote = new Quote();
-        QuoteAdministration manageQuote = new QuoteAdministration();
-        InventoryAdministration manageGear = new InventoryAdministration();
+        IQuoteManagment manageQuote = new QuoteManagement(new DALQuote());
+        BoatManagement manageBoats = new BoatManagement(new DALBoat());
+        ItemManagement manageItems = new ItemManagement(new DALItem());
 
         //message to show
         public string Notification;
@@ -48,8 +49,8 @@ namespace Synthesis_Assignment_Web_App.Pages
                 }
 
                 //gear cost
-                BoatCost = manageGear.GetGearByType(Quote.Boat).UnitCost;
-                ItemCost = manageGear.GetGearByType(Quote.Item).UnitCost;
+                BoatCost = manageBoats.GetBoatByType(Quote.Boat).UnitCost;
+                ItemCost = manageItems.GetItemByType(Quote.Item).UnitCost;
 
             }
 
@@ -62,8 +63,8 @@ namespace Synthesis_Assignment_Web_App.Pages
                 Quote.Customer = HttpContext.Session.GetObjectFromJson<Customer>("CustomerDetails");
 
                 //gear cost
-                BoatCost = manageGear.GetGearByType(Quote.Boat).UnitCost;
-                ItemCost = manageGear.GetGearByType(Quote.Item).UnitCost;
+                BoatCost = manageBoats.GetBoatByType(Quote.Boat).UnitCost;
+                ItemCost = manageItems.GetItemByType(Quote.Item).UnitCost;
             }
 
             //UPDATE EXISTING QUOTES
@@ -80,8 +81,8 @@ namespace Synthesis_Assignment_Web_App.Pages
                 }
 
                 //gear cost
-                BoatCost = manageGear.GetGearByType(Quote.Boat).UnitCost;
-                ItemCost = manageGear.GetGearByType(Quote.Item).UnitCost;
+                BoatCost = manageBoats.GetBoatByType(Quote.Boat).UnitCost;
+                ItemCost = manageItems.GetItemByType(Quote.Item).UnitCost;
             }
 
             //QUOTE IS EMPTY

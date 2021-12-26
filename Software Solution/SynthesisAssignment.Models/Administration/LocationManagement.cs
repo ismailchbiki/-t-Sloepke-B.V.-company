@@ -7,13 +7,18 @@ using System.Threading.Tasks;
 
 namespace SynthesisAssignment.Models.Administration
 {
-    public class LocationManagement
+    public class LocationManagement : ILocationManagement
     {
-        DALLocation dalLoc = new DALLocation();
+        IDALLocation _dalLoc;
+
+        public LocationManagement(IDALLocation locDA)
+        {
+            this._dalLoc = locDA;
+        }
 
         public List<string> Locations()
         {
-            return dalLoc.GelAllLocations().ToList();
+            return _dalLoc.GelAllLocations().ToList();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SynthesisAssignment.Models;
+using SynthesisAssignment.Models.Administration;
 using SynthesisAssignment.Services;
 using System;
 using System.Collections.Generic;
@@ -16,14 +17,17 @@ namespace Synthesis_Assignment
     {
 
         Inventory gear;
-        InventoryAdministration manageGear;
+        IBoatManagement manageBoats;
+        IItemManagement manageItems;
 
         public FormConfirmDeletion(Inventory gear)
         {
             InitializeComponent();
 
             this.gear = gear;
-            manageGear = new InventoryAdministration();
+            //dependency injection
+            manageBoats = new BoatManagement(new DALBoat());
+            manageItems = new ItemManagement(new DALItem());
         }
 
         private void FormConfirmDeletion_Load(object sender, EventArgs e)
@@ -34,18 +38,34 @@ namespace Synthesis_Assignment
         //confirm
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            //if gear is deleted
-            if (manageGear.DeleteGear(manageGear.GetGearByType(gear)))
+
+            if (gear is Boat)
             {
-                MessageBox.Show("Item Removed successfully");
-                FormInventory inventory = new FormInventory();
+                if (manageBoats.DeleteBoat(manageBoats.GetBoatByType((Boat)gear)))
+                {
+                    MessageBox.Show("Boat Removed successfully");
+                    FormInventory inventory = new FormInventory();
 
-                //to clear the variables
-                gear = new Boat();
-                gear = new Item();
+                    //to clear the variable
+                    gear = new Boat();
 
-                inventory.Show();
-                this.Hide();
+                    inventory.Show();
+                    this.Hide();
+                }
+            }
+            else if (gear is Item)
+            {
+                if (manageItems.DeleteItem(manageItems.GetItemByType((Item)gear)))
+                {
+                    MessageBox.Show("Item Removed successfully");
+                    FormInventory inventory = new FormInventory();
+
+                    //to clear the variable
+                    gear = new Item();
+
+                    inventory.Show();
+                    this.Hide();
+                }
             }
         }
 

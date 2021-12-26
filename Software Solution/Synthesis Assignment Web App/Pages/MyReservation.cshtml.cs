@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SynthesisAssignment.Models.Administration;
 using SynthesisAssignment.MyClasses.Classes;
+using SynthesisAssignment.Services;
 
 namespace Synthesis_Assignment_Web_App.Pages
 {
@@ -18,7 +19,8 @@ namespace Synthesis_Assignment_Web_App.Pages
         public static string QuoteIsNotFound;
 
         //to get all the quotes
-        QuoteAdministration manageQuotes = new QuoteAdministration();
+        //QuoteManagement manageQuotes = new QuoteAdministration();
+        IQuoteManagment manageQuotes = new QuoteManagement(new DALQuote());
 
         public void OnGet()
         {

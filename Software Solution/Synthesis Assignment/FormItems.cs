@@ -1,4 +1,5 @@
 ﻿using SynthesisAssignment.Models;
+using SynthesisAssignment.Models.Administration;
 using SynthesisAssignment.Models.Classes;
 using SynthesisAssignment.MyClasses.Classes;
 using SynthesisAssignment.Services;
@@ -19,19 +20,19 @@ namespace Synthesis_Assignment
 
         string type = null;
         Item item;
-        InventoryAdministration manageGear;
+        IItemManagement manageItems;
 
         public FormItems()
         {
             InitializeComponent();
-            manageGear = new InventoryAdministration();
+            manageItems = new ItemManagement(new DALItem());
             item = new Item();
         }
 
         public FormItems(string type)
         {
             InitializeComponent();
-            manageGear = new InventoryAdministration();
+            manageItems = new ItemManagement(new DALItem());
             item = new Item();
             this.type = type;
         }
@@ -52,11 +53,12 @@ namespace Synthesis_Assignment
 
                 //fill in fields with data
                 item = new Item(type);
-                labelItmType.Text = ((Item)manageGear.GetGearByType(item)).ItemType.ToString();
-                textBoxCost.Text = ((Item)manageGear.GetGearByType(item)).UnitCost.ToString();
-                textBoxDeposit.Text = ((Item)manageGear.GetGearByType(item)).Deposit.ToString();
-                textBoxQuantity.Text = ((Item)manageGear.GetGearByType(item)).Quantity.ToString();
-                textBoxRemark.Text = ((Item)manageGear.GetGearByType(item)).Remark;
+                item = manageItems.GetItemByType(item);
+                labelItmType.Text = item.ItemType.ToString();
+                textBoxCost.Text = item.UnitCost.ToString();
+                textBoxDeposit.Text = item.Deposit.ToString();
+                textBoxQuantity.Text = item.Quantity.ToString();
+                textBoxRemark.Text = item.Remark;
             }
         }
 
@@ -119,7 +121,7 @@ namespace Synthesis_Assignment
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
                     //add item
-                    if (manageGear.AddGear(item))
+                    if (manageItems.AddItem(item))
                     {
                         MessageBox.Show(MyMessage.SuccessfulSaving);
                     }
@@ -160,7 +162,7 @@ namespace Synthesis_Assignment
                         Convert.ToDouble(textBoxDeposit.Text), Convert.ToInt32(textBoxQuantity.Text), textBoxRemark.Text);
 
                     //update item
-                    if (manageGear.UpdateGear(item))
+                    if (manageItems.UpdateItem(item))
                     {
                         MessageBox.Show(MyMessage.SuccessfulUpdate);
                         FormInventory inventoryForm = new FormInventory();

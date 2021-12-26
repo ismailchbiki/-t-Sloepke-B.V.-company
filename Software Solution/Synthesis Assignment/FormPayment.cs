@@ -1,6 +1,7 @@
 ﻿using SynthesisAssignment.Models.Administration;
 using SynthesisAssignment.Models.Classes;
 using SynthesisAssignment.MyClasses.Classes;
+using SynthesisAssignment.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,16 +17,16 @@ namespace Synthesis_Assignment
     public partial class FormPayment : Form
     {
         Quote reservation;
-        ProcessQuotePayment processPayment;
-        QuoteAdministration manageQuote;
+        IQuotePayManagement processPayment;
+        IQuoteManagment manageQuotes;
 
         public FormPayment(Quote quote)
         {
             InitializeComponent();
 
             this.reservation = quote;
-            processPayment = new ProcessQuotePayment();
-            manageQuote = new QuoteAdministration();
+            processPayment = new QuotePaymentManagement(new DALQuotePayment());
+            manageQuotes = new QuoteManagement(new DALQuote());
 
             if (reservation.DepositStatus == "Done")
             {
@@ -106,7 +107,7 @@ namespace Synthesis_Assignment
                     MessageBox.Show("Deposit submitted successfully\nAn amount of " + result + " should be returned to the customer");
 
                     Quote booking = new Quote();
-                    booking = manageQuote.GetQuoteByID(reservation);
+                    booking = manageQuotes.GetQuoteByID(reservation);
 
                     FormPayment refresh = new FormPayment(booking);
                     refresh.Show();
